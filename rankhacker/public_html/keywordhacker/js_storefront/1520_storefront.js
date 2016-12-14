@@ -251,15 +251,17 @@ function loginAuthenticatedAccount(e)
     e.preventDefault();
     
     var email = getURLParameter("email");
+    var firstName = $("#user-first-name").val();
+    var lastName = $("#user-last-name").val();
     var password = $("#user-password").val();
     
-    if(password != '')
+    if(firstName != '' && lastName != '' && password != '')
     {    
         //Show the spinner
         $("#login-response").removeClass("error-text");
         $("#login-response").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
         
-        $.ajax({url: restURL, data: {'command':'loginAuthenticatedAccount','email':email,'password':password}, type: 'post', async: true, success: function postResponse(returnData){
+        $.ajax({url: restURL, data: {'command':'loginAuthenticatedAccount','email':email,'firstname':firstName,'lastname':lastName,'password':password}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
@@ -282,6 +284,6 @@ function loginAuthenticatedAccount(e)
     {
         //showAlert("Error: We were unable to re-send your verification email.")
         $("#login-response").addClass("error-text");
-        $("#login-response").html("Please provide a password to continue.");
+        $("#login-response").html("Please provide a your name and a password to continue.");
     }
 }

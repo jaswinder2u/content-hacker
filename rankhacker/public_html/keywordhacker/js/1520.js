@@ -804,7 +804,8 @@ function loadProjectDashboard(flip)
             cardHTML += "<div class=\"card-box-bottom\">";
             cardHTML += "<div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div>";
             //cardHTML += "<a style=\"cursor:pointer;\" "+anchorAhref+" class=\"project-status-card  project_status_sort \" href=\"javascript:void(0);\"> "+activeString+" </a>";
-            cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><!--<a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a>--><a class=\"delete-icon\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a></div>";
+            //cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><!--<a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a>--><a class=\"delete-icon-orig\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a></div>";
+            cardHTML += "<div style=\"clear:both;text-align:right;float:right;\"><span class=\"delete-icon-small\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon-small\"></span></div>";
             cardHTML += "</div>";
             cardHTML += "</div>";
             cardHTML += "</li>";

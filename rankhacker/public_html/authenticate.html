@@ -30,7 +30,7 @@
          STYLESHEETS
     ============================== -->
     <link href="keywordhacker/css_storefront/bootstrap.min.css" rel="stylesheet">
-    <link href="keywordhacker/css_storefront/custom-style.css?v=40" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css_storefront/custom-style.css?v=41" rel="stylesheet" id="theme-change">
 
    
 
@@ -91,12 +91,31 @@
                             </div>
                             
                             <div class="row" id="validated-message">
-				<h3 class="col-sm-12 text-center verify-note">CREATE YOUR PASSWORD TO GET STARTED</h3>
-                                <div class="col-sm-4 text-center"></div>
-				<div class="col-sm-4 text-center">
-                                    <span class="input-outer text-center" style="margin-bottom:25px;"> <label><i class="fa fa-lock" aria-hidden="true"></i></label><input class="" placeholder="Password" type="password" id="user-password" onkeypress="registerAuthenticatedAction(event);"> </span>
+				<h3 class="col-sm-12 text-center verify-note">PROVIDE YOUR NAME AND CREATE A PASSWORD TO GET STARTED</h3>
+                                <div class="row">
+                                    <div class="col-sm-4 text-center"></div>
+                                    <div class="col-sm-4 text-center">
+                                        <span class="input-outer text-center" style="margin-bottom:25px;"> <label><i class="fa fa-user" aria-hidden="true"></i></label><input class="" placeholder="First Name" type="text" id="user-first-name"> </span>
+                                    </div>
+                                    <div class="col-sm-4 text-center"></div>
                                 </div>
-                                <div class="col-sm-4 text-center"></div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-4 text-center"></div>
+                                    <div class="col-sm-4 text-center">
+                                        <span class="input-outer text-center" style="margin-bottom:25px;"> <label><i class="fa fa-user" aria-hidden="true"></i></label><input class="" placeholder="Last Name" type="text" id="user-last-name"> </span>
+                                    </div>
+                                    <div class="col-sm-4 text-center"></div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-4 text-center"></div>
+                                    <div class="col-sm-4 text-center">
+                                        <span class="input-outer text-center" style="margin-bottom:25px;"> <label><i class="fa fa-lock" aria-hidden="true"></i></label><input class="" placeholder="Password" type="password" id="user-password" onkeypress="registerAuthenticatedAction(event);"> </span>
+                                    </div>
+                                    <div class="col-sm-4 text-center"></div>
+                                </div>
+                                
                                 <div class="col-sm-12 text-center">
                                     <span style="margin-top:25px;"><a class="login-btn" onclick="loginAuthenticatedAccount(event);" >LOG IN <!--<span>SHOW ME THE NET-WORTH</span>--></a></span>
 				</div>
@@ -151,11 +170,11 @@
 		<!--copyright section start here-->		
             <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
 			<!--copyright section close here-->
-		
+		<!--
 		<div class="account-section text-right col-sm-4">
 			<a href="../login.html">Log In</a>
 		</div>
-		
+		-->
 			
           </div>
             </div>
@@ -172,7 +191,7 @@
 <script type="text/javascript" src="keywordhacker/js_storefront/typed.min.js"></script>
 
 <!--1520 js file-->
-<script type="text/javascript" src="keywordhacker/js_storefront/1520_storefront.js?v=40"></script>
+<script type="text/javascript" src="keywordhacker/js_storefront/1520_storefront.js?v=41"></script>
 
 <script>
     $(function(){

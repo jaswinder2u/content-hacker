@@ -1259,12 +1259,14 @@ width: 100%;}
 
 .keyword-phraser-row.active .content-blueprint-info {border: 0px #e8e8e8;}
 
-//.delete-icon {background-image: url("../images/ic_delete_forever.png");background-repeat: no-repeat;background-size: 100% auto;cursor: pointer;display: inline-block;font-weight: normal;left: 5px;margin-left: 0;position: relative;top: 0;height:148px; width:auto;}
+//.delete-icon-orig {background-image: url("../images/delete-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor: pointer;display: inline-block;font-weight: normal;left: 5px;margin-left: 0;position: relative;top: 0;height:auto; width:24px; height:24px;}
 .delete-icon {cursor: pointer;display: inline-block;font-weight: normal;left: 5px;margin-left: 0;position: relative;top: 0;height:30px; width:auto;}
-
 .delete-icon:hover:after {background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;border-radius: 5px;color: #fff;content: attr(title);font-size: 11px;left: -34px;margin: 0 auto;padding: 5px 15px;position: absolute;right: auto;width: auto;z-index: 98;bottom: -moz-calc(100% + 2px);bottom: -webkit-calc(100% + 2px);bottom: -o-calc(100% + 2px);bottom:calc(100% + 2px);font-weight:normal;white-space: nowrap; text-align:center;}
-
 .delete-icon:hover:before {bottom: 8px;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(136, 183, 213, 0);border-top-color: rgba(0, 0, 0, 0.8);border-width: 10px;margin-left: -10px;font-weight:normal;}
+
+.delete-icon-small {cursor: pointer;display: inline-block;font-weight: normal;left: 5px;margin-left: 0;position: relative;top: -15px;height:30px; width:auto;}
+.delete-icon-small:hover:after {background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;border-radius: 5px;color: #fff;content: attr(title);font-size: 11px;left: -34px;margin: 0 auto;padding: 5px 15px;position: absolute;right: auto;width: auto;z-index: 98;bottom: -moz-calc(100% + 12px);bottom: -webkit-calc(100% + 12px);bottom: -o-calc(100% + 12px);bottom:calc(100% + 12px);font-weight:normal;white-space: nowrap; text-align:center;}
+.delete-icon-small:hover:before {bottom: 8px;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;top: -10px;pointer-events: none;border-color: rgba(136, 183, 213, 0);border-top-color: rgba(0, 0, 0, 0.8);border-width: 10px;margin-left: -10px;font-weight:normal;}
 
 .download-icon {background-image: url("../images/download-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor: pointer;display: inline-block;font-weight: normal;height: 20px;left: 5px;margin-left: 0;position: relative;top: 0;width: 20px;}
 
