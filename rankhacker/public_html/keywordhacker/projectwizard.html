@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- =========================
+              BASIC PAGE INFORMATION
+        ============================== -->
+    <title>RankHacker - The intelligent content strategy platform!</title>
+    <meta name="description" content="Intelligently generate an actionable content strategy complete with publication calendar to beat your competition.">
+    <meta name="keywords" content="content strategy, content roadmap, content calendar">
+    <meta name="author" content="fairmarketing.com">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
+
+    <!-- =========================
+             FONTS
+        ============================== -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- =========================
+             STYLESHEETS
+        ============================== -->   
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">-->
+    <link href="css/materialize.min-120816.css" rel="stylesheet" id="theme-change">
+    <link href="css/custom-style.css?v=40" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css" rel="stylesheet" type="text/css">
+    <link href="css/spinner.css?v=40" rel="stylesheet" id="theme-change">
+    <link href="css/shimmer.css?v=40" rel="stylesheet" id="theme-change">
+
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+    
+    <!--1520 files-->
+    <script src="js/1520.js?v=40"></script>
+    <link href="css/1520.css?v=40" rel="stylesheet" id="theme-change">
+    <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.csv.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/readmore.js"></script>
+
+    <link href="css/media-queries.css" rel="stylesheet" type="text/css">
+    
+    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="css_storefront/bootstrap.min.css" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=40" rel="stylesheet" id="theme-change-storefront">
+    
+</head>
+
+<body id="body" class="page-loading home noisy" onload="prepareWizard();">
+
+<!-- =========================
+     MAIN MENU
+============================== -->
+
+
+
+<div id="rank-header-outer">
+    <nav id="mainmenu" class="navbar navbar-fixed-top main-menu" role="navigation">
+    <!-- LOGO CONTAINER -->
+        <div class="container">
+        <div class="logo-cont logo-outer pull-left">
+            <!--<a class="navbar-brand site-logo" data-text="RANKHACKER" href="#header" onclick="gotoKHDashboard();">
+                <img src="images/logo-main.png" alt="site-logo" style="cursor:pointer;"> 
+            </a>-->
+            <a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <img src="images_storefront/beta-testing-stamp.png" alt="site-logo"></a>
+            <a class="dashboard-status">
+                <img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon">
+            <span class="module-icon-label">Keyword Hacker</span>
+            </a>
+            
+        </div>
+        <div class="logo-cont logo-outer-2 pull-right nudge-left">
+            <div class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Account <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+            
+        
+        </div>
+    </nav>
+</div>
+
+
+<!-- =========================
+     HEADER
+============================== -->
+<section id="header" class="blurable">
+    <div id="report-bg" class="piece "></div>
+    <div class="overlay interface-outer">
+      <div class="container">
+        <div class="projects">
+            <div class="row row-v-spacing"></div>
+            <div id="dashboard-header" class="block-css">
+                        <div class="head-info-box">
+                            <!--<h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>-->
+                            <h2 class="page-info" id="welcome-message"></h2>
+                </div>
+                <div class="col-lg-12 padding-box">
+                    <div class="col-lg-6 view-option-outer pull-left">
+                        <ul>
+                            <li class="black_eagle-rh"></li>
+                            <li id="breadcrumbs-li"><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">Project Wizard</a></li>
+                            <!--li class="active"><a href="#">Project View </a> </li>
+                            <li><a href="#"> Research View</a> </li-->
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 rh-actions-menu pull-right">
+                        <ul>
+                            <!--<li><a href="" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Download selected projects" data-original-title="" title="">Download</a></li>
+                            <li>
+                                <button id="create-new-project" class="btn btn-orange btn-round" onclick="gotoCreateProject();"><i class="fa fa-plus"></i><span>Create New</span></button>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div id="shadow"></div>
+            </div>
+            </div>
+            <div class="row row-v-spacing"></div>
+            <div class="new-project-details-outer">
+                <section class="project-welcome-section">
+                    <div class="wrapper">
+                        <h4><span class="close-btn-red" onclick="closeWizard();" title="Close">X</span></h4>
+                        <br><br>
+                        <h4>HACK THE KEYWORD NETWORTH™ OF PHRASES THAT MEET OR EXCEED YOUR SEARCH VOLUME GOALS</h4>
+                        <h2 id="header-text">[   Enter New Mission Details  ]</h2>
+                    </div>
+                </section>
+
+                <section class="project-keyword-section" id="keyword-section">
+                    <div class="wrapper">
+                        <div class="project-pay-content">
+                            <!--<a href="#" class="import-keywords pull-right">-or- IMPORT KEYWORDS</a>-->
+                            <span class="orange-btn-small btn fileinput-button pull-right">
+                                <span>-or- IMPORT KEYWORDS</span>
+                                <!-- The file input field used as target for the file upload widget -->
+                                <!--<input id="fileupload" type="file" name="files[]">-->
+                                <input type="file" name="File Upload" id="fileupload" accept=".csv" />
+                            </span>
+                            
+                            <label class="pull-left">The keyword phrases I want to hack are:</label>
+                            
+                            <input type="hidden" id="keyword-count" value="0"/>
+                            <input class="keyword-phease-input" id="new-keyword" type="text" placeholder="ENTER KEYWORD PHRASE" onkeypress="return addKeyword(event);" onblur="return forceSubmit(event);"/>
+                            <span class="keyword-phease-note">Hit ENTER after each comma-delimited list of phrases to add them to the project.</span>
+
+                            <ul class="added-keyword-list" id="ctc">
+                                
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <div class="required-feilds"> REQUIRED </div>
+                </section>
+
+                <section class="project-websiteurl-section">
+                    <div class="wrapper">
+                        <div class="websiteurl-input" id="project-url-html">
+                            <input placeholder="ENTER YOUR URL" required="" type="url" id="project-url">
+                            <label> <i class="globe-icon globe-blue"><span class="name-tag-g">My</span></i> </label>
+                        </div>
+                        <div class="section-bottom-part">is
+                            <select class="type-of-site" id='e-commerce-selection' onchange="refreshIndustries();" style="width:175px;"><option value='0'>a non-ecommerce</option><option value='1'>an e-commerce</option></select>
+                             and targets the
+                            <select class="type-of-site" id='industry-selection' style="width:325px;"><option value='0'>Select...</option></select>
+                        </div>
+                        <div class="section-bottom-part">
+                             industry.</div>
+                    </div>
+                    <div class="required-feilds"> REQUIRED </div>
+                </section>
+
+                <section class="monetary-pay-section">
+                    <div class="wrapper">
+                        <div class="project-pay-content">
+                            <label>The monetary value of one paying customer is <span id="currency-code-1">$</span></label>
+                            <input type="text" class="project-details-input" id="ex8SliderVal">
+                        </div>
+                    </div>
+                    <div class="required-feilds"> REQUIRED </div>
+                </section>
+
+                <section class="business-location-section">
+                    <div class="wrapper">
+
+                        <div class="project-pay-content">
+                            <span id="scrollable-dropdown-menu" style="float:left;display:inline-block;"><label>My business is located in</label><input type="text" class="typeahead business-location-input project-details-input" style="float:left;width:450px;" id="project-location" placeholder="Enter location"></span>
+                            
+                            <!--<input type="text" class="business-location-input project-details-input">-->
+                        </div>
+                        <div class="section-bottom-part">
+                            <span class="mixed-use-paragraph">and I’d like to rank
+                            <select class="type-of-site" id="local-national"><option value="local">in my city</option><!--<option value="regional">in my metro area</option>--><option value="national">in my country</option></select>
+                             on 
+                            </span>
+                            
+                            
+                            <span class="col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                <ul>
+                                    <li style="padding:0;margin-top:-2px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                        <h2 style="float:left;margin:0 0 0 0;">
+                                            <input type="checkbox" class="filled-in rh-checkbox" id="use-google" value="1" checked="checked" onclick="checkRequiredEngine('google','bing');">
+                                            <label for="use-google" style="color:#5a5a5a;font-size:18px;padding-left:27px;margin-bottom:15px;">Google</label>
+                                        </h2>
+                                    </li>
+                                </ul>
+                                </span>
+                            <span class="mixed-use-paragraph text-left">
+                                <ul>
+                                    <li style="padding:0;margin-top:-3px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                        <h2 style="float:left;margin:0 0 0 0;">
+                                            <label style="font-size:18px;color:#1b75bb;">and</label>
+                                        </h2>
+                                    </li>
+                                </ul>
+                            </span>
+                            <span class="col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                <ul>
+                                    <li style="padding:0;margin-top:-2px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                        <h2 style="float:left;margin:0 0 0 3px;">
+                                            <input type="checkbox" class="filled-in rh-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
+                                            <label for="use-bing" style="color:#5a5a5a;font-size:18px;padding-left:27px;margin-bottom:15px;">Bing+Yahoo</label>
+                                        </h2>
+                                    </li>
+                                </ul>
+                            </span>
+                            <!--<span class="checkbox-outer"><input type="checkbox" name="Google" value="Google">Google,</span> <span class="checkbox-outer"><input type="checkbox" name="Yahoo_Bing" value="Yahoo_Bing">Yahoo + Bing </span>-->
+                        </div>
+
+                    </div>
+                    <div class="required-feilds"> REQUIRED </div>
+                </section>
+
+                <section class="hack-section text-center">
+                    <input type="hidden" id="toggle-position" value="0"/>
+                    <div class="hack-left-option" id="actual-networth-button"> <a onclick="selectActualNetworth(event);" style="border:4px solid #fff;padding:10px;">HACK ACTUAL NETWORTH</a></div>
+                    
+                    <div class="hack-button" id="hack-toggle-button" style="width:122px;height:38px;background-image:url('images_storefront/switch-btn.png');">
+                        <span style="cursor:pointer;position:relative;top:0;left:0;width:41px;height:38px;float:left;;z-index:999;" onclick="selectActualNetworth(event);"></span>
+                        <!--<span style="position:relative;top:0;left:41;width:40px;height:38px;float:left;;z-index:999;" onclick="wizardToggle(event);"></span>-->
+                        <span style="cursor:pointer;position:relative;top:0;left:81;width:41px;height:38px;float:right;;z-index:999;" onclick="selectEstimatedNetworth(event);"></span>
+                    </div>
+
+                    <div class="hack-right-option" id="estimated-networth-button"><a onclick="selectEstimatedNetworth(event);" style="border:4px solid #fff;padding:10px;">HACK ESTIMATED NETWORTH </a></div>
+                </section>
+                
+                <section class="hack-actual-networth-options" id="hack-estimated-form" style="display:none;">
+                    <div class="wrapper">
+                        <span id="submit-button-block-1"><a class="calculate-networth-btn" onclick="createKeywordHackerProject(event,'1');">CALCULATE ESTIMATED NETWORTH</a></span>
+                     </div>
+                </section>
+                
+                <section class="hack-actual-networth-options" id="hack-actual-form" style="display:none;">
+                    <div class="wrapper">
+                        <ul>
+                        <li>About <input type="text" id="ex6SliderVal" class="project-details-input"> visitors land on my website each month.</li>
+                        <li>Of those,<input type="text" id="ex7SliderVal" class="project-details-input">  convert to actual paying customers.</li>
+                        <li>It costs me <span id="currency-code-2">$</span><input type="text" id="ex9SliderVal" class="project-details-input"> to produce one piece of marketing content.</li>
+                        </ul>
+                        <span id="submit-button-block-2"><a class="calculate-networth-btn" onclick="createKeywordHackerProject(event,'2');">CALCULATE ACTUAL NETWORTH</a></span>
+                     </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+    
+<!-- Alert modal -->
+<div id="dimmer" class="dimmer"></div>
+
+<div id="alert-window" class="alert-window">
+    <div class="row">
+        <div class="col-lg-12 text-center" id="alert-msg-body">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a class="alert-close-btn" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+        </div>
+    </div>
+</div>
+    
+</section>
+
+
+<!-- =========================
+     FOOTER
+============================== -->
+		  <!-- Footer start here -->
+          <footer id="main-footer">
+		   <div class="container">
+		    
+		  		<!--footer center socail icon section start here-->
+            <div class="footer-socail-icon">
+					<ul class="text-center">
+					<li> <a href="https://www.facebook.com/rankhacker/?fref=ts" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+					<li> <a href="https://twitter.com/rank_hacker?lang=en" target="_blank"> <i class="fa fa-twitter"></i> </a></li>
+					</ul>
+             </div>
+		<!--footer center socail icon section close here-->
+		
+		<div class="row">
+		 <!--Footer left section start here-->
+            <div class="footer-link col-sm-4">
+                  <ul class=""> 
+                <li> <a href="#">FAQs</a>
+                <!--<li> <a href="#">What is this?</a></li>-->
+                <li> <a href="#"> Check out our blog</a></li>
+              </ul>
+                </div>
+		<!--footer left section close here-->
+
+		<!--copyright section start here-->		
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
+			<!--copyright section close here-->
+		
+		<div class="account-section text-right col-sm-4">
+			<!--<a href="../login.html">Log In</a>-->
+		</div>
+		
+			
+          </div>
+            </div>
+      </footer>
+	  <!--Footer close here-->
+
+<!-- =========================
+     JS SCRIPTS
+============================== -->
+<!-- JQUERY -->
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/jquery.matchHeight-min.js"></script>
+<script src="js/bootstrap-slider.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/readmore.js"></script>
+
+<!-- TypeAhead js files -->
+<script type="text/javascript" src="js/georankerregions-data.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.matchheight').matchHeight();
+    });
+</script>
+<script>
+    
+    var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+$('#scrollable-dropdown-menu .typeahead').typeahead(null, {
+  name: 'countries',
+  limit: 20,
+  source: substringMatcher(regions)/*,
+  afterSelect: function(item){
+        console.log("got here");
+        var userLocale = $("#project-location").val();
+        var beginLoc = userLocale.indexOf("[");
+        var endLoc = userLocale.length - 1;
+        var country = userLocale.substring(beginLoc,endLoc);
+        console.log(country);
+  }*/
+});
+
+$('#scrollable-dropdown-menu .typeahead').on(
+    {
+        'typeahead:selected': function(e, datum) {
+            var beginLoc = datum.indexOf("[")+1;
+            var endLoc = datum.length - 1;
+            var country = datum.substring(beginLoc,endLoc);
+            var countryLoc = countries.indexOf(country);
+            var currencyCode = currencies[countryLoc];
+            $("#currency-code-1").html(currencyCode);
+            $("#currency-code-2").html(currencyCode);
+        },
+        'typeahead:autocompleted': function(e, datum) {
+            var beginLoc = datum.indexOf("[")+1;
+            var endLoc = datum.length - 1;
+            var country = datum.substring(beginLoc,endLoc);
+            var countryLoc = countries.indexOf(country);
+            var currencyCode = currencies[countryLoc];
+            $("#currency-code-1").html(currencyCode);
+            $("#currency-code-2").html(currencyCode);
+        }
+}); 
+    
+    
+    jQuery(document).ready(function () {
+        
+        $('[data-toggle="tooltip"]').tooltip();
+        refreshIndustries();
+
+        // The event listener for the file upload
+        document.getElementById('fileupload').addEventListener('change', upload, false);
+
+        
+        // ADD Comma after three numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+        }
+
+    });
+</script>
+
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+
+</body>
+</html>
