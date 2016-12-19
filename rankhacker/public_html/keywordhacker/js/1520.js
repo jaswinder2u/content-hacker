@@ -4611,7 +4611,7 @@ function prepareWizard()
         $("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"keywordhacker.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
         $("#header-text").html("[   Update Mission Details  ]")
         $("#keyword-section").hide();
-        $("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed; however, you can click here to start a new mission.\" id=\"project-url\" onclick=\"gotoCreateProject('0');\"></a>, and");
+        $("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed.\" id=\"project-url\"></a>, and");
         
         //Get the project summary info and set the values
         $.ajax({url: restURL, data: {'command':'getProjectSetupData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
@@ -4780,7 +4780,7 @@ function prepareWizard()
                         //$("#header-text").html("[   Update Project Details  ]")
                         //$("#keyword-section").hide();
                         //$("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed; however, you can click here to start a new mission.\" id=\"project-url\" onclick=\"gotoCreateProject('0');\">"+projectURL+"</a>, and");
-                        $("#scrollable-dropdown-menu").html("<label style=\"margin-top:0;\">My business is located in</label><span style=\"margin-top:20px;padding-top:20px;\"><a style=\"font-size:18px;font-weight:700;font-family: \"Montserrat\";\" data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission location cannot be changed; however, you can click here to start a new mission.\" id=\"project-location\" onclick=\"gotoCreateProject('0');\">"+geoLocation+"</a></span>");
+                        $("#scrollable-dropdown-menu").html("<label style=\"margin-top:0;\">My business is located in</label><span style=\"margin-top:20px;padding-top:20px;\"><a style=\"font-size:18px;font-weight:700;font-family: \"Montserrat\";\" data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission location cannot be changed.\" id=\"project-location\">"+geoLocation+"</a></span>");
                         $("body").tooltip({ selector: '[data-toggle=tooltip]' });
                     }
                 }
