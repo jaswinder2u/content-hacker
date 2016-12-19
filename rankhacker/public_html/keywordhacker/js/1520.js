@@ -2454,11 +2454,10 @@ function displayProjectInfo(field)
     }
     $("#suggestedKeywordsList").html(suggestedKeywordsHTML);
     
-    $("#keyword-phraser-collapse"+firstCounter).addClass("in");
-    $("#keyword-phraser-heading"+firstID).find(".keyword-row-arrow").attr("src","images/keyword_row_arrow_yellow.png");
-    $("#kw-panel-div"+firstID).addClass("active");
-    
-    $("#caret-"+firstID).removeClass("fa-caret-right").addClass("fa-caret-down");
+    //$("#keyword-phraser-collapse"+firstCounter).addClass("in");
+    //$("#keyword-phraser-heading"+firstID).find(".keyword-row-arrow").attr("src","images/keyword_row_arrow_yellow.png");
+    //$("#kw-panel-div"+firstID).addClass("active");
+    //$("#caret-"+firstID).removeClass("fa-caret-right").addClass("fa-caret-down");
     
     document.getElementById('loading_spinner').style.display = "none";
     document.getElementById('loading_spinner_message').style.display = "none";
