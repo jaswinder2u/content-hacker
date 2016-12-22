@@ -4594,6 +4594,7 @@ function selectEstimatedNetworth(e)
 function prepareWizard()
 {
     var projectID = getURLParameter("pid");
+        var projectIDValue = parseInt(projectID);
     var username = getCookie("username");
     var userFullName = getCookie("userFullName");
     var userLastName = userFullName.substring(userFullName.indexOf(" ")+1,userFullName.length);
@@ -4611,7 +4612,10 @@ function prepareWizard()
         $("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"keywordhacker.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
         $("#header-text").html("[   Update Mission Details  ]")
         $("#keyword-section").hide();
-        $("#metro-option").remove();
+        if(projectIDValue < 260)
+        {
+            $("#metro-option").remove();
+        }
         $("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed.\" id=\"project-url\"></a>, and");
         
         //Get the project summary info and set the values
