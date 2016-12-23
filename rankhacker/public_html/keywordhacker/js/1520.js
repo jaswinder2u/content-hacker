@@ -4621,7 +4621,7 @@ function prepareWizard()
         //Get the project summary info and set the values
         $.ajax({url: restURL, data: {'command':'getProjectSetupData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
-
+console.log(returnData);
                 if(info.status == "success")
                 {
                     var projectInfo = info.projectSummary;
@@ -4731,13 +4731,13 @@ function prepareWizard()
                         {
                             $('#local-national option')[0].selected = true;
                         }
-                        /*else if(useRegional == 1)
+                        else if(useRegional == 1)
                         {
                             $('#local-national option')[1].selected = true;
-                        }*/
+                        }
                         else
                         {
-                           $('#local-national option')[1].selected = true;
+                           $('#local-national option')[2].selected = true;
                         }
 
                         /*$('#ex6SliderVal').val(numberWithCommas(monthlyVisitors));
