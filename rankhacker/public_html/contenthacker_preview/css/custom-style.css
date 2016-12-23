@@ -226,6 +226,11 @@ width: calc(100% - 340px);}
 .logo img {margin: 4px 0;max-height: 55px;}
 
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
+.blueprint-thumbnail{
+	max-height: 770px;
+	max-width: 300px;
+}
+
 
 }
 
@@ -261,6 +266,11 @@ width: calc(100% - 270px);}
 .footer-link ul li, #main-footer {font-size: 12px;}
 
 .mission-blueprint-popup .carousel-control {height: 35px;margin-top: -18px;width: 20px;}
+.blueprint-thumbnail{
+	max-height: 370px;
+	max-width: 400px;
+}
+
 
 }
 
@@ -288,6 +298,13 @@ width: calc(100% - 270px);}
 .mission-blueprint-popup .modal-header h4 {font-size: 18px;}
 
 .mission-blueprint-popup .modal-header {margin-bottom: 10px;}
+
+.blueprint-thumbnail{
+	max-height: 370px;
+	max-width: 400px;
+	
+}
+
 
 }
 
@@ -324,6 +341,10 @@ width: calc(100%);}
 .popup-dts {font-size: 12px;}
 
 .mission-blueprint-popup button.close {font-size: 30px;}
+.blueprint-thumbnail{
+	max-height: 470px;
+	max-width: 600px;
+}
 
 }
 
@@ -334,5 +355,9 @@ width: calc(100%);}
 .initiate-btn {font-size: 14px;padding: 6px 12px;}
 
 .content-hacker-logo img {max-width: 150px;}
+.blueprint-thumbnail{
+	max-height: 270px;
+	max-width: 370px;
+}
 
 }
