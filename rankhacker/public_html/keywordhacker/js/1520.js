@@ -362,9 +362,9 @@ function createKeywordHackerProject(e,id)
 
                     if(info.status == "success")
                     {
-                        window.location = "dashboard.html";
-                        //var projectID = info.message;
-                        //window.location = "keywordhacker.html?pid="+projectID;
+                        //window.location = "dashboard.html";
+                        var projectID = info.message;
+                        window.location = "keywordhacker.html?pid="+projectID;
                     }
                     else
                     {
