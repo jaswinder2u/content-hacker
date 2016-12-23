@@ -227,8 +227,8 @@ width: calc(100% - 340px);}
 
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
 .blueprint-thumbnail{
-	max-height: 570px;
-	max-width: 700px;
+	max-height: 770px;
+	max-width: 300px;
 }
 
 
