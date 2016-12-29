@@ -420,10 +420,10 @@ function loadProjectDashboard(flip)
                     
                     var userFullName = info.userFullName;
                     var userLastName = userFullName.substring(userFullName.indexOf(" ")+1,userFullName.length);
-                    if(userLastName == '')
+                    /*if(userLastName == '')
                     {
                         userLastName = "Anderson";
-                    }
+                    }*/
                     
                     //Set the welcome message
                     $('#dashboard-user-full-name').html("welcome <strong>AGENT "+userLastName.toUpperCase()+"</strong> <strong>[</strong> manage your missions below <strong>]</strong>");
@@ -4484,10 +4484,10 @@ function getUserInfo()
                     var firstName = userInfo.firstName;
                     var lastName = userInfo.lastName;
                     var username = userInfo.username;
-                    if(lastName == '')
+                    /*if(lastName == '')
                     {
                         lastName = "Anderson";
-                    }
+                    }*/
                     
                     $("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> update your contact information below <strong>]</strong>");
                     $("#first_name").val(firstName);
@@ -6619,10 +6619,10 @@ function prepareCart()
                     var firstName = userInfo.firstName;
                     var lastName = userInfo.lastName;
                     var username = userInfo.username;
-                    if(lastName == '')
+                    /*if(lastName == '')
                     {
                         lastName = "Anderson";
-                    }
+                    }*/
                     
                     $("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
                     $("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:window.location='keywordhacker.html?pid="+projectID+"';\">BACK TO THE MISSION</a>");
