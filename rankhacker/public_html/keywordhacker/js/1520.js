@@ -1979,7 +1979,7 @@ function displayProjectInfo(field)
         //Add the header info for the accordian HTML
         accordianHTML += "<div id=\"kw-panel-div"+keywordID+"\" class=\"panel panel-default keyword-phraser-row\" "+hideCSS+">\n"+
                             "<ul role=\"tab\" id=\"keyword-phraser-heading"+keywordID+"\""+rowBGText+">\n"+
-                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:15%;font-size:28px;\" "+topHackExpand+">\n"+
+                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;padding-top:5px;font-size:28px;\" "+topHackExpand+">\n"+
                                     "<i id=\"caret-"+keywordID+"\" class=\"fa fa-caret-right\"></i>\n"+
                                 "</li>\n"+
                                 "<li class=\"keyword-phraser-tittle width-30\" "+topHackExpand+">\n"+
@@ -2024,7 +2024,7 @@ function displayProjectInfo(field)
                                     "</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"content-blueprint-info width-1\">\n"+
-                                    "<h2 style=\"text-align:center;padding-left:5px;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
+                                    "<h2 style=\"text-align:center;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
                                 "</li>\n"+
                             "</ul>\n"+
                             "<div id=\"keyword-phraser-collapse"+i+"\" class=\"panel-collapse collapse \" role=\"tabpanel\" aria-labelledby=\"keyword-phraser-heading"+i+"\">\n"+
@@ -5123,7 +5123,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
         //Add the header info for the accordian HTML
         accordianHTML += "<div id=\"kw-panel-div"+keywordID+"\" class=\"panel panel-default keyword-phraser-row\" "+hideCSS+">\n"+
                             "<ul role=\"tab\" id=\"keyword-phraser-heading"+keywordID+"\""+rowBGText+">\n"+
-                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:15%;font-size:28px;\" "+topHackExpand+">\n"+
+                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;padding-top:5px;font-size:28px;\" "+topHackExpand+">\n"+
                                     "<i id=\"caret-"+keywordID+"\" class=\"fa fa-caret-right\"></i>\n"+
                                 "</li>\n"+
                                 "<li class=\"keyword-phraser-tittle width-30\" "+topHackExpand+">\n"+
@@ -5168,7 +5168,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
                                     "</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"content-blueprint-info width-1\">\n"+
-                                    "<h2 style=\"text-align:center;padding-left:5px;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
+                                    "<h2 style=\"text-align:center;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
                                 "</li>\n"+
                             "</ul>\n"+
                             "<div id=\"keyword-phraser-collapse"+keywordCounter+"\" class=\"panel-collapse collapse \" role=\"tabpanel\" aria-labelledby=\"keyword-phraser-heading"+i+"\">\n"+
@@ -6137,7 +6137,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
                                     "</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"content-blueprint-info width-1\">\n"+
-                                    "<h2 style=\"text-align:center;padding-left:5px;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
+                                    "<h2 style=\"text-align:center;\"><span class=\"delete-icon\" style=\"float:right;text-align:right;\" title=\"Delete Keyword\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon\"></span></h2>\n"+
                                 "</li>\n"+
                             "</ul>\n"+
                             "<div id=\"keyword-phraser-collapse"+keywordCounter+"\" class=\"panel-collapse collapse in\" role=\"tabpanel\" aria-labelledby=\"keyword-phraser-heading"+keywordCounter+"\">\n"+
