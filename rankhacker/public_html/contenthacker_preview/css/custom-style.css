@@ -221,14 +221,25 @@ width: calc(100% - 340px);}
 /*media quries css */
 
 
+
+@media (max-width: 2900px) {
+
+.logo img {margin: 4px 0;max-height: 55px;}
+
+#site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
+.blueprint-thumbnail{
+	max-height: 370px;
+	max-width: 400px;
+}
+
 @media (max-width: 1600px) {
 
 .logo img {margin: 4px 0;max-height: 55px;}
 
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
 .blueprint-thumbnail{
-	max-height: 770px;
-	max-width: 300px;
+	max-height: 370px;
+	max-width: 400px;
 }
 
 
@@ -302,7 +313,7 @@ width: calc(100% - 270px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
-	
+
 }
 
 
