@@ -28,7 +28,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">-->
     <link href="css/materialize.min-120816.css" rel="stylesheet" id="theme-change">
-    <link href="css/custom-style.css?v=41" rel="stylesheet" id="theme-change">
+    <link href="css/custom-style.css?v=42" rel="stylesheet" id="theme-change">
     <link href="css/rankhacker.css" rel="stylesheet" id="theme-change">
     <link href="css/bootstrap-slider.min.css" rel="stylesheet" id="theme-change">
     <link href="css/media-queries.css" rel="stylesheet" type="text/css">
@@ -38,18 +38,18 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
     
     <!--1520 files-->
-    <script src="js/1520.js?v=41"></script>
+    <script src="js/1520.js?v=42"></script>
     <script src="js/jquery.ui.widget.js"></script>
     <script src="js/jquery.csv.js"></script>
     <!--<script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>-->
-    <link href="css/1520.css?v=41" rel="stylesheet" id="theme-change">
-    <link href="css/spinner.css?v=41" rel="stylesheet" id="theme-change">
+    <link href="css/1520.css?v=42" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=42" rel="stylesheet" id="theme-change">
     
     <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
     <link href="css_storefront/bootstrap.min.css" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=41" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_storefront/custom-style.css?v=42" rel="stylesheet" id="theme-change-storefront">
     
 </head>
 
@@ -85,15 +85,11 @@
     <!-- LOGO CONTAINER -->
         <div class="container">
         <div class="logo-cont logo-outer pull-left">
-            <a class="dashboard-status" onclick="gotoKHDashboard('');">
-                <img src="images/white-eagle-icon.png" style="opacity:0.6;cursor:pointer;" id="missionsLinkLogo" onclick="gotoKHDashboard('');" alt="kwhacker" class="module-icon">
-                <span class="module-icon-label" id="missionsLinkText" style="opacity:0.6;cursor:pointer;">Missions</span>
-            </a>
-
-            <a class="dashboard-status">
-                <img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon">
-                <span class="module-icon-label">Keyword Hacker</span>
-            </a>
+            <div class="dashboard-header-span"><a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp"> </a></div>
+            <div class="dashboard-status-span">
+                <a class="dashboard-status"><img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon"><span class="module-icon-label">Keyword Hacker</span></a>
+                <a class="dashboard-status" href = "../contenthacker_preview/contenthacker.html"><img src="images/content-hacker-icon-white.png" alt="chacker" class="module-icon"><span class="module-icon-label">Content Hacker</span></a>                
+            </div>
 
             <!--<span style="float:left;"><img src="images/icon-keyword_hacker_small.png" alt="kwhacker" class="module-icon" onclick="gotoKHDashboard();"></span><span class="module-icon-label" onclick="gotoKHDashboard();"><strong>KEYWORD</strong> HACKER</span>
             <span style="float:left;"><img src="images/icon-content_hacker_small.png" alt="contenthacker" class="module-icon"></span><span class="module-icon-label"><strong>CONTENT</strong> HACKER</span>-->

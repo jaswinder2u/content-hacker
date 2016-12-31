@@ -526,7 +526,7 @@ padding: 0 0 0 50px;}
 margin-right: 10px;
 }
 
-.dashboard-status .module-icon-label {display: none;font-size: 12px;}
+.dashboard-status .module-icon-label {font-size: 12px;}
 
 .logout-link {margin: 15px 0 0;background: rgba(0, 0, 0, 0) none repeat scroll 0 0;border: 1px solid #999999;border-radius: 6px;color: #dedede;font-size: 14px;padding: 4px 8px;}
 

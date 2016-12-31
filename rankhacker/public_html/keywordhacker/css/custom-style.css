@@ -1892,3 +1892,12 @@ width: 100%;}
     top: 15%;
     left: 12%;
 }
+
+.dashboard-status-span {display:inline-block;}
+.dashboard-header-span {display:inline-block;}
+
+@media (max-width:930px) {
+    .dashboard-status-span {width:100%;text-align:center;}
+    .dashboard-header-span {width:100%;text-align:center;}
+    .dashboard-status:first-child {margin-left: 0;}
+}

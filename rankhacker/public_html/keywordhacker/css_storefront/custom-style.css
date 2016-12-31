@@ -39,7 +39,7 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 #rank-header-outer .container{padding-top:10px;padding-bottom:  10px;}
 
-#rank-header-outer .container .logo{text-align:left;}
+#rank-header-outer .container .logo{text-align:left;height:auto;}
 
 .networth-email-input {border: 1px solid #000;border-radius: 8px;clear: both;display: inline-block;height: 65px;margin: 46px auto 0;max-width: 1000px;position: relative;width: 100%;}
 
@@ -424,7 +424,7 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .logo {float: left;margin: 0;padding: 0;text-align: center;width: 100%;}
 
-.logo img {max-width: 100%;width: 230px;}
+//.logo img {max-width: 115px; width: 115px; height:auto;}
 
 #rank-header-outer {height: 80px;}
 
@@ -470,8 +470,15 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 body {min-width: 320px;overflow: scroll;}
 
+.logo img {max-height: 44px;height: 44px;width:auto;padding-left:15px;}
+
 }
 
+@media (max-width:385px) {
+
+//.logo img {max-height: 48px;height: 48px;width:auto;}
+
+}
 
 @media (max-height: 400px) {
 
@@ -484,4 +491,10 @@ body {min-width: 320px;overflow: scroll;}
 .apple-spinner-small {
     width: 45px;
     height: auto;
+}
+
+.header-stamp {
+    display: inline-block;
+    //float:right;
+    //position: static;
 }
