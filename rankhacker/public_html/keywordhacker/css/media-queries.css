@@ -32,11 +32,11 @@
 
 @media (max-width:1200px) {
 
-.project-icon {margin: 0 0 25px;text-align: center;width: 100%;}
+//.project-icon {margin: 0 0 25px;text-align: center;width: 100%;}
 
 .module-details-outer {width: -moz-calc(100%);width: -webkit-calc(100%);width: -o-calc(100%);width: calc(100%);}
 
-.project-cards-outer ul li {padding: 0 8px;}
+.project-cards-outer ul li {padding: 0 8px;width:50%}
 
 .project-cards-outer .row.grid {margin-left: -8px;margin-right: -8px;}
 
@@ -44,7 +44,7 @@
 
 .card-header-mission-text {font-size: 14px;}
 
-#header .project-cards-outer .card-header h1 {font-size: 18px !important;margin-top: 5px;}
+#header .project-cards-outer .card-header h1 {font-size: 16px !important;margin-top: 5px;}
 
 .footer-link {width: -moz-calc(60% - 45px);width: -webkit-calc(60% - 45px);width: -o-calc(60% - 45px);width: calc(60% - 45px);}
 
@@ -92,11 +92,18 @@
 
 }
 
+/*@media (max-width: 767px)
+{
+    .project-cards-outer ul li {width: 100%;}
+}*/
+
 @media  (max-width: 991px) {
 
 .page-info {font-size: 22px;}
 
-.project-cards-outer ul li {width: 50%;}
+.dashboard-icon {height:auto;width:auto;}
+
+.project-cards-outer ul li {width: 50%;height:625px;}
 
 .keyword-hacker-module , .content-hacker-module{padding: 20px 10px;}
 
@@ -279,7 +286,7 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
 
 .show-more-text {margin-bottom: 25px;}
 
-.card-box-bottom {padding: 15px;}
+.card-box-bottom {padding: 30px 25px;}
 
 .suggest-keywords-list {margin: 15px 0 0;}
 
@@ -293,12 +300,31 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
 
 }
 
+@media (max-width:655px) {
+    
+.module-heading {font-size:11px;}
+.module-heading span {font-size:13px;}
+.launch-icon {height:11px;width:auto;}
 
-@media (max-width:767px){
+}
+
+@media (max-width:1400px) {
+    
+.module-heading {font-size:13px;}
+.module-heading span {font-size:15px;}
+.launch-icon {height:13px;width:auto;}
+}
+
+@media (max-width:787px){
 
 .sort-navigation  {display: none;}
 
+.module-heading {font-size:11px;}
+.module-heading span {font-size:13px;}
+.launch-icon {height:11px;width:auto;}
+
 //#dashboard-header {margin-bottom: 20px;margin-top: 20px;padding-bottom: 0;}
+
 
 .padding-box {padding: 0;}
 
@@ -332,6 +358,8 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
 
 .keyword-phraser-row  li.power-summary-offsite-content h2 , .keyword-phraser-row  li.power-summary-ctr h2 
 , .keyword-phraser-row  li.power-summary-monthly-backlinks h2 {font-size: 12px !important;}
+
+.card-box-bottom {padding: 30px 25px;}
 
 }
 

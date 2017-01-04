@@ -684,8 +684,8 @@ function loadProjectDashboard(flip)
             rhHTML += "<img src=\"images/tabDivider.png\" id=\"RHdivider-"+projectID+"\" class=\"rh-folder-tab\">";
             rhHTML += "<h2 class=\"module-heading text-left\">Keyword Hacker Data</h2>";
             rhHTML += "<div class=\"module-detail-section\">";
-            rhHTML += "<div class=\"project-icon text-center \"><img src=\"images/icon-keyword_hacker.png\" alt=\"Keyword Hacker\" class=\"dashboard-icon\"></div>";
-            rhHTML += "<div class=\"module-details-outer\">";
+            rhHTML += "<div class=\"col-sm-2 project-icon text-center \"><img src=\"images/icon-keyword_hacker.png\" alt=\"Keyword Hacker\" class=\"dashboard-icon\"></div>";
+            rhHTML += "<div class=\"col-sm-10 module-details-outer\">";
 
             //rhHTML += "<div class=\"module-details-right\">";
             //rhHTML += "<h2 class=\"module-heading\">Active<br>keywords<span>"+numberOfKeywords+"</span></h2>";
@@ -708,20 +708,20 @@ function loadProjectDashboard(flip)
             rhHTML += "<h2 class=\"module-heading\"><span><img src=\"images/header_arrow.png\" class=\"dashboard-card-arrow-1\"></span></h2>";
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-left\">";
-            rhHTML += "<h2 class=\"module-heading \" style=\"font-size:14px;padding-bottom:5px;\">Keyword networth<span class=\"keyword_networth_count\"  style=\"text-align:left;\">"+keywordNetWorthString+"</span></h2>";
+            rhHTML += "<h2 class=\"module-heading \" style=\"font-size:14px;padding-bottom:5px;\">Keyword<br/>networth<span class=\"keyword_networth_count\"  style=\"text-align:left;\">"+keywordNetWorthString+"</span></h2>";
             rhHTML += "</div>";
             rhHTML += "</div>";
 
             rhHTML += "<div class=\"module-details-inner\">";
             rhHTML += "<div class=\"module-details-right\">";
-            rhHTML += "<h2 class=\"module-heading\">Content goal<span>"+plSum+"</span></h2>";
+            rhHTML += "<h2 class=\"module-heading\">Content<br/>goal<span>"+plSum+"</span></h2>";
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-center\">";
             rhHTML += "<h2 class=\"module-heading\"><span><img src=\"images/header_arrow.png\" class=\"dashboard-card-arrow-2\"></span></h2>";
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-left\">";
-            rhHTML += "<h2 class=\"module-heading\">Content costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"</span></h2>";
-            rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\">";
+            rhHTML += "<h2 class=\"module-heading\">Content<br/>costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"<img class=\"launch-icon\" src=\"images/launch-icon.png\"></span></h2>";
+            //rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\">";
             rhHTML += "</div>";
             rhHTML += "</div>";
 
