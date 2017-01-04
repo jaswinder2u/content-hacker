@@ -1900,4 +1900,9 @@ width: 100%;}
     .dashboard-status-span {width:100%;text-align:center;}
     .dashboard-header-span {width:100%;text-align:center;}
     .dashboard-status:first-child {margin-left: 0;}
+    #dashboard-header {float: left;margin-bottom: 25px;margin-top: 150px;padding-bottom: 0;position: relative;width: 100%;}
+}
+
+@media (max-width:1036px) {
+    #dashboard-header {float: left;margin-bottom: 25px;margin-top: 100px;padding-bottom: 0;position: relative;width: 100%;}
 }

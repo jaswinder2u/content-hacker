@@ -2751,7 +2751,7 @@ body.modal-open {
 /*     17.4. Breakpoint: 768px width and less     */
 @media all and (max-width: 768px) {
     .main-menu li {
-        background: #3d3d3d !important;
+        //background: #3d3d3d !important;
         font-size: 1.125em !important;
     }
 
