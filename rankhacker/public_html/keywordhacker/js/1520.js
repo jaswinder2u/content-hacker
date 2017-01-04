@@ -721,6 +721,7 @@ function loadProjectDashboard(flip)
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-left\">";
             rhHTML += "<h2 class=\"module-heading\">Content costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"</span></h2>";
+            rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\">";
             rhHTML += "</div>";
             rhHTML += "</div>";
 
