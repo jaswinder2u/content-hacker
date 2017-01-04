@@ -1338,7 +1338,7 @@ width: 100%;}
 //.keyword-hacker-module {border-bottom: 4px solid #eff1f0;float: left;margin: 0;min-height: 185px;padding: 20px 25px;width: 100%;}
 .keyword-hacker-module {border-bottom: 0px solid #eff1f0;float: left;margin: 0;min-height: 215px;padding: 20px 25px;width: 100%;}
 
-.content-hacker-module {border-bottom: 1px solid #eff1f0;float: left;margin: 0;min-height: 215px;max-height:215px;padding: 20px 25px;width: 100%; position: relative;}
+.content-hacker-module {border-bottom: 1px solid #eff1f0;float: left;margin: 0;min-height: 200px;max-height:200px;padding: 20px 25px;width: 100%; position: relative;}
 
 .module-heading {position:relative;color: #a6a8ab;float: left;font-size: 14px;font-weight: 300 ;margin: 0;padding: 0;line-height: normal;width: 100%;z-index:99;}
 
@@ -1913,8 +1913,11 @@ width: 100%;}
 }
 
 .launch-icon {
-    padding-left:8px;
+    position: absolute;
+    top:105%;
+    right:0;
     cursor:pointer;
-    height:13px;
+    height:24px;
     width:auto;
+    z-index: 999 !important;
 }

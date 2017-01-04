@@ -720,11 +720,9 @@ function loadProjectDashboard(flip)
             rhHTML += "<h2 class=\"module-heading\"><span><img src=\"images/header_arrow.png\" class=\"dashboard-card-arrow-2\"></span></h2>";
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-left\">";
-            rhHTML += "<h2 class=\"module-heading\">Content<br/>costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"<img class=\"launch-icon\" src=\"images/launch-icon.png\"></span></h2>";
-            //rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\">";
+            rhHTML += "<h2 class=\"module-heading\">Content<br/>costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"</span></h2>";
+            rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\"></div>";
             rhHTML += "</div>";
-            rhHTML += "</div>";
-
             rhHTML += "</div>";
             rhHTML += "</div>";
             rhHTML += "</a>";

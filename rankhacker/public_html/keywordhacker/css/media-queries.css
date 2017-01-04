@@ -304,7 +304,7 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
     
 .module-heading {font-size:11px;}
 .module-heading span {font-size:13px;}
-.launch-icon {height:11px;width:auto;}
+.launch-icon {height:17px;width:auto;}
 
 }
 
@@ -312,7 +312,7 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
     
 .module-heading {font-size:13px;}
 .module-heading span {font-size:15px;}
-.launch-icon {height:13px;width:auto;}
+.launch-icon {height:20px;width:auto;}
 }
 
 @media (max-width:787px){
@@ -321,7 +321,7 @@ float: left;width: auto;padding-right: 10px;font-size: 14px;}
 
 .module-heading {font-size:11px;}
 .module-heading span {font-size:13px;}
-.launch-icon {height:11px;width:auto;}
+.launch-icon {height:17px;width:auto;}
 
 //#dashboard-header {margin-bottom: 20px;margin-top: 20px;padding-bottom: 0;}
 
