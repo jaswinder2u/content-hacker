@@ -2587,7 +2587,7 @@ function toggleKeyword(keywordID,checked)
 
                 if(info.status == "success")
                 {
-                    refreshProjectData(-1);
+                    refreshProjectData(-1,keywordID);
                     $('body').removeClass('wait');
                 }
             }
@@ -2613,7 +2613,7 @@ function addKeywordToProject(keyword)
     }
 }
 
-function refreshProjectData(keywordCounter)
+function refreshProjectData(keywordCounter,keywordID)
 {
     var projectID = getURLParameter("pid");
     if(projectID != '')
@@ -2627,9 +2627,10 @@ function refreshProjectData(keywordCounter)
                     $('#json').val(returnData);
 
                     var field = $('#keyword-sort-method').val();
+
                     if(keywordCounter > -1)
                     {
-                        refreshKeywordInfo(field,keywordCounter);
+                        refreshKeywordInfo(returnData,field,keywordID);
                     }
                     else
                     {
@@ -4380,7 +4381,7 @@ function changeUserMonthlyContent(keywordID,keywordCounter)
 
                 if(info.status == "success")
                 {
-                    refreshProjectData(keywordCounter);
+                    refreshProjectData(keywordCounter,keywordID);
                     $("#kwid-"+keywordID+"-user-monthly-content-count").html(newValue);
                     $('body').removeClass('wait');
                 }
@@ -5587,6 +5588,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
 function refreshKeywordInfo(returnData,field,keywordID)
 {
     $('body').addClass('wait');
+
     var info = JSON.parse(returnData);
 
     //Fill in the project data here
@@ -5649,6 +5651,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
     //Find the data
     var keywordInfo = info.keywordData;
 
+    /*
     //Got the data, now let's sort it
     if(field == 'keyword')
     {
@@ -5773,7 +5776,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
     
     //Save the new sort method and reversed status
     $('#keyword-sort-method').val(field);
-    $('#keyword-sort-reversed').val(reversed);
+    $('#keyword-sort-reversed').val(reversed);*/
         
     //Iterate through the keywords to see if any are in "hacking" status; if so, show the warning message
     var currentlyHacking = false;
@@ -5887,10 +5890,11 @@ function refreshKeywordInfo(returnData,field,keywordID)
     //var keywordInfo = info.keywordData;
     //for(var i=0; i<keywordInfo.length; i++)
     //{
+
         var thisEntry = keywordInfo[keywordCounter];
         var thisCompetitorArray = thisEntry.competitorData;
 
-        var keywordID = thisEntry.keywordID;
+        //var keywordID = thisEntry.keywordID;
         var searchVolume = thisEntry.searchVolume;
         var clientRanking = thisEntry.clientRanking;
         var keywordActive = thisEntry.active;
@@ -6019,7 +6023,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+keywordCounter+"\" class=\"get-the-hack-button\" onclick=\"getKeywordCompetitorsAhrefs('"+keywordCounter+"');\">HACK CONTENT</span>";
             keywordTotalContentDiffHTML = "?";
         }
-       
+
         /*if(keywordStatus == "hacked" || keywordStatus == "initial_done")
         {
             topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span>";
