@@ -6696,3 +6696,42 @@ function refreshKeywordSuggestions()
         });
     }
 }
+
+function prepareCalculator()
+{
+    var username = getCookie("username");
+    //var projectID = getURLParameter("pid");
+    if(username != '')
+    {
+        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        {
+            $('#industry-link').remove();
+        }
+        
+        $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var users = info.users;
+                    var userInfo = users[0];
+
+                    var firstName = userInfo.firstName;
+                    var lastName = userInfo.lastName;
+                    var username = userInfo.username;
+                    /*if(lastName == '')
+                    {
+                        lastName = "Anderson";
+                    }*/
+                    
+                    $("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
+                    $("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
+                }
+            }
+        });
+    }
+    else
+    {
+        window.location = "../index.html";
+    }
+}

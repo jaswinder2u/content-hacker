@@ -49,7 +49,7 @@
     
 </head>
 
-<body id="body" class="page-loading home noisy" onload="getAllIndustries();">
+<body id="body" class="page-loading home noisy" onload="prepareCalculator();">
 
 <!-- =========================
      MAIN MENU
@@ -70,7 +70,6 @@
                 <a class="dashboard-status"><img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon"><span class="module-icon-label">Keyword Hacker</span></a>
                 <a class="dashboard-status" href = "../contenthacker_preview/contenthacker.html"><img src="images/content-hacker-icon-white.png" alt="chacker" class="module-icon"><span class="module-icon-label">Content Hacker</span></a>                
             </div>
-            
         </div>
         <div class="logo-cont logo-outer-2 pull-right nudge-left">
             <div class="dropdown">
@@ -101,28 +100,28 @@
         <div class="projects">
             <div class="row row-v-spacing"></div>
             <div id="dashboard-header" class="block-css">
-                        <div class="head-info-box background-gray">
+                        <div class="head-info-box">
                             <!--<h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>-->
-                            <h2 class="page-info">you're on the <strong>administration page</strong> <strong>[</strong> manage industry-level customer conversion rates <strong>]</strong></h2>
+                            <h2 class="page-info" id="welcome-message"></h2>
                 </div>
-                <div class="col-lg-12 padding-box" style="clear: both;">
-                        <div class="col-lg-6 view-option-outer">
-                            <ul>
-                                <li class="black_eagle-rh"></li>
-                                <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">Manage Industries</a></li>
-                                <!--li class="active"><a href="#">Project View </a> </li>
-                                <li><a href="#"> Research View</a> </li-->
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 rh-actions-menu pull-right">
-                            <ul>
-                                <!--<li><a href="" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Download selected projects" data-original-title="" title="">Download</a></li>
-                                <li>
-                                    <button id="create-new-project" class="btn btn-orange btn-round" onclick="gotoCreateProject();"><i class="fa fa-plus"></i><span>Create New</span></button>
-                                </li>-->
-                            </ul>
-                        </div>
+                <div class="col-lg-12 padding-box">
+                    <div class="col-lg-6 view-option-outer pull-left">
+                        <ul>
+                            <li class="black_eagle-rh"></li>
+                            <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">Add to Cart</a></li>
+                            <!--li class="active"><a href="#">Project View </a> </li>
+                            <li><a href="#"> Research View</a> </li-->
+                        </ul>
                     </div>
+                    <div class="col-lg-6 rh-actions-menu pull-right">
+                        <ul>
+                            <!--<li><a href="" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Download selected projects" data-original-title="" title="">Download</a></li>
+                            <li>
+                                <button id="create-new-project" class="btn btn-orange btn-round" onclick="gotoCreateProject();"><i class="fa fa-plus"></i><span>Create New</span></button>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
                 <div id="shadow"></div>
             </div>
                 <div class="padding-box clear-both">
@@ -140,43 +139,30 @@
 
                     <div class="block-css" id="setup-box-outer">
                         <form>
-                            <h4 class="setup-heading" style="color:#005cb9;">Add A New Industry</h4>
-                            <div class="project-setup-input add-new-indusrty">
-                                <div class="add-indusrty-name">
-                                       <label class="mixed-use-paragraph">Industry Name</label>
-                                     <input type="text" id="name_0" required placeholder="A new industry name">
+                            <h4 class="setup-heading" style="color:#005cb9;">Sales Goal Calculator</h4>
+                            
+                            <div class="row project-setup-input">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <label class="mixed-use-paragraph">
+                                        Coming Soon!
+                                    </label>
                                 </div>
-                                <div class="select-eCommerce">                                    
-                                   <label>e-Commerce</label>
-                                    <select id="ecommerce_0"><option value="no">No</option><option value="yes">Yes</option></select>
-                                </div>
-                                <div class="select-Customer-Conversion-Rate"> 
-                                    <label>Customer Conversion Rate</label>
-                                    <input type="text" id="conv-rate_0" required value="0.00">
-                                </div>
-                                <a class="orange-btn btn pull-right" onclick="updateIndustry('0');">ADD</a>
                             </div>
-                             
+                            
+                            <div class="row">&nbsp;</div>
+                            
                             <div class="project-setup-input block-css" style="border-bottom:2px solid #595959;margin:25px 0;"></div>
                             
-                            <h4 class="setup-heading" style="color:#595959;">Edit/Update an Existing Industry</h4>
+                            <div class="row project-setup-input text-center col-md-12" id="back-button">
+                                
+                            </div>
 
-                                <table class="table clear-both industry-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="industry_id">ID</th>
-                                            <th class="industry_name_input">Industry Name</th>
-                                            <th class="text-center industry_e-commerce_input">e-Commerce</th>
-                                            <th class="text-center conversion_rate_input">Customer Conversion Rate</th>
-                                            <th class="text-center action_btn">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="industry-table">
-                                         
-                                    </tbody> 
-                                </table>
-                            
                         </form>
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -309,5 +295,18 @@
 
     });
 </script>
+
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+
 </body>
 </html>
