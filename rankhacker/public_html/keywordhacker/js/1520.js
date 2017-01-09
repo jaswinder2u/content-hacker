@@ -12,10 +12,27 @@ var desc = false;
 
 var sort_by = function(field, reverse, primer){
    var key = function (x) {return primer ? primer(x[field]) : x[field]};
+   
+   return function (a,b) {
+	  var A = key(a), B = key(b);
+	  return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
+   }
+}
+
+var keywords_sort_by = function(field, reverse, primer){
+   var key = function (x) {return primer ? primer(x[field]) : x[field]};
+   //var key2 = function (x) {return primer ? primer(x["active"]) : x["active"]};
+   var key2 = function(x2) {return x2["active"];}
 
    return function (a,b) {
 	  var A = key(a), B = key(b);
-	  return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];                  
+          var A2 = key2(a), B2 = key2(b);
+	  //return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
+          if(A2 < B2) return -1 * [-1,1][+!!false];
+          if(A2 > B2) return 1 * [-1,1][+!!false];
+          if(A < B) return -1 * [-1,1][+!!reverse];
+          if(A > B) return 1 * [-1,1][+!!reverse];
+          return 0 * [-1,1][+!!reverse];
    }
 }
 
@@ -849,7 +866,7 @@ function loadProjectData()
                         {
                             //Save this to local storage so that it can be sent to the PDF printer service
                             $('#json').val(returnData);
-                            displayProjectInfo('keyword');
+                            displayProjectInfo('keyword',false);
                         }
                     }
                 }
@@ -1467,7 +1484,7 @@ function sortKeywordCompetitors(selectedKeywordID,field)
     $('body').removeClass('wait');
 }
 
-function displayProjectInfo(field)
+function displayProjectInfo(field,sort)
 {
     $('body').addClass('wait');
     var returnData = $('#json').val();
@@ -1636,131 +1653,134 @@ function displayProjectInfo(field)
     //Find the data
     var keywordInfo = info.keywordData;
 
-    //Got the data, now let's sort it
-    if(field == 'keyword')
+    //Got the data, now let's sort it (if sort=true)
+    if(sort)
     {
-        if(field == currSortMethod)
+        if(field == 'keyword')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('keyword', reversed, function(a){return a.toUpperCase()}));
         }
-        keywordInfo.sort(sort_by('keyword', reversed, function(a){return a.toUpperCase()}));
-    }
-    else if(field == 'powerLevelGoal')
-    {
-        if(field == currSortMethod)
+        else if(field == 'powerLevelGoal')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('powerLevelGoal', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('powerLevelGoal', reversed, parseInt));
-    }
-    else if(field == 'searchVolume')
-    {
-        if(field == currSortMethod)
+        else if(field == 'searchVolume')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('searchVolume', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('searchVolume', reversed, parseInt));
-    }
-    else if(field == 'monthlyVisitors')
-    {
-        if(field == currSortMethod)
+        else if(field == 'monthlyVisitors')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('monthlyVisitors', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('monthlyVisitors', reversed, parseInt));
-    }
-    else if(field == 'monthlyCustomers')
-    {
-        if(field == currSortMethod)
+        else if(field == 'monthlyCustomers')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('monthlyCustomers', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('monthlyCustomers', reversed, parseInt));
-    }
-    else if(field == 'monthlySales')
-    {
-        if(field == currSortMethod)
+        else if(field == 'monthlySales')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('monthlySales', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('monthlySales', reversed, parseInt));
-    }
-    else if(field == 'costPerMonth')
-    {
-        if(field == currSortMethod)
+        else if(field == 'costPerMonth')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('costPerMonth', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('costPerMonth', reversed, parseInt));
-    }
-    else if(field == 'keywordNetWorth')
-    {
-        if(field == currSortMethod)
+        else if(field == 'keywordNetWorth')
         {
-            if(sortMethod == "false")
+            if(field == currSortMethod)
             {
-                reversed = true;
+                if(sortMethod == "false")
+                {
+                    reversed = true;
+                }
+                else
+                {
+                    reversed = false;
+                }
             }
-            else
-            {
-                reversed = false;
-            }
+            keywordInfo.sort(keywords_sort_by('keywordNetWorth', reversed, parseInt));
         }
-        keywordInfo.sort(sort_by('keywordNetWorth', reversed, parseInt));
+
+        //Save the new sort method and reversed status
+        $('#keyword-sort-method').val(field);
+        $('#keyword-sort-reversed').val(reversed);
     }
-    
-    //Save the new sort method and reversed status
-    $('#keyword-sort-method').val(field);
-    $('#keyword-sort-reversed').val(reversed);
 
     //Fill in the keyword data here
     var accordianHTML = "";
@@ -2522,6 +2542,7 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
 
                         var field = $('#keyword-sort-method').val();
                         refreshKeywordInfo(returnData,field,keywordID);
+                        refreshKeywordSuggestions();
                         //refreshProjectData_old(keywordCounter);
                         //refreshProjectData(keywordCounter);
                         
@@ -2631,10 +2652,11 @@ function refreshProjectData(keywordCounter,keywordID)
                     if(keywordCounter > -1)
                     {
                         refreshKeywordInfo(returnData,field,keywordID);
+                        refreshKeywordSuggestions();
                     }
                     else
                     {
-                        displayProjectInfo(field);
+                        displayProjectInfo(field,false);
                     }
                 }
             }
@@ -5187,7 +5209,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
                                     "<h2>Projected Monthly Sales:</h2><span>"+currencyHexCode+numberWithCommas(monthlySales)+"</span>\n"+
                                 "</div>\n"+
                                 "<div class=\"phraser-table-block\" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
-                                    "<h2>Content Goal & Cost:</h2><span id=\"top-hack-content-"+i+"\">"+topHackContentHTML+"</span>\n"+
+                                    "<h2>Content Goal & Cost:</h2><span id=\"top-hack-content-"+keywordCounter+"\">"+topHackContentHTML+"</span>\n"+
                                 "</div>\n"+ 
                                 "<div class=\"phraser-table-block\" id=\"kwid-"+keywordID+"-kw-net-worth\">\n"+
                                     "<h2>Keyword Net-Worth:</h2><span class=\"\">"+topKWNetworth+"</span>\n"+
@@ -6642,4 +6664,35 @@ function prepareCart()
 function gotoCHPreview()
 {
     window.location = "../contenthacker_preview/contenthacker.html";
+}
+
+function refreshKeywordSuggestions()
+{
+    var username = getCookie("username");
+    var projectID = getURLParameter("pid");
+    if(username != '' && projectID != '')
+    {
+        $.ajax({url: restURL, data: {'command':'getProjectKeywordSuggestions','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var suggestedKeywordsHTML = "";
+                    var suggestedKeywords = info.suggestedKeywords;
+                    for(var i=0; i<suggestedKeywords.length; i++)
+                    {
+                        if(i<35)
+                        {
+                            suggestedKeywordsHTML += "<li>"+suggestedKeywords[i]+"</li>";
+                        }
+                        else
+                        {
+                            suggestedKeywordsHTML += "<li class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
+                        }
+                    }
+                    $("#suggestedKeywordsList").html(suggestedKeywordsHTML);
+                }
+            }
+        });
+    }
 }
