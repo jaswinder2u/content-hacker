@@ -1,7 +1,7 @@
-/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -6812,7 +6812,7 @@ function getAllUsers()
                                     "</tr>";
                         }
 
-                        $("#users-table").html(rowData);
+                        $("#users-table-body").html(rowData);
                     }
                 }
             });
@@ -6827,3 +6827,9 @@ function getAllUsers()
         window.location = "../index.html";
     }
 }
+
+function saveToExcel(tableID){
+       var htmltable = document.getElementById(tableID);
+       var html = htmltable.outerHTML;
+       window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+    }

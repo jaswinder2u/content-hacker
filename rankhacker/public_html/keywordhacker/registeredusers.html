@@ -143,8 +143,9 @@
                     <div class="block-css" id="setup-box-outer">
                         <form>
                             <h4 class="setup-heading" style="color:#595959;">All Users Currently Registered in RankHacker</h4>
-
-                                <table class="table clear-both industry-table sortable">
+                            <h5 class="text-right" style="color:#26a9e0;cursor:pointer;margin:15px;" onclick="saveToExcel('users-table')">Save to Excel</h5>
+                                
+                                <table class="table clear-both industry-table sortable" id="users-table">
                                     <thead>
                                         <tr style="cursor:pointer;">
                                             <th style="text-align:left;">First Name</th>
@@ -155,7 +156,7 @@
                                             <th style="text-align:center;">Beta User</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="users-table">
+                                    <tbody id="users-table-body">
                                          
                                     </tbody> 
                                 </table>
