@@ -455,6 +455,7 @@ function loadProjectDashboard(flip)
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
     }
     else
@@ -881,6 +882,7 @@ function loadProjectData()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
     }
     else
@@ -4493,6 +4495,7 @@ function getUserInfo()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
@@ -4534,6 +4537,7 @@ function updateUserInfo()
         /*if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }*/
         
         var firstName = $("#first_name").val();
@@ -4624,6 +4628,7 @@ function prepareWizard()
     if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
     {
         $('#industry-link').remove();
+        $('#users-link').remove();
     }
     
     //Set the welcome message
@@ -6631,6 +6636,7 @@ function prepareCart()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
@@ -6706,6 +6712,7 @@ function prepareCalculator()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){

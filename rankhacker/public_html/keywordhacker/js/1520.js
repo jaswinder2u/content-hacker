@@ -1,7 +1,7 @@
-var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -455,6 +455,7 @@ function loadProjectDashboard(flip)
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
     }
     else
@@ -881,6 +882,7 @@ function loadProjectData()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
     }
     else
@@ -4221,6 +4223,23 @@ function manageIndustries(e)
                 });
 }
 
+function registeredUsers(e)
+{
+    var e = e || window.event;
+    //this.event.preventDefault();
+    e.preventDefault();
+    
+    $.ajax({url: restURL, data: {'command':'getUsersLink'}, type: 'post', async: true, success: function postResponse(returnData){
+                        var info = JSON.parse(returnData);
+
+                        if(info.status == "success")
+                        {
+                            window.location = info.usersLink;
+                        }
+                    }
+                });
+}
+
 function updateIndustry(id)
 {
     var name = $("#name_"+id).val();
@@ -4493,6 +4512,7 @@ function getUserInfo()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
@@ -4534,6 +4554,7 @@ function updateUserInfo()
         /*if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }*/
         
         var firstName = $("#first_name").val();
@@ -4624,6 +4645,7 @@ function prepareWizard()
     if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
     {
         $('#industry-link').remove();
+        $('#users-link').remove();
     }
     
     //Set the welcome message
@@ -6631,6 +6653,7 @@ function prepareCart()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
@@ -6706,6 +6729,7 @@ function prepareCalculator()
         if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
+            $('#users-link').remove();
         }
         
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
@@ -6729,6 +6753,74 @@ function prepareCalculator()
                 }
             }
         });
+    }
+    else
+    {
+        window.location = "../index.html";
+    }
+}
+
+function getAllUsers()
+{
+    var username = getCookie("username");
+    if(username != '')
+    {
+        if(username == 'admin@fairmarketing.com')
+        {
+            $.ajax({url: restURL, data: {'command':'getAllUsers'}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var usersInfo = info.users;
+                        var rowData = "";
+                        for(var i=0; i<usersInfo.length; i++)
+                        {
+                            var thisEntry = usersInfo[i];
+                            var firstName = thisEntry.firstName;
+                            var lastName = thisEntry.lastName;
+                            var email = thisEntry.email;
+                            var isActive = thisEntry.isActive;
+                            var verified = thisEntry.verified;
+                            var isBetaUser = thisEntry.isBetaUser;
+                            
+                            var activeHTML = "Yes";
+                            if(isActive == false)
+                            {
+                                activeHTML = "No";
+                            }
+                            
+                            var verifiedHTML = "Yes";
+                            if(verified == false)
+                            {
+                                verifiedHTML = "No";
+                            }
+                            
+                            var betaUserHTML = "Yes";
+                            if(isBetaUser == false)
+                            {
+                                betaUserHTML = "No";
+                            }
+
+                            rowData += "<tr>" +
+                                    "<td style=\"text-align:left\">"+firstName+"</td>" +
+                                    "<td style=\"text-align:left\">"+lastName+"</td>" +
+                                    "<td style=\"text-align:left\">"+email+"</td>" +
+                                    "<td style=\"text-align:center\">"+activeHTML+"</td>" +
+                                    "<td style=\"text-align:center\">"+verifiedHTML+"</td>" +
+                                    "<td style=\"text-align:center\">"+betaUserHTML+"</td>" +
+                                    "</tr>";
+                        }
+
+                        $("#users-table").html(rowData);
+                    }
+                }
+            });
+        }
+        else
+        {
+            window.location = "../index.html";
+        }
     }
     else
     {

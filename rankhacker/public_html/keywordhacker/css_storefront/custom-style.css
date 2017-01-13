@@ -298,6 +298,18 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .import-keywords {margin: 0;}
 
+.email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:17px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:60px;
+    left:80px;
+    display:inline;
+    z-index:30;
+}
+
 }
 
 
@@ -316,6 +328,18 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 .networth-email-input label, .input-outer label {width: 60px;}
 
 .calculate-networth-btn {font-size: 20px;}
+
+.email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:15px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:50px;
+    left:30px;
+    display:inline;
+    z-index:30;
+}
 
 }
 
@@ -399,6 +423,18 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 .hack-right-option {padding-top:20px;}
 
 .calculate-networth-btn {font-size: 16px;}
+
+.email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:14px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:50px;
+    left:10px;
+    display:inline;
+    z-index:30;
+}
 
 }
 

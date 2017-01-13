@@ -36,6 +36,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
     
     <!--1520 files-->
+    <script src="js/sorttable.js"></script>
     <script src="js/1520.js?v=46"></script>
     <link href="css/1520.css?v=46" rel="stylesheet" id="theme-change">
     <link href="css/spinner.css?v=46" rel="stylesheet" id="theme-change">
@@ -49,7 +50,7 @@
     
 </head>
 
-<body id="body" class="page-loading home noisy" onload="getAllIndustries();">
+<body id="body" class="page-loading home noisy" onload="getAllUsers();">
 
 <!-- =========================
      MAIN MENU
@@ -104,13 +105,13 @@
             <div id="dashboard-header" class="block-css">
                         <div class="head-info-box background-gray">
                             <!--<h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>-->
-                            <h2 class="page-info">you're on the <strong>manage industries page</strong> <strong>[</strong> manage industry-level customer conversion rates <strong>]</strong></h2>
+                            <h2 class="page-info">you're on the <strong>registered users page</strong> <strong>[</strong> view all RankHacker users here <strong>]</strong></h2>
                 </div>
                 <div class="col-lg-12 padding-box" style="clear: both;">
                         <div class="col-lg-6 view-option-outer">
                             <ul>
                                 <li class="black_eagle-rh"></li>
-                                <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">Manage Industries</a></li>
+                                <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">View Registered Users</a></li>
                                 <!--li class="active"><a href="#">Project View </a> </li>
                                 <li><a href="#"> Research View</a> </li-->
                             </ul>
@@ -141,38 +142,20 @@
 
                     <div class="block-css" id="setup-box-outer">
                         <form>
-                            <h4 class="setup-heading" style="color:#005cb9;">Add A New Industry</h4>
-                            <div class="project-setup-input add-new-indusrty">
-                                <div class="add-indusrty-name">
-                                       <label class="mixed-use-paragraph">Industry Name</label>
-                                     <input type="text" id="name_0" required placeholder="A new industry name">
-                                </div>
-                                <div class="select-eCommerce">                                    
-                                   <label>e-Commerce</label>
-                                    <select id="ecommerce_0"><option value="no">No</option><option value="yes">Yes</option></select>
-                                </div>
-                                <div class="select-Customer-Conversion-Rate"> 
-                                    <label>Customer Conversion Rate</label>
-                                    <input type="text" id="conv-rate_0" required value="0.00">
-                                </div>
-                                <a class="orange-btn btn pull-right" onclick="updateIndustry('0');">ADD</a>
-                            </div>
-                             
-                            <div class="project-setup-input block-css" style="border-bottom:2px solid #595959;margin:25px 0;"></div>
-                            
-                            <h4 class="setup-heading" style="color:#595959;">Edit/Update an Existing Industry</h4>
+                            <h4 class="setup-heading" style="color:#595959;">All Users Currently Registered in RankHacker</h4>
 
-                                <table class="table clear-both industry-table">
+                                <table class="table clear-both industry-table sortable">
                                     <thead>
-                                        <tr>
-                                            <th class="industry_id">ID</th>
-                                            <th class="industry_name_input">Industry Name</th>
-                                            <th class="text-center industry_e-commerce_input">e-Commerce</th>
-                                            <th class="text-center conversion_rate_input">Customer Conversion Rate</th>
-                                            <th class="text-center action_btn">Action</th>
+                                        <tr style="cursor:pointer;">
+                                            <th style="text-align:left;">First Name</th>
+                                            <th style="text-align:left;">Last Name</th>
+                                            <th style="text-align:left;">Email Address</th>
+                                            <th style="text-align:center;">Active User</th>
+                                            <th style="text-align:center;">Email Verified</th>
+                                            <th style="text-align:center;">Beta User</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="industry-table">
+                                    <tbody id="users-table">
                                          
                                     </tbody> 
                                 </table>
