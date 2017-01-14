@@ -300,12 +300,12 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .email-address-helper-text {
     font-family: "Courier New", Courier, monospace;
-    font-size:17px;
+    font-size:18px;
     color:#26a9e0;
     text-align:left;
     position:absolute;
-    top:60px;
-    left:80px;
+    top:65px;
+    left:70px;
     display:inline;
     z-index:30;
 }
@@ -335,7 +335,7 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
     color:#26a9e0;
     text-align:left;
     position:absolute;
-    top:50px;
+    top:55px;
     left:30px;
     display:inline;
     z-index:30;
@@ -426,11 +426,11 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .email-address-helper-text {
     font-family: "Courier New", Courier, monospace;
-    font-size:14px;
+    font-size:15px;
     color:#26a9e0;
     text-align:left;
     position:absolute;
-    top:50px;
+    top:55px;
     left:10px;
     display:inline;
     z-index:30;
@@ -533,4 +533,32 @@ body {min-width: 320px;overflow: scroll;}
     display: inline-block;
     //float:right;
     //position: static;
+}
+
+@media (min-width:1601px) {
+    .email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:20px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:70px;
+    left:90px;
+    display:inline;
+    z-index:30;
+}
+}
+
+@media (max-width:639px) {
+    .email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:15px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:45px;
+    left:10px;
+    display:inline;
+    z-index:30;
+}
 }
