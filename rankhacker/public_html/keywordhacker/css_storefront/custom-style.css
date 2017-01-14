@@ -514,6 +514,18 @@ body {min-width: 320px;overflow: scroll;}
 
 //.logo img {max-height: 48px;height: 48px;width:auto;}
 .logo {float: left;margin: 0;padding: 0;text-align: center;width: 50%;height:auto;}
+
+.email-address-helper-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size:10px;
+    color:#26a9e0;
+    text-align:left;
+    position:absolute;
+    top:45px;
+    left:10px;
+    display:inline;
+    z-index:30;
+}
 }
 
 @media (max-height: 400px) {
@@ -552,7 +564,7 @@ body {min-width: 320px;overflow: scroll;}
 @media (max-width:639px) {
     .email-address-helper-text {
     font-family: "Courier New", Courier, monospace;
-    font-size:15px;
+    font-size:13px;
     color:#26a9e0;
     text-align:left;
     position:absolute;
