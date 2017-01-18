@@ -25,5 +25,18 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
 
 .keyword-table{
 	color: black;
-	
+
 }
+.account-header {
+  color: black;
+  text-align: left;
+  padding-right: 5px;
+}
+
+.paypal-break {
+  color: black;
+  text-align: left;
+  padding-right: 5px;
+}
+
+
