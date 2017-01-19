@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin: 0;padding: 0;width: 100%;}
+
+.logo { width: 200px;
+		height: 50px;}
+
+.cart-details-card-wide.mdl-card {
+  width: 640px;
+  height: auto; 
+}
+
+.summary-text {
+  color: black;
+  text-align: left;
+  padding-right: 5px;
+}
+
+.subhead{color: black;}
+
+.demo-list-icon {
+  width: 300px;
+}
+
+.keyword-table{
+	color: black;
+
+}
+.account-header {
+  color: black;
+  text-align: left;
+  padding-right: 5px;
+}
+
+.paypal-break {
+  color: black;
+  text-align: left;
+  padding-right: 5px;
+}
+
+.welcome{
+	border-top: 3px;
+	background-color: blue;
+}
+
+.mission-banner{ background-color: gray;
+				 margin-top: 15px;	
+}
+
+.crumb-container{background-color: white;}
+
+.black-eagle-small{height: 40px;
+					width :70px;}
+
+.crumb-text{color: black;
+			text-align: left;	}		
+
+.mission-data{ background-color: gray;
+				 margin-top: 15px;	
+}
+
+.data-table-container{ background-color: gray;
+				 margin-top: 15px;	
+}	
+
+.type-selector{ background-color: white;
+				 margin-top: 15px;	
+}							
