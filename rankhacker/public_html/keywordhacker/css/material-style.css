@@ -3,18 +3,41 @@
 
 body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin: 0;padding: 0;width: 100%;}
 
+.header-styles{background-color: #3d3d3d}
+
+.mdl-navigation__link {color: blue;}
+
 .logo { width: 200px;
 		height: 50px;}
+
+.mdl-layout__drawer{border-style: solid;
+  border-color:blue; 
+    border-width: 0px 2px 0px 0px;}
+
+ .draw-logo{background-color: #3d3d3d;
+  border-style: solid;
+  border-color:black; 
+    border-width: 0px 0px 0px 0px;
+    margin-left: -25px;}   
+
+.mdl-navigation__link{}
 
 .cart-details-card-wide.mdl-card {
   width: 640px;
   height: auto; 
 }
 
+
+.summary-text-holder{margin-top: 25px;  margin-right: 25px; background-color: white;} 
+
+
+
 .summary-text {
   color: black;
+  font-weight: 700;
+  font-size: 22px;
   text-align: left;
-  padding-right: 5px;
+  margin-right: 25px;
 }
 
 .subhead{color: black;}
@@ -67,3 +90,89 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
 .type-selector{ background-color: white;
 				 margin-top: 15px;	
 }							
+
+.content-number{color: blue; 
+                 font-style: bold;
+                  }
+
+.cart-drop-container{height: 288px;
+                     width: 285px;
+                       border-style: solid;
+                       border-color:#3d3d3d; 
+    border-width: 17px 2px 2px 2px;}      
+
+.content-text{color: black;
+               padding-top: 10px;   }     
+
+.content-text-bottom{color: black;
+                     margin-top: -20px;
+                     margin-left: - 10px; }    
+
+.cart-drop-level2{background-color: #3d3d3d;
+                   margin-top: -20px;         }
+
+.cart-drop-down-arrow-row{background-color: #3d3d3d;
+                   margin-top: -5px;         }
+.cart-drop-down-arrow{margin-top: -11px; font-size: 20px;         }
+
+.cart-drop-level2-tag{background-color: #3d3d3d;
+                         margin-top: -25px;  
+                          }
+
+.cart-drop-level2-tag-styles{font-size: 10px;
+                             color: #c9e4ef; 
+                                    }
+
+.cart-drop-level2-tag-styles-numbers{font-size: 20px;
+                             color: #c9e4ef; 
+                                font-weight: 1200    }
+
+.cart-drop-level2-lower{
+                         margin-top: -30px;
+                      }
+
+.content-holder-1{ 
+                  margin-left: 5px;
+                  margin-top:-5px;   }
+
+
+.content-holder-2{   
+                  margin-left: -12px;   }
+
+
+.content-holder-3{}
+
+.content-holder-grid{   margin-top: -10px;   }
+
+.content-number{font-weight: 900}
+.level2-grid{margin-top:-40px;background-color: #3d3d3d;   }
+
+
+.total-grid{margin-top: -16px;
+              background-color: white;}
+.total-amount-container{
+                        margin-top: -25px;}
+.pay-button {margin-top: -5px;
+              margin-right: -50px;  }
+.billing-text{color: black;
+               font-size: 9px; 
+               margin-right: -10px;}    
+
+.billing-text-container{margin-top: -40px;
+                         margin-left: -30px }  
+
+.view-link-container{margin-top: -10px;
+                         margin-left: 40px;} 
+
+.view-cart-grid{margin-top: -30px;
+                margin-bottom: 60px;}                        
+.view-link-text {color: blue;
+                 font-size: 11px; 
+               text-decoration: underline;
+               margin-bottom: -60px; }
+
+.page-content{background-color: white;
+               margin-left: 75px;
+               margin-right: 75px;
+               margin-top: 50px;
+               margin-bottom:90px;       }               
