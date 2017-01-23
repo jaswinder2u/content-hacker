@@ -5,6 +5,14 @@ var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
+var currUser = getCookie("username");
+if(currUser != "")
+{
+    if(currUser.includes("fairmarketing.com"))
+    {
+        maxKeywordsPerProject = 10000;
+    }
+}
 //var maxDeletedKeywords = 50;
 
 
