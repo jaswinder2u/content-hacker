@@ -3,9 +3,9 @@ var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
 /*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
 var rhURL = "http://localhost:8383/rankhacker/";*/
 
-var maxProjects = 3;
+//var maxProjects = 3;
 var maxKeywordsPerProject = 25;
-var maxDeletedKeywords = 50;
+//var maxDeletedKeywords = 50;
 
 
 var desc = false;
@@ -3708,6 +3708,7 @@ function displayKeywordDeleteWindow(keywordID)
     var info = JSON.parse(returnData);
 
     var deletedKeywords = info.deletedKeywords;
+    //var maxKeywords = info.maxKeywords;
     
     if(deletedKeywords < 50)
     {
