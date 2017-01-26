@@ -1921,3 +1921,28 @@ width: 100%;}
     width:auto;
     z-index: 999 !important;
 }
+
+
+
+.cartmenu {
+    width: 250px ;
+    height: 400px;
+    background-color: white;
+}
+
+.r1 {
+color: black;
+background-color: white;
+}
+
+.r2 {
+color: black;
+background-color: white;
+}
+
+
+.cart-drop-level2{
+	background-color: black;
+	font-style: white;
+	margin-bottom: -2px;
+}

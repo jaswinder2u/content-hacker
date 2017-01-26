@@ -175,4 +175,26 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
                margin-left: 75px;
                margin-right: 75px;
                margin-top: 50px;
-               margin-bottom:90px;       }               
+               margin-bottom:90px;       }  
+
+.monthly-content-text-container  .monthly-content-text-upper {color:white;
+                                                               font-size:11px;     }     
+
+
+.monthly-content-text-container  .monthly-content-text-lower   {color:white;
+                                                               font-size:11px;  
+                                                                margin-top: -15px}                         
+.monthly-content-total-container .monthly-content-total-upper {color:white;
+                                                               font-size:30px;
+                                                                font-weight: 300;
+                                                                 margin-top: 15px;
+                                                                  } 
+.monthly-content-info-container{margin-left: 90px;}
+
+.details-container .products-container {background-color:black; margin-left: 10px;}
+
+.products-container-text-container .products-container{margin-left: 40px;}
+.products-container-text-container .products-container-text-upper {font-size: 11px;}
+.products-container-text-container .products-container-text-lower {font-size: 10px;}
+.products-container-text-container .products-container-text-lower-nudge {font-size: 10px;
+                                                                          margin-right: 20px;}
