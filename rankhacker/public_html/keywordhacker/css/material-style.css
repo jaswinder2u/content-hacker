@@ -40,7 +40,11 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
   margin-right: 25px;
 }
 
-.subhead{color: black;}
+
+.subhead{color: black;
+}
+.subhead2{color: black;
+margin-left: -550px;}
 
 .demo-list-icon {
   width: 300px;
@@ -177,24 +181,61 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
                margin-top: 50px;
                margin-bottom:90px;       }  
 
+  .monthly-content-info-container{ background-color: #3d3d3d; margin-left: 90px;}
+
+  .monthly-content-info-container-grid{background-color: #3d3d3d;}
+
+  .monthly-content-text-container{background-color: #3d3d3d}
+
 .monthly-content-text-container  .monthly-content-text-upper {color:white;
-                                                               font-size:11px;     }     
+                                                               font-size:18px; margin-top: 10px;    }     
 
 
 .monthly-content-text-container  .monthly-content-text-lower   {color:white;
-                                                               font-size:11px;  
-                                                                margin-top: -15px}                         
-.monthly-content-total-container .monthly-content-total-upper {color:white;
-                                                               font-size:30px;
+                                                               font-size:18px;  
+                                                                margin-top: -20px}                         
+.details-container .monthly-content-total-container .monthly-content-total-lower {color:white;
+                                                               font-size:60px;
                                                                 font-weight: 300;
                                                                  margin-top: 15px;
+                                                                 margin-left: -20px;
                                                                   } 
-.monthly-content-info-container{margin-left: 90px;}
 
-.details-container .products-container {background-color:black; margin-left: 10px;}
 
-.products-container-text-container .products-container{margin-left: 40px;}
-.products-container-text-container .products-container-text-upper {font-size: 11px;}
-.products-container-text-container .products-container-text-lower {font-size: 10px;}
+.details-container .products-container {background-color:black; margin-left: -30px; }
+
+.products-container {background-color: #3d3d3d; }
+
+.products-container .products-container-grid {background-color: #3d3d3d; margin-left: -20px;}
+
+.products-container-text-container {background-color: #3d3d3d; }
+
+.products-container-text-container .products-container{margin-left: -60px;}
+.products-container-text-container .products-container-text-upper {font-size: 12px; margin-left: -35px;}
+.products-container-text-container .products-container-text-lower {font-size: 11px; margin-left: -35px;}
 .products-container-text-container .products-container-text-lower-nudge {font-size: 10px;
-                                                                          margin-right: 20px;}
+                                                                        margin-right: 20px;}
+
+.grand-total-grid-container {background-color: #3d3d3d; margin-left:-20px;}
+
+.grand-total-grid-container  .grand-total-grid-container-text {font-size: 40px;
+                                                                font-weight: 400;  
+                                                                margin-top: 30px; } 
+.cart-details-mission-text{font-color: black;}
+
+.cart-details-mission-name{ margin-left: 160px;
+                            margin-right: -20px;
+                          font-color:black;}    
+
+.cart-details-mission-name .cart-details-mission-name-text{font-color:black;}
+
+.cart-details-mission-details {margin-right: -30px;}
+
+.cart-details-mission-details .cart-details-mission-details-text {color: blue;}
+.cart-details-mission-total .cart-details-mission-total-text  {margin-right: -100px; font-size: 30; }
+
+.sub-total-total{margin-left: -8px;}
+
+.pay-button-bottom {margin-left: -10px}
+
+.sub-total-text {font-color: black;}
