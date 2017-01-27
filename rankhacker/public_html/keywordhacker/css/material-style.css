@@ -44,7 +44,7 @@ body {text-align:center;font-family: 'Montserrat', sans-serif !important;margin:
 .subhead{color: black;
 }
 .subhead2{color: black;
-margin-left: -550px;}
+}
 
 .demo-list-icon {
   width: 300px;
@@ -202,11 +202,10 @@ margin-left: -550px;}
                                                                   } 
 
 
-.details-container .products-container {background-color:black; margin-left: -30px; }
+.details-container .products-container {background-color:#3d3d3d; margin-left: -30px; }
 
 .products-container {background-color: #3d3d3d; }
 
-.products-container .products-container-grid {background-color: #3d3d3d; margin-left: -20px;}
 
 .products-container-text-container {background-color: #3d3d3d; }
 
