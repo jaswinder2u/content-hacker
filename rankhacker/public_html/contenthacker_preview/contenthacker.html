@@ -29,7 +29,7 @@
          STYLESHEETS
     ============================== -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom-style.css" rel="stylesheet" id="theme-change">
+    <link href="css/custom-style-material.css" rel="stylesheet" id="theme-change">
 
    
 
@@ -37,7 +37,7 @@
 <!--google js file-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
+<script src="../keywordhacker/js/1520.js?v=47"></script>
     
 </head>
 
@@ -64,10 +64,11 @@
           <ul class="nav navbar-nav">
             <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/dashboard.html';">KEYWORD HACKER</a></li>
             <li class="active"><a href="#about">CONTENT HACKER</a></li>
-            <li><a href="#">QUICK SPY</a></li>
+            <li><a style="cursor:pointer;" onclick="javascript:return false;">TOOLS</a></li>
+            <li><a style="cursor:pointer;" onclick="javascript:return false;">SETTINGS</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right account-options">
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">LOG IN</a></li>
+            <li><a style="cursor:pointer;" onclick="logout(event);">LOG OUT</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
