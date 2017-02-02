@@ -29,7 +29,9 @@
          STYLESHEETS
     ============================== -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom-style-material.css" rel="stylesheet" id="theme-change">
+    <!--<link href="css/custom-style-material.css" rel="stylesheet" id="theme-change">-->
+    <link href="../keywordhacker/css/custom-style-material.css" rel="stylesheet">
+    <link href="../keywordhacker/css/1520.css" rel="stylesheet">
 
    
 
@@ -47,7 +49,6 @@
 <!-- =========================
      MAIN MENU
 ============================== -->
-
 <div id="site-header">
 <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -58,12 +59,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" data-text="RANKHACKER" href="#header"><img src="images/site-logo.png" alt="site-logo"> </a>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/dashboard.html';">KEYWORD HACKER</a></li>
-            <li class="active"><a href="#">CONTENT HACKER</a></li>
+            <li><a style="cursor:pointer;" href="../keywordhacker/dashboard.html">KEYWORD HACKER</a></li>
+            <li class="active"><a style="cursor:pointer;">CONTENT HACKER</a></li>
             <li>
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
                 <ul class="dropdown-menu" id="account-dropdown">
@@ -71,17 +72,30 @@
                     <li><a href="../content/">Content Strategy Center</a></li>
                     <!--<li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>-->
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
                 </ul>
             </li>
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/editprofile.html';">SETTINGS</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right account-options">
-            <li><a style="cursor:pointer;" onclick="logout(event);">LOG OUT</a></li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="../keywordhacker/images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <span class="dropdown-default-text">Your cart is empty.</span>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="../keywordhacker/editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 </div>
+
+
+
 
 <!-- =========================
      HEADER

@@ -54,41 +54,48 @@
 <!-- =========================
      MAIN MENU
 ============================== -->
-
-
-
-<div id="rank-header-outer">
-    <nav id="mainmenu" class="navbar navbar-fixed-top main-menu" role="navigation">
-    <!-- LOGO CONTAINER -->
-        <div class="container">
-        <div class="logo-cont logo-outer pull-left">
-            <!--<a class="navbar-brand site-logo" data-text="RANKHACKER" href="#header" onclick="gotoKHDashboard();">
-                <img src="images/logo-main.png" alt="site-logo" style="cursor:pointer;"> 
-            </a>-->
-            <div class="dashboard-header-span"><a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp"> </a></div>
-            <div class="dashboard-status-span">
-                <a class="dashboard-status"><img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon"><span class="module-icon-label">Keyword Hacker</span></a>
-                <a class="dashboard-status" href = "../contenthacker_preview/contenthacker.html"><img src="images/content-hacker-icon-white.png" alt="chacker" class="module-icon"><span class="module-icon-label">Content Hacker</span></a>                
-            </div>
-            
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
         </div>
-        <div class="logo-cont logo-outer-2 pull-right nudge-left">
-            <div class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Account <b class="caret"></b></a>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <li class="active">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
                 <ul class="dropdown-menu" id="account-dropdown">
-                    <li><a href="editprofile.html">Edit Profile</a></li>
                     <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
                     <li><a href="../content/">Content Strategy Center</a></li>
-                    <li><a href="addtocart.html">Check Out</a></li>
                     <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
-                    <li><a style="cursor:pointer;" onclick="logout(event);">Logout</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
                 </ul>
-            </div>
-        </div>
-            
-        
-        </div>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <span class="dropdown-default-text">Your cart is empty.</span>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </nav>
 </div>
 

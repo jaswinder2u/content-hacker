@@ -31,11 +31,13 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 #site-header .navbar-default {background-color: #3d3d3d;border: medium none;}
 
-#site-header .navbar-default .navbar-nav > li > a {border: 1px solid transparent;color: #808184;font-size: 18px;font-weight: normal;margin: 0 5px;padding: 15px;}
+#site-header .navbar-default .navbar-nav > li > a {border: 1px solid transparent;color: #d0d2d3;font-size: 18px;font-weight: normal;margin: 0 5px;padding: 15px;}
 
-#site-header .navbar-default .navbar-nav > .active > a:focus,#site-header .navbar-default .navbar-nav > .active > a:hover , #site-header .navbar-default .navbar-nav > li > a:hover{background-color: transparent;border-color: #808184;color: #808184;}
+#site-header .navbar-default .navbar-nav > li > a[aria-expanded="true"] {border: 1px solid #d0d2d3;color: #d0d2d3;}
 
-#site-header .navbar-default .navbar-nav > .active > a,#site-header .navbar-default .navbar-nav > .active > a:hover{background-color: transparent;border-color: #fff;color: #fff;}
+#site-header .navbar-default .navbar-nav > .active > a:focus,#site-header .navbar-default .navbar-nav > .active > a:hover , #site-header .navbar-default .navbar-nav > li > a:hover{background-color: transparent;border-color: #d0d2d3;color: #d0d2d3;}
+
+#site-header .navbar-default .navbar-nav > .active > a,#site-header .navbar-default .navbar-nav > .active > a:hover{background-color: transparent;border-color: #d0d2d3;color: #d0d2d3;}
 
 #site-header .navbar-collapse {margin: 5px 0;}
 
@@ -44,11 +46,11 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 /* footer  */
 
 #main-footer {background-color: #3d3d3d;float: left;margin: 0;padding: 25px 0;position: relative;width: 100%;z-index: 99;
-color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight: normal;line-height: normal;height: 100px;}
+color: #d0d2d3;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight: normal;line-height: normal;height: 100px;}
 
-.footer-link ul li {border-right: 1px solid #808184;color: #808184;display: inline-block;float: left;font-family: 'Montserrat';font-size: 14px;font-weight: normal;line-height: 16px;margin: 0;padding: 0 15px;}	
+.footer-link ul li {border-right: 1px solid #d0d2d3;color: #d0d2d3;display: inline-block;float: left;font-family: 'Montserrat';font-size: 14px;font-weight: normal;line-height: 16px;margin: 0;padding: 0 15px;}	
 
-.footer-link ul li  a , .footer-socail-icon ul li   a , .account-section a{color: #808184;}
+.footer-link ul li  a , .footer-socail-icon ul li   a , .account-section a{color: #d0d2d3;}
 
 .footer-link li:first-child {padding-left: 0;}
 

@@ -18,9 +18,9 @@
          MATERIAL DESIGN LITE
     ============================== -->
 
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>-->
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 
     <!-- =========================
@@ -36,8 +36,8 @@
     <!-- =========================
          STYLESHEETS
     ============================== -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="css/materialize.css" rel="stylesheet" id="theme-change">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">-->
     <link href="css/materialize.min-120816.css" rel="stylesheet" id="theme-change">
     <link href="css/custom-style.css?v=46" rel="stylesheet" id="theme-change">
     <link href="css/rankhacker.css" rel="stylesheet" id="theme-change">
@@ -63,19 +63,6 @@
     <!--<link href="css_storefront/bootstrap.min.css" rel="stylesheet">-->
     <link href="css_storefront/custom-style.css?v=46" rel="stylesheet" id="theme-change-storefront">
     
-    <!-- material design lite -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom-style-material.css" rel="stylesheet" id="theme-change">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!--jquery dropdown-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
     <script>
         function run(){
             loadProjectData();
@@ -89,48 +76,63 @@
 <!-- =========================
      MAIN MENU
 ============================== -->
-<div id="site-header">
-<nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
+<!--<div id="rank-header-outer">
+    <nav id="mainmenu" class="navbar navbar-fixed-top main-menu" role="navigation">
+        <!-- LOGO CONTAINER --
+        <!--<div class="col-lg-1"></div>--
+        <div class="col-lg-10 col-lg-offset-1" style="width:77%;">
+            
         </div>
-        <div id="navbar" class="navbar-collapse collapse pull-right">
-          <ul class="nav navbar-nav">
-            <li class="active"><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
-            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
-            <li>
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+        <div class="logo-cont logo-outer-2 col-lg-1" style="width:9%;">
+            <span class="logout-link" onclick="logout(event);">Logout</span>
+        </div>
+        <!--<div class="col-lg-1"></div>--
+    </nav>
+</div>-->
+
+<div id="rank-header-outer">
+    <nav id="mainmenu" class="navbar navbar-fixed-top main-menu" role="navigation">
+    <!-- LOGO CONTAINER -->
+        <div class="container">
+        <div class="logo-cont logo-outer pull-left">
+            <!--<a class="navbar-brand site-logo" data-text="RANKHACKER" href="#header" onclick="gotoKHDashboard();">
+                <img src="images/logo-main.png" alt="site-logo" style="cursor:pointer;"> 
+            </a>-->
+            <div class="dashboard-header-span"><a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp"> </a></div>
+            <div class="dashboard-status-span">
+                <a class="dashboard-status"><img src="images/keyword-hacker-icon-white.png" alt="kwhacker" class="module-icon"><span class="module-icon-label">Keyword Hacker</span></a>
+                <a class="dashboard-status" href = "../contenthacker_preview/contenthacker.html"><img src="images/content-hacker-icon-white.png" alt="chacker" class="module-icon"><span class="module-icon-label">Content Hacker</span></a>                           
+            </div>
+           <div class="logo-cont logo-outer-2 pull-right nudge-left">
+           <div class="dropdown">     
+        
+         <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <img src="images/fullCart_inactiveSelection.svg" alt="cart" class="module-icon"></a>
+                <ul class="dropdown-menu cartmenu" >
+            <li class = "cart-drop-level1"><div class = "row"> <div class="col-md-3 r1"><h4 class ="r1">X</h4></div> <div class="col-md-8"><p class = "r1">Pieces of content </br>PER MONTH </p></div></div></li>
+             <li class = "cart-drop-level2"> <div class = "row"> <div class="col-md-4">X </br><small>Missions</small> </div> <div class="col-md-4">X </br><small>keywords</small> </div><div class="col-md-4">X </br><small>Whiteglove</small></div></div></li> 
+             
+              <li><div class = "row"> <div class="col-md-4"> <h2 class = "r2">X </h2> </br><small class = "r2">Billed Monthly</small></div> <div class="col-md-4"><button type="button" class="">BUY</button> </div></div></li>
+                <li role="separator" class="divider"></li>
+              <li><a href="#">View Cart</a></li>
+                </ul>
+        </div>
+    </div>
+        </div>
+        <div class="logo-cont logo-outer-2 pull-right nudge-left">
+            <div class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Account <b class="caret"></b></a>
                 <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
                     <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
                     <li><a href="../content/">Content Strategy Center</a></li>
+                    <li><a href="addtocart.html">Check Out</a></li>
                     <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
-                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
-                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Logout</a></li>
                 </ul>
-            </li>
-            <li>
-                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
-                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
-                    <span class="dropdown-default-text">Your cart is empty.</span>
-                </div>
-            </li>
-            <li>
-                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
-                <ul class="dropdown-menu" id="settings-dropdown">
-                    <li><a href="editprofile.html">Edit Profile</a></li>
-                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
-                </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+            </div>
+        </div>
+
+        </div>
     </nav>
 </div>
 
@@ -147,7 +149,7 @@
     <div class="container">
     <div class="overlay interface-outer">
         <div class="projects">
-            <div class="row row-v-spacing-mission-report"></div>
+            <div class="row row-v-spacing"></div>
             <div id="dashboard-header" class="">
                         <div class="head-info-box">
                             <!--<h4 class="welcome-text"> WELCOME TO THE KEYWORD HACKER MODULE</h4>-->
@@ -174,7 +176,7 @@
             </div>
             
             
-            <div class="block-css row-v-spacing-mission-report">
+            <div class="block-css">
                 <!--<div class="three-quarters-loader" id="loading_spinner" style="text-align:center;margin-top:105px;margin-left:-45px;">
                     
                 </div>-->
@@ -193,7 +195,7 @@
                         </ul>-->
                     </div>
                     
-                    <div class="row-v-spacing-mission-report keyword-hacker-info-box block-css">
+                    <div class="row-v-spacing keyword-hacker-info-box block-css">
 
 
                         <div id="project-row-accordion" role="tablist" class="keywordhacker-outer" aria-multiselectable="true" style="margin-top:-30px;">

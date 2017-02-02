@@ -228,6 +228,8 @@ TWO TONE SPINNER
 
 .row-v-spacing {/*margin: 1.82rem 0 1.656rem;*/}
 
+.row-v-spacing-mission-report {margin-top: 1.82rem !important;}
+
 .user-info a{color: #231f20;}
 
 
@@ -994,7 +996,8 @@ width: 100%;}
 
 .keyword-hacker-info-box {clear: both;float: left;}
 
-.project-name {color: #231f20;float: left;font-size: 1.5em;font-weight: bold;line-height: normal;margin: 0 0 20px;padding: 0;text-align: left;text-transform: none;width: 100%;}
+//.project-name {color: #231f20;float: left;font-size: 1.5em;font-weight: bold;line-height: normal;margin: 0 0 20px;padding: 0;text-align: left;text-transform: none;width: 100%;}
+.project-name {color: #231f20;float: left;font-size: 1.5em;font-weight: bold;line-height: normal;margin-top:-40px;padding: 0;text-align: left;text-transform: none;width: 100%;}
 
 .kerword-project-row ul, .kerword-project-row {
   background-color: #fff;
@@ -1754,7 +1757,7 @@ width: 100%;}
 .power-summary-row-highlight.power-summary-heading-row {border-bottom: 1px solid #e2e5e5 !important;}
 
 .their-power-level-box {background-image: url("../images/left_calc_box.png");background-repeat: no-repeat;cursor: default;display: inline-block;font-weight: bold;height: 89px;width:121px;left: 0;margin-left: 0;position: relative;top: 0;font-size:50px;color:#808080;padding-top:6px;padding-left:0;padding-right:15px;}
-.your-power-level-box {background-image: url("../images/middle_calc_box.png");background-repeat: no-repeat;cursor: default;display: inline-block;font-weight: bold;height: 89px;width:121px;left: 0;margin-left: -5px;position: relative;top: 0;font-size:50px;color:#808080;padding-top:6px;padding-left:0;padding-right:40px;}
+.your-power-level-box {background-image: url("../images/middle_calc_box.png");background-repeat: no-repeat;cursor: default;display: inline-block;font-weight: bold;height: 89px;width:121px;left: 0;margin-left: -5px;position: relative;top: 0;font-size:50px;color:#808080;padding-top:4px;padding-left:0;padding-right:40px;}
 .net-power-level-box {background-image: url("../images/right_calc_box.png");background-repeat: no-repeat;cursor: default;display: inline-block;font-weight: bold;height: 89px;width:121px;left: 0;margin-left: -22px;position: relative;top: 0;font-size:50px;color:#005cb9;padding-top:6px;padding-left:0;padding-right:40px;}
 
 .their-power-level-label {display: inline-block;font-weight: normal;width:121px;left: 0;margin-left: 0;position: relative;top: 0;font-size:9px;color:#000;padding-top:3px;padding-left:0;padding-right:15px;}
@@ -1890,8 +1893,8 @@ width: 100%;}
 
 .rh-checkbox-padded {
     position:relative;
-    top: 15%;
-    left: 12%;
+    top: 12%;
+    //left: 12%;
 }
 
 .dashboard-status-span {display:inline-block;}

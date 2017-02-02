@@ -2008,7 +2008,7 @@ function displayProjectInfo(field,sort)
         //Add the header info for the accordian HTML
         accordianHTML += "<div id=\"kw-panel-div"+keywordID+"\" class=\"panel panel-default keyword-phraser-row\" "+hideCSS+">\n"+
                             "<ul role=\"tab\" id=\"keyword-phraser-heading"+keywordID+"\""+rowBGText+">\n"+
-                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;padding-top:5px;font-size:28px;\" "+topHackExpand+">\n"+
+                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:30%;font-size:28px;\" "+topHackExpand+">\n"+
                                     "<i id=\"caret-"+keywordID+"\" class=\"fa fa-caret-right\"></i>\n"+
                                 "</li>\n"+
                                 "<li class=\"keyword-phraser-tittle width-30\" "+topHackExpand+">\n"+
@@ -5176,7 +5176,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
         //Add the header info for the accordian HTML
         accordianHTML += "<div id=\"kw-panel-div"+keywordID+"\" class=\"panel panel-default keyword-phraser-row\" "+hideCSS+">\n"+
                             "<ul role=\"tab\" id=\"keyword-phraser-heading"+keywordID+"\""+rowBGText+">\n"+
-                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;padding-top:5px;font-size:28px;\" "+topHackExpand+">\n"+
+                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:30%;font-size:28px;\" "+topHackExpand+">\n"+
                                     "<i id=\"caret-"+keywordID+"\" class=\"fa fa-caret-right\"></i>\n"+
                                 "</li>\n"+
                                 "<li class=\"keyword-phraser-tittle width-30\" "+topHackExpand+">\n"+
@@ -6148,7 +6148,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
         //accordianHTML += "<div id=\"kw-panel-div"+keywordID+"\" class=\"panel panel-default keyword-phraser-row\" "+hideCSS+">\n"+
         accordianHTML += ""+
                             "<ul role=\"tab\" id=\"keyword-phraser-heading"+keywordID+"\""+rowBGText+">\n"+
-                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:15%;font-size:28px;\" "+topHackExpand+">\n"+
+                                "<li class=\"checkbox-outer width-2-5\" style=\"position:relative;top:30%;font-size:28px;\" "+topHackExpand+">\n"+
                                     "<i id=\"caret-"+keywordID+"\" class=\"fa fa-caret-right\"></i>\n"+
                                 "</li>\n"+
                                 "<li class=\"keyword-phraser-tittle width-30\" "+topHackExpand+">\n"+

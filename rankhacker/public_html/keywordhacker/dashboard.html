@@ -25,7 +25,7 @@
     <!-- =========================
              STYLESHEETS
         ============================== -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">-->
     <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">-->
     <link href="css/materialize.min-120816.css" rel="stylesheet" id="theme-change">
     <link href="css/custom-style.css?v=46" rel="stylesheet" id="theme-change">
@@ -106,13 +106,22 @@
                     <li><a href="../content/">Content Strategy Center</a></li>
                     <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
                 </ul>
             </li>
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>
-            <!--<li><a style="cursor:pointer;" onclick="javascript:return false;"><i class="fa fa-gear" style="font-size:25px;"></i></a></li>-->
-          </ul>
-          <ul class="nav navbar-nav navbar-right account-options">
-            <li><a style="cursor:pointer;" onclick="logout(event);">LOG OUT</a></li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <span class="dropdown-default-text">Your cart is empty.</span>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -812,13 +812,22 @@ border: 1px solid #e2e5e5;
     position:absolute;
     top:100%;
     left:5%;
+    border: 2px solid #3d3d3d;
 }
 
 #cart-dropdown {
     position:absolute;
     top:100%;
-    left:5%;
+    left:-200%;
     padding:3px 20px;
+    border: 2px solid #3d3d3d;
+}
+
+#settings-dropdown {
+    position:absolute;
+    top:100%;
+    left:-153%;
+    border: 2px solid #3d3d3d;
 }
 
 .cart-dropdown {
@@ -831,11 +840,15 @@ border: 1px solid #e2e5e5;
 }
 
 .cart-icon {
-    height:55px;
+    height:26px;
     width:auto;
-    margin-top:-15px;
+    //margin-top:-15px;
 }
 
 .dropdown-default-text {
     color:#333;
+}
+
+.settings-gear {
+    font-size:26px;
 }
