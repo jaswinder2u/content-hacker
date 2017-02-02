@@ -63,9 +63,17 @@
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
             <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/dashboard.html';">KEYWORD HACKER</a></li>
-            <li class="active"><a href="#about">CONTENT HACKER</a></li>
-            <li><a style="cursor:pointer;" onclick="javascript:return false;">TOOLS</a></li>
-            <li><a style="cursor:pointer;" onclick="javascript:return false;">SETTINGS</a></li>
+            <li class="active"><a href="#">CONTENT HACKER</a></li>
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="../keywordhacker/salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                    <!--<li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>-->
+                </ul>
+            </li>
+            <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/editprofile.html';">SETTINGS</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right account-options">
             <li><a style="cursor:pointer;" onclick="logout(event);">LOG OUT</a></li>

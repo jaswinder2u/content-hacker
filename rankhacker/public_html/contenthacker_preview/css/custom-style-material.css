@@ -33,7 +33,9 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 #site-header .navbar-default .navbar-nav > li > a {border: 1px solid transparent;color: #808184;font-size: 18px;font-weight: normal;margin: 0 5px;padding: 15px;}
 
-#site-header .navbar-default .navbar-nav > .active > a,#site-header .navbar-default .navbar-nav > .active > a:focus,#site-header .navbar-default .navbar-nav > .active > a:hover , #site-header .navbar-default .navbar-nav > li > a:hover{background-color: transparent;border-color: #808184;color: #808184;}
+#site-header .navbar-default .navbar-nav > .active > a:focus,#site-header .navbar-default .navbar-nav > .active > a:hover , #site-header .navbar-default .navbar-nav > li > a:hover{background-color: transparent;border-color: #808184;color: #808184;}
+
+#site-header .navbar-default .navbar-nav > .active > a{background-color: transparent;border-color: #fff;color: #fff;}
 
 #site-header .navbar-collapse {margin: 5px 0;}
 
@@ -230,6 +232,7 @@ width: calc(100% - 340px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
+}
 }
 
 @media (max-width: 1600px) {
