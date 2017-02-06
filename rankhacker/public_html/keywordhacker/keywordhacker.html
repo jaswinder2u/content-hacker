@@ -118,7 +118,19 @@
             <li>
                 <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
                 <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
-                    <span class="dropdown-default-text">Your cart is empty.</span>
+                    <div class="cart-header">
+                        <span id="cart-total-pieces">0</span>
+                        <span id="cart-total-pieces-text">Pieces of Content<br/>PER MONTH</span>
+                    </div>
+                    <div class="cart-breakdown">
+                        <div class="cart-breakdown-cell"><span id="cart-total-missions">0</span><br/><span class="cart-breakdown-text">MISSIONS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-keywords">0</span><br/><span class="cart-breakdown-text">KEYWORDS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-project-mgmt">0</span><br/><span class="cart-breakdown-text">PROJECT<br>MANAGEMENT</span></div>
+                    </div>
+                    <div class="cart-summary">
+                        <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="view cart"></span></div>
+                    </div>
                 </div>
             </li>
             <li>
