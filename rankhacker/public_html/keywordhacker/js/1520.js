@@ -1,7 +1,7 @@
-var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -465,6 +465,8 @@ function loadProjectDashboard(flip)
             $('#industry-link').remove();
             $('#users-link').remove();
         }
+        
+        refreshCartDropdown();
     }
     else
     {
@@ -892,6 +894,8 @@ function loadProjectData()
             $('#industry-link').remove();
             $('#users-link').remove();
         }
+        
+        refreshCartDropdown();
     }
     else
     {
@@ -2034,7 +2038,7 @@ function displayProjectInfo(field,sort)
                                     "<h2>"+currencyHexCode+numberWithCommas(monthlySales)+"</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"spacer-info\" "+topHackExpand+"><img src=\"images/keyword_row_arrow_white.png\" class=\"keyword-row-arrow\"></li>\n"+
-                                "<li class=\"cost-monthly-info width-12\" "+topHackExpand+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
+                                "<li class=\"cost-monthly-info width-12\" "+""+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
                                     //"<h2 id=\"top-hack-content-"+i+"\" "+topHackExpand+">"+topHackContentHTML+"</h2>\n"+
                                     "<h2 id=\"top-hack-content-"+i+"\">"+topHackContentHTML+"</h2>\n"+
                                 "</li>\n"+
@@ -4326,6 +4330,8 @@ function getAllIndustries()
                     }
                 }
             });
+            
+            refreshCartDropdown();
         }
         else
         {
@@ -4524,6 +4530,8 @@ function getUserInfo()
             $('#users-link').remove();
         }
         
+        refreshCartDropdown();
+        
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
@@ -4656,6 +4664,8 @@ function prepareWizard()
         $('#industry-link').remove();
         $('#users-link').remove();
     }
+    
+    refreshCartDropdown();
     
     //Set the welcome message
     $('#welcome-message').html("welcome <strong>AGENT "+userLastName.toUpperCase()+"</strong> <strong>[</strong> activate your mission below <strong>]</strong>");
@@ -5202,7 +5212,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
                                     "<h2>"+currencyHexCode+numberWithCommas(monthlySales)+"</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"spacer-info\" "+topHackExpand+"><img src=\"images/keyword_row_arrow_white.png\" class=\"keyword-row-arrow\"></li>\n"+
-                                "<li class=\"cost-monthly-info width-12\" "+topHackExpand+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
+                                "<li class=\"cost-monthly-info width-12\" "+""+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
                                     //"<h2 id=\"top-hack-content-"+i+"\" "+topHackExpand+">"+topHackContentHTML+"</h2>\n"+
                                     "<h2 id=\"top-hack-content-"+keywordCounter+"\">"+topHackContentHTML+"</h2>\n"+
                                 "</li>\n"+
@@ -6174,7 +6184,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
                                     "<h2>"+currencyHexCode+numberWithCommas(monthlySales)+"</h2>\n"+
                                 "</li>\n"+
                                 "<li class=\"spacer-info\" "+topHackExpand+"><img src=\"images/keyword_row_arrow_yellow.png\" class=\"keyword-row-arrow\"></li>\n"+
-                                "<li class=\"cost-monthly-info width-12\" "+topHackExpand+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
+                                "<li class=\"cost-monthly-info width-12\" "+""+" id=\"kwid-"+keywordID+"-cost-per-month\">\n"+
                                     //"<h2 id=\"top-hack-content-"+keywordCounter+"\" "+topHackExpand+">"+topHackContentHTML+"</h2>\n"+
                                     "<h2 id=\"top-hack-content-"+keywordCounter+"\">"+topHackContentHTML+"</h2>\n"+
                                 "</li>\n"+
@@ -6650,7 +6660,78 @@ function wizardToggle(e)
 function addToCart(keywordID)
 {
     var projectID = getURLParameter("pid");
-    window.location = "addtocart.html?pid="+projectID+"&kwid="+keywordID;
+    var username = getCookie("username");
+    if(username != '')
+    {
+        if(keywordID == -1)
+        {
+            $.ajax({url: restURL, data: {'command':'addProjectContentToCart','username':username,'projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        refreshCartDropdown();
+                    }
+                }
+            });
+        }
+        else
+        {
+            $.ajax({url: restURL, data: {'command':'addKeywordContentToCart','username':username,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        refreshCartDropdown();
+                    }
+                }
+            });
+        }
+    }
+    else
+    {
+        
+    }
+    //window.location = "addtocart.html?pid="+projectID+"&kwid="+keywordID;
+}
+
+function refreshCartDropdown()
+{
+    var username = getCookie("username");
+    if(username != '')
+    {
+        $.ajax({url: restURL, data: {'command':'getCartDropdownData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var totalContent = info.total_content;
+                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(0));
+                        
+                        var missionCount = 0;
+                        var keywordCount = 0;
+                        var projectManagementCount = 0;
+                        
+                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        
+                        if(totalContent > 0)
+                        {
+                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            missionCount = info.missions;
+                            keywordCount = info.keywords;
+                            projectManagementCount = info.project_management;
+                        }
+                        
+                        $("#cart-image").attr('src',iconSrc);
+                        $("#cart-total-pieces").html(totalContent);
+                        $("#cart-total-missions").html(missionCount);
+                        $("#cart-total-keywords").html(keywordCount);
+                        $("#cart-total-project-mgmt").html(projectManagementCount);
+                        $("#cart-total-cost").html("$"+totalCost);
+                    }
+                }
+            });
+    }
 }
 
 function prepareCart()
@@ -6741,6 +6822,8 @@ function prepareCalculator()
             $('#users-link').remove();
         }
         
+        refreshCartDropdown();
+        
         $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
@@ -6825,6 +6908,8 @@ function getAllUsers()
                     }
                 }
             });
+            
+            refreshCartDropdown();
         }
         else
         {
