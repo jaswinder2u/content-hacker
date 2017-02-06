@@ -1,7 +1,7 @@
-/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
