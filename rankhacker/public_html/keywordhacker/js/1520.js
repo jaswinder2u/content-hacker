@@ -6812,19 +6812,20 @@ function refreshKeywordSuggestions()
 
 function prepareCalculator()
 {
+    jQuery.noConflict();
     var username = getCookie("username");
     //var projectID = getURLParameter("pid");
     if(username != '')
     {
-        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && jQuery('#industry-link').length)
         {
-            $('#industry-link').remove();
-            $('#users-link').remove();
+            jQuery('#industry-link').remove();
+            jQuery('#users-link').remove();
         }
         
-        refreshCartDropdown();
+        refreshCartDropdownForCalculator();
         
-        $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+        jQuery.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
@@ -6840,8 +6841,8 @@ function prepareCalculator()
                         lastName = "Anderson";
                     }*/
                     
-                    $("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
-                    $("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
+                    jQuery("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
+                    jQuery("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
                 }
             }
         });
@@ -6927,3 +6928,43 @@ function saveToExcel(tableID){
        var html = htmltable.outerHTML;
        window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
     }
+    
+function refreshCartDropdownForCalculator()
+{
+    jQuery.noConflict();
+    var username = getCookie("username");
+    if(username != '')
+    {
+        jQuery.ajax({url: restURL, data: {'command':'getCartDropdownData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var totalContent = info.total_content;
+                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(0));
+                        
+                        var missionCount = 0;
+                        var keywordCount = 0;
+                        var projectManagementCount = 0;
+                        
+                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        
+                        if(totalContent > 0)
+                        {
+                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            missionCount = info.missions;
+                            keywordCount = info.keywords;
+                            projectManagementCount = info.project_management;
+                        }
+                        
+                        jQuery("#cart-image").attr('src',iconSrc);
+                        jQuery("#cart-total-pieces").html(totalContent);
+                        jQuery("#cart-total-missions").html(missionCount);
+                        jQuery("#cart-total-keywords").html(keywordCount);
+                        jQuery("#cart-total-project-mgmt").html(projectManagementCount);
+                        jQuery("#cart-total-cost").html("$"+totalCost);
+                    }
+                }
+            });
+    }
+}

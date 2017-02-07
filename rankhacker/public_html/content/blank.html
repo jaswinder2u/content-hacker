@@ -59,18 +59,6 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="http://client-resource-center.com/js/crcframe.min.js" type="text/javascript"> </script>
-    
-    <style>
-        #crccontent_frame_part div {
-            margin-bottom:0 !important;
-            margin-top:80px !important;
-        }
-        
-        #crccontent_frame_part {
-            margin-left:0 !important;
-        }
-    </style>
     
 </head>
 
@@ -94,12 +82,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='../keywordhacker/dashboard.html';">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
             <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
             <li class="active">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
                 <ul class="dropdown-menu" id="account-dropdown">
-                    <li><a href="../keywordhacker/salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
                     <li><a href="../content/">Content Strategy Center</a></li>
                     <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
@@ -132,7 +120,18 @@
     </nav>
 </div>
     
-    <div style="width:100%;height:100%;" id="crccontent_frame_part"></div>
+
+<!-- =========================
+     HEADER
+============================== -->
+<section id="header" class="blurable">
+    <div id="report-bg" class="piece "></div>
+    <div class="overlay interface-outer">
+      <div class="container">
+        
+        </div>
+    </div>
+</section>
 
 
 <!-- =========================
