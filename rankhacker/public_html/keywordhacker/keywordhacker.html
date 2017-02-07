@@ -338,12 +338,12 @@
                                         
                                         <div class="add-custom-keyword-outer" id="new-phrase-container" style="display:none;">
                                             <input type="hidden" id="keyword-count" value="0"/>
-                                            <div class="suggest-keywords-list">
+                                            <div class="add-keywords-list">
                                                 <ul id="ctc">
 
                                                 </ul>
                                             </div>
-                                            <div class="suggest-keywords-list">
+                                            <div class="add-keywords-list">
                                                 <div id="submit-button-block">
                                                     <a class="orange-btn btn pull-left" onclick="recalculateProject();" id="add-keywords-button" style="opacity:0.0;">ADD 0 KEYWORDS</a>
                                                 </div>
@@ -351,7 +351,7 @@
                                         </div>
                                         
                                         
-                                        <div class="suggest-keywords-list" style="margin-top:30px;">
+                                        <div class="suggest-keywords-list-1" style="margin-top:30px;">
                                             <p class="suggest-keywords-label">+ Click to Add Suggested Keywords</p>
                                             <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
                                             <input type="checkbox" class="read-more-state" id="post-2"/>
@@ -364,8 +364,8 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="suggest-keywords-list" style="margin-top:30px;">
-                                            <p class="suggest-keywords-label">+ Click to Add Suggested Keywords</p>
+                                        <div class="suggest-keywords-list-2" style="margin-top:30px;">
+                                            <p class="suggest-keywords-label">+ Click to Add Niche Suggested Keywords</p>
                                             <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
                                             <input type="checkbox" class="read-more-state" id="post-3"/>
                                                 <ul id="altSuggestedKeywordsList" class="read-more-wrap">
@@ -698,8 +698,7 @@
             }*/
         });
         
-        $(".keyword-phraser-row-outer .suggest-keywords-list ul ").on("click", "li", function () {
-            
+        $(".keyword-phraser-row-outer .suggest-keywords-list-1 ul ").on("click", "li", function () {
             var returnData = $('#json').val();
             var info = JSON.parse(returnData);
 
@@ -794,7 +793,107 @@
                 //		$(parent_id+" .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer label").attr('for','chk-content-'+text_of_li_new+parent_get);
 
                 //Here's where we add the keyword to the list
-                addKeywordInReport(text_of_li);
+                addKeywordInReport(text_of_li,'1');
+            }
+            
+        });
+        
+        $(".keyword-phraser-row-outer .suggest-keywords-list-2 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+                //jQuery('.phraser-accordion-outer .keyword-phraser-row').removeClass('active');
+                //jQuery('.phraser-accordion-outer .keyword-phraser-row .collapse').removeClass('in');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+
+                //$("#template .keyword-phraser-row").clone().appendTo(parent_id + " .phraser-accordion-outer");
+                //$(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child .keyword-phraser-tittle h2 a").html(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                /*jQuery(parent_id+" .phraser-accordion-outer .keyword-phraser-row .keyword-phraser-tittle a").on('click', function(){
+                 //jQuery('.phraser-accordion-outer .keyword-phraser-row').removeClass('active');
+                 //jQuery('.phraser-accordion-outer .keyword-phraser-row .keyword-phraser-tittle a').removeClass('collapsed');
+                 //jQuery('.phraser-accordion-outer .keyword-phraser-row .collapse').removeClass('in');
+                 var href_val = jQuery(this).attr("aria-controls");
+
+                 //jQuery('.phraser-accordion-outer .keyword-phraser-row .keyword-phraser-tittle a').toggleClass('collapsed');
+                 jQuery(this).toggleClass('collapsed');
+                 //if(jQuery(this).hasClass('collapsed')){
+
+                 //}
+                 jQuery('.phraser-accordion-outer .keyword-phraser-row').removeClass('active');
+                 //jQuery('.phraser-accordion-outer .keyword-phraser-row .keyword-phraser-tittle a').removeClass('collapsed');
+                 jQuery('.phraser-accordion-outer .keyword-phraser-row .collapse').removeClass('in');
+                 jQuery(this).parents(".keyword-phraser-row").addClass('active');
+                 //jQuery(this).parents(".keyword-phraser-row").children(".panel-collapse.collapse").addClass('in');
+
+
+                 });*/
+                //	..attr('id', 'chk-content-'+text_of_li_new+parent_get);
+
+
+    //			$(parent_id+" .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer input").attr('id', 'chk-content-'+text_of_li_new+parent_get);
+                //		$(parent_id+" .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer label").attr('for','chk-content-'+text_of_li_new+parent_get);
+
+                //Here's where we add the keyword to the list
+                addKeywordInReport(text_of_li,'2');
             }
             
         });
@@ -917,7 +1016,7 @@
             else
             {
                 //Here's where we add the keyword to the list
-                addKeywordInReport(url_val);
+                addKeywordInReport(url_val,'0');
             }
                 
         });

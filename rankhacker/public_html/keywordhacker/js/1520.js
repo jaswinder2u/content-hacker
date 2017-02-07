@@ -3588,7 +3588,7 @@ function toggleReadMore(num)
     });
 }*/
 
-function addKeywordInReport(keyword)
+function addKeywordInReport(keyword,num)
 {
     if(keyword.trim() !== '')
     {
@@ -3599,7 +3599,10 @@ function addKeywordInReport(keyword)
             var currentKeywordCount = $('#keyword-count').val();
             var existingKeywords = $('#ctc').html();
             var newKeywordCount = parseInt(currentKeywordCount)+1;
-            var newKeywords = existingKeywords + "<li id=\"keyword"+newKeywordCount+"\">"+kwArray[i].trim()+"<span style=\"padding:5px;color:#ec1c24;font-weight:bold;cursor:pointer;\" id=\"remove-keyword"+newKeywordCount+"\" title=\"Remove\" onclick=\"removeKeywordInReport(this);\">X</span></li>";
+            var newKeywords = existingKeywords + "<li data-type=\""+num+"\" id=\"keyword"+newKeywordCount+"\">"+kwArray[i].trim()+"<span style=\"padding:5px;color:#ec1c24;font-weight:bold;cursor:pointer;\" id=\"remove-keyword"+newKeywordCount+"\" title=\"Remove\" onclick=\"removeKeywordInReport(this);\">X</span></li>";
+
+            
+            
             $('#ctc').html(newKeywords);
             $('#new-phrase-container').show();
 
@@ -3629,25 +3632,25 @@ function removeKeywordInReport(element)
     var id = element.getAttribute('id').replace('remove-keyword','');
     var idValue = parseInt(id);
     
+    var dataType = $('#keyword'+idValue).attr('data-type');
+
     var keywordContent = $('#keyword'+idValue).html();
         keywordContent = keywordContent.replace("<span style=\"padding:5px;color:#ec1c24;font-weight:bold;cursor:pointer;\" id=\"remove-keyword"+idValue+"\" title=\"Remove\" onclick=\"removeKeywordInReport(this);\">X</span>","");
         keywordContent = keywordContent.trim();
     $('#keyword'+idValue).remove();
-    
     //Add it to the list of suggested in case they want it back
-    if(keywordContent.includes("data-type=\"1\""))
+    if(dataType == '1')
     {
         var suggestedList = $('#suggestedKeywordsList').html();
         var stringToAdd = "<li data-type=\"1\" class=\"read-more-target\">"+keywordContent+"</li>";
         $('#suggestedKeywordsList').html(suggestedList+stringToAdd);
     }
-    else
+    else(dataType == '2')
     {
         var suggestedList = $('#altSuggestedKeywordsList').html();
         var stringToAdd = "<li data-type=\"2\" class=\"read-more-target\">"+keywordContent+"</li>";
         $('#altSuggestedKeywordsList').html(suggestedList+stringToAdd);
     }
-    
     
     
     if(idValue < currentKeywordCount)
