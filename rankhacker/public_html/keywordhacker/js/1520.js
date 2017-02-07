@@ -1,7 +1,7 @@
-var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -1247,7 +1247,7 @@ function sortKeywordCompetitors(selectedKeywordID,field)
                         "<h2>CTR<br><i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i><a class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword.\"> </a></h2>\n"+
                     "</li>\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+selectedKeywordID+"','monthly-backlinks');\">\n"+
-                        "<h2>Monthly<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
+                        "<h2>Total<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
                     "</li>\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+selectedKeywordID+"','monthly-content');\">\n"+
                         "<h2>Monthly<br>Content<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i><a class=\"info-icon\" title=\"The number of off-site content produced monthly with this keyword phrase as the topic.\"> </a></h2>\n"+
@@ -1326,6 +1326,7 @@ function sortKeywordCompetitors(selectedKeywordID,field)
             
             var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
             var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+            var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
             var competitorContentCountHTML = "";
             var competitorMonthlyBacklinksHTML = "";
             if(competitorPowerLevel < 0 && (keywordStatus == "hacking" || keywordStatus == "adding") && competitorActive == 1)
@@ -1351,7 +1352,8 @@ function sortKeywordCompetitors(selectedKeywordID,field)
             }
             else
             {
-                competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                //competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
             }
             
             /*if(competitorPowerLevel > 9 && competitorActive == 1)
@@ -2120,7 +2122,7 @@ function displayProjectInfo(field,sort)
                     "</li>\n"+
                     //"<li class=\"monthly-organic-info col-lg-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content','"+totalPowerLevel+"','"+avgRank+"','"+avgCTR+"','"+clientCTR+"','"+clientRanking+"','"+clientURL+"','"+clientPowerLevel+"','"+powerLevelGoal+"');\">\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-backlinks');\">\n"+
-                        "<h2>Monthly<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
+                        "<h2>Total<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
                     "</li>\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content');\">\n"+
                         "<h2>Monthly<br>Content<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i><a class=\"info-icon\" title=\"The number of off-site content produced monthly with this keyword phrase as the topic.\"> </a></h2>\n"+
@@ -2210,6 +2212,7 @@ function displayProjectInfo(field,sort)
             //var competitorPowerLevel = thisCompetitor.powerLevel;
             var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
             var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+            var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
             var competitorContentCountHTML = "";
             var competitorMonthlyBacklinksHTML = "";
             if(competitorPowerLevel < 0 && keywordStatus == "hacking" && competitorActive == 1)
@@ -2237,7 +2240,8 @@ function displayProjectInfo(field,sort)
             }
             else
             {
-                competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                //competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
             }
             
             /*if(competitorPowerLevel > 9 && competitorActive == 1)
@@ -2478,14 +2482,29 @@ function displayProjectInfo(field,sort)
     {
         if(i<35)
         {
-            suggestedKeywordsHTML += "<li>"+suggestedKeywords[i]+"</li>";
+            suggestedKeywordsHTML += "<li data-type=\"1\">"+suggestedKeywords[i]+"</li>";
         }
         else
         {
-            suggestedKeywordsHTML += "<li class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
+            suggestedKeywordsHTML += "<li data-type=\"1\" class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
         }
     }
     $("#suggestedKeywordsList").html(suggestedKeywordsHTML);
+    
+    var altSuggestedKeywordsHTML = "";
+    var altSuggestedKeywords = info.altSuggestedKeywords;
+    for(var i=0; i<altSuggestedKeywords.length; i++)
+    {
+        if(i<35)
+        {
+            altSuggestedKeywordsHTML += "<li data-type=\"2\">"+altSuggestedKeywords[i]+"</li>";
+        }
+        else
+        {
+            altSuggestedKeywordsHTML += "<li data-type=\"2\" class=\"read-more-target\">"+altSuggestedKeywords[i]+"</li>";
+        }
+    }
+    $("#altSuggestedKeywordsList").html(altSuggestedKeywordsHTML);
     
     //$("#keyword-phraser-collapse"+firstCounter).addClass("in");
     //$("#keyword-phraser-heading"+firstID).find(".keyword-row-arrow").attr("src","images/keyword_row_arrow_yellow.png");
@@ -2861,6 +2880,7 @@ function refreshProjectInfo(keywordCounter)
             var competitorPositionRank = thisCompetitor.positionRank;
             var competitorPowerLevel = thisCompetitor.powerLevel;
             var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+            var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
             var competitorContentCountHTML = "";
             var competitorMonthlyBacklinksHTML = "";
             var competitorCTR = Math.round(thisCompetitor.traffic);
@@ -2894,7 +2914,8 @@ function refreshProjectInfo(keywordCounter)
             }
             else
             {
-                competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                //competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
             }
             
             /*var cognitiveStarted = thisCompetitor.cognitiveStarted;
@@ -3541,20 +3562,20 @@ function getShowLinkText(currentText) {
     return newText;
 }
 
-function toggleReadMore()
+function toggleReadMore(num)
 {
-    var content = $('#show-more-text').html();
+    var content = $('#show-more-text-'+num).html();
     if(content.includes("SHOW MORE"))
     {
-        $('#show-more-text').html("SHOW FEWER");
-        $('#read-more-button-label').removeClass("read-more-trigger");
-        $('#read-more-button-label').addClass("read-less-trigger");
+        $('#show-more-text-'+num).html("SHOW FEWER");
+        $('#read-more-button-label-'+num).removeClass("read-more-trigger");
+        $('#read-more-button-label-'+num).addClass("read-less-trigger");
     }
     else
     {
-        $('#show-more-text').html("SHOW MORE");
-        $('#read-more-button-label').removeClass("read-less-trigger");
-        $('#read-more-button-label').addClass("read-more-trigger");
+        $('#show-more-text-'+num).html("SHOW MORE");
+        $('#read-more-button-label-'+num).removeClass("read-less-trigger");
+        $('#read-more-button-label-'+num).addClass("read-more-trigger");
     }
 }
 
@@ -3612,10 +3633,22 @@ function removeKeywordInReport(element)
         keywordContent = keywordContent.replace("<span style=\"padding:5px;color:#ec1c24;font-weight:bold;cursor:pointer;\" id=\"remove-keyword"+idValue+"\" title=\"Remove\" onclick=\"removeKeywordInReport(this);\">X</span>","");
         keywordContent = keywordContent.trim();
     $('#keyword'+idValue).remove();
+    
     //Add it to the list of suggested in case they want it back
-    var suggestedList = $('#suggestedKeywordsList').html();
-    var stringToAdd = "<li class=\"read-more-target\">"+keywordContent+"</li>"
-    $('#suggestedKeywordsList').html(suggestedList+stringToAdd);
+    if(keywordContent.includes("data-type=\"1\""))
+    {
+        var suggestedList = $('#suggestedKeywordsList').html();
+        var stringToAdd = "<li data-type=\"1\" class=\"read-more-target\">"+keywordContent+"</li>";
+        $('#suggestedKeywordsList').html(suggestedList+stringToAdd);
+    }
+    else
+    {
+        var suggestedList = $('#altSuggestedKeywordsList').html();
+        var stringToAdd = "<li data-type=\"2\" class=\"read-more-target\">"+keywordContent+"</li>";
+        $('#altSuggestedKeywordsList').html(suggestedList+stringToAdd);
+    }
+    
+    
     
     if(idValue < currentKeywordCount)
     {
@@ -4513,9 +4546,9 @@ function restoreKWHCard(projectID)
     //$('#rh-module-'+projectID).css('opacity','1.0');
 }
 
-function clickReadMoreTrigger()
+function clickReadMoreTrigger(num)
 {
-    $("#read-more-button-label").click();
+    $("#read-more-button-label-"+num).click();
 }
 
 function getUserInfo()
@@ -5294,7 +5327,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
                     "</li>\n"+
                     //"<li class=\"monthly-organic-info col-lg-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content','"+totalPowerLevel+"','"+avgRank+"','"+avgCTR+"','"+clientCTR+"','"+clientRanking+"','"+clientURL+"','"+clientPowerLevel+"','"+powerLevelGoal+"');\">\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-backlinks');\">\n"+
-                        "<h2>Monthly<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
+                        "<h2>Total<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
                     "</li>\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content');\">\n"+
                         "<h2>Monthly<br>Content<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i><a class=\"info-icon\" title=\"The number of off-site content produced monthly with this keyword phrase as the topic.\"> </a></h2>\n"+
@@ -5384,6 +5417,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
             //var competitorPowerLevel = thisCompetitor.powerLevel;
             var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
             var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+            var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
             var competitorContentCountHTML = "";
             var competitorMonthlyBacklinksHTML = "";
             if(competitorPowerLevel < 0 && keywordStatus == "hacking" && competitorActive == 1)
@@ -5411,7 +5445,8 @@ function displayKeywordAccordian(keywordID,keywordCounter)
             }
             else
             {
-                competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                //competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
             }
             
             /*if(competitorPowerLevel > 9 && competitorActive == 1)
@@ -6266,7 +6301,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
                     "</li>\n"+
                     //"<li class=\"monthly-organic-info col-lg-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content','"+totalPowerLevel+"','"+avgRank+"','"+avgCTR+"','"+clientCTR+"','"+clientRanking+"','"+clientURL+"','"+clientPowerLevel+"','"+powerLevelGoal+"');\">\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-backlinks');\">\n"+
-                        "<h2>Monthly<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
+                        "<h2>Total<br>Backlinks<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i></h2>\n"+
                     "</li>\n"+
                     "<li class=\"monthly-organic-info col-xs-2\" style=\"cursor:pointer;\" onclick=\"sortKeywordCompetitors('"+keywordID+"','monthly-content');\">\n"+
                         "<h2>Monthly<br>Content<i class=\"fa fa-sort\" style=\"padding-left:5px;color:#8c8c8c;\"></i><a class=\"info-icon\" title=\"The number of off-site content produced monthly with this keyword phrase as the topic.\"> </a></h2>\n"+
@@ -6356,6 +6391,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
             //var competitorPowerLevel = thisCompetitor.powerLevel;
             var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
             var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+            var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
             var competitorContentCountHTML = "";
             var competitorMonthlyBacklinksHTML = "";
             if(competitorPowerLevel < 0 && keywordStatus == "hacking" && competitorActive == 1)
@@ -6383,7 +6419,8 @@ function refreshKeywordInfo(returnData,field,keywordID)
             }
             else
             {
-                competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                //competitorMonthlyBacklinksHTML = competitorMonthlyBacklinks;
+                competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
             }
             
             /*if(competitorPowerLevel > 9 && competitorActive == 1)
@@ -6796,14 +6833,29 @@ function refreshKeywordSuggestions()
                     {
                         if(i<35)
                         {
-                            suggestedKeywordsHTML += "<li>"+suggestedKeywords[i]+"</li>";
+                            suggestedKeywordsHTML += "<li data-type=\"1\">"+suggestedKeywords[i]+"</li>";
                         }
                         else
                         {
-                            suggestedKeywordsHTML += "<li class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
+                            suggestedKeywordsHTML += "<li data-type=\"1\" class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
                         }
                     }
                     $("#suggestedKeywordsList").html(suggestedKeywordsHTML);
+                    
+                    var altSuggestedKeywordsHTML = "";
+                    var altSuggestedKeywords = info.altSuggestedKeywords;
+                    for(var i=0; i<altSuggestedKeywords.length; i++)
+                    {
+                        if(i<35)
+                        {
+                            altSuggestedKeywordsHTML += "<li data-type=\"2\">"+altSuggestedKeywords[i]+"</li>";
+                        }
+                        else
+                        {
+                            altSuggestedKeywordsHTML += "<li data-type=\"2\" class=\"read-more-target\">"+altSuggestedKeywords[i]+"</li>";
+                        }
+                    }
+                    $("#altSuggestedKeywordsList").html(altSuggestedKeywordsHTML);
                 }
             }
         });
