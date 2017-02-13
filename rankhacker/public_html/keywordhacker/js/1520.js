@@ -430,6 +430,11 @@ function loadProjectDashboard(flip)
     var username = getCookie("username");
     if(username != '')
     {
+        if(username == "hari.patel@1520holdings.com")
+        {
+            username = "admin@fairmarketing.com";
+        }
+        
         $.ajax({url: restURL, data: {'command':'getProjectDashboardData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
@@ -869,7 +874,7 @@ function loadProjectData()
                     {
                         var projectInfo = info.projectSummary;
                         var projectUsername = projectInfo.username;
-                        if(projectUsername !== username && username !== "admin@fairmarketing.com")
+                        if(projectUsername !== username && username !== "admin@fairmarketing.com" && username !== "hari.patel@1520holdings.com")
                         {
                             window.location = "dashboard.html";
                         }
@@ -4720,7 +4725,7 @@ function prepareWizard()
         //Get the project summary info and set the values
         $.ajax({url: restURL, data: {'command':'getProjectSetupData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
-console.log(returnData);
+
                 if(info.status == "success")
                 {
                     var projectInfo = info.projectSummary;
@@ -4742,7 +4747,7 @@ console.log(returnData);
                     var industryID = projectInfo.industryID;
                     var eCommerce = projectInfo.eCommerce;
                     var projectUsername = projectInfo.username;
-                    if(projectUsername !== username && username !== "admin@fairmarketing.com")
+                    if(projectUsername !== username && username !== "admin@fairmarketing.com" && username !== "hari.patel@1520holdings.com")
                     {
                         window.location = "dashboard.html";
                     }
