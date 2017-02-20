@@ -1,7 +1,7 @@
-var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -14,6 +14,32 @@ if(currUser != "")
     }
 }
 //var maxDeletedKeywords = 50;
+
+$(".show-more a").each(function() {
+    var $link = $(this);
+    var $content = $link.parent().prev("div.text-content");
+
+    var visibleHeight = $content[0].clientHeight;
+    var actualHide = $content[0].scrollHeight - 1;
+
+    if (actualHide > visibleHeight) {
+        $link.show();
+    } else {
+        $link.hide();
+    }
+});
+
+$(".show-more a").on("click", function() {
+    var $link = $(this);
+    var $content = $link.parent().prev("div.text-content");
+    var linkText = $link.text();
+
+    $content.toggleClass("short-text, full-text");
+
+    $link.text(getShowLinkText(linkText));
+
+    return false;
+});
 
 
 var desc = false;
@@ -3529,32 +3555,6 @@ function showDeleteProject()
     document.getElementById("dimmer").style.display = "block";
 }
 
-$(".show-more a").each(function() {
-    var $link = $(this);
-    var $content = $link.parent().prev("div.text-content");
-
-    var visibleHeight = $content[0].clientHeight;
-    var actualHide = $content[0].scrollHeight - 1;
-
-    if (actualHide > visibleHeight) {
-        $link.show();
-    } else {
-        $link.hide();
-    }
-});
-
-$(".show-more a").on("click", function() {
-    var $link = $(this);
-    var $content = $link.parent().prev("div.text-content");
-    var linkText = $link.text();
-
-    $content.toggleClass("short-text, full-text");
-
-    $link.text(getShowLinkText(linkText));
-
-    return false;
-});
-
 function getShowLinkText(currentText) {
     var newText = '';
 
@@ -6791,27 +6791,7 @@ function prepareCart()
             $('#users-link').remove();
         }
         
-        $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
-                var info = JSON.parse(returnData);
-
-                if(info.status == "success")
-                {
-                    var users = info.users;
-                    var userInfo = users[0];
-
-                    var firstName = userInfo.firstName;
-                    var lastName = userInfo.lastName;
-                    var username = userInfo.username;
-                    /*if(lastName == '')
-                    {
-                        lastName = "Anderson";
-                    }*/
-                    
-                    $("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
-                    $("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:window.location='keywordhacker.html?pid="+projectID+"';\">BACK TO THE MISSION</a>");
-                }
-            }
-        });
+        refreshCartDetails();
     }
     else
     {
@@ -6871,6 +6851,49 @@ function refreshKeywordSuggestions()
 }
 
 function prepareCalculator()
+{
+    jQuery.noConflict();
+    var username = getCookie("username");
+    //var projectID = getURLParameter("pid");
+    if(username != '')
+    {
+        if(username !== 'admin@fairmarketing.com' && jQuery('#industry-link').length)
+        {
+            jQuery('#industry-link').remove();
+            jQuery('#users-link').remove();
+        }
+        
+        refreshCartDropdownForCalculator();
+        
+        jQuery.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var users = info.users;
+                    var userInfo = users[0];
+
+                    var firstName = userInfo.firstName;
+                    var lastName = userInfo.lastName;
+                    var username = userInfo.username;
+                    /*if(lastName == '')
+                    {
+                        lastName = "Anderson";
+                    }*/
+                    
+                    jQuery("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
+                    jQuery("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
+                }
+            }
+        });
+    }
+    else
+    {
+        window.location = "../index.html";
+    }
+}
+
+function prepareFAQs()
 {
     jQuery.noConflict();
     var username = getCookie("username");
@@ -7027,4 +7050,74 @@ function refreshCartDropdownForCalculator()
                 }
             });
     }
+}
+
+function refreshCartDetails()
+{
+    var username = getCookie("username");
+    if(username != '')
+    {
+        $.ajax({url: restURL, data: {'command':'getCartDropdownData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var totalContent = info.total_content;
+                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(0));
+                        
+                        var missionCount = 0;
+                        var keywordCount = 0;
+                        var projectManagementCount = 0;
+                        
+                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        
+                        if(totalContent > 0)
+                        {
+                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            missionCount = info.missions;
+                            keywordCount = info.keywords;
+                            projectManagementCount = info.project_management;
+                        }
+                        
+                        $("#cart-image").attr('src',iconSrc);
+                        $("#cart-total-pieces").html(totalContent);
+                        $("#cart-total-missions").html(missionCount);
+                        $("#cart-total-keywords").html(keywordCount);
+                        $("#cart-total-project-mgmt").html(projectManagementCount);
+                        $("#cart-total-cost").html("$"+totalCost);
+                        
+                        //Let's also update the header info since we have all of the data that we need
+                        $("#content-count").html(totalContent);
+                        $("#mission-count").html(missionCount);
+                        $("#keyword-count").html(keywordCount);
+                        $("#management-count").html(projectManagementCount);
+                        $("#total-cost").html("<sup>$</sup>"+totalCost);
+                    }
+                }
+            });
+        
+        $.ajax({url: restURL, data: {'command':'getCartDetailData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var items = info.items;
+                    for(var i=0; i<items.length; i++)
+                    {
+                        var itemInfo = items[i];
+                        
+                        
+                    }
+                }
+            }
+        });
+    }
+}
+
+function gotoCartDetail(e)
+{
+    var e = e || window.event;
+    e.preventDefault();
+    
+    window.location = '../keywordhacker/cartdetail.html';
 }

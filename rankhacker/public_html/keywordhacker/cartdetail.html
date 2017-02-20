@@ -8,7 +8,7 @@
     <!-- =========================
           BASIC PAGE INFORMATION
     ============================== -->
-    <title>RankHacker - Cart</title>
+    <title>RankHacker - The Content Intelligence Agency</title>
     <meta name="description" content="Intelligently generate an actionable content strategy complete with publication calendar to beat your competition.">
     <meta name="keywords" content="content strategy, content roadmap, content calendar">
     <meta name="author" content="fairmarketing.com">
@@ -36,9 +36,6 @@
     ============================== -->
     <link href="css_cart/bootstrap.min.css" rel="stylesheet">
     <link href="css_cart/custom-style.css" rel="stylesheet" id="theme-change">
-    
-    
-    <script src="js/1520.js?v=47"></script>
     <link href="css/1520.css?v=47" rel="stylesheet" id="theme-change">
 
    
@@ -47,16 +44,23 @@
 <!--google js file-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js_cart/jquery.matchHeight-min.js"></script>
+<script src="js/1520.js?v=47"></script>
 
 <script type="text/javascript">
 jQuery(function($){
     $('.matchheight').matchHeight();
 });
 </script>
-    
+
+<script>
+    function run(){
+        prepareCart();
+    }
+</script>
+
 </head>
 
-<body id="body" class="home ">
+<body id="body" class="home " onload="run();">
 
 
 <!-- =========================
@@ -88,7 +92,7 @@ jQuery(function($){
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="active">
                 <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
                 <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
                     <div class="cart-header">
@@ -102,11 +106,12 @@ jQuery(function($){
                     </div>
                     <div class="cart-summary">
                         <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
-                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="view cart"></span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span>
+                        </div>
                     </div>
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
                 <ul class="dropdown-menu" id="settings-dropdown">
                     <li><a href="editprofile.html">Edit Profile</a></li>
@@ -136,13 +141,13 @@ jQuery(function($){
 				<h2 class="cart-heading">CART SUMMARY</h2>
 				<div class="top-cart-summary">
 
-						<div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT</label> <span class="monthly-content-sm-value">15</span></div>
+						<div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT</label> <span class="monthly-content-sm-value" id="content-count">0</span></div>
 
 						<div class="monthly-short-info col-sm-6 col-xs-6">
 							<ul class="row">
-								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">2</span> <label>MISSIONS</label></li>
-								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">3</span> <label>KEYWORDS</label></li>
-								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">6</span> <label>PROJECT MGMT <strong class="position-relative"><i class="info-icon"></i>							
+								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="mission-count">0</span> <label>MISSIONS</label></li>
+								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="keyword-count">0</span> <label>KEYWORDS</label></li>
+								<li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="management-count">0</span> <label>PROJECT MGMT <strong class="position-relative"><i class="info-icon"></i>							
 									<div class="custom_tooltip">
 										<h2>PROJECT MGMT</h2>
 										<p>Total hours of selected project management. <br>Add project management to any mission for hands-free marketing.</p>	
@@ -152,7 +157,7 @@ jQuery(function($){
 							</ul>
 						</div>
 
-						<div class="monthly-content-amount col-sm-4 col-xs-4"> <span class="amount-mn"><sup>$</sup>3,800</span>	</div>
+						<div class="monthly-content-amount col-sm-4 col-xs-4"> <span class="amount-mn" id="total-cost"><sup>$</sup>0</span>	</div>
 
 					</div>
 
@@ -409,7 +414,7 @@ jQuery(function($){
 			<div class="terms_and_conditions-section">By proceeding you declare that you agree to the <a href="javascript:void(0);"> Terms and Conditions </a> of Rank Hacker’s monthly content creation subscription.<a href="Pay now" class="pay-now-btn">PAY NOW</a> 
 			</div>
 			
-			<div class="return_to_mission_link"> <a href="#">Return to Mission </a></div>
+			<!--<div class="return_to_mission_link"> <a href="#">Return to Mission </a></div>-->
 			
 			
 			</div>
@@ -516,7 +521,7 @@ jQuery('.cd-close-panel').on('click', function(){
 
 <script type="text/javascript" src="js_cart/bootstrap-slider.min.js"></script>   
 
-<script type="text/javascript" src="js_cart/faq-main.js"></script>
+<!--<script type="text/javascript" src="js_cart/faq-main.js"></script>-->
 
 <script>
 function openNav() {

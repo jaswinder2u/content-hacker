@@ -37,8 +37,6 @@
     <link href="css_cart/bootstrap.min.css" rel="stylesheet">
     <link href="css_cart/custom-style.css" rel="stylesheet" id="theme-change">
     <link href="css_cart/faq-style.css" rel="stylesheet" id="theme-change">
-
-    <script src="js/1520.js?v=47"></script>
     <link href="css/1520.css?v=47" rel="stylesheet" id="theme-change">
 
 
@@ -46,15 +44,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js_cart/jquery.matchHeight-min.js"></script>
 
+
+    <script src="js/1520.js?v=47"></script>
+
 <script type="text/javascript">
 jQuery(function($){
     $('.matchheight').matchHeight();
 });
 </script>
-    
+
+<script>
+    function run(){
+        prepareFAQs();
+    }
+</script>
+
 </head>
 
-<body id="body" class="home">
+<body id="body" class="home" onload="run();">
 
 
 <!-- =========================
@@ -100,7 +107,7 @@ jQuery(function($){
                     </div>
                     <div class="cart-summary">
                         <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
-                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="view cart"></span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span></div>
                     </div>
                 </div>
             </li>
