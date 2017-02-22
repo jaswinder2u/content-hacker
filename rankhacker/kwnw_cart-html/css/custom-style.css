@@ -499,28 +499,10 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project td.price-widthbox.equal-sign {padding-right: 25px;}
 
-.reveal-mark {
-	position: absolute;
-	right: 45px;
-	font-size: 30px;
-	color: #BE1E2D;
-	border: 3px solid #BE1E2D;
-	line-height: 30px;
-	padding: 5px 20px;
-	top: 50%;
-	margin-top: -25px;
-	transform: rotate(-15deg);
-}
+.reveal-mark {position: absolute;right: 45px;font-size: 30px;color: #BE1E2D;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 50%;margin-top: -25px;
+-ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
 
-
-.table-outer {
-	float: left;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-
+.table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
 
 
 
@@ -826,6 +808,10 @@ table.mission-info-table tr.add-new {text-align: center;border: 1px solid #e6e7e
 body , #site-header{min-width: 300px;overflow-x: visible;}
 
 .keyword-networth-project tr.table-heading th {width: 100%;}
+
+.keyword-networth-project tr.table-heading th {
+	width: 100%;
+}
 
 }
 
