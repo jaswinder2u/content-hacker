@@ -302,11 +302,11 @@ line-height: normal;margin: 0 0 10px;padding: 0;text-transform: uppercase !impor
 
 #keyword-networth .page-info {color: #231f20;float: left;font-family: "Montserrat",sans-serif !important;font-size: 24px;font-weight: normal;line-height: normal;margin: 0;text-align: left;text-transform: none;width: 100%;}
 
-#keyword-networth #shadow {background-image: url("../images/shadow.png");background-position: center top;background-repeat: no-repeat;background-size: 100% auto;float: left;height: 30px;width: 100%;}
+#keyword-networth #shadow {background-image: url("../images_cart/shadow.png");background-position: center top;background-repeat: no-repeat;background-size: 100% auto;float: left;height: 30px;width: 100%;}
 
 #keyword-networth {float: left;width: 100%;margin: 50px 0;padding: 0;}
 
-.black_eagle-rh {background-image: url("../images/black-eagle-icon.png");background-position: center center;background-repeat: no-repeat;background-size: 100% auto;border: medium none !important;float: left;height: 34px;margin: -5px 10px 0 0;padding: 0 !important;position: relative;width: 45px;}
+.black_eagle-rh {background-image: url("../images_cart/black-eagle-icon.png");background-position: center center;background-repeat: no-repeat;background-size: 100% auto;border: medium none !important;float: left;height: 34px;margin: -5px 10px 0 0;padding: 0 !important;position: relative;width: 45px;}
 
 .project-breadcomb-outer {float: left;width: 100%;margin: 10px 0 8px;padding: 0;}
 
@@ -388,7 +388,7 @@ line-height: normal;margin: 0 0 10px;padding: 0;text-transform: uppercase !impor
 
 .project-date-card {color: rgb(128, 128, 131);float: left;font-size: 14px;font-weight: 600;line-height: 20px;width: auto;}
 
-.eagle-icon {background-image: url("../images/eggle-icon.png");background-position: center 4px;background-repeat: no-repeat;background-size: 100% auto;height: 25px;margin-right: 8px !important;width: 25px;float: left;}
+.eagle-icon {background-image: url("../images_cart/eggle-icon.png");background-position: center 4px;background-repeat: no-repeat;background-size: 100% auto;height: 25px;margin-right: 8px !important;width: 25px;float: left;}
 
 .project-status-card {background-color: #c9e4ef;border-radius: 3px;color: #231f20 !important;float: right;font-size: 13px;font-weight: 600;letter-spacing: 2px;margin: 0;padding: 2px 10px 4px;text-decoration: none;text-transform: uppercase;width: auto;}
 
@@ -414,7 +414,7 @@ line-height: normal;margin: 0 0 10px;padding: 0;text-transform: uppercase !impor
 
 
 .keyword-networth-project td.project-name-ot::after {
-background-image: url("../images/arrow-process.png");content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
+background-image: url("../images_cart/arrow-process.png");content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
 
 .content-goal-info .title {background-color: #D0D2D3;font-size: 14px;font-weight: bold;color: #26A9E0;float: left;width: 100%;margin: 0;padding: 8px 10px;line-height: normal;}
 
@@ -455,17 +455,17 @@ background-image: url("../images/arrow-process.png");content: "";background-repe
 .equal-sign::after {content: "=";}
 
 .blueproject-eagle-icon, .revealsmall-icon, .checked-icon {
-background-image: url("../images/content-goal-icons.png");background-position: center 0;background-repeat: no-repeat;background-size: auto auto;height: 25px;margin-right: 8px !important;width: 25px;float: none;display: inline-block;position: relative;top: 7px;margin-left: 5%;}
+background-image: url("../images_cart/content-goal-icons.png");background-position: center 0;background-repeat: no-repeat;background-size: auto auto;height: 25px;margin-right: 8px !important;width: 25px;float: none;display: inline-block;position: relative;top: 7px;margin-left: 5%;}
 
 .blueproject-eagle-icon {background-position: center -44px;}
 
 .revealsmall-icon {background-position: center -20px;width: 45px;top: 5px;}
 
-.tip-note {float: left;width: 100%;margin: 15px 0 0 0;padding: 0 0 0 70px;background-image: url("../images/tip-logo.png");background-position:left 2px;min-height: 36px;background-repeat: no-repeat;font-size: 14px;color: #58595B;line-height: normal;}
+.tip-note {float: left;width: 100%;margin: 15px 0 0 0;padding: 0 0 0 70px;background-image: url("../images_cart/tip-logo.png");background-position:left 2px;min-height: 36px;background-repeat: no-repeat;font-size: 14px;color: #58595B;line-height: normal;}
 
 .info-block.calculator-lt {padding: 20px 0;border-top: 3px solid #E6E7E8;border-bottom: 3px solid #E6E7E8;}
 
-.calculator-logo {padding: 0 0 0 45px !important;background-image: url("../images/calculator-icons.png") !important;background-position:left top !important;min-height: 36px !important;background-repeat: no-repeat !important;}
+.calculator-logo {padding: 0 0 0 45px !important;background-image: url("../images_cart/calculator-icons.png") !important;background-position:left top !important;min-height: 36px !important;background-repeat: no-repeat !important;}
 
 .content-goal-table {float: left;width: 100%;margin: 0;padding: 0;}
 
@@ -487,7 +487,7 @@ background-image: url("../images/content-goal-icons.png");background-position: c
 
 .keyword-networth-project th.price-widthbox.equal-sign, .keyword-networth-project th.price-widthbox:last-child {padding-left: 12px;}
 
-.addincart-icon, .cart-disable-icon, .cart-full-icon {float: left;/* width: 100%; */margin: 0;padding: 0;width: 23px;height: 26px;background-image:url(../images/cart-icons-process.png);background-position: center 0;}
+.addincart-icon, .cart-disable-icon, .cart-full-icon {float: left;/* width: 100%; */margin: 0;padding: 0;width: 23px;height: 26px;background-image:url(../images_cart/cart-icons-process.png);background-position: center 0;}
 
 .cart-disable-icon {background-position: center -25px;}
 
