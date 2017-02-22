@@ -115,7 +115,7 @@ table.mission-info-table tr th:first-child{padding-left:0;}
 
 table.mission-info-table tr td {border: 1px solid #e6e7e8;color: #58595b;font-size: 14px;font-weight: normal;font-family: "Roboto",sans-serif;padding: 8px;}
 
-table.mission-info-table tr td.number , table.mission-info-table tr td.delect-row{text-align: center;width: 35px;}
+table.mission-info-table tr td.number , table.mission-info-table tr td.delect-row{text-align: center;width: 55px;}
 
 table.mission-info-table tr td.delect-row i {color: #58595b;font-size: 14px;}
 
