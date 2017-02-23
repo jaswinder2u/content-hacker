@@ -62,7 +62,7 @@
     
 </head>
 
-<body id="body" class="page-loading home noisy" onload="getUserInfo();">
+<body id="body" class="page-loading home noisy" onload="processThankYou();">
 
 <!-- =========================
      MAIN MENU
@@ -93,7 +93,7 @@
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="active">
                 <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
                 <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
                     <div class="cart-header">
@@ -111,7 +111,8 @@
                     </div>
                 </div>
             </li>
-            <li class="active">
+            <!--<li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>-->
+            <li>
                 <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
                 <ul class="dropdown-menu" id="settings-dropdown">
                     <li><a href="editprofile.html">Edit Profile</a></li>
@@ -123,15 +124,16 @@
       </div>
     </nav>
 </div>
+    
 
 <!-- =========================
      HEADER
 ============================== -->
 <section id="header" class="blurable">
-    <div id="report-bg" class="piece "></div>
+    <!--<div id="report-bg" class="piece "></div>-->
     <div class="overlay interface-outer">
       <div class="container">
-        <div class="projects">
+        <div class="projects" id="main-page-content">
             <div class="row row-v-spacing"></div>
             <div id="dashboard-header" class="block-css">
                         <div class="head-info-box">
@@ -142,7 +144,7 @@
                     <div class="col-lg-6 view-option-outer pull-left">
                         <ul>
                             <li class="black_eagle-rh"></li>
-                            <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">Edit Profile</a></li>
+                            <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">PURCHASE COMPLETE</a></li>
                             <!--li class="active"><a href="#">Project View </a> </li>
                             <li><a href="#"> Research View</a> </li-->
                         </ul>
@@ -173,72 +175,24 @@
 
                     <div class="block-css" id="setup-box-outer">
                         <form>
-                            <h4 class="setup-heading" style="color:#005cb9;">Your Profile Information</h4>
+                            <h4 class="setup-heading" style="color:#005cb9;">YOUR SUBSCRIPTION HAS BEEN ADDED!</h4>
                             
                             <div class="row project-setup-input">
-                                <div class="col-md-2 col-md-offset-1">
-                                       <label class="mixed-use-paragraph">Email Address</label>
-                                </div>
-                                <div class="col-md-4">
-                                     <input type="text" id="email-address" readonly class="static-text">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <label class="mixed-use-paragraph text-left" style="line-height:28px;">
+                                        Thank you for your subscription purchase. A member of the RankHacker team will be contacting you shortly to review your order and address and questions or concerns you may have.
+                                    </label>
                                 </div>
                             </div>
                             
                             <div class="row">&nbsp;</div>
                             
-                            <div class="row project-setup-input">
-                                <div class="col-md-2 col-md-offset-1">
-                                       <label class="mixed-use-paragraph">First Name</label>
-                                </div>
-                                <div class="col-md-4">
-                                     <input type="text" id="first_name" required placeholder="Your first name">
-                                </div>
-                            </div>
-                            
-                            <div class="row">&nbsp;</div>
-                            
-                            <div class="row project-setup-input">
-                                <div class="col-md-2 col-md-offset-1">
-                                       <label class="mixed-use-paragraph">Last Name</label>
-                                </div>
-                                <div class="col-md-4">
-                                     <input type="text" id="last_name" required placeholder="Your last name">
-                                </div>
-                            </div>
-                            
-                            <div class="row">&nbsp;</div>
-                            
-                            <div class="row project-setup-input">
-                                <div class="col-md-2 col-md-offset-1">
-                                       <label class="mixed-use-paragraph">Current Password</label>
-                                </div>
-                                <div class="col-md-4">
-                                     <input type="password" id="curr_password" placeholder="Your existing password">
-                                </div>
-                            </div>
-                            
-                            <div class="row">&nbsp;</div>
-                            
-                            <div class="row project-setup-input">
-                                <div class="col-md-2 col-md-offset-1">
-                                       <label class="mixed-use-paragraph">New Password</label>
-                                </div>
-                                <div class="col-md-4">
-                                     <input type="password" id="new_password" placeholder="New password">
-                                </div>
-                            </div>
-                                                        
                             <div class="project-setup-input block-css" style="border-bottom:2px solid #595959;margin:25px 0;"></div>
-
-                            <div class="row project-setup-input text-center col-md-12">
-                                <a class="orange-btn btn" onclick="updateUserInfo();">UPDATE</a>
+                            
+                            <div class="row project-setup-input text-center col-md-12" id="back-button">
+                                <a class="orange-btn btn" onclick="gotoKHDashboard();">BACK TO THE MISSIONS</a>
                             </div>
-                            <div class="row project-setup-input text-center col-md-12">
-                                <br/>
-                                <span id="login-response">
 
-                                </span>
-                            </div>
                         </form>
                         
                         
@@ -247,8 +201,8 @@
                         
                     </div>
                 </div>
-            </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -273,7 +227,7 @@
 		 <!--Footer left section start here-->
             <div class="footer-link col-sm-4">
                   <ul class=""> 
-                <li> <a href="faq.html">FAQs</a></li>
+                <li> <a href="faq.html">FAQs</a>
                 <!--<li> <a href="#">What is this?</a></li>-->
                 <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
               </ul>
@@ -283,7 +237,7 @@
 		<!--copyright section start here-->		
             <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
 			<!--copyright section close here-->
-		      
+                        
             <div class="account-section text-right col-sm-4">
                 <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
             </div>

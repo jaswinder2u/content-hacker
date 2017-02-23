@@ -1,5 +1,5 @@
-/*var restURL = "http://fairmarketing.cloudapp.net/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://fairmarketing.cloudapp.net/rhstorefront_v2/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
 var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
 var rhURL = "http://localhost:8383/rankhacker/";
 
@@ -7186,6 +7186,27 @@ function refreshCartDetails()
                     $("#cart-details").html(cartHTML);
                     
                     
+                    //Also grab the ChargeBee info and update the pay now button target
+                    var planURL = info.chargeBeePage;
+                    var chargeBeeAddons = info.chargeBeeAddons;
+                    for(var c=0; c<chargeBeeAddons.length; c++)
+                    {
+                        var thisAddon = chargeBeeAddons[c];
+                        var thisID = thisAddon.chargeBeeID;
+                        var thisQty = thisAddon.quantity;
+                        
+                        if(c==0)
+                        {
+                            planURL += "?addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                        }
+                        else
+                        {
+                            planURL += "&addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                        }
+                    }
+                    
+                    $("#pay-now-button").prop("href",planURL);
+                    
                 }
             }
         });
@@ -7272,4 +7293,23 @@ function updateCartItem(itemID)
             refreshCartDetails();
         }
     });
+}
+
+function processThankYou()
+{
+    //Grab the subscription ID from the ChargeBee response and update the database with the appropriate info
+    var username = getURLParameter("cust_email");
+    var customerID = getURLParameter("cust_id");
+    var subscriptionID = getURLParameter("sub_id");
+    if(username != "" && subscriptionID != "" && customerID != "")
+    {
+        //addToCart(keywordID);
+        $.ajax({url: restURL, data: {'command':'saveCustomerSubscriptionID','username':username,'subscriptionid':subscriptionID,'customerid':customerID}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                
+            }
+        });
+    }
+    
+    prepareCart();
 }
