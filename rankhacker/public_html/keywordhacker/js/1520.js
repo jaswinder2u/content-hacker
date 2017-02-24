@@ -2513,7 +2513,17 @@ function displayProjectInfo(field,sort)
     $('#keyword-phraser-accordion').html(accordianHTML);
     
     var suggestedKeywordsHTML = "";
-    var suggestedKeywords = info.suggestedKeywords;
+    var suggestedKeywords;
+    var grSuggestedKeywords = info.grSuggestedKeywords;
+    if(grSuggestedKeywords.length > 0)
+    {
+        suggestedKeywords = info.grSuggestedKeywords;
+    }
+    else
+    {
+        suggestedKeywords = info.suggestedKeywords;
+    }
+    
     for(var i=0; i<suggestedKeywords.length; i++)
     {
         if(i<35)
@@ -7306,10 +7316,23 @@ function processThankYou()
         //addToCart(keywordID);
         $.ajax({url: restURL, data: {'command':'saveCustomerSubscriptionID','username':username,'subscriptionid':subscriptionID,'customerid':customerID}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
+                prepareCart();
+                sendNewContentOrder(subscriptionID);
+            }
+        });
+    }
+}
+
+function sendNewContentOrder(subscriptionID)
+{
+    //Grab the subscription ID from the ChargeBee response and update the database with the appropriate info
+    if(subscriptionID != "")
+    {
+        //addToCart(keywordID);
+        $.ajax({url: restURL, data: {'command':'sendNewContentOrder','subscriptionid':subscriptionID}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
                 
             }
         });
     }
-    
-    prepareCart();
 }
