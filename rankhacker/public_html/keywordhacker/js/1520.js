@@ -92,6 +92,17 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function setCookie(param,value,days){
+    var expires = "";
+    if(days)
+    {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = param + "=" + value + expires + "; path=/";
+}
+
 function getCookie(paramName)
 {
     var name = paramName + "=";
@@ -7215,6 +7226,10 @@ function refreshCartDetails()
                         }
                     }
                     
+                    /*setCookie("cb_path","",-1);
+                    setCookie("cb_path",planURL,1);
+                    var cookie = getCookie("cb_path");
+                    console.log(cookie);*/
                     $("#pay-now-button").prop("href",planURL);
                     
                 }
@@ -7335,4 +7350,19 @@ function sendNewContentOrder(subscriptionID)
             }
         });
     }
+}
+
+function handlePayNow(e)
+{
+    var e = e || window.event;
+    e.preventDefault();
+    
+    window.location = '../keywordhacker/secure_auth.html';
+}
+
+function prepareSecureAuth()
+{
+    var path = getCookie("cb_path");
+    console.log(path);
+    $("#content_frame_part").attr("src",path);
 }
