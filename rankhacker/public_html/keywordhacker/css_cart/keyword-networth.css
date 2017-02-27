@@ -1,0 +1,503 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+
+.margin5t {margin-top:5px !important;}
+
+.margin10t {margin-top:10px !important;}
+
+.margin15t {margin-top:15px !important;}
+
+.margin20t {margin-top:20px !important;}
+
+.margin25t {margin-top:25px !important;}
+
+.margin30t {margin-top:30px !important;}
+
+.margin40t {margin-top:40px !important;}
+
+.margin5b {margin-bottom:5px !important;}
+
+.margin10b {margin-bottom:10px !important;}
+
+.margin15b {margin-bottom:15px !important;}
+
+.margin20b {margin-bottom:20px !important;}
+
+.margin25b {margin-bottom:25px !important;}
+
+.margin30b {margin-bottom:30px !important;}
+
+.margin40b {margin-bottom:40px !important;}
+
+/* keyword-networth page css */ 
+
+#keyword-networth .head-info-box {background-color: #c7e2ef;padding: 20px 20px 25px;float: left;width: 100%;}
+
+#keyword-networth .welcome-text {color: #818d94;float: left;font-family: "Montserrat",sans-serif !important;font-size: 16px;font-weight: 400;line-height: normal;margin: 0 0 10px;padding: 0;text-transform: uppercase !important;width: 100%;text-align: left;}
+
+#keyword-networth .page-info {color: #231f20;float: left;font-family: "Montserrat",sans-serif !important;font-size: 24px;font-weight: normal;line-height: normal;margin: 0;text-align: left;text-transform: none;width: 100%;}
+
+#keyword-networth #shadow {background-image: url("../images_cart/shadow.png");background-position: center top;background-repeat: no-repeat;background-size: 100% auto;float: left;height: 30px;width: 100%;position: static;}
+
+#keyword-networth {float: left;width: 100%;margin: 50px 0;padding: 0;}
+
+.black_eagle-rh {background-image: url("../images_cart/black-eagle-icon.png");background-position: center center;background-repeat: no-repeat;background-size: 100% auto;border: medium none !important;float: left;height: 34px;margin:-5px 10px 0 0 !important;padding: 0 !important;position: relative;width: 45px;}
+
+.project-breadcomb-outer {float: left;width: 100%;margin: 10px 0 8px;padding: 0;}
+
+.project-breadcomb-outer ul, .project-breadcomb-outer ul li {float: left;width: 100%;margin: 0;padding: 0;}
+
+.project-breadcomb-outer ul li {color: #231F20;float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: 500;/* line-height: normal; */margin: 0;padding: 0 15px;text-transform: uppercase !important;width: auto;line-height: 24px;position:relative;}
+
+.project-breadcomb-outer ul li::before {content: "\f105";font-family: FontAwesome;position: absolute;font-size: 24px;left: 100%;top: 0;}
+
+.project-breadcomb-outer ul li:last-child::before{display:none;}
+
+.project-breadcomb-outer ul li a{color: #231F20;}
+
+.white-box {float: left;width: 100%;margin:3px 0 25px;padding: 10px 15px 15px;background-color: #fff;color:#333;}
+
+.keyword-networth-project {float:left;width:100%;margin:0;padding:0;}
+
+.keyword-networth-project-outer , .keyword-networth-project-outer .panel ,.keyword-networth-project-outer .panel-heading ,.keyword-networth-project-outer .panel-collapse{float:left;width:100%;}
+
+.keyword-networth-project-outer .panel-heading {padding: 0;margin: 0;background-color: #F1F1F2;border: 1px solid #D0D2D3;border-radius: 0;}
+
+.keyword-networth-project td{padding:5px 10px;border-right: 1px solid #D0D2D3;}
+
+.keyword-networth-project-outer .panel {border: none;box-shadow: 0 0 0 transparent;}
+
+.price-widthbox {width: 160px;}
+
+.keyword-networth-project td {color:#58595B;font-size:12px;}
+
+.keyword-networth-project td.checkbox-ot {width: 50px;text-align: center;}
+
+.keyword-networth-project td.delect-row {text-align: center;width: 35px;}
+
+.keyword-networth-project td.delect-row  i {color: #58595b;font-size: 14px;}
+
+.keyword-networth-project-outer {margin:0;padding:0;}
+
+.keyword-networth-project-outer.panel-group .panel + .panel {margin-top: 10px;}
+
+.project-head {background-color: #F1F1F2;border: 1px solid #E6E7E8;}
+
+.keyword-networth-project td.project-name-ot {position: relative;padding-left: 25px;text-align: left;}
+
+.keyword-networth-project td a {color: #58595B;position: relative;}
+
+.keyword-networth-project td.project-name-ot::before {content: "\f0da";font-family: FontAwesome;position: absolute;font-size: 20px;left: 10px;top: 3px;color: #58595B;} 
+
+.keyword-networth-project th h2.table-title {font-size: 20px;font-weight: 600;color: #58595B;margin: 0;padding: 0;float: left;width: 100%;text-align: left;}
+
+.keyword-networth-project th {vertical-align:top;}
+
+.keyword-networth-project th h2.table-title span {color:#231F20;float:left;width:100%;margin:3px 0 0 0;padding:0;font-weight:500;font-size:10px;}
+
+.keyword-networth-project th h2.table-title small {font-weight:600;color:#231F20;}
+
+.keyword-networth-project th {vertical-align: top;padding: 10px 5px;position: relative;}
+
+.blue-text {color:#005CB8 !important;}
+
+.keyword-networth-project th:first-child h2.table-title{color:#005CB8 !important;font-size:24px;}
+
+#url-list {float: left;margin: 15px 0 0;padding: 0;width: 100%;}
+
+.add-more-url {background-color: transparent;border-radius: 0;color: #9da0a1 !important;float: left;font-size: 28px;font-weight: normal;line-height: normal;margin: 5px 0;padding: 0;text-align: left;text-transform: uppercase;width: 100%;}
+
+.url-input {background-color: #fff;border: 1px solid #808185;color: #808185;width: auto;}
+
+.suggest-keywords-list {float: left;margin: 0;padding: 0;width: 100%;}
+
+.suggest-keywords-label {color: #3f3c3c;float: left;font-size: 14px;margin: 0 0 10px;padding: 0;text-transform: uppercase;width: 100%;}
+
+.suggest-keywords-label span {color: #9da0a1;}
+
+.suggest-keywords-list ul , .add-custom-keyword-outer ul{float: left;margin: 0;padding: 0;width: 100%;}
+
+.suggest-keywords-list ul li , .add-custom-keyword-outer ul li{background-color: #d0d2d3;border: medium none;border-radius: 10px;color: #6f7273;cursor: pointer;float: left;font-family: "Montserrat",sans-serif;font-size: 16px;font-weight: normal;height: 33px;line-height: 33px;margin: 0 5px 10px 0;min-width: 120px;padding: 0 5px;position: relative;text-align: left;width: auto;text-align: center;}
+
+.card-box-bottom {float: left;margin: 20px 0 15px;padding: 15px 0 0 0;width: 100%;border-top: 3px solid #E7E7E9;}
+
+.project-date-card {color: rgb(128, 128, 131);float: left;font-size: 14px;font-weight: 600;line-height: 20px;width: auto;}
+
+.eagle-icon {background-image: url("../images_cart/eggle-icon.png");background-position: center 4px;background-repeat: no-repeat;background-size: 100% auto;height: 25px;margin-right: 8px !important;width: 25px;float: left;}
+
+.project-status-card {background-color: #c9e4ef;border-radius: 3px;color: #231f20 !important;float: right;font-size: 13px;font-weight: 600;letter-spacing: 2px;margin: 0;padding: 2px 10px 4px;text-decoration: none;text-transform: uppercase;width: auto;}
+
+.url-input {background-color: #fff;border: 1px solid #005CB8;color: #808185;width: auto;height: 40px;width: 100%;float: left;margin: 0 0 25px 0;padding: 0 15px;}
+
+.add-custom-keyword-outer {float: left;width: 100%;margin: 25px 0;padding: 0;}
+
+.add-new-keywords-btn {float: left;width: auto;margin: 0;padding: 5px 15px;background-color: #FBAF41;color: #fff;text-transform: uppercase;margin: 5px 0 0 0;font-size: 20px;}
+
+.add-new-keywords-btn:hover {background-color: #333;color: #fff;text-decoration: none;}
+
+.project-location-it {float: left;width: 100%;margin: 10px 0 0 0;padding: 0;color: #333;}
+
+.project-location-it ul, .project-location-it ul li {float: left;width: 100%;margin: 0;padding: 0;}
+
+.project-location-it ul li {width: auto;margin: 0 35px 0 0;text-transform: uppercase;font-size: 14px;line-height: normal;color: #231F20;font-weight: 600;}
+
+.project-location-it ul li label {font-weight: normal;margin: 0 5px 0 0;}
+
+.project-location-it ul li:last-child{margin-right: 0;}
+
+.project-location-it ul li i {color: #A6A8AB;font-size: 18px;margin-left: 8px;}
+
+.keyword-networth-project td.project-name-ot::after {background-image: url("../images_cart/arrow-process.png");content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
+
+.content-goal-info .title {background-color: #D0D2D3;font-size: 14px;font-weight: bold;color: #26A9E0;float: left;width: 100%;margin: 0;padding: 8px 10px;line-height: normal;}
+
+.content-goal-info .title span{color:#005CB8;}
+
+.content-goal-table td , .content-goal-table th {padding: 5px 10px;border-right: 1px solid #D0D2D3;color: #58595B;font-size: 12px;}
+
+.content-goal-table tr {background-color: #fff;border: 1px solid #D0D2D3;}
+
+.content-goal-info , .right-side-goalinfo {margin-top:25px;margin-bottom:25px;}
+
+.content-goal-table th {vertical-align: bottom;}
+
+.content-goal-table tfoot tr.them-row {background-color: #E6E7E8;}
+
+.content-goal-table tfoot  tr.you-row {background-color: #D4EEF9;}
+
+.content-goal-table tfoot  tr.them-row , .content-goal-table tfoot  tr.you-row , .content-goal-table tfoot  tr.them-row td, .content-goal-table tfoot  tr.you-row td{border-color:#D0D2D3;}
+
+.content-goal-table tfoot tr.result-row, .content-goal-table tfoot tr.result-row td {background-color: #26A9E0;border-right: none;font-size: 20px;color: #FFFFFF;}
+
+.info-block h3 {float: left;width: 100%;margin: 0;padding: 0;color: #6D6E70;font-size: 20px;line-height: normal;}
+
+.info-block p {float: left;width: 100%;margin: 0;padding: 0;color: #000;font-size: 12px;line-height: normal;}
+
+.info-block {float: left;width: 100%;margin: 0 0 25px 0;position: relative;padding: 0;}
+
+.suggest-keywords-list ul li i.fa-times, .add-custom-keyword-outer ul li i.fa-times {color: #EC1C24;font-size: 18px;cursor: pointer;}
+
+.keyword-networth-project th h2.table-title sup {top: -4px;font-size: 14px;}
+
+.green-bg-total {background-color: #37B34A;color: #fff;padding: 5px 10px;float: left;width: calc(100% - 10px);margin-top: -5px;}
+
+.negative-sign , .equal-sign{border-right:1px solid #E6E7E8 !important;position:relative !important;}
+
+.negative-sign::after, .equal-sign::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 100%;top: 50%;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.equal-sign::after {content: "=";}
+
+.blueproject-eagle-icon, .revealsmall-icon, .checked-icon {background-image: url("../images_cart/content-goal-icons.png");background-position: center 0;background-repeat: no-repeat;background-size: auto auto;height: 25px;margin-right: 8px !important;width: 25px;float: none;display: inline-block;position: relative;top: 7px;margin-left: 5%;}
+
+.blueproject-eagle-icon {background-position: center -44px;}
+
+.revealsmall-icon {background-position: center -20px;width: 45px;top: 5px;}
+
+.tip-note {float: left;width: 100%;margin: 15px 0 0 0;padding: 0 0 0 70px;background-image: url("../images_cart/tip-logo.png");background-position:left 2px;min-height: 36px;background-repeat: no-repeat;font-size: 14px;color: #58595B;line-height: normal;}
+
+.info-block.calculator-lt {padding: 20px 0;border-top: 3px solid #E6E7E8;border-bottom: 3px solid #E6E7E8;}
+
+.calculator-logo {padding: 0 0 0 45px !important;background-image: url("../images_cart/calculator-icons.png") !important;background-position:left top !important;min-height: 36px !important;background-repeat: no-repeat !important;}
+
+.content-goal-table {float: left;width: 100%;margin: 0;padding: 0;}
+
+.view-more-btn {margin: 5px auto;display: table;font-size: 14px;color: #005CB8;padding: 0;}
+
+.content-goal-table td.disabled {background-color:#E9E9F0 !important;}
+
+.info-block p a{color:#005CB8;font-weight:bold;}
+
+.info-block.calculator-lt p {color:#26A9E0;}
+
+.content-goal-table .negative-sign::after, .content-goal-table .equal-sign::after {top: auto;bottom: -8px;}
+
+.content-goal-table .negative-sign,.content-goal-table .equal-sign {border-color: #D0D2D3 !important;}
+
+.top-check-selection {float: right;width: auto;margin: 0;padding: 0;font-size: 14px;color: #333;}
+
+.top-check-selection input {margin-right: 5px;margin-left: 15px;}	
+
+.keyword-networth-project th.price-widthbox.equal-sign, .keyword-networth-project th.price-widthbox:last-child {padding-left: 12px;}
+
+.addincart-icon, .cart-disable-icon, .cart-full-icon {float: left;/* width: 100%; */margin: 0;padding: 0;width: 23px;height: 26px;background-image:url(../images_cart/cart-icons-process.png);background-position: center 0;}
+
+.cart-disable-icon {background-position: center -25px;}
+
+.cart-full-icon {background-position: center -50px;}
+
+.keyword-networth-project th.price-widthbox i.cart-full-icon , .keyword-networth-project th.price-widthbox i.cart-disable-icon , .keyword-networth-project th.price-widthbox i.addincart-icon  {position: absolute;right: 18px;top: 0;}
+
+.keyword-networth-project td i.cart-full-icon , .keyword-networth-project td i.cart-disable-icon , .keyword-networth-project td i.addincart-icon {
+position: absolute;right: 10px;top: 0;}
+
+.keyword-networth-project td.price-widthbox.equal-sign {padding-right: 25px;}
+
+.reveal-mark {position: absolute !important;right: 45px;font-size: 30px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 50%;margin-top: -25px;
+-ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
+
+.table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
+
+.project-head.open {background-color: #FAF8C7;}
+
+.keyword-networth-project .project-head.open td.project-name-ot::before {content: "\f0d7";}
+
+.keyword-networth-project tr.table-heading th {background-color: #F1F1F3;background-image: url(../images_cart/line-arrow.png);background-repeat: no-repeat;background-position: top right;background-size: auto 100%;padding-right: 15px;}
+
+.keyword-networth-project tr.table-heading th:last-child {background-image: url(../images_cart/line-arrow-last.png);}
+
+.keyword-networth-project th.negative-sign::after, .keyword-networth-project th.equal-sign::after {margin-left:-12px;}
+
+.right-side-goalinfo , .project-info{text-align: left;}
+
+
+
+/*media quries css */
+
+@media (min-width: 1400px) {
+
+.cart-mission-inner {max-width: 900px;}
+
+.price-widthbox {width: 155px;}
+
+.keyword-networth-project th h2.table-title {font-size: 16px;}
+
+.keyword-networth-project th h2.table-title sup {font-size: 12px;}
+
+}
+
+
+@media (max-width:1200px) {
+
+.monthly-short-info ul li {padding-left: 5px;padding-right: 5px;}
+
+.price-widthbox {width: 100px;}
+
+.keyword-networth-project th h2.table-title {font-size: 14px;}
+
+.keyword-networth-project th h2.table-title sup {font-size: 10px;}
+
+.keyword-networth-project th h2.table-title span {font-size: 9px;}
+
+#keyword-networth .page-info , .keyword-networth-project th:first-child h2.table-title{font-size: 20px;}
+
+#keyword-networth .welcome-text , .project-location-it ul li i{font-size:14px;}
+
+.project-breadcomb-outer ul li , .project-location-it ul li , .top-check-selection , .content-goal-info .title , .tip-note , .suggest-keywords-label{font-size: 12px;}
+
+.project-breadcomb-outer ul li::before {font-size: 18px;top: -1px;}
+
+.content-goal-table th {font-size: 10px;}
+
+.info-block h3 {font-size:18px;}
+
+.content-goal-table tfoot tr.result-row, .content-goal-table tfoot tr.result-row td , .add-new-keywords-btn{font-size:16px;}
+
+.suggest-keywords-list ul li, .add-custom-keyword-outer ul li {font-size: 14px;height: 30px;line-height: 30px;}
+
+.reveal-mark {right: 20px;font-size: 16px;border: 2px solid #BE1E2D;line-height: normal;padding: 5px 10px;}
+
+}
+
+
+@media (max-width: 991px) { 
+
+.keyword-networth-project , .keyword-networth-project  .table-heading  ,.keyword-networth-project tr.project-head , .keyword-networth-project tr.project-head td , .keyword-networth-project tr.project-info {display:block;float:left;width:100%;}
+
+.keyword-networth-project tr.table-heading th {float: left;width: 25%;display: block;margin-bottom: 10px;}
+
+.keyword-networth-project tr.table-heading th:nth-child(5) {clear:left;}
+
+.keyword-networth-project tr.project-head td.checkbox-ot {position: absolute;left: 0;top: 0;width: auto;border: none;z-index: 99;}
+
+.keyword-networth-project tr.project-head td{border:none;}
+
+.keyword-networth-project tr.project-head  {position: relative;}
+
+.keyword-networth-project tr.project-head td.project-name-ot , .keyword-networth-project tr.project-head td{width: calc(100% - 30px);float: right;text-align: left;}
+
+.keyword-networth-project tr.project-head td.delect-row {width: auto;}
+
+.keyword-networth-project tr.project-head td.negative-sign::after,.keyword-networth-project tr.project-head td.equal-sign::after {display:none;}
+
+#keyword-networth .head-info-box {padding: 20px;}
+
+.reveal-mark {right: 15px;font-size: 26px;}
+
+.keyword-networth-project tr.table-heading th  , .keyword-networth-project tr.table-heading th:last-child{background-image: none;min-height: 65px;border-right: 5px solid #fff !important;padding-right: 5px;}
+
+.keyword-networth-project th.negative-sign::after, .keyword-networth-project th.equal-sign::after {margin-left: -6px;}
+
+}
+
+
+@media (max-width: 767px) {
+
+.table-outer {float: left;width: 100%;margin: 0;padding: 0;/* overflow: auto; */}
+
+.content-goal-table , .content-goal-table tr , .content-goal-table td , .content-goal-table th , .keyword-networth-project td{display:block;float:left;width:100%;}
+
+.content-goal-table tr.table-heading2 {display:none;}
+
+.content-goal-table td, .content-goal-table th , .keyword-networth-project td{border:none;}
+
+.keyword-networth-project td.checkbox-ot {width: auto;}
+
+.content-goal-table tfoot tr.result-row .text-right {text-align: left;}
+
+.content-goal-table td {min-height: 30px;text-align: left;}
+
+.content-goal-table tr.project-head2 {margin-bottom:10px;}
+
+.add-new-keywords-btn {font-size: 14px;}
+
+#keyword-networth .head-info-box {padding: 15px;}
+
+.table-outer .reveal-mark {display:none;}
+
+.keyword-networth-project tr.table-heading th {width: 50%;}
+
+.keyword-networth-project tr.table-heading th:nth-child(2n+1) {clear: left;}
+
+}
+
+@media (max-width: 639px){
+
+.add-new-keywords-btn {font-size: 12px;}
+
+#keyword-networth .head-info-box {padding: 10px;}
+
+#keyword-networth .welcome-text, .project-location-it ul li i {font-size: 12px;}
+
+#keyword-networth .page-info, .keyword-networth-project th:first-child h2.table-title {font-size: 16px;}
+
+.info-block h3 {font-size: 16px;}
+
+.project-location-it ul li {float: left;width: 100%;margin: 5px 0;padding: 0;line-height: 16px;}
+
+.project-breadcomb-outer ul li {font-size:0}
+
+.project-breadcomb-outer ul li::before{display:none;}
+
+}
+
+@media (max-width:479px) {
+
+body , #site-header{min-width: 300px;overflow-x: visible;}
+
+.keyword-networth-project tr.table-heading th {width: 100%;}
+
+}
+
+
+
+
+
+
+
+
+
+/*Faq page css code */
+
+.cd-faq-items {z-index: 9999;position: fixed;height: 100%;width: 100%;top: 0;right: 0;background: #ffffff;padding:10px;overflow: auto;-webkit-overflow-scrolling: touch;z-index: 1;-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-transform: translateZ(0) translateX(100%);-moz-transform: translateZ(0) translateX(100%);-ms-transform: translateZ(0) translateX(100%);-o-transform: translateZ(0) translateX(100%);transform: translateZ(0) translateX(100%);-webkit-transition: -webkit-transform .3s;-moz-transition: -moz-transform .3s;transition: transform .3s;}
+
+.cd-faq-items.slide-in {-webkit-transform: translateZ(0) translateX(0%);-moz-transform: translateZ(0) translateX(0%);-ms-transform: translateZ(0) translateX(0%);-o-transform: translateZ(0) translateX(0%);transform: translateZ(0) translateX(0%);}
+
+.no-js .cd-faq-items {position: static;height: auto;width: 100%;-webkit-transform: translateX(0);-moz-transform: translateX(0);-ms-transform: translateX(0);-o-transform: translateX(0);transform: translateX(0);}
+
+.cd-faq-categories a {position: relative;display: block;overflow: hidden;height: 50px;line-height: 50px;padding: 0 28px 0 16px;background-color: #4e5359;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;white-space: nowrap;border-bottom: 1px solid #555b61;text-overflow: ellipsis;}
+
+.cd-faq-categories li:last-child a {border-bottom: none;}
+
+.cd-close-panel {position: fixed;top: 5px;right: -100%;display: block;height: 40px;width: 40px;overflow: hidden;white-space: nowrap;z-index: 2;-webkit-transform: translateZ(0);-moz-transform: translateZ(0);-ms-transform: translateZ(0);-o-transform: translateZ(0);transform: translateZ(0);-webkit-backface-visibility: hidden;backface-visibility: hidden;-webkit-transition: right 0.4s;-moz-transition: right 0.4s;transition: right 0.4s;text-align: center;font-weight: normal;color: ;line-height: 40px;font-size:24px; }
+
+.cd-close-panel.move-left {right: 2%;}
+
+.cd-faq-group {display: none;}
+
+.cd-faq-group.selected {display: block;}
+
+.cd-faq-group .cd-faq-title {background: transparent;box-shadow: none;margin: 1em 0;}
+
+.no-touch .cd-faq-group .cd-faq-title:hover {box-shadow: none;}
+
+.cd-faq-group .cd-faq-title h2 {text-transform: uppercase;font-size: 14px;font-weight: 700;color: #bbbbc7;margin: 0;padding: 0;}
+
+.no-js .cd-faq-group {display: block;}
+
+.cd-faq-trigger {position: relative;display: block;margin: 1.6em 0 .4em;line-height: 1.2;}
+
+.cd-faq-content p {font-size: 14px;line-height: 1.4;color: #6c7d8e;}
+
+.cd-faq {margin: 35px 0;box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);float: left;width: 100%;}
+
+.cd-faq-trigger {position: relative;}
+
+.cd-close-panel.move-left::after , .cd-faq-categories a:after  {
+content: "\f107";display: inline-block;font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased;position: absolute;right: 15px;font-size: 29px;top: 17px;display: none;}
+
+.cd-faq-categories a::after {display: inline-block;content: "\f067";font-size: 14px;top: 18px;}
+
+
+
+
+@media only screen and (min-width: 768px) {
+
+.cd-faq-trigger::after  {display: inline-block;}
+
+.cd-faq {position: relative;margin: 4em auto;box-shadow: none;float: left;width: 100%;margin: 45px 0;padding: 0;}
+
+.cd-faq-categories {width: 20%;float: left;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);}
+
+.cd-faq-categories a {font-size: 14px;font-weight: 600;padding-left: 24px;padding: 0 24px;-webkit-transition: background 0.2s, padding 0.2s;-moz-transition: background 0.2s, padding 0.2s;transition: background 0.2s, padding 0.2s;}
+
+.cd-faq-categories a::before, .cd-faq-categories a::after {display: none;}
+
+.no-touch .cd-faq-categories a:hover {background: #555b61;}
+
+.no-js .cd-faq-categories {width: 100%;margin-bottom: 2em;}
+
+.cd-faq-items {position: static;height: auto;width: 78%;float: right;overflow: visible;-webkit-transform: translateZ(0) translateX(0);-moz-transform: translateZ(0) translateX(0);-ms-transform: translateZ(0) translateX(0);-o-transform: translateZ(0) translateX(0);transform: translateZ(0) translateX(0);padding: 0;background: transparent;}
+
+.cd-close-panel {display: none;}
+
+.cd-faq-group {/* all groups visible */display: block;}
+
+.cd-faq-group > li {background: #ffffff;margin-bottom: 6px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);-webkit-transition: box-shadow 0.2s;-moz-transition: box-shadow 0.2s;transition: box-shadow 0.2s;}
+
+.no-touch .cd-faq-group > li:hover {box-shadow: 0 1px 10px rgba(108, 125, 142, 0.3);}
+
+.cd-faq-group .cd-faq-title {margin: 2em 0 1em;}
+
+.cd-faq-group:first-child .cd-faq-title {margin-top: 0;}
+
+.cd-faq-trigger {font-size: 16px;font-weight: 300;margin: 0;padding: 20px 50px 20px 20px;color: #337ab7;}
+
+.cd-faq-content {display: none;padding: 0 24px 30px;}
+
+.cd-faq-content p {line-height: 1.6;}
+
+.no-js .cd-faq-content {display: block;}
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+.cd-faq-categories {position: absolute;left: 0;width: 200px;z-index: 2;}
+
+.cd-faq-categories .selected {background: #42464b !important;}
+
+.cd-faq-categories.is-fixed {position: fixed;}
+
+.no-js .cd-faq-categories {position: relative;}
+
+.cd-faq-items {float: none;width: 100%;padding-left: 220px;}
+
+.no-js .cd-faq-items {padding-left: 0;} 
+
+}
+
+
+
+

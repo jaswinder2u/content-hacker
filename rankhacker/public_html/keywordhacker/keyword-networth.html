@@ -1,165 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- =========================
-          BASIC PAGE INFORMATION
-    ============================== -->
-    <title>RankHacker - Keyword networth</title>
-    <meta name="description" content="Intelligently generate an actionable content strategy complete with publication calendar to beat your competition.">
+              BASIC PAGE INFORMATION
+        ============================== -->
+    <title>RankHacker - The Content Intelligence Agency</title>
+    <meta name="description" content="Rank Hacker is the worlds only keyword tool that gives you true ROI for top ranking phrases and hacks competitors content strategies to outpace them.">
     <meta name="keywords" content="content strategy, content roadmap, content calendar">
     <meta name="author" content="fairmarketing.com">
     <meta name="robots" content="noindex, nofollow">
-
+    <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
 
     <!-- =========================
-         FONTS
-    ============================== -->
+             FONTS
+        ============================== -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href="fonts_cart/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="fonts_cart/font-family.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet"> 
-    
-    
-    
-<link type="text/css" rel="stylesheet" href="css_cart/font-awesome.min.css" >
-<link rel="stylesheet" type="text/css" media="all" href="css_cart/bootstrap-slider.css" >
-    
 
     <!-- =========================
-         STYLESHEETS
-    ============================== -->
-    <link href="css_cart/bootstrap.min.css" rel="stylesheet">
-    <link href="css_cart/custom-style.css" rel="stylesheet" id="theme-change">
-    <link href="css_cart/faq-style.css" rel="stylesheet" id="theme-change"> 
-    <link href="css/1520.css?v=48" rel="stylesheet" id="theme-change">
+             STYLESHEETS
+        ============================== -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=48" rel="stylesheet">-->
+    <link href="css/custom-style.css?v=48" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=48" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=48" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=48" rel="stylesheet" type="text/css">
 
-
-<!--google js file-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js_cart/jquery.matchHeight-min.js"></script>
-
-
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+    
+    <!--1520 files-->
     <script src="js/1520.js?v=48"></script>
+    <link href="css/1520.css?v=48" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=48" rel="stylesheet" id="theme-change">
 
-<script type="text/javascript">
-jQuery(function($){
-    $('.matchheight').matchHeight();
-});
-</script>
+    <link href="css/media-queries.css?v=48" rel="stylesheet" type="text/css">
+    
+    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="css_storefront/bootstrap.min.css?v=48" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=48" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_cart/keyword-networth.css" rel="stylesheet" id="theme-change-storefront">
+    
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="css/bootstrap.min.css?v=48" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=48" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<script>
-    function run(){
-        prepareFAQs();
-    }
-</script>
-
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 </head>
 
-<body id="body" class="home ">
+<body id="body" class="page-loading home noisy" onload="prepareCart();">
 
 
-    <!-- =========================
+ <!-- =========================
      MAIN MENU
 ============================== -->
 
-    <div id="site-header">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <div class="sidenav-logo">
-                            <a href="#"><img src="images_cart/site-logo.png" alt="site-logo"> </a>
-                        </div>
-                        <ul class="sidenav-menu">
-                            <li><a href="#">KEYWORD HACKER</a>
-                            </li>
-                            <li><a href="#">CONTENT HACKER</a>
-                            </li>
-                            <li><a href="#">TOOLS</a>
-                            </li>
-                            <li><a href="#" class="cart-icon"><i class="shopping-cart" aria-hidden="true"></i></a>
-                            </li>
-                            <li><a href="#">Login</a>
-                            </li>
-                        </ul>
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                    <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <div class="cart-header">
+                        <span id="cart-total-pieces">0</span>
+                        <span id="cart-total-pieces-text">Pieces of Content<br/>PER MONTH</span>
                     </div>
-
-                    <span class="sidemenu-toggle" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
-
-                    <a class="logo" data-text="RANKHACKER" href="#header"><img src="images_cart/site-logo.png" alt="site-logo"> </a>
+                    <div class="cart-breakdown">
+                        <div class="cart-breakdown-cell"><span id="cart-total-missions">0</span><br/><span class="cart-breakdown-text">MISSIONS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-keywords">0</span><br/><span class="cart-breakdown-text">KEYWORDS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-project-mgmt">0</span><br/><span class="cart-breakdown-text">PROJECT<br>MANAGEMENT</span></div>
+                    </div>
+                    <div class="cart-summary">
+                        <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span></div>
+                    </div>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse pull-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">KEYWORD HACKER</a>
-                        </li>
-                        <li><a href="#about">CONTENT HACKER</a>
-                        </li>
-                        <li><a href="#TOOLS">TOOLS</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right account-options">
-                        <li class="cart-menu-nav"><a href="#" class="cart-icon"><i class="shopping-cart" aria-hidden="true"></i></a>
-                            <div class="mini-cart-outer">
-                                <div class="pieces_of_content">
-                                    <span class="pieces_of_content_no">15</span>
-                                    <label>Pieces of Content
-                                        <br>PER MONTH</label>
-                                </div>
-                                <div class="mini-cart-value monthly-short-info">
-                                    <ul class="row">
-                                        <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">2</span>
-                                            <label>MISSIONS</label>
-                                        </li>
-                                        <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">3</span>
-                                            <label>KEYWORDS</label>
-                                        </li>
-                                        <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value">6</span>
-                                            <label>PROJECT MGMT <strong class="position-relative"><i class="info-icon">	</i>								
-									<div class="custom_tooltip">
-										<h2>PROJECT MGMT</h2>
-										<p>Total hours of selected project management. <br>Add project management to any mission for hands-free marketing.</p>	
-									</div>  
-								</strong>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
+            </li>
+            <!--<li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>-->
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+</div>
+    
 
-                                <div class="mini-cart-total"><span class="mini-cart-total-amount"><sup>$</sup>3,800</span>
-                                    <label>BILLED MONTHLY</label>
-                                </div>
-
-                                <a href="javascript:void(0);" class="checkout-button">CHECK OUT </a>
-
-                                <a href="javascript:void(0);" id="close-mini-cart">Close Window</a>
-
-
-                            </div>
-
-                        </li>
-                        <li><a href="#"><!-- <i class="rh-cog" aria-hidden="true"></i> -->Login</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
-    </div>
-
-    <!-- =========================
+<!-- =========================
      HEADER
 ============================== -->
     <section id="content-section" class="">
@@ -228,6 +197,8 @@ jQuery(function($){
                                             <h2 class="table-title"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
                                         </th>
                                     </tr>
+
+                                    <tr> <td style="border-right: none;"><div class="margin10t"></div></td></tr>
 
                                     <tr class="project-head open">
                                         <td class="checkbox-ot"><input class="" type="checkbox"> </td>
@@ -885,51 +856,46 @@ jQuery(function($){
 
     </section>
 
-    <!-- =========================
+<!-- =========================
      FOOTER
 ============================== -->
-    <!-- Footer start here -->
-    <footer id="main-footer">
-        <div class="container">
-
-            <!--footer center socail icon section start here-->
+          <!-- Footer start here -->
+          <footer id="main-footer">
+           <div class="container">
+            
+                <!--footer center socail icon section start here-->
             <div class="footer-socail-icon">
-                <ul class="text-center">
-                    <li>
-                        <a href="#"> <i class="fa fa-facebook"></i> </a>
-                    </li>
-                    <li>
-                        <a href="#"> <i class="fa fa-twitter"></i> </a>
-                    </li>
-                </ul>
-            </div>
-            <!--footer center socail icon section close here-->
-
-            <div class="row">
-                <!--Footer left section start here-->
-                <div class="footer-link col-sm-4">
-                    <ul class="">
-                        <li> <a href="#">What is this?</a>
-                        </li>
-                        <li> <a href="#"> Check Out Our Blog</a>
-                        </li>
+                    <ul class="text-center">
+                    <li> <a href="https://www.facebook.com/rankhacker/?fref=ts" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                    <li> <a href="https://twitter.com/rank_hacker?lang=en" target="_blank"> <i class="fa fa-twitter"></i> </a></li>
                     </ul>
+             </div>
+        <!--footer center socail icon section close here-->
+        
+        <div class="row">
+         <!--Footer left section start here-->
+            <div class="footer-link col-sm-4">
+                  <ul class=""> 
+                <li> <a href="faq.html">FAQs</a>
+                <!--<li> <a href="#">What is this?</a></li>-->
+                <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
+              </ul>
                 </div>
-                <!--footer left section close here-->
+        <!--footer left section close here-->
 
-                <!--copyright section start here-->
-                <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
-                <!--copyright section close here-->
-
-                <div class="account-section text-right col-sm-4">
-                    <a href="#">Log In</a>
-                </div>
-
-
+        <!--copyright section start here-->     
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
+            <!--copyright section close here-->
+                        
+            <div class="account-section text-right col-sm-4">
+                <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
             </div>
-        </div>
-    </footer>
-    <!--Footer close here-->
+            
+          </div>
+            </div>
+      </footer>
+      <!--Footer close here-->
+
 
 
 
