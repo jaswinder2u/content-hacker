@@ -7301,23 +7301,26 @@ function buildAddonDropdown(projectID,keywordID,itemID,addonID)
     var selectHTML = "<select class=\"cart-item-select\" onchange=\"updateCartItem('"+itemID+"')\" id=\"addon-type-"+itemID+"\">";
     
     var info = JSON.parse(addonOptions);
-    if(info.status == "success")
+    if(info != "")
     {
-        var addons = info.addons;
-        for(var i=0; i<addons.length; i++)
+        if(info.status == "success")
         {
-            var addonInfo = addons[i];
-            
-            var id = addonInfo.id;
-            var desc = addonInfo.name;
-            //var price = addonInfo.price;
-            
-            selectHTML += "<option class=\"cart-item-select-option\" value=\""+id+"\"";
-            if(id == addonID)
+            var addons = info.addons;
+            for(var i=0; i<addons.length; i++)
             {
-                selectHTML += " selected";
+                var addonInfo = addons[i];
+
+                var id = addonInfo.id;
+                var desc = addonInfo.name;
+                //var price = addonInfo.price;
+
+                selectHTML += "<option class=\"cart-item-select-option\" value=\""+id+"\"";
+                if(id == addonID)
+                {
+                    selectHTML += " selected";
+                }
+                selectHTML += ">"+desc+"</option>";
             }
-            selectHTML += ">"+desc+"</option>";
         }
     }
     selectHTML += "</select>";
