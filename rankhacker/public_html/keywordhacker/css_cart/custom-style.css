@@ -239,6 +239,8 @@ table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:ho
 
 .info-icon {background-image: url(../images/information-icon.png);width: 14px;height: 14px;display: inline-block;background-repeat:no-repeat;background-color: transparent;background-position: center center;background-size: 100% 100%;margin: 0;position: relative;top: 3px;cursor:pointer;}
 
+//.info-icon-2 {background-image: url(../images/information-icon.png);width: 14px;height: 14px;display: inline-block;background-repeat:no-repeat;background-color: transparent;background-position: center center;background-size: 100% 100%;margin: 0;position: relative;top: 3px;cursor:pointer;}
+
 .custom_tooltip {position: absolute;background-color: #fff;border: 1px solid #6D6E70;padding: 15px;width: 330px;left: 0;top: 28px;left: -158px;z-index: 99;font-style: normal;text-transform: none;color: #58595b;font-family: "Roboto",sans-serif;font-size: 10px;font-weight: normal;cursor: auto;opacity: 0;visibility: hidden;}
 
 .custom_tooltip.active{visibility:visible;opacity:1;}

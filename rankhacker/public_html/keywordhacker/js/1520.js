@@ -1,7 +1,7 @@
-var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -7092,7 +7092,7 @@ function refreshCartDetails()
                     if(info.status == "success")
                     {
                         var totalContent = info.total_content;
-                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(0));
+                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(2));
                         
                         var missionCount = 0;
                         var keywordCount = 0;
@@ -7132,10 +7132,14 @@ function refreshCartDetails()
                 {
                     var cartHTML = "";
                     var cart = info.cartDetails;
+                    var pmPrice = info.projectManagementPrice;
                     for(var p=0; p<cart.length; p++)
                     {
                         var projectInfo = cart[p];
                         var missionSubtotal = 0;
+                        
+                        var missionTotalContentCount = 0;
+                        var missionPMHours = 0;
                         
                         //Output the mission-level elements
                         cartHTML += "<div class=\"mission-heading\">"+
@@ -7143,57 +7147,78 @@ function refreshCartDetails()
                                     "<div class=\"table-spacing\">";
                             
                         var keywords = projectInfo.keywords;
+                        var addPM = false;
+                        
                         for(var k=0;k<keywords.length; k++)
                         {
                             var keywordInfo = keywords[k];
-                            //Output the keyword-level elements
-                            cartHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"</h3>"+
-                                            "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
-                                                    "<tbody>"+
-                                                            "<tr class=\"table-heading\">"+
-                                                                    "<th colspan=\"2\">ASSIGN MONTHLY CONTENT TYPE</th>"+
-                                                                    "<th>WRITING DIRECTION/INSTRUCTION</th>"+
-                                                                    "<th>COST</th>"+
-                                                            "</tr>";
-
-                            //Output the addon-level elements
-                            var addons = keywordInfo.addons;
-                            for(var a=0; a<addons.length; a++)
+                            
+                            var firstAddonInfo = keywordInfo.addons[0];
+                            if(firstAddonInfo.keywordID == 0)
                             {
-                                var addonInfo = addons[a];
-                                
-                                var selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
-
-                                var addonPrice = parseFloat(addonInfo.price);
-                                var addonQuantity = parseInt(addonInfo.quantity);
-                                missionSubtotal += (addonPrice*addonQuantity);
-
-                                cartHTML += "<tr>"+
-                                                    "<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
-                                                    "<td>"+selectHTML+"</td>"+
-                                                    "<td class=\"instruction_data\"><input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/></td>"+
-                                                    "<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>"+
-                                                    "<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteCartItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>"+
-                                                    "</td>"+
-                                            "</tr>";
+                                addPM = true;
                             }
-                            
-                            //Add a row for the add new button
-                            cartHTML += "<tr class=\"add-new\">"+
-                                                "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a></td>"+
-                                        "</tr>";
-                            
-                            //Close the keyword-level elements
-                            cartHTML += "</tbody>"+
-                                    "</table>";
+                            else
+                            {
+                                //Output the keyword-level elements
+                                cartHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"</h3>"+
+                                                "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
+                                                        "<tbody>"+
+                                                                "<tr class=\"table-heading\">"+
+                                                                        "<th colspan=\"2\">ASSIGN MONTHLY CONTENT TYPE</th>"+
+                                                                        "<th>WRITING DIRECTION/INSTRUCTION</th>"+
+                                                                        "<th>COST</th>"+
+                                                                "</tr>";
+
+                                //Output the addon-level elements
+                                var addons = keywordInfo.addons;
+                                for(var a=0; a<addons.length; a++)
+                                {
+                                    var addonInfo = addons[a];
+                                    var selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+
+                                    var addonPrice = parseFloat(addonInfo.price);
+                                    var addonQuantity = parseInt(addonInfo.quantity);
+
+                                    missionTotalContentCount += addonQuantity;
+                                    missionSubtotal += (addonPrice*addonQuantity);
+
+                                    cartHTML += "<tr>"+
+                                                        "<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
+                                                        "<td>"+selectHTML+"</td>"+
+                                                        "<td class=\"instruction_data\"><input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/></td>"+
+                                                        "<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>"+
+                                                        "<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteCartItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>"+
+                                                        "</td>"+
+                                                "</tr>";
+                                }
+
+                                //Add a row for the add new button
+                                cartHTML += "<tr class=\"add-new\">"+
+                                                    "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a></td>"+
+                                            "</tr>";
+
+                                //Close the keyword-level elements
+                                cartHTML += "</tbody>"+
+                                        "</table>";
+                            }
                         }
                         
                         //Add a div for the project management
+                        missionPMHours = Math.ceil(missionTotalContentCount*0.5);
+                        
                         cartHTML += "<div class=\"project-management-checkbox\">"+
-                                        "<input type=\"checkbox\"/>ADD <strong>[<span> 16 HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $96.25/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i>"+
+                                        "<input type=\"checkbox\" id=\"mission-"+projectInfo.projectID+"-pmbox\"";
+                                
+                        if(addPM)
+                        {
+                            missionSubtotal += (missionPMHours*pmPrice);
+                            cartHTML += " checked";
+                        }
+                        cartHTML += " onchange=\"toggleMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" />ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i>"+
                                             "<div class=\"custom_tooltip\">"+
                                                 "<h2>PROJECT MANAGEMENT</h2>"+
-                                                "<p>Based on your content selections for this keyword Rank Hacker recommends a minimum of 8 hours of project management to keep your marketing hands-free.</p>"+
+                                                "<p>Based on your content selections for this keyword Rank Hacker recommends "+missionPMHours+" hours of project management to keep your marketing hands-free.</p>"+
                                                 "<!--<div style=\"float: left;width: 100%;margin: 0;padding: 0;\"><input type=\"checkbox\" />ADD PROJECT MANAGEMENT<a href=\"javascript:void(0);\" class=\"no-thanks\">NO THANKS</a></div>-->"+
                                             "</div>"+
                                         "</span>"+
@@ -7201,7 +7226,7 @@ function refreshCartDetails()
                         
                         //Close the mission-level elements
                         cartHTML += "</div>"+
-                                "<div class=\"cart-subtotal-section\"><label>SUBTOTAL</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(0))+"</span> </div>";
+                                "<div class=\"cart-subtotal-section\"><label>SUBTOTAL</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> </div>";
                     }
                     
                     $("#cart-details").html(cartHTML);
@@ -7226,15 +7251,30 @@ function refreshCartDetails()
                         }
                     }
                     
-                    /*setCookie("cb_path","",-1);
-                    setCookie("cb_path",planURL,1);
+                    /*setCookie("username","",-1);
+                    setCookie("username",username,1);
                     var cookie = getCookie("cb_path");
                     console.log(cookie);*/
-                    $("#pay-now-button").prop("href",planURL);
+                    //$("#pay-now-button").prop("href",planURL);
                     
                 }
             }
         });
+        
+        //Register the info-icon event handlers
+        $(document.body).on('click','.info-icon',function(){
+            $(this).next('.custom_tooltip').toggleClass('active');
+            });
+
+        $(document.body).on('mouseover','.info-icon',function(){
+                    $('.custom_tooltip').removeClass('active');
+                    $(this).next('.custom_tooltip').addClass('active');
+            });
+
+        $(document.body).on('mouseout','.info-icon',function(){
+                    $('.custom_tooltip').removeClass('active');
+                    $(this).next('.custom_tooltip').removeClass('active');
+            });
     }
 }
 
@@ -7320,6 +7360,45 @@ function updateCartItem(itemID)
     });
 }
 
+function addMissionProjectManagement(projectID,quantity)
+{
+    var username = getCookie("username");
+    if(username != "" && projectID != "")
+    {
+        $.ajax({url: restURL, data: {'command':'addMissionProjectManagement','projectid':projectID,'quantity':quantity,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshCartDetails();
+            }
+        });
+    }
+}
+
+function removeMissionProjectManagement(projectID)
+{
+    var username = getCookie("username");
+    if(username != "" && projectID != "")
+    {
+        $.ajax({url: restURL, data: {'command':'removeMissionProjectManagement','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshCartDetails();
+            }
+        });
+    }
+}
+
+function toggleMissionProjectManagement(projectID,quantity)
+{
+    var checked = $("#mission-"+projectID+"-pmbox").prop("checked");
+    if(checked)
+    {
+        addMissionProjectManagement(projectID,quantity);
+    }
+    else
+    {
+        removeMissionProjectManagement(projectID);
+    }
+}
+
 function processThankYou()
 {
     //Grab the subscription ID from the ChargeBee response and update the database with the appropriate info
@@ -7356,13 +7435,29 @@ function handlePayNow(e)
 {
     var e = e || window.event;
     e.preventDefault();
-    
-    window.location = '../keywordhacker/secure_auth.html';
+    window.location = '../keywordhacker/securecheckout.html';
 }
 
-function prepareSecureAuth()
+function prepareCheckout()
 {
-    var path = getCookie("cb_path");
-    console.log(path);
-    $("#content_frame_part").attr("src",path);
+    var username = getCookie("username");
+    var path = "";
+    
+    $.ajax({url: restURL, data: {'command':'getUserCheckoutPage','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+            var info = JSON.parse(returnData);
+
+            if(info.status == "success")
+            {
+                path = info.message;
+                $("#content_frame_part").attr("src",path);
+            }
+            else
+            {
+                path = "error.html";
+                $("#content_frame_part").attr("src",path);
+            }
+        }
+    });
+    
+    
 }
