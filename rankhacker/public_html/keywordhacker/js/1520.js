@@ -7409,9 +7409,13 @@ function processThankYou()
     {
         //addToCart(keywordID);
         $.ajax({url: restURL, data: {'command':'saveCustomerSubscriptionID','username':username,'hostedpageid':hostedPageID}, type: 'post', async: true, success: function postResponse(returnData){
-                //var info = JSON.parse(returnData);
-                prepareCart();
-                sendNewContentOrder(subscriptionID);
+                var info = JSON.parse(returnData);
+                if(info.status == "success")
+                {
+                    prepareCart();
+                    var subscriptionID = info.message;
+                    sendNewContentOrder(subscriptionID);
+                }
             }
         });
     }
