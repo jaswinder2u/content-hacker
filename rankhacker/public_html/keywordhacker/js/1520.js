@@ -1,7 +1,7 @@
-/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
