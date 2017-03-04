@@ -7402,13 +7402,13 @@ function toggleMissionProjectManagement(projectID,quantity)
 function processThankYou()
 {
     //Grab the subscription ID from the ChargeBee response and update the database with the appropriate info
-    var username = getURLParameter("cust_email");
-    var customerID = getURLParameter("cust_id");
-    var subscriptionID = getURLParameter("sub_id");
-    if(username != "" && subscriptionID != "" && customerID != "")
+    var username = getCookie("username");
+    var hostedPageID = getURLParameter("id");
+    var state = getURLParameter("state")
+    if(username != "" && state == "succeeded")
     {
         //addToCart(keywordID);
-        $.ajax({url: restURL, data: {'command':'saveCustomerSubscriptionID','username':username,'subscriptionid':subscriptionID,'customerid':customerID}, type: 'post', async: true, success: function postResponse(returnData){
+        $.ajax({url: restURL, data: {'command':'saveCustomerSubscriptionID','username':username,'hostedpageid':hostedPageID}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
                 prepareCart();
                 sendNewContentOrder(subscriptionID);
