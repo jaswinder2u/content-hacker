@@ -7415,7 +7415,7 @@ function processThankYou()
                 var info = JSON.parse(returnData);
                 if(info.status == "success")
                 {
-                    prepareCart();
+                    refreshCartDropdown();
                     var subscriptionID = info.message;
                     sendNewContentOrder(subscriptionID);
                 }
