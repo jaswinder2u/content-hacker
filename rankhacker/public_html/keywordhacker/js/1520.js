@@ -7300,7 +7300,7 @@ function buildAddonDropdown(projectID,keywordID,itemID,addonID)
 
     var selectHTML = "<select class=\"cart-item-select\" onchange=\"updateCartItem('"+itemID+"')\" id=\"addon-type-"+itemID+"\">";
     
-    if(info != "")
+    if(addonOptions != "")
     {
         var info = JSON.parse(addonOptions);
         if(info.status == "success")
