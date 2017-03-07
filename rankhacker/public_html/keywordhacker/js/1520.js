@@ -7115,12 +7115,18 @@ function refreshCartDetails()
                         $("#cart-total-project-mgmt").html(projectManagementCount);
                         $("#cart-total-cost").html("$"+totalCost);
                         
-                        //Let's also update the header info since we have all of the data that we need
+                        //Let's also update the header and footer info since we have all of the data that we need
                         $("#content-count").html(totalContent);
                         $("#mission-count").html(missionCount);
                         $("#keyword-count").html(keywordCount);
                         $("#management-count").html(projectManagementCount);
-                        $("#total-cost").html("<sup>$</sup>"+totalCost);
+                        $("#total-cost").html("<span class=\"amount-mn\"><sup>$</sup>"+totalCost+" </span><label style=\"float:right;\">MONTHLY TOTAL CHARGE</label>");
+                        
+                        $("#content-count-2").html(totalContent);
+                        $("#mission-count-2").html(missionCount);
+                        $("#keyword-count-2").html(keywordCount);
+                        $("#management-count-2").html(projectManagementCount);
+                        $("#total-cost-2").html("<span class=\"amount-mn\"><sup>$</sup>"+totalCost+" </span><label style=\"float:right;\">MONTHLY TOTAL CHARGE</label>");
                     }
                 }
             });
