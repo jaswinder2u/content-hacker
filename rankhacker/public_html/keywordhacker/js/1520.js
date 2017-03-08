@@ -1,7 +1,7 @@
-var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -1578,6 +1578,7 @@ function displayProjectInfo(field,sort)
         var useGoogle = projectInfo.useGoogle;
         var useBing = projectInfo.useBing;
         var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
+        var projectOrdered = projectInfo.projectOrdered;
         
         var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
         
@@ -1707,6 +1708,18 @@ function displayProjectInfo(field,sort)
         $('#costPerMonth').html("<h2>"+currencyHexCode+numberWithCommas(costPerMonth)+"&nbsp;<font style=\"color:#598a9e;font-size:12px;\">("+projectTotalContentDiff+" pcs)</font><span>COST PER MONTH</span></h2><div class=\"header-math-sign\" style=\"font-family:'Baloo Bhaina', cursive;color:#088D0C;font-size:48px;font-weight:bold;\">=</div>");
         $('#kwNetWorth').html("<h2 class=\""+netWorthStyle+"\" style=\"background-color:#000;\">"+keywordNetWorthString+"<span style=\"background-color:#fff;\">KEYWORD NET-WORTH</span></h2>");
         $('#dateDivBottom').html("<div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div><a class=\"project-status-card  project_status_sort\" href=\"javascript:void(0);\">"+activeString+"</a>");
+        
+        var cartOpacity = "1.0";
+        var cartOnclick = "addToCart('-1');";
+        if(projectOrdered)
+        {
+            cartOpacity = "0.25";
+            cartOnclick = "javascript:void(0);";
+        }
+        var newClick = new Function(cartOnclick);
+        $("#project-add-to-cart").attr("onclick","").click(newClick);
+        $("#project-add-to-cart").css("opacity",cartOpacity);
+        
 
     //Let's sort the keyword data by the specified field first
     var currSortMethod = $('#keyword-sort-method').val();
@@ -1905,6 +1918,14 @@ function displayProjectInfo(field,sort)
         var costPerMonth = thisEntry.costPerMonth;
         var keywordNetWorth = thisEntry.keywordNetWorth;
         var keywordStatus = thisEntry.status;
+        var numCartEntries = thisEntry.numCartEntries;
+        var cartOpacity = "1.0";
+        var cartOnclick = "addToCart('"+keywordID+"');";
+        if(numCartEntries>0)
+        {
+            cartOpacity = "0.25";
+            cartOnclick = "javascript:void(0);";
+        }
         
         var keywordTotalContentDiffHTML = "";
         var topKWNetworth = "";
@@ -1927,7 +1948,7 @@ function displayProjectInfo(field,sort)
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
             //topHackExpand = "id=\"toggle-keyword-"+keywordID+"\" style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
             topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;\" onclick=\"addToCart('"+keywordID+"');\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+i+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -2787,6 +2808,7 @@ function refreshProjectInfo(keywordCounter)
         var payingCustomers = projectInfo.payingCustomers;
         var currencyHexCode = projectInfo.currencyHexCode;
         var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
+        var projectOrdered = projectInfo.projectOrdered;
         
         var projectTotalContentDiff = projectInfo.projectTotalContentDiff;
         
@@ -3093,6 +3115,14 @@ function refreshProjectInfo(keywordCounter)
         var monthlySales = thisEntry.monthlySales;
         var costPerMonth = thisEntry.costPerMonth;
         var keywordNetWorth = thisEntry.keywordNetWorth;
+        var numCartEntries = thisEntry.numCartEntries;
+        var cartOpacity = "1.0";
+        var cartOnclick = "addToCart('"+keywordID+"');";
+        if(numCartEntries>0)
+        {
+            cartOpacity = "0.25";
+            cartOnclick = "javascript:void(0);";
+        }
         
         //Trap for nulls on numberWithCommas function
         if(typeof searchVolume === 'undefined') {searchVolume = 0;}
@@ -3110,7 +3140,7 @@ function refreshProjectInfo(keywordCounter)
         if(keywordStatus == "hacked")
         {
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;\" onclick=\"addToCart('"+keywordID+"');\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+i+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -5748,6 +5778,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
         var useGoogle = projectInfo.useGoogle;
         var useBing = projectInfo.useBing;
         var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
+        var projectOrdered = projectInfo.projectOrdered;
         
         var projectTotalContentDiff = projectInfo.projectTotalContentDiff;
         
@@ -6078,6 +6109,14 @@ function refreshKeywordInfo(returnData,field,keywordID)
         var costPerMonth = thisEntry.costPerMonth;
         var keywordNetWorth = thisEntry.keywordNetWorth;
         var keywordStatus = thisEntry.status;
+        var numCartEntries = thisEntry.numCartEntries;
+        var cartOpacity = "1.0";
+        var cartOnclick = "addToCart('"+keywordID+"');";
+        if(numCartEntries>0)
+        {
+            cartOpacity = "0.25";
+            cartOnclick = "javascript:void(0);";
+        }
         
         var keywordTotalContentDiffHTML = "";
         var topKWNetworth = "";
@@ -6100,7 +6139,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
             //topHackExpand = "id=\"toggle-keyword-"+keywordID+"\" style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+keywordCounter+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+keywordCounter+"\"";
             topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+keywordCounter+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+keywordCounter+"\"";
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;\" onclick=\"addToCart('"+keywordID+"');\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;;opacity:"+cartOpacity+"\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+keywordCounter+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -6741,7 +6780,14 @@ function addToCart(keywordID)
 
                     if(info.status == "success")
                     {
+                        //Show the added! text
+                        flashAddedMessage();
+                        
+                        //Disable all of the other add to cart icons
+                        
+                        
                         refreshCartDropdown();
+                        
                     }
                 }
             });
@@ -6753,6 +6799,11 @@ function addToCart(keywordID)
 
                     if(info.status == "success")
                     {
+                        //Show the added! text
+                        flashAddedMessage();
+                        
+                        //Disable this particular add to cart icon
+                        
                         refreshCartDropdown();
                     }
                 }
@@ -7136,6 +7187,31 @@ function refreshCartDetails()
 
                 if(info.status == "success")
                 {
+                    var pmBubbleText = "Project Management of the content creation process will include:\n\
+                        <ul>\n\
+                            <li><strong>Welcome Email:</strong> We'll send you an email to schedule our first call with you</li>\n\
+                            <li><strong>Kick-Off Call:</strong> During this call, we'll cover three main points\n\
+                                <ul style='list-style-type:square;'>\n\
+                                    <li><strong>Listening and Learning</strong> - We want to know about your business, what you do, your target market and what you want to accomplish with your content.</li>\n\
+                                    <li><strong>Walk-Through Demo</strong> - We’ll show you how to navigate our simple client portal to approve topics, titles and content.</li>\n\
+                                    <li><strong>Setting Expectations </strong> - We’ll describe our process, from start-to-finish. We’re very hands on and our first priority is driving your project.</li>\n\
+                                </ul>\n\
+                            </li>\n\
+                            <li><strong>Questionnaire:</strong> You'll get a questionnaire from us after our first call that will be used to\n\
+                                <ul style='list-style-type:square;'>\n\
+                                    <li>Help determine what topics to focus on.</li>\n\
+                                    <li>Create clear and concise writer instructions.</li>\n\
+                                    <li>Ensure that you'll be thrilled with your content.</li>\n\
+                                </ul>\n\
+                            </li>\n\
+                            <li><strong>Topic and Initial Title Creation:</strong> After we get your questionnaire back, we’ll go to work researching your website and developing a list of topics to focus on. We’ll also come up with a few initial titles for your content.</li>\n\
+                            <li><strong>Topic and Title Review Call:</strong> We’ll review your topics and titles together to determine the top 3-4 titles you’d like to start with. During this call, we’ll also ask if you want to provide bullet points or talking points for each title, or let the writer work on their own.</li>\n\
+                            <li><strong>Writer Sampling:</strong> Once you approve your initial batch of titles, we’ll use our powerful writer crowd-sourcing technology to create a sample pool of likely writer candidates for you to sample.</li>\n\
+                            <li><strong>Initial Content Review:</strong> You’ll be able to review the content we send to you and determine if it’s great, needs a few revisions, or isn’t suitable. If you don’t like the writers, no problem! We’ll go back to our pool to find ones you’ll love.</li>\n\
+                        </ul>\n\
+                        At this point, we will have identified which writers you love and we can get to work completing the rest of your project. Now that the initial foundation has been laid, you won’t need to spend as much hands-on time.";
+                    
+                    
                     var cartHTML = "";
                     var cart = info.cartDetails;
                     var pmPrice = info.projectManagementPrice;
@@ -7470,7 +7546,24 @@ function prepareCheckout()
                 $("#content_frame_part").attr("src",path);
             }
         }
-    });
+    });    
+}
+
+function flashAddedMessage(e)
+{
+    var e = e || window.event;
     
+    $("#added-message").css({
+        top: e.pageY-20,
+        left: e.pageX+20
+      });
     
+    $('#added-message').delay(0).fadeIn(500, function() {
+      $(this).delay(200).fadeOut(500);
+   });
+}
+
+function prepareErrorPage()
+{
+    refreshCartDropdown();
 }

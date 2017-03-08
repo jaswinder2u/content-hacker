@@ -1008,3 +1008,16 @@ border: 1px solid #e2e5e5;
     border:1px dotted #caccce;
     padding:5px;
 }
+
+.close-icon {
+    float:right;
+    cursor:pointer;
+}
+
+.added-message {
+    position:absolute;
+    color:#005cb8;
+    font-size:13px;
+    font-weight:bold;
+    display:none;
+}
