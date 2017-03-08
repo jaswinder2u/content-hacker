@@ -25,147 +25,961 @@
     <!-- =========================
              STYLESHEETS
         ============================== -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=49" rel="stylesheet">
-    <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">
-    <link href="css/materialize.min-120816.css?v=49" rel="stylesheet" id="theme-change">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=49" rel="stylesheet">-->
     <link href="css/custom-style.css?v=49" rel="stylesheet" id="theme-change">
     <link href="css/rankhacker.css?v=49" rel="stylesheet" id="theme-change">
     <link href="css/bootstrap-slider.min.css?v=49" rel="stylesheet" id="theme-change">
-    <link href="css/media-queries.css?v=49" rel="stylesheet" type="text/css">-->
+    <link href="css/media-queries.css?v=49" rel="stylesheet" type="text/css">
 
- 
-    
     <!--google js file-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     
     <!--1520 files-->
-    <script src="js/bootstrap-slider.js?v=49"></script>
     <script src="js/1520.js?v=49"></script>
     <link href="css/1520.css?v=49" rel="stylesheet" id="theme-change">
     <link href="css/spinner.css?v=49" rel="stylesheet" id="theme-change">
+
+    <link href="css/media-queries.css?v=49" rel="stylesheet" type="text/css">
     
     <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
     <link href="css_storefront/bootstrap.min.css?v=49" rel="stylesheet">
     <link href="css_storefront/custom-style.css?v=49" rel="stylesheet" id="theme-change-storefront">
-
+    <link href="css_cart/keyword-networth.css" rel="stylesheet" id="theme-change-storefront">
+    
     <!-- material design lite -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-   <link href="css/material-style.css" rel="stylesheet" type="text/css">
-    
-<!--jquery dropdown-->
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-</head>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="css/bootstrap.min.css?v=49" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=49" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-    <script>
-        function run(){
-            loadProjectDashboard(false);
-            setInterval(loadProjectDashboard.bind(false), 30000);
-        }
-    </script>
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 </head>
 
-<body>
+<body id="body" class="page-loading home noisy" onload="prepareCart();">
 
-    <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-color--black">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title"><img src = "images/site-logo.png" class = "logo"></img></span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation.. -->
-     <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-        <a class="mdl-navigation__link" href="">Keyword Hacker</a>
-        <a class="mdl-navigation__link" href="">Content Hacker</a>
-        <a class="mdl-navigation__link" href="">Quickspy</a>
-        <a class="mdl-navigation__link" href="">Cart Icon</a>
-        <a class="mdl-navigation__link" href="">Login</a>
-              </nav>
-    </div>
-  </header>
+ <!-- =========================
+     MAIN MENU
+============================== -->
 
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
-    <nav class="mdl-navigation">
-  <a class="mdl-navigation__link" href="">Keyword Hacker</a>
-        <a class="mdl-navigation__link" href="">Content Hacker</a>
-        <a class="mdl-navigation__link" href="">Quickspy</a>
-        <a class="mdl-navigation__link" href="">Cart Icon</a>
-        <a class="mdl-navigation__link" href="">Login</a>
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                    <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <div class="cart-header">
+                        <span id="cart-total-pieces">0</span>
+                        <span id="cart-total-pieces-text">Pieces of Content<br/>PER MONTH</span>
+                    </div>
+                    <div class="cart-breakdown">
+                        <div class="cart-breakdown-cell"><span id="cart-total-missions">0</span><br/><span class="cart-breakdown-text">MISSIONS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-keywords">0</span><br/><span class="cart-breakdown-text">KEYWORDS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-project-mgmt">0</span><br/><span class="cart-breakdown-text">PROJECT<br>MANAGEMENT</span></div>
+                    </div>
+                    <div class="cart-summary">
+                        <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>-->
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </nav>
-  </div>
-   <main class="mdl-layout__content">
-    <div class="page-content mdl-color--grey-400">
-
-<div class="mdl-grid mission-banner ">
-  <div class="mdl-cell mdl-cell--12-col welcome mdl-shadow--12dp"><p class ="slogan-top">Welcome to the Keyword Hacker Module</p> <h4 class ="slogan-bottom">The Mission [Insert mission text]</h4> </div>
-  <div class="mdl-cell mdl-cell--1-col crumb-container"> <img src = "images/black-eagle-icon.png" class ="black-eagle-small"></img> </div>  <div class="mdl-cell mdl-cell--3-col crumb-container"> <p class ="crumb-text">Bread > Crumb</p>  </div>  
 </div>
-
-<div class = "mdl-grid mission-data ">
-<div class="mdl-cell mdl-cell--2-col projection-container"> <p class ="crumb-text">mission.com</p></div>  <div class="mdl-cell mdl-cell--2-col projection-container"> <p class ="crumb-text">location</p>  </div>   <div class="mdl-cell mdl-cell--3-col projection-container"> <p class ="crumb-text">Projections For:</p>  </div>  
-</div>
-  
-<div class="mdl-grid ppo-seo-container  ">
-  <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black">  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-  <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-  <span class="mdl-checkbox__label">SEO</span>
-</label></div> <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black">  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-  <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-  <span class="mdl-checkbox__label">PPC</span>
-</label></div>
-</div>
-
-<div class="mdl-grid active-data-container  ">
-  <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"><p class ="active-data-text"> 1 </br> Keyword Phrases</div> <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black">  2</br> Monthly Search Volume</div><div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"> 3 </br> Monthly Visitors</div> <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black">  4 </br> Monthly Customers</div><div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"> 5 </br> Monthly Sales</div> <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"> 6 </br> Content Goals and Costs</div><div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"> Cart Icon</div> <div class="mdl-cell mdl-cell--1-col type-selector mdl-color--black"> 8 </br>Keyworth net worth</div> 
-
-
-</div>
-
-<div class="mdl-grid data-row mdl-color--black" id="accordion">
- <div class="mdl-cell mdl-cell--1-col"> <h3></h3> </div>   
-  <div class = "mdl-cell mdl-cell--12-col">
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-  <thead>
-    <tr>
-       <th>Rank</th>
-      <th class="mdl-data-table__cell--non-numeric">URL</th>
-      <th>CTR</th>
-      <th>Monthly</th>
-      <th>Monthly</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-       <td>x</td>
-      <td class="mdl-data-table__cell--non-numeric">www.x.xxx</td>
-     
-      <td>x</td>
-       <td>x</td>
-        <td>x</td>
-    </tr>
     
-  </tbody>
-</table>
-  </div>
- </div>
- </div>
+
+<!-- =========================
+     HEADER
+============================== -->
+    <section id="content-section" class="">
+
+        <div id="background-image"></div>
+        <!--div class="scanlines"></div-->
+
+        <div class="overlay interface-outer">
+
+            <div class="container">
+                <div id="keyword-networth">
+                    <div class="head-info-box">
+                        <h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>
+                        <h2 class="page-info">the <strong>mission</strong> <strong>[</strong> Review <strong>Keyword Net-Worth<sup>TM</sup></strong> and select phrases that meet or exceed your sales goal <strong>]</strong></h2>
+                    </div>
+                    <div class="project-breadcomb-outer">
+                        <ul>
+                            <li><i class="black_eagle-rh"> </i><a href="#">MISSION DASHBOARD</a>
+                            </li>
+                            <li><a href="#">KEYWORD HACKER</a> </li>
+                            <li>FAIRMARKETING.COM</li>
+                        </ul>
+                    </div>
+                    <div id="shadow"> </div>
 
 
-  </main>
+                    <div class="project-location-it">
+                        <ul>
+                            <li>FAIRMARKETING.COM <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </li>
+                            <li>
+                                <label>Location:</label> USA, Canada</li>
+                            <li>
+                                <label>Projections for:</label> google, yahoo/bing</li>
+                        </ul>
+                    </div>
 
+                    <div class="white-box">
+						<div class="top-check-selection">
+							<input class="" type="checkbox">SEO 
+							<input class="" type="checkbox">PPC
+						</div>
+                        <div class="panel-group keyword-networth-project-outer" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            <table class="keyword-networth-project" cellspacing="0" cellpadding="0" border="0">
+                                <tbody>
+                                    <tr class="table-heading">
+                                        <th colspan="2">
+                                            <h2 class="table-title">3 active <span>KEYWORD PHRASES</span></h2>
+                                        </th>
+                                        <th class="price-widthbox">
+                                            <h2 class="table-title">75,797 <span>MO. SEARCH VOLUME <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
+                                        </th>
+                                        <th class="price-widthbox">
+                                            <h2 class="table-title">25,435<span>MONTHLY VISITORS</span><span class="blue-text">PROJECTED </span></h2>
+                                        </th>
+                                        <th class="price-widthbox">
+                                            <h2 class="table-title">17<span>MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
+                                        </th>
+                                        <th class="price-widthbox" style="padding-right: 0">
+                                            <h2 class="table-title negative-sign"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
+                                        </th>
+                                        <th class="price-widthbox"  style="padding-right: 0">
+                                            <h2 class="table-title equal-sign"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon"></i></strong></span></h2><i class="addincart-icon"> </i>
+                                        </th>
+                                        <th class="price-widthbox" colspan="2">
+                                            <h2 class="table-title"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
+                                        </th>
+                                    </tr>
+
+                                    <tr> <td style="border-right: none;"><div class="margin10t"></div></td></tr>
+
+                                    <tr class="project-head open panel">
+                                        <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                        <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">water leaks</a>
+                                        </td>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+
+                                    <tr class="project-info active">
+                                        <td colspan="9" style="border-right: none !important" >
+                                            <div id="collapse1" class="panel-collapse collapse in">
+                                                <div class="row">
+
+                                                    <div class="col-sm-7 content-goal-info">
+
+                                                        <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+													<div class="table-outer">
+													  
+													  <span class="reveal-mark"> REVEAL </span>
+													 
+                                                        <table class="content-goal-table" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr class="table-heading2">
+                                                                    <th></th>
+                                                                    <th>Rank</th>
+                                                                    <th>URL</th>
+                                                                    <th>CTR <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Backlinks <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Content <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                </tr>
+
+										<tr class="project-head2">
+											<td class="checkbox-ot"><input class="" type="checkbox"> </td>
+											<td data-label="Rank">7</td>
+											<td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+											<td data-label="CTR">98%</td>
+											<td data-label="Monthly Backlinks" class="disabled"></td>
+											<td data-label="Monthly Content" class="disabled"></td>
+										</tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr class="project-head2 them-row">
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
+                                            </tr>
+
+                                            <tr class="project-head2 you-row">
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
+                                                <td>39</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
+                                            </tr>
+
+                                            <tr class="project-head2 result-row">
+                                                <td colspan="5" class="text-right">YOUR MONTHLY CONTENT GOAL</td>
+                                                <td colspan="2">6</td>
+                                            </tr>
+                                        </tfoot>
+
+
+                                        </table>
+									</div>
+                                        <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+
+                                        </div>
+
+                                        <div class="col-sm-5 right-side-goalinfo">
+
+                                            <div class="info-block" style="margin-top:40px;">
+                                                <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                                                <p>Reveal the monthly content strategies of your selected competitors</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>REVIEW AND TAKE ACTION <i class="blueproject-eagle-icon"> </i></h3>
+                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>
+                                            </div>
+
+                                            <div class="info-block calculator-lt">
+                                                <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                                    <br>Start by defining your monthly sales goal using our <a href="#">calculator</a>.</p>
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                        </div>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="project-head panel">
+                                        <td class="checkbox-ot">
+                                            <input class="" type="checkbox"> </td>
+                                        <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2">water leaks</a>
+                                        </td>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="project-info">
+                                        <td colspan="9" style="border-right: none !important">
+                                            <div id="collapse2" class="panel-collapse collapse">
+                                                <div class="row">
+
+                                                    <div class="col-sm-7 content-goal-info">
+
+                                                        <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+													<div class="table-outer">
+                                                     <span class="reveal-mark"> REVEAL </span>
+                                                        <table class="content-goal-table" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr class="table-heading2">
+                                                                    <th></th>
+                                                                    <th>Rank</th>
+                                                                    <th>URL</th>
+                                                                    <th>CTR <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Backlinks <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Content <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                </tr>
+
+										<tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+										</tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr class="project-head2 them-row">
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
+                                            </tr>
+
+                                            <tr class="project-head2 you-row">
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
+                                                <td>39</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
+                                            </tr>
+
+                                            <tr class="project-head2 result-row">
+                                                <td colspan="5" class="text-right">YOUR MONTHLY CONTENT GOAL</td>
+                                                <td colspan="2">6</td>
+                                            </tr>
+                                        </tfoot>
+
+
+                                        </table>
+									</div>
+                                        <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+
+                                        </div>
+
+                                        <div class="col-sm-5 right-side-goalinfo">
+
+                                            <div class="info-block" style="margin-top:40px;">
+                                                <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                                                <p>Reveal the monthly content strategies of your selected competitors</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>REVIEW AND TAKE ACTION <i class="blueproject-eagle-icon"> </i></h3>
+                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>
+                                            </div>
+
+                                            <div class="info-block calculator-lt">
+                                                <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                                    <br>Start by defining your monthly sales goal using our <a href="#">calculator</a>.</p>
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                        </div>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="project-head panel">
+                                        <td class="checkbox-ot">
+                                            <input class="" type="checkbox"> </td>
+                                        <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">water leaks</a>
+                                        </td>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> 
+                                        </td>
+                                    </tr>
+
+                                    <tr class="project-info">
+                                        <td colspan="9" style="border-right: none !important">
+                                            <div id="collapse3" class="panel-collapse collapse">
+                                                <div class="row">
+
+                                                    <div class="col-sm-7 content-goal-info">
+
+                                                        <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+												<div class="table-outer">
+                                                 <span class="reveal-mark"> REVEAL </span>
+                                                        <table class="content-goal-table" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr class="table-heading2">
+                                                                    <th></th>
+                                                                    <th>Rank</th>
+                                                                    <th>URL</th>
+                                                                    <th>CTR <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Backlinks <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                    <th>Monthly Content <strong class="position-relative"><i class="info-icon"></i></strong></th>
+                                                                </tr>
+
+										<tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+										</tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+
+                                        <tr class="project-head2">
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
+                                        </tr>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr class="project-head2 them-row">
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
+                                            </tr>
+
+                                            <tr class="project-head2 you-row">
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
+                                                <td>39</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
+                                            </tr>
+
+                                            <tr class="project-head2 result-row">
+                                                <td colspan="5" class="text-right">YOUR MONTHLY CONTENT GOAL</td>
+                                                <td colspan="2">6</td>
+                                            </tr>
+                                        </tfoot>
+
+
+                                        </table>
+										</div>
+
+                                        <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+
+                                        </div>
+
+                                        <div class="col-sm-5 right-side-goalinfo">
+
+                                            <div class="info-block" style="margin-top:40px;">
+                                                <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                                                <p>Reveal the monthly content strategies of your selected competitors</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>REVIEW AND TAKE ACTION <i class="blueproject-eagle-icon"> </i></h3>
+                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>
+                                            </div>
+
+                                            <div class="info-block calculator-lt">
+                                                <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                                    <br>Start by defining your monthly sales goal using our <a href="#">calculator</a>.</p>
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                        </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+
+                                <div class="add-custom-keyword-outer">
+                                    <input class="url-input" value="" type="text" placeholder="ENTER KEYWORD PHRASE" />
+
+                                    <ul>
+                                        <li>you see it's curious <i class="fa fa-times" aria-hidden="true"></i>
+                                        </li>
+                                        <li>ted did figure it out <i class="fa fa-times" aria-hidden="true"></i>
+                                        </li>
+                                        <li>time travel <i class="fa fa-times" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+
+                                    <a href="#" class="add-new-keywords-btn">ADD 3 KEYWORDS TO PROJECT</a>
+                                </div>
+                                <div class="suggest-keywords-list">
+                                    <p class="suggest-keywords-label">AND/OR CLICK TO ADD SUGGESTED KEYWORDS</p>
+                                    <ul>
+                                        <li>you see it's curious</li>
+                                        <li>ted did figure it out </li>
+                                        <li>time travel</li>
+                                        <li>and when we get back</li>
+                                        <li>we gonna tell everyone</li>
+                                        <li>how it's possible</li>
+                                        <li>how it's done</li>
+                                        <li>what the dangers are</li>
+                                        <li>but then why fifty years</li>
+                                        <li>in the future</li>
+                                        <li>when the spacecraft encounters a black hole</li>
+                                        <li>does the computer call it</li>
+                                        <li>an unknown</li>
+                                        <li>entery event</li>
+                                    </ul>
+                                </div>
+
+                                <a href="#" class="view-more-btn">VIEW MORE</a>
+                                <div class="card-box-bottom">
+                                    <div class="project-date-card date_sort"><i class="eagle-icon"></i>DEC 2016 </div>
+                                    <a class="project-status-card  project_status_sort" href="javascript:void(0);">Active</a> </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+<!-- =========================
+     FOOTER
+============================== -->
+          <!-- Footer start here -->
+          <footer id="main-footer">
+           <div class="container">
+            
+                <!--footer center socail icon section start here-->
+            <div class="footer-socail-icon">
+                    <ul class="text-center">
+                    <li> <a href="https://www.facebook.com/rankhacker/?fref=ts" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                    <li> <a href="https://twitter.com/rank_hacker?lang=en" target="_blank"> <i class="fa fa-twitter"></i> </a></li>
+                    </ul>
+             </div>
+        <!--footer center socail icon section close here-->
+        
+        <div class="row">
+         <!--Footer left section start here-->
+            <div class="footer-link col-sm-4">
+                  <ul class=""> 
+                <li> <a href="faq.html">FAQs</a>
+                <!--<li> <a href="#">What is this?</a></li>-->
+                <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
+              </ul>
+                </div>
+        <!--footer left section close here-->
+
+        <!--copyright section start here-->     
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
+            <!--copyright section close here-->
+                        
+            <div class="account-section text-right col-sm-4">
+                <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
+            </div>
+            
+          </div>
+            </div>
+      </footer>
+      <!--Footer close here-->
+
+
+
+<span id="added-message" class="added-message">Added to Cart</span>
+
+<!-- =========================
+     JS SCRIPTS
+============================== -->
+
+<!--Text typing effect js -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type='text/javascript'> 
+
+
+jQuery(".cart-menu-nav a.cart-icon").hover(
+    function() {
+        jQuery(".mini-cart-outer").addClass('show-mini-cart');
+        jQuery(".cart-menu-nav a.cart-icon").addClass('active');
+    }
+);
+
+jQuery("#close-mini-cart").click(function(){
+    jQuery(".mini-cart-outer").removeClass('show-mini-cart');
+    jQuery(".cart-menu-nav a.cart-icon").removeClass('active');
+});
+
+jQuery('.info-icon').on('click',function(){
+    jQuery(this).next('.custom_tooltip').toggleClass('active');
+});
+
+jQuery('.info-icon').on('mouseover',function(){
+    jQuery('.custom_tooltip').removeClass('active');
+    jQuery(this).next('.custom_tooltip').addClass('active');
+});
+
+
+jQuery('.no-thanks').on('click',function(e){
+    e.preventDefault();
+    var cls = jQuery(this).closest('.custom_tooltip').removeClass('active');
+});
+
+jQuery('.cd-faq-categories a').on('click', function(){
+    jQuery('.overlay.interface-outer').addClass('active');
+}); 
+
+jQuery('.cd-close-panel').on('click', function(){
+    jQuery('.overlay.interface-outer').removeClass('active');
+}); 
+
+
+</script>
+
+<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>   
+
+<script type="text/javascript" src="js/faq-main.js"></script>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("mySidenav").style.left = "0";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.left = "-300px";
+}
+
+
+/*jQuery('.project-name-ot a').on('click',function(){
+   if(jQuery(this).hasClass('collapsed')){
+         jQuery(this).closest('.project-head').addClass('open');
+         jQuery('.open').next('tr').addClass('active');
+   }
+   else{
+   		 jQuery('.open').next('tr').removeClass('active');
+         jQuery(this).closest('.project-head').removeClass('open');
+
+   }
+});*/
+
+
+
+
+
+
+
+jQuery('#accordion').on('show.bs.collapse', function () {
+    jQuery('.panel-collapse').collapse('hide');    
+    addRemoveClass();
+       
+    
+});
+
+
+jQuery('#accordion').on('shown.bs.collapse', function () {
+ 
+    var a = jQuery("a[aria-expanded=true]").attr('href');
+    console.log(a);
+});
+
+
+function addRemoveClass(){
+
+      jQuery('#accordion').find('tr').each(function(){
+       if(jQuery(this).find('a').hasClass('collapsed')){
+            jQuery(this).removeClass('open');
+       }
+       else{            
+            jQuery(this).next('tr').addClass('open');
+       }
+   });
+}
+
+
+
+</script>
 
 </body>
 

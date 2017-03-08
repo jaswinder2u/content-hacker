@@ -7498,7 +7498,9 @@ function processThankYou()
                 if(info.status == "success")
                 {
                     refreshCartDropdown();
-                    var subscriptionID = info.message;
+                    var subscriptionID = info.cbSubscriptionID;
+                    var customerID = info.cbCustomerID;
+                    document.cookie = "cbCustomerID="+info.customerID;
                     sendNewContentOrder(subscriptionID);
                 }
             }
@@ -7524,7 +7526,39 @@ function handlePayNow(e)
 {
     var e = e || window.event;
     e.preventDefault();
-    window.location = '../keywordhacker/securecheckout.html';
+    
+    var cbCustomerID = getCookie("cbCustomerID");
+    var username = getCookie("username");
+    
+    if(cbCustomerID == "")
+    {
+        window.location = '../keywordhacker/securecheckout.html';
+    }
+    else
+    {
+        if(username != "")
+        {
+            $.ajax({url: restURL, data: {'command':'addSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+                    if(info.status == "success")
+                    {
+                        refreshCartDropdown();
+                        var subscriptionID = info.cbSubscriptionID;
+                        sendNewContentOrder(subscriptionID);
+                        window.location = '../keywordhacker/thankyou.html?state=internal';
+                    }
+                    else
+                    {
+                        window.location = '../keywordhacker/error.html';
+                    }
+                }
+            });
+        }
+        else
+        {
+            window.location = '../keywordhacker/error.html';
+        }
+    }
 }
 
 function prepareCheckout()

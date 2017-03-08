@@ -92,6 +92,7 @@ function loginAccount()
                 {
                     document.cookie = "username="+email;
                     document.cookie = "userFullName="+info.userfullname;
+                    document.cookie = "cbCustomerID="+info.cbCustomerID;
                     window.location = "keywordhacker/dashboard.html";
                 }
                 else if(info.status == "error")
