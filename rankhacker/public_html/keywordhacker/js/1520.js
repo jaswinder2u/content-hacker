@@ -4616,7 +4616,7 @@ function clickReadMoreTrigger(num)
 }
 
 function getUserInfo()
-{
+{   
     var username = getCookie("username");
 
     if(username != '')
