@@ -1,7 +1,7 @@
-/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -1948,7 +1948,7 @@ function displayProjectInfo(field,sort)
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
             //topHackExpand = "id=\"toggle-keyword-"+keywordID+"\" style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
             topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+i+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -3140,7 +3140,7 @@ function refreshProjectInfo(keywordCounter)
         if(keywordStatus == "hacked")
         {
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+i+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -6139,7 +6139,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
             topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
             //topHackExpand = "id=\"toggle-keyword-"+keywordID+"\" style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+keywordCounter+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+keywordCounter+"\"";
             topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+keywordCounter+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+keywordCounter+"\"";
-            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;;opacity:"+cartOpacity+"\" onclick=\""+cartOnclick+"\"></span>";
+            topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;;opacity:"+cartOpacity+"\" onclick=\""+cartOnclick+"\"></span>";
             boxGoalHTML = keywordTotalContentDiff;
             //bigHackContentButton = "<span id=\"get-the-hack-2-"+keywordCounter+"\" class=\"get-the-hack-button-blue\" onclick=\"getContentReport('"+keywordID+"');\">VIEW CONTENT</span>";
             if(keywordTotalContentDiff >= 0)
@@ -6775,17 +6775,32 @@ function addToCart(keywordID)
     {
         if(keywordID == -1)
         {
+            //Show the added! text
+            flashAddedMessage(window.event);
+
+            //Disable the top add to cart icon, and all of the keyword add to cart icons
+            $("#project-add-to-cart").css("opacity","0.25");
+            $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+
+            var jsonData = $("#json").val();
+            var info = JSON.parse(jsonData);
+            var keywordInfo = info.keywordData;
+            for(var i=0; i<keywordInfo.length; i++)
+            {
+                var thisEntry = keywordInfo[i];
+                var thisKeywordID = thisEntry.keywordID;
+                if($("#cart-icon-"+thisKeywordID).length)
+                {
+                    $("#cart-icon-"+thisKeywordID).css("opacity","0.25");
+                    $("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+                }
+            }
+            
             $.ajax({url: restURL, data: {'command':'addProjectContentToCart','username':username,'projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
 
                     if(info.status == "success")
                     {
-                        //Show the added! text
-                        flashAddedMessage();
-                        
-                        //Disable all of the other add to cart icons
-                        
-                        
                         refreshCartDropdown();
                         
                     }
@@ -6794,16 +6809,42 @@ function addToCart(keywordID)
         }
         else
         {
+            //Show the added! text
+            flashAddedMessage(window.event);
+
+            //Disable this particular add to cart icon
+            $("#cart-icon-"+keywordID).css("opacity","0.25");
+            $("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+            
+            //Go through the rest of the mission; if no other keywords are available to add, disable the project-level one too
+            var disable = true;
+            var jsonData = $("#json").val();
+            var info = JSON.parse(jsonData);
+            var keywordInfo = info.keywordData;
+            for(var i=0; i<keywordInfo.length; i++)
+            {
+                var thisEntry = keywordInfo[i];
+                var thisKeywordID = thisEntry.keywordID;
+                if($("#cart-icon-"+thisKeywordID).length)
+                {
+                    var thisOpacity = $("#cart-icon-"+thisKeywordID).css("opacity");
+                    if(thisOpacity == 1)
+                    {
+                        disable = false;
+                    }
+                }
+            }
+            if(disable)
+            {
+                $("#project-add-to-cart").css("opacity","0.25");
+                $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+            }
+            
             $.ajax({url: restURL, data: {'command':'addKeywordContentToCart','username':username,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
 
                     if(info.status == "success")
                     {
-                        //Show the added! text
-                        flashAddedMessage();
-                        
-                        //Disable this particular add to cart icon
-                        
                         refreshCartDropdown();
                     }
                 }
@@ -7586,10 +7627,9 @@ function prepareCheckout()
 function flashAddedMessage(e)
 {
     var e = e || window.event;
-    
     $("#added-message").css({
-        top: e.pageY-20,
-        left: e.pageX+20
+        top: window.y-30,
+        left: window.x+20
       });
     
     $('#added-message').delay(0).fadeIn(500, function() {

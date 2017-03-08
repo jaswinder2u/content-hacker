@@ -1022,5 +1022,6 @@ border: 1px solid #e2e5e5;
     opacity:0.85;
     font-size:13px;
     font-weight:bold;
+    z-index:999;
     display:none;
 }
