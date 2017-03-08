@@ -48,9 +48,9 @@
 
 .project-breadcomb-outer ul, .project-breadcomb-outer ul li {float: left;width: 100%;margin: 0;padding: 0;}
 
-.project-breadcomb-outer ul li {color: #231F20;float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: 500;/* line-height: normal; */margin: 0;padding: 0 15px;text-transform: uppercase !important;width: auto;line-height: 24px;position:relative;}
+.project-breadcomb-outer ul li {color: #231F20;float: left;font-family: 'Montserrat', sans-serif;font-size: 12px;font-weight: 500;/* line-height: normal; */margin: 0;padding: 0 15px;text-transform: uppercase !important;width: auto;line-height: 24px;position:relative;}
 
-.project-breadcomb-outer ul li::before {content: "\f105";font-family: FontAwesome;position: absolute;font-size: 24px;left: 100%;top: 0;}
+.project-breadcomb-outer ul li::before {content: "\f105";font-family: FontAwesome;position: absolute;font-size: 20px;left: 100%;top: 0;}
 
 .project-breadcomb-outer ul li:last-child::before{display:none;}
 
@@ -70,7 +70,7 @@
 
 .price-widthbox {width: 160px;}
 
-.keyword-networth-project td {color:#58595B;font-size:12px;}
+.keyword-networth-project td {color:#58595B;font-size:12px;text-align: left;}
 
 .keyword-networth-project td.checkbox-ot {width: 50px;text-align: center;}
 
@@ -78,11 +78,11 @@
 
 .keyword-networth-project td.delect-row  i {color: #58595b;font-size: 14px;}
 
-.keyword-networth-project-outer {margin:0;padding:0;}
+.keyword-networth-project-outer {margin:8px 0;padding:0;}
 
 .keyword-networth-project-outer.panel-group .panel + .panel {margin-top: 10px;}
 
-.project-head {background-color: #F1F1F2;border: 1px solid #E6E7E8;}
+.project-head, .project-head.panel {background-color: #F1F1F2;border: 1px solid #E6E7E8;float: none;width: 100%;border-radius: 0 !important;}
 
 .keyword-networth-project td.project-name-ot {position: relative;padding-left: 25px;text-align: left;}
 
@@ -102,7 +102,7 @@
 
 .blue-text {color:#005CB8 !important;}
 
-.keyword-networth-project th:first-child h2.table-title{color:#005CB8 !important;font-size:24px;}
+.keyword-networth-project th:first-child h2.table-title{color:#005CB8 !important;font-size:24px;padding-left: 10px;}
 
 #url-list {float: left;margin: 15px 0 0;padding: 0;width: 100%;}
 
@@ -128,7 +128,7 @@
 
 .project-status-card {background-color: #c9e4ef;border-radius: 3px;color: #231f20 !important;float: right;font-size: 13px;font-weight: 600;letter-spacing: 2px;margin: 0;padding: 2px 10px 4px;text-decoration: none;text-transform: uppercase;width: auto;}
 
-.url-input {background-color: #fff;border: 1px solid #005CB8;color: #808185;width: auto;height: 40px;width: 100%;float: left;margin: 0 0 25px 0;padding: 0 15px;}
+.url-input {background-color: #fff;border: 1px solid #005CB8;color: #808185;width: auto;height: 40px;width: 100%;float: left;margin: 0 0 25px 0;padding: 0 15px;border-radius: 0;font-weight: 400;}
 
 .add-custom-keyword-outer {float: left;width: 100%;margin: 25px 0;padding: 0;}
 
@@ -152,7 +152,7 @@
 
 .content-goal-info .title {background-color: #D0D2D3;font-size: 14px;font-weight: bold;color: #26A9E0;float: left;width: 100%;margin: 0;padding: 8px 10px;line-height: normal;}
 
-.content-goal-info .title span{color:#005CB8;}
+.content-goal-info .title span{color:#005CB8;font-size: 14px;font-weight: bold !important;line-height: normal;}
 
 .content-goal-table td , .content-goal-table th {padding: 5px 10px;border-right: 1px solid #D0D2D3;color: #58595B;font-size: 12px;}
 
@@ -206,7 +206,7 @@
 
 .content-goal-table td.disabled {background-color:#E9E9F0 !important;}
 
-.info-block p a{color:#005CB8;font-weight:bold;}
+.info-block p a{color:#005CB8;font-weight:bold;text-decoration: underline !important;}
 
 .info-block.calculator-lt p {color:#26A9E0;}
 
@@ -216,7 +216,7 @@
 
 .top-check-selection {float: right;width: auto;margin: 0;padding: 0;font-size: 14px;color: #333;}
 
-.top-check-selection input {margin-right: 5px;margin-left: 15px;}	
+.top-check-selection input[type="checkbox"] {margin-right: 6px !important;margin-left: 25px !important;}
 
 .keyword-networth-project th.price-widthbox.equal-sign, .keyword-networth-project th.price-widthbox:last-child {padding-left: 12px;}
 
@@ -238,7 +238,7 @@ position: absolute;right: 10px;top: 0;}
 
 .table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
 
-.project-head.open {background-color: #FAF8C7;}
+.project-head.open , .project-head.open.panel {background-color: #FAF8C7;}
 
 .keyword-networth-project .project-head.open td.project-name-ot::before {content: "\f0d7";}
 
@@ -250,11 +250,23 @@ position: absolute;right: 10px;top: 0;}
 
 .right-side-goalinfo , .project-info{text-align: left;}
 
+/*.keyword-networth-project .project-info td {border: none !important;}*/
 
+.project-info .panel-collapse::before {left: 0;right: 0;top: -4px;bottom: 20px;position: absolute;border: 1px solid rgba(0,0,0,.1);box-shadow: 0 4px 4px rgba(0,0,0,.2);content: "";border-top:none; opacity: : 0;visibility: hidden; transition: all 0.3s ease-out 0s;}
 
-/*media quries css */
+.project-info.active .panel-collapse::before {opacity: 1; visibility: visible;transition: all 0.3s ease-out 0s;}
 
-@media (min-width: 1400px) {
+.project-head.open , .project-head.open.panel {border: 1px solid rgba(0,0,0,.1);box-shadow: 0 -2px 4px rgba(0,0,0,.2)}
+
+.keyword-networth-project .project-info .project-head2 td {border-right: 1px solid #D0D2D3;}
+
+.project-info .panel-collapse {padding: 5px 10px;position: relative;z-index: 1;margin-left: -10px;margin-right: 0;margin-bottom: 0;float: left;width: calc(100% + 20px);margin-top: -5px;}
+
+.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {border-right: none !important;padding: 5px 10px;margin: -5px -10px;}
+
+.keyword-networth-project th h2.table-title.negative-sign, .keyword-networth-project th h2.table-title.equal-sign {padding-right: 15px;border: none !important;}
+
+.keyword-networth-project th h2.table-title.negative-sign:after, .keyword-networth-project th h2.table-title.equal-sign:after{margin-left:-13px !important;}
 
 .cart-mission-inner {max-width: 900px;}
 
@@ -264,6 +276,13 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project th h2.table-title sup {font-size: 12px;}
 
+/*media quries css */
+
+
+@media (max-width: 1320px) {
+
+.price-widthbox {width: 130px;}
+
 }
 
 
@@ -271,7 +290,7 @@ position: absolute;right: 10px;top: 0;}
 
 .monthly-short-info ul li {padding-left: 5px;padding-right: 5px;}
 
-.price-widthbox {width: 100px;}
+.price-widthbox {width: 110px;}
 
 .keyword-networth-project th h2.table-title {font-size: 14px;}
 
@@ -314,9 +333,9 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project tr.project-head  {position: relative;}
 
-.keyword-networth-project tr.project-head td.project-name-ot , .keyword-networth-project tr.project-head td{width: calc(100% - 30px);float: right;text-align: left;}
+.keyword-networth-project tr.project-head td.project-name-ot, .keyword-networth-project tr.project-head td {width: 100%;float: right;text-align: left;padding-left: 270px;position: relative;}
 
-.keyword-networth-project tr.project-head td.delect-row {width: auto;}
+.keyword-networth-project tr.project-head td.delect-row {width: auto;float: right;text-align: right;}
 
 .keyword-networth-project tr.project-head td.negative-sign::after,.keyword-networth-project tr.project-head td.equal-sign::after {display:none;}
 
@@ -328,7 +347,18 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project th.negative-sign::after, .keyword-networth-project th.equal-sign::after {margin-left: -6px;}
 
+.keyword-networth-project td::before {content: attr(data-label);font-weight: 600;float: left;width: 260px;position: absolute;left: 10px;top: 6px;}
+
+.keyword-networth-project tr.project-head td.checkbox-ot {padding-left: 6px;}
+
+.keyword-networth-project tr.project-head td.project-name-ot {padding-left: 30px;padding-top: 7px;float: right;width: calc(100% - 25px);}
+
+.keyword-networth-project .content-goal-table td:before{display: none;}
+
+.content-goal-info, .right-side-goalinfo {width: 100% !important;}
+
 }
+
 
 
 @media (max-width: 767px) {
@@ -359,6 +389,12 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project tr.table-heading th:nth-child(2n+1) {clear: left;}
 
+.keyword-networth-project .content-goal-table td::before {display: block;width: 140px;}
+
+.keyword-networth-project .project-info .project-head2 td.checkbox-ot {border-right: none;text-align: left;padding-left: 8px;}
+
+.keyword-networth-project .project-info .project-head2 td {border-right: none;position: relative;padding-left: 150px;}
+
 }
 
 @media (max-width: 639px){
@@ -386,6 +422,13 @@ position: absolute;right: 10px;top: 0;}
 body , #site-header{min-width: 300px;overflow-x: visible;}
 
 .keyword-networth-project tr.table-heading th {width: 100%;}
+
+.keyword-networth-project td::before , .keyword-networth-project .content-goal-table td::before{position: static;width: 100%;}
+
+.keyword-networth-project tr.project-head td.project-name-ot, .keyword-networth-project tr.project-head td , .keyword-networth-project .project-info .project-head2 td{
+padding:5px 10px;}
+
+.keyword-networth-project tr.project-head td.project-name-ot {padding-left: 34px !important;padding-top: 7px !important;}
 
 }
 

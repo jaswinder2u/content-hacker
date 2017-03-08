@@ -154,6 +154,7 @@
                     </div>
                     <div id="shadow"> </div>
 
+
                     <div class="project-location-it">
                         <ul>
                             <li>FAIRMARKETING.COM <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -170,7 +171,7 @@
 							<input class="" type="checkbox">SEO 
 							<input class="" type="checkbox">PPC
 						</div>
-                        <div class="panel-group keyword-networth-project-outer" id="accordion">
+                        <div class="panel-group keyword-networth-project-outer" id="accordion" role="tablist" aria-multiselectable="true">
 
                             <table class="keyword-networth-project" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
@@ -187,11 +188,11 @@
                                         <th class="price-widthbox">
                                             <h2 class="table-title">17<span>MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
                                         </th>
-                                        <th class="price-widthbox negative-sign">
-                                            <h2 class="table-title"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
+                                        <th class="price-widthbox" style="padding-right: 0">
+                                            <h2 class="table-title negative-sign"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
                                         </th>
-                                        <th class="price-widthbox equal-sign">
-                                            <h2 class="table-title"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon"></i></strong></span></h2><i class="addincart-icon"> </i>
+                                        <th class="price-widthbox"  style="padding-right: 0">
+                                            <h2 class="table-title equal-sign"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon"></i></strong></span></h2><i class="addincart-icon"> </i>
                                         </th>
                                         <th class="price-widthbox" colspan="2">
                                             <h2 class="table-title"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
@@ -200,21 +201,21 @@
 
                                     <tr> <td style="border-right: none;"><div class="margin10t"></div></td></tr>
 
-                                    <tr class="project-head open">
+                                    <tr class="project-head open panel">
                                         <td class="checkbox-ot"><input class="" type="checkbox"> </td>
                                         <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">water leaks</a>
                                         </td>
-                                        <td class="price-widthbox">1,100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox negative-sign">$100</td>
-                                        <td class="price-widthbox equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></td>
-                                        <td class="price-widthbox">$100</td>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
                                         <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                     </tr>
 
-                                    <tr class="project-info">
-                                        <td colspan="9">
+                                    <tr class="project-info active">
+                                        <td colspan="9" style="border-right: none !important" >
                                             <div id="collapse1" class="panel-collapse collapse in">
                                                 <div class="row">
 
@@ -238,123 +239,112 @@
 
 										<tr class="project-head2">
 											<td class="checkbox-ot"><input class="" type="checkbox"> </td>
-											<td>7</td>
-											<td>http://www.wikipedia.com/water-leaks</td>
-											<td>98%</td>
-											<td class="disabled"></td>
-											<td class="disabled"></td>
+											<td data-label="Rank">7</td>
+											<td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+											<td data-label="CTR">98%</td>
+											<td data-label="Monthly Backlinks" class="disabled"></td>
+											<td data-label="Monthly Content" class="disabled"></td>
 										</tr>
 
                                         <tr class="project-head2">
                                             <td class="checkbox-ot"><input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>82%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.greatestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.competitorurl.com</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
                                         </tbody>
 
                                         <tfoot>
                                             <tr class="project-head2 them-row">
-                                                <td class="checkbox-ot"><strong>THEM</strong>
-                                                </td>
-                                                <td>16</td>
-                                                <td><strong>SELECTED COMPETITORS</strong>
-                                                </td>
-                                                <td>64%</td>
-                                                <td class="negative-sign">20</td>
-                                                <td>10</td>
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
                                             </tr>
 
                                             <tr class="project-head2 you-row">
-                                                <td class="checkbox-ot"><strong>YOU</strong>
-                                                </td>
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
                                                 <td>39</td>
-                                                <td>http://www.ME.com/</td>
-                                                <td>66%</td>
-                                                <td class="equal-sign">10</td>
-                                                <td>4</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
                                             </tr>
 
                                             <tr class="project-head2 result-row">
@@ -400,23 +390,23 @@
 
                                     </tr>
 
-                                    <tr class="project-head">
+                                    <tr class="project-head panel">
                                         <td class="checkbox-ot">
                                             <input class="" type="checkbox"> </td>
                                         <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2">water leaks</a>
                                         </td>
-                                        <td class="price-widthbox">1,100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox negative-sign">$100</td>
-                                        <td class="price-widthbox equal-sign">$100 (1pc) <i class="cart-full-icon"> </i></td>
-                                        <td class="price-widthbox">$100</td>
-                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                         </td>
                                     </tr>
 
                                     <tr class="project-info">
-                                        <td colspan="9">
+                                        <td colspan="9" style="border-right: none !important">
                                             <div id="collapse2" class="panel-collapse collapse">
                                                 <div class="row">
 
@@ -437,124 +427,113 @@
                                                                 </tr>
 
 										<tr class="project-head2">
-											<td class="checkbox-ot"><input class="" type="checkbox"> </td>
-											<td>7</td>
-											<td>http://www.wikipedia.com/water-leaks</td>
-											<td>98%</td>
-											<td class="disabled"></td>
-											<td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
 										</tr>
 
                                         <tr class="project-head2">
                                             <td class="checkbox-ot"><input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>82%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.greatestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.competitorurl.com</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
                                         </tbody>
 
                                         <tfoot>
                                             <tr class="project-head2 them-row">
-                                                <td class="checkbox-ot"><strong>THEM</strong>
-                                                </td>
-                                                <td>16</td>
-                                                <td><strong>SELECTED COMPETITORS</strong>
-                                                </td>
-                                                <td>64%</td>
-                                                <td class="negative-sign">20</td>
-                                                <td>10</td>
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
                                             </tr>
 
                                             <tr class="project-head2 you-row">
-                                                <td class="checkbox-ot"><strong>YOU</strong>
-                                                </td>
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
                                                 <td>39</td>
-                                                <td>http://www.ME.com/</td>
-                                                <td>66%</td>
-                                                <td class="equal-sign">10</td>
-                                                <td>4</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
                                             </tr>
 
                                             <tr class="project-head2 result-row">
@@ -600,23 +579,23 @@
 
                                     </tr>
 
-                                    <tr class="project-head">
+                                    <tr class="project-head panel">
                                         <td class="checkbox-ot">
                                             <input class="" type="checkbox"> </td>
                                         <td class="project-name-ot"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">water leaks</a>
                                         </td>
-                                        <td class="price-widthbox">1,100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox">100</td>
-                                        <td class="price-widthbox negative-sign">$100</td>
-                                        <td class="price-widthbox equal-sign">$100 (1pc) <i class="addincart-icon"> </i></td>
-                                        <td class="price-widthbox">$100</td>
-                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <td data-label="MO. SEARCH VOLUME" class="price-widthbox">1,100</td>
+                                        <td data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">100</td>
+                                        <td data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$100</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> 
                                         </td>
                                     </tr>
 
                                     <tr class="project-info">
-                                        <td colspan="9">
+                                        <td colspan="9" style="border-right: none !important">
                                             <div id="collapse3" class="panel-collapse collapse">
                                                 <div class="row">
 
@@ -637,124 +616,113 @@
                                                                 </tr>
 
 										<tr class="project-head2">
-											<td class="checkbox-ot"><input class="" type="checkbox"> </td>
-											<td>7</td>
-											<td>http://www.wikipedia.com/water-leaks</td>
-											<td>98%</td>
-											<td class="disabled"></td>
-											<td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
 										</tr>
 
                                         <tr class="project-head2">
                                             <td class="checkbox-ot"><input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>82%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.greatestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.competitorurl.com</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.plumberone.com/leak-prevention/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.bestplumber.com/</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
 
                                         <tr class="project-head2">
-                                            <td class="checkbox-ot">
-                                                <input class="" type="checkbox"> </td>
-                                            <td>7</td>
-                                            <td>http://www.wikipedia.com/water-leaks</td>
-                                            <td>98%</td>
-                                            <td class="disabled"></td>
-                                            <td class="disabled"></td>
+                                            <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                            <td data-label="Rank">7</td>
+                                            <td data-label="URL">http://www.wikipedia.com/water-leaks</td>
+                                            <td data-label="CTR">98%</td>
+                                            <td data-label="Monthly Backlinks" class="disabled"></td>
+                                            <td data-label="Monthly Content" class="disabled"></td>
                                         </tr>
                                         </tbody>
 
                                         <tfoot>
                                             <tr class="project-head2 them-row">
-                                                <td class="checkbox-ot"><strong>THEM</strong>
-                                                </td>
-                                                <td>16</td>
-                                                <td><strong>SELECTED COMPETITORS</strong>
-                                                </td>
-                                                <td>64%</td>
-                                                <td class="negative-sign">20</td>
-                                                <td>10</td>
+                                                <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                <td data-label="Rank">16</td>
+                                                <td data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                                <td data-label="CTR">64%</td>
+                                                <td data-label="Monthly Backlinks" class="negative-sign">20</td>
+                                                <td data-label="Monthly Content">10</td>
                                             </tr>
 
                                             <tr class="project-head2 you-row">
-                                                <td class="checkbox-ot"><strong>YOU</strong>
-                                                </td>
+                                                <td class="checkbox-ot"><strong>YOU</strong></td>
                                                 <td>39</td>
-                                                <td>http://www.ME.com/</td>
-                                                <td>66%</td>
-                                                <td class="equal-sign">10</td>
-                                                <td>4</td>
+                                                <td data-label="URL">http://www.ME.com/</td>
+                                                <td data-label="CTR">66%</td>
+                                                <td data-label="Monthly Backlinks" class="equal-sign">10</td>
+                                                <td data-label="Monthly Content">4</td>
                                             </tr>
 
                                             <tr class="project-head2 result-row">
@@ -964,14 +932,51 @@ function closeNav() {
 }
 
 
-jQuery('.project-name-ot a').on('click',function(){
+/*jQuery('.project-name-ot a').on('click',function(){
    if(jQuery(this).hasClass('collapsed')){
          jQuery(this).closest('.project-head').addClass('open');
+         jQuery('.open').next('tr').addClass('active');
    }
    else{
+   		 jQuery('.open').next('tr').removeClass('active');
          jQuery(this).closest('.project-head').removeClass('open');
+
    }
+});*/
+
+
+
+
+
+
+
+jQuery('#accordion').on('show.bs.collapse', function () {
+    jQuery('.panel-collapse').collapse('hide');    
+    addRemoveClass();
+       
+    
 });
+
+
+jQuery('#accordion').on('shown.bs.collapse', function () {
+ 
+    var a = jQuery("a[aria-expanded=true]").attr('href');
+    console.log(a);
+});
+
+
+function addRemoveClass(){
+
+      jQuery('#accordion').find('tr').each(function(){
+       if(jQuery(this).find('a').hasClass('collapsed')){
+            jQuery(this).removeClass('open');
+       }
+       else{            
+            jQuery(this).next('tr').addClass('open');
+       }
+   });
+}
+
 
 
 </script>
