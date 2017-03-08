@@ -1016,7 +1016,10 @@ border: 1px solid #e2e5e5;
 
 .added-message {
     position:absolute;
-    color:#005cb8;
+    background-color:#005cb8;
+    color:#fff;
+    padding:8px;
+    opacity:0.85;
     font-size:13px;
     font-weight:bold;
     display:none;
