@@ -1025,3 +1025,45 @@ border: 1px solid #e2e5e5;
     z-index:999;
     display:none;
 }
+
+@media (max-width: 767px)
+{
+    .container {
+        height: auto !important;
+    }
+    
+    #cart-dropdown, #account-dropdown, #settings-dropdown {
+        left:0;
+    }
+    
+    #account-dropdown, #settings-dropdown {
+        position:relative;
+        bottom:0;
+    }
+    
+    #cart-dropdown .open, #account-dropdown .open, #settings-dropdown .open {
+        left:0;
+        display:block;
+    }
+    
+    #account-dropdown>ul, #settings-dropdown>ul {
+        float:right;
+        width:100% !important;
+    }
+    
+    #account-dropdown>li, #settings-dropdown>li {
+        text-align:right;
+        width:100% !important;
+    }
+    
+    #account-dropdown>li>a, #settings-dropdown>li>a {
+        padding-right:0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px)
+{
+    #account-dropdown {
+        left:-30%;
+    }
+}
