@@ -472,10 +472,10 @@ function loadProjectDashboard(flip)
     var username = getCookie("username");
     if(username != '')
     {
-        if(username == "hari.patel@1520holdings.com")
+        /*if(username == "hari.patel@1520holdings.com")
         {
             username = "admin@fairmarketing.com";
-        }
+        }*/
         
         $.ajax({url: restURL, data: {'command':'getProjectDashboardData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
