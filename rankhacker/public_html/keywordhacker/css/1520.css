@@ -1032,11 +1032,15 @@ border: 1px solid #e2e5e5;
         height: auto !important;
     }
     
+    .cart-breakdown {
+        background-color:#595959;
+    }
+    
     #cart-dropdown, #account-dropdown, #settings-dropdown {
         left:0;
     }
     
-    #account-dropdown, #settings-dropdown {
+    #account-dropdown, #settings-dropdown, #cart-dropdown {
         position:relative;
         bottom:0;
     }
