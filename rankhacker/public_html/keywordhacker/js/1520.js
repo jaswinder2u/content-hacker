@@ -1711,6 +1711,7 @@ function displayProjectInfo(field,sort)
         
         var cartOpacity = "1.0";
         var cartOnclick = "addToCart('-1');";
+console.log(projectOrdered);
         if(projectOrdered)
         {
             cartOpacity = "0.25";
