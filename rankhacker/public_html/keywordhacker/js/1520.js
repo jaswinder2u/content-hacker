@@ -7624,8 +7624,9 @@ function prepareCheckout()
             }
             else
             {
-                path = "error.html";
-                $("#content_frame_part").attr("src",path);
+                window.top.location.href = "error.html";
+                /*path = "error.html";
+                $("#content_frame_part").attr("src",path);*/
             }
         }
     });    
