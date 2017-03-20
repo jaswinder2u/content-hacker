@@ -507,7 +507,7 @@ function loadProjectDashboard(flip)
         });
         
         //Show the manageIndustries link for admin
-        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -936,7 +936,7 @@ function loadProjectData()
         }
         
         //Show the manageIndustries link for admin
-        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -4622,7 +4622,7 @@ function getUserInfo()
 
     if(username != '')
     {
-        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -4666,7 +4666,7 @@ function updateUserInfo()
     
     if(username != '')
     {
-        /*if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        /*if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -4757,7 +4757,7 @@ function prepareWizard()
     var userFullName = getCookie("userFullName");
     var userLastName = userFullName.substring(userFullName.indexOf(" ")+1,userFullName.length);
     //Show the manageIndustries link for admin
-    if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+    if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
     {
         $('#industry-link').remove();
         $('#users-link').remove();
@@ -6904,7 +6904,7 @@ function prepareCart()
     var projectID = getURLParameter("pid");
     if(username != '')
     {
-        if(username !== 'admin@fairmarketing.com' && $('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -7063,7 +7063,7 @@ function getAllUsers()
     var username = getCookie("username");
     if(username != '')
     {
-        if(username == 'admin@fairmarketing.com')
+        if(username == 'admin@fairmarketing.com' || username == 'hari.patel@1520holdings.com')
         {
             $.ajax({url: restURL, data: {'command':'getAllUsers'}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
