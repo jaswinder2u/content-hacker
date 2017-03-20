@@ -7081,6 +7081,8 @@ function getAllUsers()
                             var isActive = thisEntry.isActive;
                             var verified = thisEntry.verified;
                             var isBetaUser = thisEntry.isBetaUser;
+                            var activeCustomer = thisEntry.activeCustomer;
+                            var createDate = thisEntry.createDate;
                             
                             var activeHTML = "Yes";
                             if(isActive == false)
@@ -7099,6 +7101,12 @@ function getAllUsers()
                             {
                                 betaUserHTML = "No";
                             }
+                            
+                            var activeCustomerHTML = "Yes";
+                            if(activeCustomer == false)
+                            {
+                                activeCustomerHTML = "No";
+                            }
 
                             rowData += "<tr>" +
                                     "<td style=\"text-align:left\">"+firstName+"</td>" +
@@ -7107,6 +7115,8 @@ function getAllUsers()
                                     "<td style=\"text-align:center\">"+activeHTML+"</td>" +
                                     "<td style=\"text-align:center\">"+verifiedHTML+"</td>" +
                                     "<td style=\"text-align:center\">"+betaUserHTML+"</td>" +
+                                    "<td style=\"text-align:center\">"+activeCustomerHTML+"</td>" +
+                                    "<td style=\"text-align:center\">"+createDate+"</td>" +
                                     "</tr>";
                         }
 
