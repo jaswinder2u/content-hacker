@@ -25,7 +25,7 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 #content-section .overlay {margin:0;color: #fff;height: calc(100vh - 184px);height: -moz-calc(100vh - 184px);height: -webkit-calc(100vh - 184px);height: -o-calc(100vh - 184px);left: 0;padding:80px 0 0 ;position: relative;top:0;z-index: 6;}
 
 .container {max-width: 1420px;width: 100%;padding-left:15px;padding-right:15px;}
- 
+
 .logo img {max-height: 64px;}
 
 #site-header {text-align: center;background-color: #000;float: left;height: auto;left: 0;margin: 0;padding: 0;position: fixed;right: 0;top: 0;width: 100%;z-index: 99;height: 84px;}
@@ -97,7 +97,45 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .cart-mission-outer {color: #000;float: left;margin:0;padding: 0;width: 100%;}
 
-.cart-mission-inner {color: #000;float: none;margin:0 auto;padding: 0;width: 100%;max-width:670px;}
+.cart-mission-inner {color: #000;float: right;margin: 0;max-width: 100%;padding: 0;width: calc(100% - 400px);}
+
+.cartdetails-leftside {background-color: #f1f1f2;float: left;margin: 83px 0 0;padding: 15px;width: 380px;max-width: 100%;}
+
+.cart-sidebar-title {float: left;font-size: 16px;font-weight: bold;margin: 5px 0;padding: 0;width: 100%;font-family:"Montserrat",sans-serif !important;}
+
+.cartdetails-leftside p {float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: normal;line-height: 20px;margin: 0 0 10px;padding: 0;width: 100%;color:#000000;}
+
+.selection-list-box {float: left;margin: 15px 0 0;padding: 0;width: 100%;}
+
+.selection-list-box h4 , .selection-list-box ul li , .selection-list-box ul#cartdetail_accordion li .cart_accordionTab{float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: normal;line-height: 20px;margin:0 0 5px 0;padding: 0;width: 100%;color:#000000;}
+
+.selection-list-box ul {float: left;margin: 0;padding: 0;width: 100%;}
+
+.selection-list-box ul li , .selection-list-box ul#cartdetail_accordion li .cart_accordionTab {background-color: transparent;margin: 0;padding: 6px 15px;}
+
+.selection-list-box ul li.active {background-color: #D0D2D3;}
+
+.selection-list-box ul#cartdetail_accordion li {background-color: transparent;border: medium none;border-radius: 0;box-shadow: 0 0 0 transparent;float: left;margin: 0;padding: 0;width: 100%;}
+
+.selection-list-box ul#cartdetail_accordion li.active {background-color: #ffffff;}
+
+.selection-list-box ul#cartdetail_accordion li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
+
+.selection-list-box ul#cartdetail_accordion li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
+
+.selection-list-box ul#cartdetail_accordion li .panel-collapse {float: left;margin: 0;padding: 0;width: 100%;}
+
+.selection-list-box h4 a, .selection-list-box ul li a, .selection-list-box ul#cartdetail_accordion li .cart_accordionTab {color: #000000;text-decoration:none;}
+
+.cart-viewall-link {color: #005cb8;float: left;font-family: "Roboto",sans-serif;font-weight: normal;margin: 25px 0 10px;text-transform: uppercase;width: 100%;}
+
+.top-cart-summary.bottom-cart-summary {background-color: #C9E4EF;}
+
+.top-cart-summary.bottom-cart-summary .monthly-content-sm label , .top-cart-summary.bottom-cart-summary .monthly-content-sm span.monthly-content-sm-value ,
+
+.top-cart-summary.bottom-cart-summary .monthly-content-amount span.amount-mn, .top-cart-summary.bottom-cart-summary .monthly-content-sm span.monthly-content-sm-value {color: #24A9E2}
+
+.top-cart-summary.bottom-cart-summary  span , .top-cart-summary.bottom-cart-summary .monthly-short-info ul li label{color: #929395;}
 
 .mission-heading {align-items: center;background-color: #e6e7e8;display: flex;float: left;margin: 15px 0 0;padding: 10px;width: 100%;}
 
@@ -151,9 +189,22 @@ table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:ho
 
 .monthly-short-info ul li , .monthly-short-info ul li  label{text-align: center;}
 
-.monthly-short-info ul {float: left;width: 100%;margin: 0;padding: 0;border-left: 1px solid #fff;border-right: 1px solid #fff;}
+.monthly-short-info ul {float: left;width: 100%;margin: 0;padding: 0;}
 
-.monthly-short-info {padding: 0 35px;}
+.monthly-short-info {padding: 0 35px;min-height: 60px;}
+
+.bracket-sign-right, .bracket-sign-left {position: absolute;left: 25px;top: 0;float: left !important;width: 6px !important;height: 100%;background-color: #C9E4EF;}
+
+.bracket-sign-right {right: 25px;left: auto;}
+
+.bracket-sign-right::before, .bracket-sign-right::after , .bracket-sign-left::before, .bracket-sign-left::after {content: "";position: absolute;right: 0;width: 20px;height: 4px;background-color: #C9E4EF;top: 0;}
+
+.bracket-sign-left::before, .bracket-sign-left::after {left: 0;right: auto;}
+
+.bracket-sign-right::after , .bracket-sign-left::after{bottom:0;top: auto;}
+
+.top-cart-summary.bottom-cart-summary .bracket-sign-right,.top-cart-summary.bottom-cart-summary .bracket-sign-left ,.top-cart-summary.bottom-cart-summary .bracket-sign-right::before,.top-cart-summary.bottom-cart-summary .bracket-sign-right::after ,.top-cart-summary.bottom-cart-summary .bracket-sign-left::before,.top-cart-summary.bottom-cart-summary .bracket-sign-left::after
+{background-color: #27A9E3;}
 
 .top-cart-summary .monthly-content-sm label {width: 110px;margin: 15px 0 0 0;}
 
@@ -293,8 +344,6 @@ table.mission-info-table tr td.cost-ot {width:90px;}
 
 .sidenav-logo img{max-width:100%;width: 230px;vertical-align: middle;display: inline-block;}
 
-
-
 /* keyword-networth page css */ 
 
 #keyword-networth .head-info-box {background-color: #c7e2ef;padding: 20px 20px 25px;float: left;width: 100%;}
@@ -414,7 +463,6 @@ line-height: normal;margin: 0 0 10px;padding: 0;text-transform: uppercase !impor
 
 .project-location-it ul li i {color: #A6A8AB;font-size: 18px;margin-left: 8px;}
 
-
 .keyword-networth-project td.project-name-ot::after {
 background-image: url("../images_cart/arrow-process.png");content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
 
@@ -507,13 +555,9 @@ position: absolute;right: 10px;top: 0;}
 
 .table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
 
-
 .project-head.open {background-color: #FAF8C7;}
 
-.keyword-networth-project .project-head.open td.project-name-ot::before {
-	content: "\f0d7";
-}
-
+.keyword-networth-project .project-head.open td.project-name-ot::before {content: "\f0d7";}
 
 
 /*media quries css */
@@ -525,7 +569,6 @@ position: absolute;right: 10px;top: 0;}
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
 
 }
-
 
 @media (min-width: 1400px) {
 
@@ -575,7 +618,6 @@ position: absolute;right: 10px;top: 0;}
 .reveal-mark {right: 20px;font-size: 16px;border: 2px solid #BE1E2D;line-height: normal;padding: 5px 10px;}
 
 }
-
 
 @media (max-width: 991px) { 
 
@@ -635,9 +677,19 @@ position: absolute;right: 10px;top: 0;}
 
 .reveal-mark {right: 15px;font-size: 26px;}
 
+.cartdetails-leftside {width: 260px;padding: 10px;}
+
+.cart-mission-inner {width: calc(100% - 270px);}
+
+.bracket-sign-left {left: 0;}
+
+.bracket-sign-right {right:0;}
+
+.bracket-sign-right, .bracket-sign-left {width: 4px !important;}
+
+.bracket-sign-right::before, .bracket-sign-right::after, .bracket-sign-left::before, .bracket-sign-left::after {height: 3px;}
 
 }
-
 
 @media (max-width: 767px) {
 
@@ -703,13 +755,21 @@ position: absolute;right: 10px;top: 0;}
 
 .table-outer .reveal-mark {display:none;}
 
+.cartdetails-leftside {width: 100%;padding: 10px;margin: 25px 0;}
+
+.cart-mission-inner {width: calc(100%);width: 100%;}
+
+.bracket-sign-right, .bracket-sign-left {width: 3px !important;}
+
+.bracket-sign-right::before, .bracket-sign-right::after, .bracket-sign-left::before, .bracket-sign-left::after {height: 2px;}
+
 }
 
 @media (min-width: 640px) and (max-width:980px) {
 
 .top-cart-summary .monthly-content-sm , .top-cart-summary .monthly-short-info, .top-cart-summary .monthly-content-amount {padding:0; }
 
-.top-cart-summary .monthly-short-info{padding:0 10px; }
+.top-cart-summary .monthly-short-info{padding:0 16px; }
 
 .monthly-content-amount span.amount-mn {text-align: right; }
 
@@ -721,10 +781,7 @@ position: absolute;right: 10px;top: 0;}
 
 .top-cart-summary .monthly-content-sm span.monthly-content-sm-value {width: calc(100% - 90px);}
 
-
 }
-
-
 
 @media (max-width: 639px){
 
@@ -810,6 +867,9 @@ table.mission-info-table tr.add-new {text-align: center;border: 1px solid #e6e7e
 
 .project-breadcomb-outer ul li::before{display:none;}
 
+.cart-mission-inner {width: calc(100%);width: 100%;}
+
+.bracket-sign-right, .bracket-sign-left , .bracket-sign-right::before, .bracket-sign-right::after, .bracket-sign-left::before, .bracket-sign-left::after{display: none !important;}
 
 }
 
