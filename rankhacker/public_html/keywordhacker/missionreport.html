@@ -39,6 +39,10 @@
     <script src="js/1520.js?v=51"></script>
     <link href="css/1520.css?v=51" rel="stylesheet" id="theme-change">
     <link href="css/spinner.css?v=51" rel="stylesheet" id="theme-change">
+    <script src="js/bootstrap-slider.js?v=51"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/readmore.js"></script>
+    <link href="css/shimmer.css?v=51" rel="stylesheet" id="theme-change">
 
     <link href="css/media-queries.css?v=51" rel="stylesheet" type="text/css">
     
@@ -148,8 +152,8 @@
                         <ul>
                             <li><i class="black_eagle-rh"> </i><a href="#">MISSION DASHBOARD</a>
                             </li>
-                            <li><a href="#">KEYWORD HACKER</a> </li>
-                            <li>FAIRMARKETING.COM</li>
+                            <li><a href="dashboard.html">KEYWORD HACKER</a> </li>
+                            <li id="mission-title-1">FAIRMARKETING.COM</li>
                         </ul>
                     </div>
                     <div id="shadow"> </div>
@@ -157,17 +161,17 @@
 
                     <div class="project-location-it">
                         <ul>
-                            <li>FAIRMARKETING.COM <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <li id="mission-title-2">FAIRMARKETING.COM <i class="fa fa-pencil" aria-hidden="true"></i>
                             </li>
-                            <li>
+                            <li id="mission-location-1">
                                 <label>Location:</label> USA, Canada</li>
-                            <li>
+                            <li id="mission-search-engines-1">
                                 <label>Projections for:</label> google, yahoo/bing</li>
                         </ul>
                     </div>
 
                     <div class="white-box">
-						<div class="top-check-selection">
+						<div class="top-check-selection" style="display:none;">
 							<input class="" type="checkbox">SEO 
 							<input class="" type="checkbox">PPC
 						</div>
@@ -177,29 +181,32 @@
                                 <tbody>
                                     <tr class="table-heading">
                                         <th colspan="2">
-                                            <h2 class="table-title">3 active <span>KEYWORD PHRASES</span></h2>
+                                            <h2 class="table-title" id="keyword-count-1">3 active <span>KEYWORD PHRASES</span></h2>
                                         </th>
                                         <th class="price-widthbox">
-                                            <h2 class="table-title">75,797 <span>MO. SEARCH VOLUME <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
+                                            <h2 class="table-title" id="mission-search-volume">75,797 <span>MO. SEARCH VOLUME <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
                                         </th>
                                         <th class="price-widthbox">
-                                            <h2 class="table-title">25,435<span>MONTHLY VISITORS</span><span class="blue-text">PROJECTED </span></h2>
+                                            <h2 class="table-title" id="mission-monthly-visitors">25,435<span>MONTHLY VISITORS</span><span class="blue-text">PROJECTED </span></h2>
                                         </th>
                                         <th class="price-widthbox">
-                                            <h2 class="table-title">17<span>MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
+                                            <h2 class="table-title" id="mission-monthly-customers">17<span>MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
                                         </th>
                                         <th class="price-widthbox" style="padding-right: 0">
-                                            <h2 class="table-title negative-sign"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
+                                            <h2 class="table-title negative-sign" id="mission-monthly-sales"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
                                         </th>
                                         <th class="price-widthbox"  style="padding-right: 0">
-                                            <h2 class="table-title equal-sign"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon"></i></strong></span></h2><i class="addincart-icon"> </i>
+                                            <h2 class="table-title equal-sign" id="mission-content-goal"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon"></i></strong></span></h2><i class="addincart-icon"> </i>
                                         </th>
                                         <th class="price-widthbox" colspan="2">
-                                            <h2 class="table-title"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
+                                            <h2 class="table-title" id="mission-networth"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <strong class="position-relative"><i class="info-icon"></i></strong></span></h2>
                                         </th>
                                     </tr>
 
                                     <tr> <td style="border-right: none;"><div class="margin10t"></div></td></tr>
+                                    
+                                </tbody>
+                                <tbody>
 
                                     <tr class="project-head open panel">
                                         <td class="checkbox-ot"><input class="" type="checkbox"> </td>
@@ -389,7 +396,8 @@
                                         </td>
 
                                     </tr>
-
+                                </tbody>
+                                <tbody>
                                     <tr class="project-head panel">
                                         <td class="checkbox-ot">
                                             <input class="" type="checkbox"> </td>
@@ -402,7 +410,6 @@
                                         <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
                                         <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
                                         <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                                        </td>
                                     </tr>
 
                                     <tr class="project-info">
@@ -578,7 +585,8 @@
                                         </td>
 
                                     </tr>
-
+                                </tbody>
+                                <tbody>
                                     <tr class="project-head panel">
                                         <td class="checkbox-ot">
                                             <input class="" type="checkbox"> </td>
@@ -591,7 +599,6 @@
                                         <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
                                         <td data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
                                         <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> 
-                                        </td>
                                     </tr>
 
                                     <tr class="project-info">
@@ -774,43 +781,58 @@
                             <div>
 
                                 <div class="add-custom-keyword-outer">
-                                    <input class="url-input" value="" type="text" placeholder="ENTER KEYWORD PHRASE" />
+                                            <div id="url-list">
+                                                <a href="#add-more-url" class="add-more-url" id="button-add-url">+ ENTER KEYWORD PHRASE</a>
+                                            </div>
+                                            <div id="url-box-template">
+                                                <div class="url-box">
+                                                    <input id="custom-url" class="url-input" value="" type="text" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="add-custom-keyword-outer" id="new-phrase-container" style="display:none;">
+                                            <input type="hidden" id="keyword-count" value="0"/>
+                                            <div class="add-keywords-list">
+                                                <ul id="ctc">
 
-                                    <ul>
-                                        <li>you see it's curious <i class="fa fa-times" aria-hidden="true"></i>
-                                        </li>
-                                        <li>ted did figure it out <i class="fa fa-times" aria-hidden="true"></i>
-                                        </li>
-                                        <li>time travel <i class="fa fa-times" aria-hidden="true"></i>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="add-new-keywords-btn">ADD 3 KEYWORDS TO PROJECT</a>
-                                </div>
-                                <div class="suggest-keywords-list">
-                                    <p class="suggest-keywords-label">AND/OR CLICK TO ADD SUGGESTED KEYWORDS</p>
-                                    <ul>
-                                        <li>you see it's curious</li>
-                                        <li>ted did figure it out </li>
-                                        <li>time travel</li>
-                                        <li>and when we get back</li>
-                                        <li>we gonna tell everyone</li>
-                                        <li>how it's possible</li>
-                                        <li>how it's done</li>
-                                        <li>what the dangers are</li>
-                                        <li>but then why fifty years</li>
-                                        <li>in the future</li>
-                                        <li>when the spacecraft encounters a black hole</li>
-                                        <li>does the computer call it</li>
-                                        <li>an unknown</li>
-                                        <li>entery event</li>
-                                    </ul>
-                                </div>
-
-                                <a href="#" class="view-more-btn">VIEW MORE</a>
-                                <div class="card-box-bottom">
-                                    <div class="project-date-card date_sort"><i class="eagle-icon"></i>DEC 2016 </div>
-                                    <a class="project-status-card  project_status_sort" href="javascript:void(0);">Active</a> </div>
+                                                </ul>
+                                            </div>
+                                            <div class="add-keywords-list">
+                                                <div id="submit-button-block">
+                                                    <a class="orange-btn btn pull-left" onclick="recalculateProject();" id="add-keywords-button" style="opacity:0.0;">ADD 0 KEYWORDS</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="suggest-keywords-list-1" style="margin-top:30px;">
+                                            <p class="suggest-keywords-label">+ Click to Add Suggested Keywords</p>
+                                            <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
+                                            <input type="checkbox" class="read-more-state" id="post-2"/>
+                                                <ul id="suggestedKeywordsList" class="read-more-wrap">
+                                                    <li data-type="1">themeforest</li><li data-type="1">theme forest</li><li data-type="1">salient theme</li><li data-type="1">themeforest wordpress</li><li data-type="1">apex theme</li><li data-type="1">petta</li><li data-type="1">enfold theme</li><li data-type="1">best wordpress themes</li><li data-type="1">enfold</li><li data-type="1">woocommerce themes</li><li data-type="1">manthan services</li><li data-type="1">manthan systems careers</li><li data-type="1">manthan systems bangalore address</li><li data-type="1">product affinity</li><li data-type="1">wall street</li><li data-type="1">product affinity analysis</li><li data-type="1">retail performance management</li><li data-type="1">manthen</li><li data-type="1" style="display: none;">call manthan</li><li data-type="1">djia today</li><li data-type="1">presidential election 2016 date</li><li data-type="1">sophia burset</li><li data-type="1">journal</li><li data-type="1">djia futures</li><li data-type="1">financial advisor</li><li data-type="1">cvx stock price</li><li data-type="1">leadership styles</li><li data-type="1">wwe stock</li>
+                                                </ul>
+                                            <div class="bth-more-text-outer">
+                                            <div class="show-more-text clear-both" id="show-more-text-1" style="cursor:pointer;" onclick="clickReadMoreTrigger('1');">SHOW MORE</div>
+                                            <div class="show-more-button"><label for="post-2" id="read-more-button-label-1" class="read-more-trigger" onclick="toggleReadMore('1');"></label></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="suggest-keywords-list-2" style="margin-top:30px;">
+                                            <p class="suggest-keywords-label">+ Click to Add Niche Suggested Keywords</p>
+                                            <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
+                                            <input type="checkbox" class="read-more-state" id="post-3"/>
+                                                <ul id="altSuggestedKeywordsList" class="read-more-wrap">
+                                                    <li data-type="2">seo for ecommerce</li><li data-type="2">seo ecommerce</li><li data-type="2">search engine optimization ecommerce</li><li data-type="2">ecommerce search engine optimization</li><li data-type="2">e-commerce seo</li><li data-type="2">seo for ecommerce sites</li><li data-type="2">seo for ecommerce websites</li><li data-type="2">ecommerce website seo</li><li data-type="2">seo for ecommerce site</li><li data-type="2">seo for ecommerce website</li>
+                                                </ul>
+                                            <div class="bth-more-text-outer">
+                                            <div class="show-more-text clear-both" id="show-more-text-2" style="cursor:pointer;" onclick="clickReadMoreTrigger('2');">SHOW MORE</div>
+                                            <div class="show-more-button"><label for="post-3" id="read-more-button-label-2" class="read-more-trigger" onclick="toggleReadMore('2');"></label></div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="card-box-bottom" id="dateDivBottom"></div>
 
                             </div>
 
@@ -866,7 +888,7 @@
 
 
 
-<span id="added-message" class="added-message">Added to Cart</span>
+
 
 <!-- =========================
      JS SCRIPTS
@@ -916,9 +938,9 @@ jQuery('.cd-close-panel').on('click', function(){
 
 </script>
 
-<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>   
+<!--<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
 
-<script type="text/javascript" src="js/faq-main.js"></script>
+<script type="text/javascript" src="js/faq-main.js"></script>-->
 
 <script>
 function openNav() {
@@ -961,7 +983,7 @@ jQuery('#accordion').on('show.bs.collapse', function () {
 jQuery('#accordion').on('shown.bs.collapse', function () {
  
     var a = jQuery("a[aria-expanded=true]").attr('href');
-    console.log(a);
+    //console.log(a);
 });
 
 
@@ -977,8 +999,232 @@ function addRemoveClass(){
    });
 }
 
+</script>
+
+<script>
+    
+    $(document).mousemove(function(e) {
+        window.x = e.pageX;
+        window.y = e.pageY;
+    });
+    
+    $(document).ready(function () {
+        
+        new Clipboard('.copy-button');
+        
+        $(".suggest-keywords-list-1 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
 
 
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'1');
+            }
+            
+        });
+        
+        $(".suggest-keywords-list-2 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'2');
+            }
+            
+        });
+
+
+        $("a#button-add-url").on("click", function (event) {
+            event.preventDefault();
+
+            $(this).hide();
+            var url_box = $("#url-box-template").html();
+            $(this).parent().before(url_box);
+            //toggle_add_more();
+            $('#custom-url').focus();
+        });
+
+        $('.add-custom-keyword-outer').on('keypress', '.url-input', function (e) {
+            if (e.which == 13) {
+                $(this).blur();
+            }
+        });
+
+        $('.add-custom-keyword-outer').on('blur', '.url-input', function () {
+            var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+            //console.log(parent_get);
+            var parent_id = "#" + parent_get;
+            var url_val = $(this).val();
+            if (url_val == "") {
+
+            } else {
+                
+            }
+            $(this).remove();
+            $("a#button-add-url").show();
+            
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                //Here's where we add the keyword to the list
+                addKeywordInReport(url_val,'0');
+            }
+                
+        });
+
+    });
+</script>
+
+<input type="hidden" id="json" value=""/>
+<input type="hidden" id="orig-competitor-id" value=""/>
+<input type="hidden" id="orig-competitor-checked" value=""/>
+<input type="hidden" id="competitor-sort-method" value="google-rank"/>
+<input type="hidden" id="competitor-sort-reversed" value="false"/>
+
+<input type="hidden" id="keyword-sort-method" value="keyword"/>
+<input type="hidden" id="keyword-sort-reversed" value="false"/>
+
+<input type="hidden" id="check-project-done-flag" value="0"/>
+
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
 </script>
 
 </body>
