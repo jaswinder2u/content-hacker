@@ -1,7 +1,7 @@
-/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -41,6 +41,35 @@ $(".show-more a").on("click", function() {
     return false;
 });
 
+/*var sortableHelper = function (e, ui) {
+    ui.children().each(function () {
+        $(this).width($(this).width());
+    });
+    return ui;
+};
+
+function enableSort() {
+    $('#keyword-summary-table').sortable({
+        items: 'tr.sortable-row',
+        helper: sortableHelper,
+        start: function (e, ui) {
+            ui.placeholder.height(ui.helper.outerHeight());
+        },
+        update: function (e, ui) {
+            var tableHasUnsortableRows = $(this).find('> tbody > tr:not(.sortable-row)').length;
+            $(this).find('> tbody > tr.sortable-row').each(function (idx, row) {
+
+                /* If we are reordering a table with some fixed rows, make sure the fixed rows
+                 * always follow their corresponding sortable row so they always appear together. *
+                if (tableHasUnsortableRows) {
+                    var uniqID = $(this).attr('data-question-id'),
+                        correspondingFixedRow = $('tr:not(.sortable-row)[data-answer-id=' + uniqID + ']');
+                    correspondingFixedRow.detach().insertAfter($(this));
+                }
+            });
+        }
+    }).disableSelection();
+}*/
 
 var desc = false;
 

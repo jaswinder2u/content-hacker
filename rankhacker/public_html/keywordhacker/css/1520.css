@@ -1071,3 +1071,11 @@ border: 1px solid #e2e5e5;
         left:-30%;
     }
 }
+
+.table-heading, .table-heading2{
+    cursor:pointer;
+}
+
+#sorttable_sortrevind, #sorttable_sortfwdind {
+    display:none;
+}
