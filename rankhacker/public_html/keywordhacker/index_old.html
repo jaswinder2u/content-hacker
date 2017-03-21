@@ -29,13 +29,10 @@
     <!-- =========================
          STYLESHEETS
     ============================== -->
-    <!--<link href="css_storefront/bootstrap.min.css?v=51" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=51" rel="stylesheet" id="theme-change">-->
-
-    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
     <link href="css_storefront/bootstrap.min.css?v=51" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=51" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_storefront/custom-style.css?v=51" rel="stylesheet" id="theme-change">
+
+   
 
 
 <!--google js file-->
@@ -45,7 +42,7 @@
     
 </head>
 
-<body id="body" class="home ">
+<body id="body" class="home " onload="clearCookies();">
 
 
 <!-- =========================
@@ -54,7 +51,7 @@
 <div id="rank-header-outer">
 
 <div class="container text-center">
-<a class="logo" data-text="RANKHACKER" href="index.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp"></a>
+<a class="logo" data-text="RANKHACKER" href="index.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <!--<img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp">--></a>
 
 </div>
 
@@ -71,30 +68,41 @@
     <div class="overlay interface-outer">
 		  
 		 <div class="text-center vertical-middle">
-		   <div class="rank-heading rank-heading-red">
+		   <div class="rank-heading">
             <div id="typed-strings">
-                <p>VERIFY YOUR EMAIL ADDRESS</p>
+                <p>TRUE ROI PROJECTIONS FOR TOP RANKING PHRASES</p>
             </div>
             <span id="typed" style="white-space:pre;"></span>
         </div>
-			
-		<div class="verify-bottom-section">
-			<div class="container">
-			  <div class="row">
-				<h3 class="col-sm-12 text-center verify-note">CHECK YOUR SPAM FOLDER - BE SURE TO ADD RANK HACKER TO YOUR ADDRESS BOOK</h3>
-				<div class="col-sm-12 text-center verify-link"><a onclick="resendVerification(event);" class="resend-verification-link">RESEND VERIFICATION</a></div>
-			  </div>
-                            <div class="row">
-                                <div class="col-sm-12">
+		 
+        <form class="networth-form" onsubmit="JavaScript:registerUser(event);">	
+         <div class="container">		
+			  <div class="networth-email-input">
+                            <label><i class="fa fa-envelope-o" aria-hidden="true"></i> </label>
+                            <input type="email" class="input" placeholder="ENTER YOUR EMAIL ADDRESS" required id="user-email">
+                            <span class="email-address-helper-text text-left">
+                                Enter Email to Unlock Free Beta Access
+                            </span>
+                          </div>
+                          
+			  <button class="submit-btn" type="button" onclick="registerUser(event);">UNLOCK YOUR KEYWORD NETWORTH™</button>
+ 
+                          <div class="row" style="clear:both;">
+                              <div class="col-sm-12" style="padding-top:20px;">
+                                    <span>
+                                        <a href="../login.html" style="color:#231F20;">Log In</a>
+                                    </span>
+                                </div>
+                                <div class="col-sm-12" style="padding-top:20px;">
                                     <br/>
                                     <span id="login-response">
                                         
                                     </span>
                                 </div>
 			    </div>
-			</div>
-		</div>
-					  
+		  </div>
+		  </form>
+		  
 		  </div>
 
 	</div>  
@@ -102,7 +110,6 @@
 	
 
 </section>
-
 
 <!-- =========================
      FOOTER
@@ -124,7 +131,7 @@
 		 <!--Footer left section start here-->
             <div class="footer-link col-sm-4">
                   <ul class=""> 
-                    <li> <a href="faq.html">FAQs</a></li>
+                <li> <a href="faq.html">FAQs</a></li>
                 <!--<li> <a href="#">What is this?</a></li>-->
                 <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
               </ul>
@@ -134,10 +141,14 @@
 		<!--copyright section start here-->		
             <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
 			<!--copyright section close here-->
-                        
+		
+       
             <div class="account-section text-right col-sm-4">
                 <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
             </div>
+             
+
+		
 			
           </div>
             </div>
@@ -183,30 +194,14 @@
     function foo(){ /*console.log("Callback");*/ }
 
 
-	
-		 $(document).ready(function () {
-			
-			 var headerheight = $('#rank-header-outer').height();
-			  $("body").css("padding-top", headerheight);
-			  //$("body.home").css("padding-top", "0px");	   
-		});
-
-
+     $(document).ready(function () {
+      
+       var headerheight = $('#rank-header-outer').height();
+        $("body").css("padding-top", headerheight);
+        //$("body.home").css("padding-top", "0px");    
+    });
 
     </script>
-
-    
-<script type="text/javascript">
-(function() {
-var s = document.createElement("script");
-s.type = "text/javascript";
-s.async = true;
-s.src = '//api.usersnap.com/load/'+
-        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
-var x = document.getElementsByTagName('script')[0];
-x.parentNode.insertBefore(s, x);
-})();
-</script>
 
 </body>
 </html>

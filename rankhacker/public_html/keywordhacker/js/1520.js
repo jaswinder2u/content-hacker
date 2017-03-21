@@ -517,7 +517,7 @@ function loadProjectDashboard(flip)
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 
@@ -4433,12 +4433,12 @@ function getAllIndustries()
         }
         else
         {
-            window.location = "../index.html";
+            window.location = "../login.html";
         }
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 
@@ -4656,7 +4656,7 @@ function getUserInfo()
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 
@@ -4715,7 +4715,7 @@ function updateUserInfo()
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 
@@ -6917,7 +6917,7 @@ function prepareCart()
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 
@@ -7011,7 +7011,8 @@ function prepareCalculator()
     }
     else
     {
-        window.location = "../index.html";
+        jQuery("#welcome-message").html("welcome <strong>AGENT "+lastName.toUpperCase()+"</strong> <strong>[</strong> this feature is coming soon <strong>]</strong>");
+        jQuery("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
     }
 }
 
@@ -7022,7 +7023,7 @@ function prepareFAQs()
     //var projectID = getURLParameter("pid");
     if(username != '')
     {
-        if(username !== 'admin@fairmarketing.com' && jQuery('#industry-link').length)
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && jQuery('#industry-link').length)
         {
             jQuery('#industry-link').remove();
             jQuery('#users-link').remove();
@@ -7054,7 +7055,7 @@ function prepareFAQs()
     }
     else
     {
-        window.location = "../index.html";
+        //window.location = "../login.html";
     }
 }
 
@@ -7129,12 +7130,12 @@ function getAllUsers()
         }
         else
         {
-            window.location = "../index.html";
+            window.location = "../login.html";
         }
     }
     else
     {
-        window.location = "../index.html";
+        window.location = "../login.html";
     }
 }
 

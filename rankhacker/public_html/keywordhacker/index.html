@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- =========================
-          BASIC PAGE INFORMATION
-    ============================== -->
+              BASIC PAGE INFORMATION
+        ============================== --> 
     <title>RankHacker - The Content Intelligence Agency</title>
     <meta name="description" content="Rank Hacker is the worlds only keyword tool that gives you true ROI for top ranking phrases and hacks competitors content strategies to outpace them.">
     <meta name="keywords" content="content strategy, content roadmap, content calendar">
@@ -15,101 +14,293 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
 
-
     <!-- =========================
-         FONTS
-    ============================== -->
+             FONTS
+        ============================== -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-	<link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <!-- =========================
-         STYLESHEETS
-    ============================== -->
-    <link href="css_storefront/bootstrap.min.css?v=50" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=50" rel="stylesheet" id="theme-change">
+             STYLESHEETS
+        ============================== -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/keywordhacker/css/bootstrap.min.css?v=51" rel="stylesheet">-->
+    <link href="css/custom-style.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=51" rel="stylesheet" type="text/css">
 
-   
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+    
+    <!--1520 files-->
+    <script src="js/1520.js?v=51"></script>
+    <script src="js_storefront/1520_storefront.js?v=51"></script>
+    <link href="css/1520.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css_storefront/custom-style.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=51" rel="stylesheet" id="theme-change">
 
+    <link href="css/media-queries.css?v=51" rel="stylesheet" type="text/css">
+    
+    <!--<link href="fonts_storefront/font-awesome/keywordhacker/css/font-awesome.min.css" rel='stylesheet' type='text/css'>-->
+    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="css_storefront/bootstrap.min.css?v=51" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=51" rel="stylesheet" id="theme-change-storefront">
 
-<!--google js file-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="css/bootstrap.min.css?v=51" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 </head>
 
-<body id="body" class="home " onload="clearCookies();">
-
+<body id="body" class="page-loading home noisy" onload="clearCookies();">
 
 <!-- =========================
      MAIN MENU
 ============================== -->
-<div id="rank-header-outer">
 
-<div class="container text-center">
-<a class="logo" data-text="RANKHACKER" href="index.html"><img src="images_storefront/site-logo.png" alt="site-logo"> <!--<img src="images_storefront/beta-testing-stamp.png" alt="site-logo" class="header-stamp">--></a>
-
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                </ul>
+            </li>
+            <li><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">LOGIN</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 </div>
-
-</div>
+    
 
 <!-- =========================
      HEADER
 ============================== -->
-<section id="content-section">
 
-    <div id="background-image"></div>
-    <div class="scanlines"></div>
+<section id="content-section" class="blurable">
 
-    <div class="overlay interface-outer">
-		  
-		 <div class="text-center vertical-middle">
-		   <div class="rank-heading">
-            <div id="typed-strings">
-                <p>TRUE ROI PROJECTIONS FOR TOP RANKING PHRASES</p>
-            </div>
-            <span id="typed" style="white-space:pre;"></span>
-        </div>
-		 
-        <form class="networth-form" onsubmit="JavaScript:registerUser(event);">	
-         <div class="container">		
-			  <div class="networth-email-input">
-                            <label><i class="fa fa-envelope-o" aria-hidden="true"></i> </label>
-                            <input type="email" class="input" placeholder="ENTER YOUR EMAIL ADDRESS" required id="user-email">
-                            <span class="email-address-helper-text text-left">
-                                Enter Email to Unlock Free Beta Access
-                            </span>
-                          </div>
-                          
-			  <button class="submit-btn" type="button" onclick="registerUser(event);">UNLOCK YOUR KEYWORD NETWORTH™</button>
- 
-                          <div class="row" style="clear:both;">
-                              <div class="col-sm-12" style="padding-top:20px;">
-                                    <span>
-                                        <a href="../login.html" style="color:#231F20;">Log In</a>
-                                    </span>
-                                </div>
-                                <div class="col-sm-12" style="padding-top:20px;">
-                                    <br/>
-                                    <span id="login-response">
-                                        
-                                    </span>
-                                </div>
-			    </div>
-		  </div>
-		  </form>
-		  
-		  </div>
+<div id="background-image"></div>
+<!--div class="scanlines"></div-->
 
-	</div>  
+    <div class="overlay interface-outer padding0b" id="">
 	
-	
+		<section class="rh-secrets-section">
+		  <div class="container">
+			<h1 class="rh-storefornt-heading margin25b">Competitors ranking higher than you?</h1>
+			
+			<p class="margin20b block-css"><span class="rh-storefornt-subheading margin10b">REVEAL THEIR SECRETS</span>and grab market share with our easy to follow monthly content marketing roadmap.</p>
+			<div class="rh-competitor-section">
+				<h4>COMPETITOR DATA REVEALED:</h4>
+					<div class="rh-competitor-nav">
+						<ul class="nav nav-pills">
+							<li class="active" id="pill-li-1"><a id="pill-a-1" data-toggle="pill" href="#rh-competitor-tab1">WEB SALES AND<br>REVENUES</a><span class="tab-arrow"><i class="fa fa-check" aria-hidden="true"></i></span></li>
+							<li id="pill-li-2"><a id="pill-a-2" data-toggle="pill" href="#rh-competitor-tab2">CONTENT MARKETING<br>STRATEGIES</a><span class="tab-arrow"><i class="fa fa-check" aria-hidden="true"></i></span></li>
+ 							<li id="pill-li-3"><a id="pill-a-3" data-toggle="pill" href="#rh-competitor-tab3">TRAFFIC FROM<br>PAGE ONE LISTINGS</a><span class="tab-arrow"><i class="fa fa-check" aria-hidden="true"></i></span></li>
+							<li id="pill-li-4"><a id="pill-a-4" data-toggle="pill" href="#rh-competitor-tab4">ROI FROM SEO<br>CAMPAIGNS</a><span class="tab-arrow"><i class="fa fa-check" aria-hidden="true"></i></span></li>
+						</ul>
+					</div>
+					<div class="rh-competitor-tab">
+		<div class="tab-content">
+			<div id="rh-competitor-tab1" class="tab-pane fade in active">
+					<div class="steps-info-section">
+						<h3 class="step-title">UNCOVER COMPETITOR SALES CONVERSIONS</h3>
+						<h4 class="step-subtitle">How many of their web visitors are converting to sales?</h4>
+						<p>Know exactly how many leads & sales your competitors receive for any page one rankings.</p>
+					</div>
+			</div>
+			<div id="rh-competitor-tab2" class="tab-pane fade">
+					<div class="steps-info-section">
+						<h3 class="step-title">REVEAL COMPETITORS ONLINE MARKETING EFFORTS</h3>
+						<h4 class="step-subtitle">What are they producing online each month to rank for a specific phrase?</h4>
+						<p>Reveal how much content the page 1 competition is writing and publishing online so that you can match or outpace them- this is what we call Rank Hacking!</p>
+					</div>
+			</div>
+			<div id="rh-competitor-tab3" class="tab-pane fade">
+					<div class="steps-info-section">
+						<h3 class="step-title">DETECT COMPETITORS PAGE ONE WEB TRAFFIC</h3>
+						<h4 class="step-subtitle">How much web traffic are the receiving monthly from ranking on page one of search engines?</h4>
+						<p>See how much web traffic each page 1 competitor is receiving for a specific keyword ranking.</p>
+					</div>
+			</div>
+			<div id="rh-competitor-tab4" class="tab-pane fade">
+					<div class="steps-info-section">
+						<h3 class="step-title">DISCOVER COMPETITORS TOP PHRASE REVENUES</h3>
+						<h4 class="step-subtitle">How much sales reveune are the generating each month from a top ranking phrase?</h4>
+						<p>We will show you true ROI projections for each keyword phrase your page 1 competition ranks for and give you a content goal and budget to follow.</p>
+					</div>
+			</div>
 
+		</div>
+
+</div>
+
+				<form class="try-competitor-form">
+					<label>YOU’LL BE ON YOUR WAY TO OUTRANKING YOUR COMPETITORS IN NO TIME.</label>
+					<input type="email" id="user-email-1" required class="rh-storefornt-input" placeholder="VALIDATE EMAIL ADDRESS">
+                                        <a class="rh-storefornt-btn" onclick="registerUser1(event);" id="try-it-for-free-button"><div id="try-it-for-free-button-text">TRY IT FOR FREE</div></a>
+				</form>
+			</div>
+		  </div>
+		</section>
+
+		<section class="rh-storefornt-tagline">
+			<div class="container">
+				<h2 class="rh-storefornt-heading">The only keyword research tool that forecasts ROI & automates your content strategy!</h2>
+			</div>
+		</section>
+
+		<section class="rh-store-st3">
+		<div class="container">
+		<h3 class="rh-storefornt-subheading margin20b">The Mission</h3>
+		<p class="block-css margin20b">Reveal the exact SEO strategies that put your competition on page one of search engines & use this
+		data to build a content marketing plan that will outpace them!</p>
+
+		<div class="block-css seo-steps-outer">
+		<h3>IT’S EASY; HERE’S HOW:</h3>
+
+
+  <div class="seo-strategies-points">
+
+<div id="seo-strategies-Carousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="seo-Carousel-inner">
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+    <div class="row">
+		<div class="col-sm-6 text-center step-image" > <a class="fancybox" href="images/step1.jpg" data-fancybox-group="gallery" title="Step 1"><img src="images/step1.jpg" alt=""/></a> </div>
+		<div class="col-sm-6 steps-info-section">
+			<h3 class="step-title"><span class="step-no">1</span>PERFORM KEYWORD RESEARCH</h3>
+			<h4 class="step-subtitle">Import a list of keywords or select from Rank Hackers suggestions.</h4>
+			<p>We’ll take your current conversion data plus keywords you want to rank organically for and build your mission.</p>
+		</div>
+	</div>
+
+    </div>
+
+    <div class="item">
+		<div class="row">
+			<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step2.jpg" data-fancybox-group="gallery" title="Step 2"><img src="images/step2.jpg" alt=""/></a></div>
+			<div class="col-sm-6 steps-info-section">
+				<h3 class="step-title"><span class="step-no">2</span>SELECT PHRASES</h3>
+				<h4 class="step-subtitle">Choose phrases that have the highest monthly ROI.</h4>
+				<p>We call this Keyword Networth. Organic web traffic, online sales, and budget alocation are calculated to project true ROI on phrases.</p>
+			</div>
+		</div>
+    </div>
+
+    <div class="item">
+	  <div class="row">
+		<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step3.jpg" data-fancybox-group="gallery" title="Step 3"><img src="images/step3.jpg" alt=""/></a></div>
+		<div class="col-sm-6 steps-info-section">
+			<h3 class="step-title"><span class="step-no">3</span>REVEAL STRATEGIES</h3>
+			<h4 class="step-subtitle">Reveal your competitors monthly publicaion strategy and generate your content goal.</h4>
+			<p>Revealing the amount of off-page content built by competitors gives you an edge over the competition.</p>
+		</div>
+		</div>
+    </div>
+
+    <div class="item">
+	  <div class="row">
+		<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step4.jpg" data-fancybox-group="gallery" title="Step 4"><img src="images/step4.jpg" alt=""/></a></div>
+		<div class="col-sm-6 steps-info-section">
+			<h3 class="step-title"><span class="step-no">4</span>FULFILL CONTENT GOALS</h3>
+			<h4 class="step-subtitle">Outpace competitors by fulfiling your monthly content goals with our add to cart feature.</h4>
+			<p>We’ve automatically compared your competition to generate the best method to start hacking rank.</p>
+		</div>
+		</div>
+  	</div>
+
+     <div class="item">
+	  <div class="row">
+		<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step5.jpg" data-fancybox-group="gallery" title="Step 5"><img src="images/step5.jpg" alt=""/></a> </div>
+		<div class="col-sm-6 steps-info-section">
+			<h3 class="step-title"><span class="step-no">5</span>MANAGE CONTENT ORDERS</h3>
+			<h4 class="step-subtitle">Assign content types, provide writing direction, and even add Project Management.</h4>
+			<p>Rank Hacker will do the rest and send you the content once it’s ready!</p>
+		</div>
+  	</div>
+	</div>
+  </div>
+	  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#seo-strategies-Carousel" role="button" data-slide="prev">  </a>
+  <a class="right carousel-control" href="#seo-strategies-Carousel" role="button" data-slide="next">  </a>
+
+</div>
+
+
+  <!-- Indicators -->
+  	<div class="nav-pills-outer">
+		<ul class="nav nav-pills carousel-indicators">
+			<li data-target="#seo-strategies-Carousel" data-slide-to="0" class="active">1</li>
+    <li data-target="#seo-strategies-Carousel" data-slide-to="1">2</li>
+    <li data-target="#seo-strategies-Carousel" data-slide-to="2">3</li>
+    <li data-target="#seo-strategies-Carousel" data-slide-to="3">4</li>
+    <li data-target="#seo-strategies-Carousel" data-slide-to="4">5</li>
+		</ul>
+	</div>
+
+
+</div>
+
+</div>
+
+		</div>
+		
+		</div>
+		</section>
+
+
+
+		<section class="try-beta-access">
+			<div class="container">
+				<h2 class="rh-storefornt-heading">Free Beta Access:</h2>
+				<form class="try-competitor-form">
+					<input type="email" id="user-email-2" required class="rh-storefornt-input" placeholder="EMAIL ADDRESS">
+                                        <a class="rh-storefornt-btn" onclick="registerUser2(event);" id="get-verified-button"><div id="get-verified-button-text">GET VERIFIED</div></a>
+					<p>ARE YOU AN AGENCY? <a href="#">CLICK HERE</a></p>
+				</form>
+			</div>
+		</section>
+
+
+
+
+
+
+
+    </div>
 </section>
+
+
 
 <!-- =========================
      FOOTER
@@ -131,7 +322,7 @@
 		 <!--Footer left section start here-->
             <div class="footer-link col-sm-4">
                   <ul class=""> 
-                <li> <a href="faq.html">FAQs</a></li>
+                <li> <a href="faq.html">FAQs</a>
                 <!--<li> <a href="#">What is this?</a></li>-->
                 <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
               </ul>
@@ -141,19 +332,128 @@
 		<!--copyright section start here-->		
             <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
 			<!--copyright section close here-->
-		
-       
+                        
             <div class="account-section text-right col-sm-4">
                 <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
             </div>
-             
-
-		
 			
           </div>
             </div>
       </footer>
 	  <!--Footer close here-->
+	  
+	  
+
+<div class="side-wizard-outer" style="display: none;">
+    <div class="overflow-scroll">
+            <div class="block-css">
+                <div class="side-wizard-image matchheight" style="margin:0 0 -7px 0!important;background-color: #E4E5E6;">.&nbsp;</div>
+                <ul class="nav nav-tabs side-wizard-tabs matchheight">
+                    <li class="active"><a data-toggle="tab" href="#new-mission-setup">NEW MISSION SETUP </a></li>
+                    <li><a data-toggle="tab" href="#advanced">ADVANCED</a></li>
+                </ul>
+            </div>
+        <div class="side-wizard-inner">
+            <div class="side-wizard-image">
+            <img src="images/rh-plus-logo.png">
+            </div>
+
+            <div class="side-wizard-content">
+                <div class="tab-content">
+                    <div id="new-mission-setup" class="tab-pane fade in active">
+                        <form class="side-wizard-form">
+                            <h2>We’ll start by gathering some intel on your goal.</h2>
+                            <h4>Customize your goal by clicking within the statement:</h4>
+                            <label class="side-wizard-label">
+                                I’d like
+                                <select class="side-wizard-select">
+                                <option value="my e-comm">my e-comm</option>
+                                <option value="my e-comm2">my e-comm2</option>
+                                <option value="my e-comm3">my e-comm3</option>
+                                </select>
+                                <input type="text" placeholder="Website URL" class="side-wizard-input"/> 
+                                to rank on search engines
+                            </label>
+                            <label class="side-wizard-label">
+                               for <span class="keyword-phrases-input"><input type="text" placeholder="keyword phrases" class="side-wizard-input"/> <a class="import-keywords" value="">Import Phrases</a></span>
+                            </label>
+                            <label class="side-wizard-label">                         
+                                targeting <select class="side-wizard-select">
+                                <option value="industry">industry</option>
+                                <option value="industry2">industry2</option>
+                                <option value="industry3">industry3</option>
+                                </select>in 
+                                <select class="side-wizard-select">
+                                <option value="city">city</option>
+                                <option value="city2">city2</option>
+                                <option value="city3">city3</option>
+                                </select>
+                                and I sell my product/service for<input type="text" placeholder="$ " class="side-wizard-input dolar-input"/> .
+                            </label>
+                            <a href="#" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </form>
+                        <div class="wz-reveal-signup">
+                            <h2>Next we’ll reveal their secrets and identify your mission:</h2>
+                            <form class="wz-signup-form">
+                                <input type="text" placeholder="Enter Your Email to Reveal*" class="rh-storefornt-input" />   <button class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <span class="validation-msg">A verification email will sent to confirm email accuracy prior to dashboard access.</span>
+                            </form>
+                            <h3 class="already-registered">ALREADY REGISTERED?<a href="#">LOG IN</a></h3>
+                        </div>
+                    </div>
+
+                    <div id="advanced" class="tab-pane fade">
+                        <form class="side-wizard-form">
+                            <h2>We’ll start by gathering some intel on your goal.</h2>
+                            <h4>Customize your goal by clicking within the statement:</h4>
+                            <label class="side-wizard-label">
+                                I’d like
+                                <select class="side-wizard-select">
+                                <option value="my e-comm">my e-comm</option>
+                                <option value="my e-comm2">my e-comm2</option>
+                                <option value="my e-comm3">my e-comm3</option>
+                                </select>
+                                <input type="text" placeholder="Website URL" class="side-wizard-input"/> 
+                                to rank on search engines
+                            </label>
+                            <label class="side-wizard-label">
+                               for <span class="keyword-phrases-input"><input type="text" placeholder="keyword phrases" class="side-wizard-input"/> <a class="import-keywords" value="">Import Phrases</a></span>
+                            </label>
+                            <label class="side-wizard-label">                         
+                                targeting <select class="side-wizard-select">
+                                <option value="industry">industry</option>
+                                <option value="industry2">industry2</option>
+                                <option value="industry3">industry3</option>
+                                </select>in 
+                                <select class="side-wizard-select">
+                                <option value="city">city</option>
+                                <option value="city2">city2</option>
+                                <option value="city3">city3</option>
+                                </select>
+                                and I sell my product/service for<input type="text" placeholder="$ " class="side-wizard-input dolar-input"/> .
+                            </label>
+                            <h4 class="margin20t margin15b">On average:</h4>
+                            <label class="side-wizard-label">About<input type="text" placeholder="$ " class="side-wizard-input dolar-input"/>visitors land on my website each month.</label>
+                            <label class="side-wizard-label">Of those<input type="text" placeholder="$ " class="side-wizard-input dolar-input"/>convert to actual paying customers.	</label>
+                            <label class="side-wizard-label">It costs me<input type="text" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.</label>
+                            <a href="#" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </form>		
+                		<div class="wz-reveal-signup">
+                            <h2>Next we’ll reveal their secrets and identify your mission:</h2>
+                            <form class="wz-signup-form">
+                                <input type="text" placeholder="Enter Your Email to Reveal*" class="rh-storefornt-input" />   <button class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <span class="validation-msg">A verification email will sent to confirm email accuracy prior to dashboard access.</span>
+                            </form>
+                            <h3 class="already-registered">ALREADY REGISTERED?<a href="#">LOG IN</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	  
+	  
 
 <!-- =========================
      JS SCRIPTS
@@ -161,47 +461,120 @@
 <!-- JQUERY -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!--Text typing effect js -->
-<script type="text/javascript" src="js_storefront/typed.min.js"></script>
 
-<!--1520 js file-->
-<script type="text/javascript" src="js_storefront/1520_storefront.js?v=50"></script>
+    <!-- Fancy box files -->
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <script src="js/jquery.fancybox.pack.js"></script>
 
+<!-- BOOTSTRAP SCRIPTS -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/jquery.matchHeight-min.js"></script>
+<script src="js/bootstrap-slider.js?v=51"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.matchheight').matchHeight();
+    });
+
+    jQuery('#seo-strategies-Carousel').carousel({
+    interval: 12000
+    }); 
+
+</script>
 <script>
-    $(function(){
+    jQuery(document).ready(function () {
 
-        $("#typed").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings'),
-            typeSpeed: 80,
-            backDelay: 500,
-            loop: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
+        $("#pill-li-1").mouseover(function(){
+            $("#pill-a-1").click();
+        });
+        $("#pill-li-2").mouseover(function(){
+            $("#pill-a-2").click();
+        });
+        $("#pill-li-3").mouseover(function(){
+            $("#pill-a-3").click();
+        });
+        $("#pill-li-4").mouseover(function(){
+            $("#pill-a-4").click();
         });
 
-        $(".reset").click(function(){
-            $("#typed").typed('reset');
+        /*
+         var originalVal;
+
+         $('#ex6').slider().on('slideStart', function(slideEvt){
+         originalVal = $('#ex').data('slider').getValue();
+         });
+
+         $('#ex6').slider().on('slideStop', function(slideEvt){
+         var newVal = $('#ex6').data('slider').getValue();
+         if(originalVal != newVal) {
+         alert('Value Changed!');
+         alert('Value Changed!');
+         }
+         });
+         */
+
+        $('.fancybox').fancybox();
+
+
+        //range slider custom js
+        $("#ex6").slider();
+        $("#ex6").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex6 = numeral(slideEvt.value).format('0,0');
+            //var slider_num_ex6 = tooltip-inner;
+            $("#ex6SliderVal").val(slider_num_ex6);
         });
 
+
+        $("#ex7").slider();
+        $("#ex7").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex7 = numeral(slideEvt.value).format('0,0');
+            $("#ex7SliderVal").val(slider_num_ex7);
+        });
+
+
+        $("#ex8").slider();
+        $("#ex8").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex8 = numeral(slideEvt.value).format('0,0');
+            $("#ex8SliderVal").val(slider_num_ex8);
+        });
+
+
+        $('.project-setup-input input.range-count').on("blur", function () {
+            var inputval = $(this).val();
+            //alert(inputval);
+            var inputval_new = numeral(inputval).format('0,0');
+            //	alert(inputval_new);
+            $(this).val(inputval_new);
+        });
+
+
+        // ADD Cumma after three numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+        }
+
+        $('.range-count').each(function () {
+            var v_pound = $(this).html();
+            v_pound = numberWithCommas(v_pound);
+
+            $(this).html(v_pound)
+
+        })
+
+
     });
+</script>
 
-    function newTyped(){ /* A new typed object */ }
-
-    function foo(){ /*console.log("Callback");*/ }
-
-
-     $(document).ready(function () {
-      
-       var headerheight = $('#rank-header-outer').height();
-        $("body").css("padding-top", headerheight);
-        //$("body.home").css("padding-top", "0px");    
-    });
-
-    </script>
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
 
 </body>
 </html>

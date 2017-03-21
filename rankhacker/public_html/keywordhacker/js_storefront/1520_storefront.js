@@ -288,3 +288,91 @@ function loginAuthenticatedAccount(e)
         $("#login-response").html("Please provide a your name and a password to continue.");
     }
 }
+
+function registerUser1(e)
+{
+    var e = e || window.event;
+    //this.event.preventDefault();
+    e.preventDefault();
+    
+    clearCookies();
+    
+    var email = $('#user-email-1').val();
+    if(email.trim() == '')
+    {
+        //$("#user-email-1").css("color","#ec1c24");
+        $("#user-email-1").addClass("input-error");
+        $("#user-email-1").attr("placeholder","Error: Please provide a valid email address.");
+    }
+    else
+    {
+        //Show the spinner
+        //$("#user-email-1").css("color","#999999");
+        $("#user-email-1").removeClass("input-error");
+        $("#get-verified-button-text").html("<img src='images/apple_spinner.gif' class='apple-spinner-small'/>");
+        
+        $.ajax({url: restURL, data: {'command':'registerUser','username':email}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    //Redirect the user to the verify.html page
+                    document.cookie = "username="+email;
+                    window.location = "verify.html";
+                }
+                else if(info.status == "error")
+                {
+                    $("#get-verified-button-text").html("GET VERIFIED");
+                    $("#user-email-1").val("");
+                    //$("#user-email-1").css("color","#ec1c24");
+                    $("#user-email-1").addClass("input-error");
+                    $("#user-email-1").attr("placeholder","Oops, "+email+" has already been registered. Please login at top.");
+                }
+            }
+        });
+    }
+}
+
+function registerUser2(e)
+{
+    var e = e || window.event;
+    //this.event.preventDefault();
+    e.preventDefault();
+    
+    clearCookies();
+    
+    var email = $('#user-email-2').val();
+    if(email.trim() == '')
+    {
+        //$("#user-email-2").css("color","#ec1c24");
+        $("#user-email-2").addClass("input-error");
+        $("#user-email-2").attr("placeholder","Error: Please provide a valid email address.");
+    }
+    else
+    {
+        //Show the spinner
+        //$("#user-email-2").css("color","#999999");
+        $("#user-email-2").removeClass("input-error");
+        $("#try-it-for-free-button-text").html("<img src='images/apple_spinner.gif' class='apple-spinner-small'/>");
+        
+        $.ajax({url: restURL, data: {'command':'registerUser','username':email}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    //Redirect the user to the verify.html page
+                    document.cookie = "username="+email;
+                    window.location = "verify.html";
+                }
+                else if(info.status == "error")
+                {
+                    $("#try-it-for-free-button-text").html("TRY IT FOR FREE");
+                    $("#user-email-2").val("");
+                    //$("#user-email-2").css("color","#ec1c24");
+                    $("#user-email-2").addClass("input-error");
+                    $("#user-email-2").attr("placeholder","Oops, "+email+" has already been registered. Please login at top.");
+                }
+            }
+        });
+    }
+}
