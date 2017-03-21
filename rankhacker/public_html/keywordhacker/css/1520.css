@@ -1079,3 +1079,13 @@ border: 1px solid #e2e5e5;
 #sorttable_sortrevind, #sorttable_sortfwdind {
     display:none;
 }
+
+.progress-row{
+    margin:0 !important;
+    padding:0 !important;
+    height:3px !important;
+}
+
+.keyword-networth-project .progress-row td {
+    padding:0;
+}
