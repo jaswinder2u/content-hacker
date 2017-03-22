@@ -6925,6 +6925,12 @@ function refreshCartDropdown()
                 }
             });
     }
+    else
+    {
+        $("#tools-dropdown").hide();
+        $("#cart-dropdown").hide();
+        $("#gear-dropdown").html("<a style=\"cursor:pointer;\" onclick=\"javascript:window.location='../login.html';\">LOGIN</a>");
+    }
 }
 
 function prepareCart()
