@@ -7328,6 +7328,10 @@ function refreshCartDetails()
                                 if(keywordInfo.keyword != "")
                                 {
                                     var firstAddonInfo = keywordInfo.addons[0];
+                                    
+                                    var keywordContentGoal = parseInt(keywordInfo.contentGoal);
+                                    var addMoreClass = "";
+                                    
                                     if(firstAddonInfo.keywordID == 0)
                                     {
                                         addPM = true;
@@ -7335,7 +7339,7 @@ function refreshCartDetails()
                                     else
                                     {
                                         //Output the keyword-level elements
-                                        cartHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"</h3>"+
+                                        cartHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;\">content goal: "+keywordContentGoal+" pcs per month</span></h3>"+
                                                         "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
                                                                 "<tbody>"+
                                                                         "<tr class=\"table-heading\">"+
@@ -7345,6 +7349,7 @@ function refreshCartDetails()
                                                                         "</tr>";
 
                                         //Output the addon-level elements
+                                        var keywordTotalContentCount = 0;
                                         var addons = keywordInfo.addons;
                                         for(var a=0; a<addons.length; a++)
                                         {
@@ -7355,6 +7360,7 @@ function refreshCartDetails()
                                             var addonQuantity = parseInt(addonInfo.quantity);
 
                                             missionTotalContentCount += addonQuantity;
+                                            keywordTotalContentCount += addonQuantity;
                                             missionSubtotal += (addonPrice*addonQuantity);
 
                                             cartHTML += "<tr>"+
@@ -7366,10 +7372,13 @@ function refreshCartDetails()
                                                                 "</td>"+
                                                         "</tr>";
                                         }
-
+                                        if(keywordTotalContentCount<keywordContentGoal)
+                                        {
+                                            addMoreClass = " red-plus";
+                                        }
                                         //Add a row for the add new button
                                         cartHTML += "<tr class=\"add-new\">"+
-                                                            "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a></td>"+
+                                                            "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus"+addMoreClass+"\" aria-hidden=\"true\"></i></a></td>"+
                                                     "</tr>";
 
                                         //Close the keyword-level elements
@@ -7390,10 +7399,10 @@ function refreshCartDetails()
                                 missionSubtotal += (missionPMHours*pmPrice);
                                 cartHTML += " checked";
                             }
-                            cartHTML += " onchange=\"toggleMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" />ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i>"+
+                            cartHTML += " onchange=\"toggleMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
                                                 "<div class=\"custom_tooltip\">"+
                                                     "<h2>PROJECT MANAGEMENT</h2>"+
-                                                    "<p>Based on your content selections for this keyword Rank Hacker recommends "+missionPMHours+" hours of project management to keep your marketing hands-free.</p>"+
+                                                    "<p>Based on your content selections for this keyword RankHacker recommends "+missionPMHours+" hours of project management to keep your marketing hands-free.</p>"+
                                                     "<!--<div style=\"float: left;width: 100%;margin: 0;padding: 0;\"><input type=\"checkbox\" />ADD PROJECT MANAGEMENT<a href=\"javascript:void(0);\" class=\"no-thanks\">NO THANKS</a></div>-->"+
                                                 "</div>"+
                                             "</span>"+
@@ -7401,7 +7410,7 @@ function refreshCartDetails()
 
                             //Close the mission-level elements
                             cartHTML += "</div>"+
-                                    "<div class=\"cart-subtotal-section\"><label>SUBTOTAL</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> </div>";
+                                    "<div class=\"cart-subtotal-section\"><label>MONTHLY CONTENT: "+missionTotalContentCount+" PCS</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> </div>";
                         }
                     }
                     

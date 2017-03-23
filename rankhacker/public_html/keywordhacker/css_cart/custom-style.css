@@ -126,6 +126,9 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 .selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
 .selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
 
+.selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab.collapsed:hover {background-color:#D0D2D3;}
+.selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab.collapsed:hover {background-color:#D0D2D3;}
+
 .selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
 .selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
 
@@ -143,6 +146,8 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .top-cart-summary.bottom-cart-summary .monthly-content-amount span.amount-mn, .top-cart-summary.bottom-cart-summary .monthly-content-sm span.monthly-content-sm-value {color: #24A9E2}
 
+.top-cart-summary.bottom-cart-summary .monthly-content-amount label {color: #24A9E2;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
+
 .top-cart-summary.bottom-cart-summary  span , .top-cart-summary.bottom-cart-summary .monthly-short-info ul li label{color: #929395;}
 
 .mission-heading {align-items: center;background-color: #e6e7e8;display: flex;float: left;margin: 15px 0 0;padding: 10px;width: 100%;}
@@ -156,6 +161,8 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 .mission-info-table {float: left;margin: 0;padding: 0;width: 100%;}
 
 table.mission-info-table tr th {color: #58595b;font-size: 11px;font-weight: normal;padding:10px;text-transform: uppercase;font-family:"Roboto",sans-serif;}
+
+table.mission-info-table tr:hover {background-color:#f9f8b8;}
 
 table.mission-info-table tr th:first-child{padding-left:0;}
 
@@ -173,13 +180,16 @@ table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:ho
 
 .project-management-checkbox {color: #58595b;float: left;font-family: "Roboto",sans-serif;font-size: 11px;font-weight: normal;margin: 15px 0;padding: 0 10px;text-transform: uppercase;width: 100%;}
 
-.project-management-checkbox input[type="checkbox"] {float: left;margin: 1px 8px 0 0;}
+.project-management-checkbox input[type="checkbox"] {float: left;margin-right: 8px; clear:left;}
+
+project-management-checkbox input[type="checkbox"], label {line-height:1.6em; height:1.6em; font-size:inherit; margin:0 2px;}
 
 .project-management-checkbox span {color:#26A9E0;}
 
 .project-management-checkbox strong {color:#000;}
 
-.add-new-selection , .add-new-selection  i {color: #005cb8;font-size: 14px;}
+.add-new-selection , .add-new-selection  i {color: #005cb8;font-size: 20px;}
+.red-plus {color:#ec1c24 !important;}
 
 .cart-subtotal-section {align-items: center;background-color: #c9e4ee;color: #6d6e70;display: flex;float: left;margin: 0 0 35px;padding:8px 10px;width: 100%;}
 
@@ -187,13 +197,17 @@ table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:ho
 
 .cart-subtotal-section .price {color: #6d6e70;float: right;font-family: "Roboto",sans-serif;font-size: 30px;font-weight: bold;line-height: normal;margin: 0 0 0 auto;padding: 0;text-align: left;width: auto;}
 
-.top-cart-summary label {color: #fff;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
+.top-cart-summary label {color: #c9e4ee;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
+
+.monthly-content-amount {text-align:right;}
 
 .top-cart-summary span {color: #C9E4EE;float: left;font-family: "Roboto",sans-serif;font-size: 26px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
 
 .monthly-short-info ul li label {font-size: 12px;font-weight: normal;color: #C9E4EE;}
 
-.monthly-content-amount span.amount-mn ,.monthly-content-sm span.monthly-content-sm-value{color: #FFFFFF;float: left;font-family: "Roboto",sans-serif;font-size: 70px;font-weight: bold;line-height: normal;margin: 0;padding: 0;text-align: left;line-height: 70px;}
+.top-cart-summary .monthly-content-sm .monthly-content-sm-value{color: #FFFFFF;float: left;font-family: "Roboto",sans-serif;font-size: 70px;font-weight: bold;line-height: normal;margin: 0;padding: 0;text-align: left;line-height: 70px;}
+
+.monthly-content-amount span.amount-mn ,.monthly-content-sm span.monthly-content-sm-value{color: #c9e4ee;float: left;font-family: "Roboto",sans-serif;font-size: 70px;font-weight: bold;line-height: normal;margin: 0;padding: 0;text-align: right;line-height: 70px;}
 
 .monthly-short-info ul li , .monthly-short-info ul li  label{text-align: center;}
 
@@ -214,7 +228,7 @@ table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:ho
 .top-cart-summary.bottom-cart-summary .bracket-sign-right,.top-cart-summary.bottom-cart-summary .bracket-sign-left ,.top-cart-summary.bottom-cart-summary .bracket-sign-right::before,.top-cart-summary.bottom-cart-summary .bracket-sign-right::after ,.top-cart-summary.bottom-cart-summary .bracket-sign-left::before,.top-cart-summary.bottom-cart-summary .bracket-sign-left::after
 {background-color: #27A9E3;}
 
-.top-cart-summary .monthly-content-sm label {width: 110px;margin: 15px 0 0 0;}
+.top-cart-summary .monthly-content-sm label {width: 110px;margin: 10px 0 0 0;}
 
 .top-cart-summary .monthly-content-sm span.monthly-content-sm-value {color: #C9E4EE;width: calc(100% - 112px);}
 
@@ -628,7 +642,9 @@ position: absolute;right: 10px;top: 0;}
 }
 
 @media (max-width: 991px) { 
-
+    
+.top-cart-summary .monthly-content-sm .monthly-content-sm-value {text-align:right; vertical-align:middle;}
+    
 #site-header .navbar-default .navbar-nav > li > a {font-size: 14px;margin: 4px 2px;padding: 7px 10px;}
 
 .logo img {max-height: 45px;}
@@ -645,9 +661,10 @@ position: absolute;right: 10px;top: 0;}
 
 .monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value {font-size: 50px;}
 
-.top-cart-summary .monthly-content-sm label {width:90px;}
+.top-cart-summary .monthly-content-sm label {width:50%;text-align:left;margin-top:15px;}
 
-.top-cart-summary .monthly-content-sm span.monthly-content-sm-value {width: calc(100% - 100px);}
+//.top-cart-summary .monthly-content-sm span.monthly-content-sm-value {width: calc(100% - 100px);}
+.top-cart-summary .monthly-content-sm span.monthly-content-sm-value {width: 50%;}
 
 .monthly-content-amount span.amount-mn sup {font-size: 25px;top: -15px;}
 
@@ -817,7 +834,7 @@ table.mission-info-table tr td.delect-row {position: absolute;right: 0;bottom: 1
 
 table.mission-info-table tr:hover {background-color: #F9F8B8;}
 
-table.mission-info-table tr:hover td.instruction_data {color:#D8CFD4;}
+table.mission-info-table tr:hover td.instruction_data {color:inherit;}
 
 table.mission-info-table tr td.number {text-align: left;}
 

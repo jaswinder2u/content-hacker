@@ -34,9 +34,9 @@
     <!-- =========================
          STYLESHEETS
     ============================== -->
-    <link href="css_cart/bootstrap.min.css?v=51" rel="stylesheet">
-    <link href="css_cart/custom-style.css?v=51" rel="stylesheet" id="theme-change">
-    <link href="css/1520.css?v=51" rel="stylesheet" id="theme-change">
+    <link href="css_cart/bootstrap.min.css?v=52" rel="stylesheet">
+    <link href="css_cart/custom-style.css?v=52" rel="stylesheet" id="theme-change">
+    <link href="css/1520.css?v=52" rel="stylesheet" id="theme-change">
 
    
 
@@ -44,7 +44,7 @@
 <!--google js file-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js_cart/jquery.matchHeight-min.js"></script>
-<script src="js/1520.js?v=51"></script>
+<script src="js/1520.js?v=52"></script>
 
 <script type="text/javascript">
 jQuery(function($){
@@ -141,7 +141,7 @@ jQuery(function($){
                             <h2 class="cart-heading">CART SUMMARY<span class="close-icon text-right" title="Back to Mission Dashboard" onclick="javascript:window.location='dashboard.html';"><i class="fa fa-close"></i></span></h2>
 				<div class="top-cart-summary">
 
-						<div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT</label> <span class="monthly-content-sm-value" id="content-count">0</span></div>
+						<div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT PIECES</label> <span class="monthly-content-sm-value" id="content-count">0</span></div>
 
 						<div class="monthly-short-info col-sm-6 col-xs-6">
                           <span class="bracket-sign-left"> </span>
@@ -204,7 +204,7 @@ jQuery(function($){
 
 			<div class="cart-mission-outer">	
 				
-				<div class="cartdetails-leftside">
+				<div class="cartdetails-leftside" style="display:none;">
 				
 				<h2 class="cart-sidebar-title">EXPLORE CONTENT TYPES</h2>
 				<p>Are you selecting the right content type? Explore popular content types and their best uses below:</p>
@@ -304,7 +304,7 @@ jQuery(function($){
 				</div>
 				
 				
-					<div class="cart-mission-inner">
+					<div class="cart-mission-inner" style="width:100% !important;max-width:1400px !important;">
 						<h2 class="subscription-heading">Content Subscription Details</h2>
 
                                                 <span id="cart-details">
@@ -315,16 +315,47 @@ jQuery(function($){
 
 				</div>
 			
+                                <h2 class="cart-heading">ORDER TOTAL</h2>
                                 <div class="top-cart-summary bottom-cart-summary">
 
-                                        <div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT</label> <span class="monthly-content-sm-value" id="content-count-2">0</span></div>
+                                        <div class="monthly-content-sm col-sm-4 col-xs-4"> <label>MONTHLY CONTENT PIECES</label> <span class="monthly-content-sm-value" id="content-count-2">0</span></div>
 
                                         <div class="monthly-short-info col-sm-6 col-xs-6">
                                          <span class="bracket-sign-left"> </span>
                                                 <ul class="row">
                                                         <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="mission-count-2">0</span> <label>MISSIONS</label></li>
                                                         <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="keyword-count-2">0</span> <label>KEYWORDS</label></li>
-                                                        <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="management-count-2">0</span> <label>PROJECT MGMT <strong class="position-relative"></strong></label></li>
+                                                        <li class="col-sm-4 col-xs-4"><span class="monthly-short-info-value" id="management-count-2">0</span> <label>PROJECT MGMT <strong class="position-relative"><i class="info-icon"></i>							
+									<div class="custom_tooltip">
+                                                                        <h2>PROJECT MANAGEMENT</h2>
+                                                                        <p id="pm-bubble-text">Total hours of selected project management.<br>Add project management to any mission for hands-free marketing.
+                                                                            <!--Project Management of the content creation process will include:<br/>
+                                                                            <ul>
+                                                                                <li><strong>Welcome Email:</strong> We'll send you an email to schedule our first call with you</li>
+                                                                                <li><strong>Kick-Off Call:</strong> During this call, we'll cover three main points
+                                                                                    <ul style='list-style-type:square;'>
+                                                                                        <li><strong>Listening and Learning</strong> - We want to know about your business, what you do, your target market and what you want to accomplish with your content.</li>
+                                                                                        <li><strong>Walk-Through Demo</strong> - We’ll show you how to navigate our simple client portal to approve topics, titles and content.</li>
+                                                                                        <li><strong>Setting Expectations </strong> - We’ll describe our process, from start-to-finish. We’re very hands on and our first priority is driving your project.</li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li><strong>Questionnaire:</strong> You'll get a questionnaire from us after our first call that will be used to
+                                                                                    <ul style='list-style-type:square;'>
+                                                                                        <li>Help determine what topics to focus on.</li>
+                                                                                        <li>Create clear and concise writer instructions.</li>
+                                                                                        <li>Ensure that you'll be thrilled with your content.</li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li><strong>Topic and Initial Title Creation:</strong> After we get your questionnaire back, we’ll go to work researching your website and developing a list of topics to focus on. We’ll also come up with a few initial titles for your content.</li>
+                                                                                <li><strong>Topic and Title Review Call:</strong> We’ll review your topics and titles together to determine the top 3-4 titles you’d like to start with. During this call, we’ll also ask if you want to provide bullet points or talking points for each title, or let the writer work on their own.</li>
+                                                                                <li><strong>Writer Sampling:</strong> Once you approve your initial batch of titles, we’ll use our powerful writer crowd-sourcing technology to create a sample pool of likely writer candidates for you to sample.</li>
+                                                                                <li><strong>Initial Content Review:</strong> You’ll be able to review the content we send to you and determine if it’s great, needs a few revisions, or isn’t suitable. If you don’t like the writers, no problem! We’ll go back to our pool to find ones you’ll love.</li>
+                                                                            </ul>
+                                                                            <br/>At this point, we will have identified which writers you love and we can get to work completing the rest of your project. Now that the initial foundation has been laid, you won’t need to spend as much hands-on time.-->
+                                                                </p>
+                                                                </div> 
+								</strong>
+                                                            </label></li>
                                                 </ul>
                                             <span class="bracket-sign-right"> </span>
                                         </div>
