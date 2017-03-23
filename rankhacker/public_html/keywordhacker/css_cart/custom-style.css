@@ -107,25 +107,33 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .selection-list-box {float: left;margin: 15px 0 0;padding: 0;width: 100%;}
 
-.selection-list-box h4 , .selection-list-box ul li , .selection-list-box ul#cartdetail_accordion li .cart_accordionTab{float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: normal;line-height: 20px;margin:0 0 5px 0;padding: 0;width: 100%;color:#000000;}
+.selection-list-box h4 , .selection-list-box ul li , .selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab{float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: normal;line-height: 20px;margin:0 0 5px 0;padding: 0;width: 100%;color:#000000;}
+.selection-list-box h4 , .selection-list-box ul li , .selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab{float: left;font-family: "Roboto",sans-serif;font-size: 14px;font-weight: normal;line-height: 20px;margin:0 0 5px 0;padding: 0;width: 100%;color:#000000;}
 
 .selection-list-box ul {float: left;margin: 0;padding: 0;width: 100%;}
 
-.selection-list-box ul li , .selection-list-box ul#cartdetail_accordion li .cart_accordionTab {background-color: transparent;margin: 0;padding: 6px 15px;}
+.selection-list-box ul li , .selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab {background-color: transparent;margin: 0;padding: 6px 15px;}
+.selection-list-box ul li , .selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab {background-color: transparent;margin: 0;padding: 6px 15px;}
 
 .selection-list-box ul li.active {background-color: #D0D2D3;}
 
-.selection-list-box ul#cartdetail_accordion li {background-color: transparent;border: medium none;border-radius: 0;box-shadow: 0 0 0 transparent;float: left;margin: 0;padding: 0;width: 100%;}
+.selection-list-box ul#cartdetail_accordion1 li {background-color: transparent;border: medium none;border-radius: 0;box-shadow: 0 0 0 transparent;float: left;margin: 0;padding: 0;width: 100%;}
+.selection-list-box ul#cartdetail_accordion2 li {background-color: transparent;border: medium none;border-radius: 0;box-shadow: 0 0 0 transparent;float: left;margin: 0;padding: 0;width: 100%;}
 
-.selection-list-box ul#cartdetail_accordion li.active {background-color: #ffffff;}
+.selection-list-box ul#cartdetail_accordion1 li.active {background-color: #ffffff;}
+.selection-list-box ul#cartdetail_accordion2 li.active {background-color: #ffffff;}
 
-.selection-list-box ul#cartdetail_accordion li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
+.selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
+.selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab.collapsed {background-color:transparent;font-weight: normal;}
 
-.selection-list-box ul#cartdetail_accordion li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
+.selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
+.selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab {background-color: #c9e4ee;font-weight: 600;}
 
-.selection-list-box ul#cartdetail_accordion li .panel-collapse {float: left;margin: 0;padding: 0;width: 100%;}
+.selection-list-box ul#cartdetail_accordion1 li .panel-collapse {float: left;margin: 0;padding: 0;width: 100%;}
+.selection-list-box ul#cartdetail_accordion2 li .panel-collapse {float: left;margin: 0;padding: 0;width: 100%;}
 
-.selection-list-box h4 a, .selection-list-box ul li a, .selection-list-box ul#cartdetail_accordion li .cart_accordionTab {color: #000000;text-decoration:none;}
+.selection-list-box h4 a, .selection-list-box ul li a, .selection-list-box ul#cartdetail_accordion1 li .cart_accordionTab {color: #000000;text-decoration:none;}
+.selection-list-box h4 a, .selection-list-box ul li a, .selection-list-box ul#cartdetail_accordion2 li .cart_accordionTab {color: #000000;text-decoration:none;}
 
 .cart-viewall-link {color: #005cb8;float: left;font-family: "Roboto",sans-serif;font-weight: normal;margin: 25px 0 10px;text-transform: uppercase;width: 100%;}
 
