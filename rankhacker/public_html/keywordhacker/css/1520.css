@@ -620,7 +620,7 @@ border: 1px solid #e2e5e5;
     margin-bottom:35px;
 }
 
-.warning-message {
+/*.warning-message {
     position: fixed;
     top: 8.25%;
     left: 25%;
@@ -656,7 +656,7 @@ border: 1px solid #e2e5e5;
     -webkit-box-shadow: 0px 0px 8px 2px #000000;
        -moz-box-shadow: 0px 0px 8px 2px #000000;
             box-shadow: 0px 0px 8px 2px #000000;
-}
+}*/
 
 .green-text-link {color:#088D0C;padding-left:5px;margin-top:-10px;float:right;cursor:pointer;clear:right;font-size:14px;}
 
@@ -1029,7 +1029,7 @@ border: 1px solid #e2e5e5;
 @media (max-width: 767px)
 {
     .container {
-        height: auto !important;
+        //height: auto !important;
     }
     
     .cart-breakdown {
@@ -1088,4 +1088,174 @@ border: 1px solid #e2e5e5;
 
 .keyword-networth-project .progress-row td {
     padding:0;
+}
+
+.message-icon {
+    height: 20px;
+    width: auto;
+    float: left;
+    margin-right: 5px;
+}
+#message-header {
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: top;
+    width: 100%;
+    display: inline-block;
+    clear: both;
+}
+#message-content {
+    font-size: 13px !important;
+    color: #3d3d3d !important;
+    margin-top: 3px;
+    line-height: 17px;
+    width: 100%;
+    display: inline-block;
+    clear: both;
+}
+.message-bar {
+    background-color: #3d3d3d;
+    //background-color: #fff;
+    text-align: left;
+    padding: 6px;
+    position: absolute;
+    top: 0px;
+    left: 275px;
+    color: #3d3d3d;
+    display: block;
+    float: left;
+    height: 84px;
+    width: -moz-calc(100% - 900px);width: -webkit-calc(100% - 900px);width: -o-calc(100% - 900px);width: calc(100% - 900px);
+}
+.warning-message {
+    color: #faaf40;
+    background-color: #faefd1;
+}
+.progress-message {
+    color: #00acf5;
+    background-color: #cbdfed;
+}
+.success-message {
+    color: #00a14b;
+    background-color: #d3e4d0;
+}
+.error-message {
+    color: #ec1c24;
+    background-color: #f9e1e1;
+}
+
+@media (max-width:1275px)
+{
+    .message-icon {
+        height: 20px;
+        width: auto;
+        float: left;
+        margin-right: 5px;
+    }
+    #message-header {
+        font-size: 16px;
+        font-weight: bold;
+        vertical-align: top;
+        display: inline-block;
+        float: left;
+        clear: both;
+    }
+    #message-content {
+        font-size: 13px !important;
+        color: #3d3d3d !important;
+        padding-top: 3px;
+        margin-left: 5px;
+        vertical-align:top;
+        display: inline-block;
+        float: left;
+    }
+    .message-bar {
+        background-color: #3d3d3d;
+        //background-color: #fff;
+        text-align: left;
+        padding: 10px;
+        position: absolute;
+        top: 84px;
+        left: 0;
+        color: #3d3d3d;
+        display: inline-block;
+        float: left;
+        height: 75px;
+        width: 100%;
+    }
+    .warning-message {
+        color: #faaf40;
+        background-color: #faefd1;
+    }
+    .progress-message {
+        color: #00acf5;
+        background-color: #cbdfed;
+    }
+    .success-message {
+        color: #00a14b;
+        background-color: #d3e4d0;
+    }
+    .error-message {
+        color: #ec1c24;
+        background-color: #f9e1e1;
+    }
+}
+
+@media (max-width: 550px)
+{
+    #dashboard-header {margin-top:125px;}
+    
+    .message-icon {
+        height: 20px;
+        width: auto;
+        float: left;
+        margin-right: 5px;
+    }
+    #message-header {
+        font-size: 16px;
+        font-weight: bold;
+        vertical-align: top;
+        display: inline-block;
+        float: left;
+        clear: both;
+    }
+    #message-content {
+        font-size: 13px !important;
+        color: #3d3d3d !important;
+        padding-top: 3px;
+        margin-left: 5px;
+        vertical-align:top;
+        display: inline-block;
+        float: left;
+    }
+    .message-bar {
+        background-color: #3d3d3d;
+        //background-color: #fff;
+        text-align: left;
+        padding: 10px;
+        position: absolute;
+        top: 84px;
+        left: 0;
+        color: #3d3d3d;
+        display: inline-block;
+        float: left;
+        height: 100px;
+        width: 100%;
+    }
+    .warning-message {
+        color: #faaf40;
+        background-color: #faefd1;
+    }
+    .progress-message {
+        color: #00acf5;
+        background-color: #cbdfed;
+    }
+    .success-message {
+        color: #00a14b;
+        background-color: #d3e4d0;
+    }
+    .error-message {
+        color: #ec1c24;
+        background-color: #f9e1e1;
+    }
 }
