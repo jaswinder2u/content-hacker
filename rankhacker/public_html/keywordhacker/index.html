@@ -84,7 +84,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">KEYWORD HACKER</a></li>
+            <li class="active"><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">KEYWORD HACKER</a></li>
             <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
             <li><a style="cursor:pointer;" onclick="javascript:window.location='../login.html';">LOGIN</a></li>
           </ul>
@@ -146,7 +146,7 @@
 			<div id="rh-competitor-tab4" class="tab-pane fade">
 					<div class="steps-info-section">
 						<h3 class="step-title">DISCOVER COMPETITORS TOP PHRASE REVENUES</h3>
-						<h4 class="step-subtitle">How much sales reveune are the generating each month from a top ranking phrase?</h4>
+						<h4 class="step-subtitle">How much sales revenue are the generating each month from a top ranking phrase?</h4>
 						<p>We will show you true ROI projections for each keyword phrase your page 1 competition ranks for and give you a content goal and budget to follow.</p>
 					</div>
 			</div>
@@ -177,12 +177,12 @@
 		data to build a content marketing plan that will outpace them!</p>
 
 		<div class="block-css seo-steps-outer">
-		<h3>IT’S EASY; HERE’S HOW:</h3>
+		<h3>IT’S EASY, HERE’S HOW:</h3>
 
 
   <div class="seo-strategies-points">
 
-<div id="seo-strategies-Carousel" class="carousel slide" data-ride="carousel">
+      <div id="seo-strategies-Carousel" class="carousel slide">
 
   <!-- Wrapper for slides -->
   <div class="seo-Carousel-inner">
@@ -317,13 +317,13 @@
                   <ul class=""> 
                 <li> <a href="faq.html">FAQs</a>
                 <!--<li> <a href="#">What is this?</a></li>-->
-                <li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>
+                <!--<li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>-->
               </ul>
                 </div>
 		<!--footer left section close here-->
 
 		<!--copyright section start here-->		
-            <div class="copy-right-section col-sm-4 text-center"> &copy; 2015 All Rights Reserved </div>
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2017 All Rights Reserved </div>
 			<!--copyright section close here-->
                         
             <div class="account-section text-right col-sm-4">
@@ -468,27 +468,80 @@
         $('.matchheight').matchHeight();
     });
 
-    jQuery('#seo-strategies-Carousel').carousel({
-    interval: 12000
-    }); 
-
 </script>
 <script>
     jQuery(document).ready(function () {
 
         $("#pill-li-1").mouseover(function(){
+            $("#rh-competitor-tab1").removeClass("active");
+            $("#rh-competitor-tab2").removeClass("active");
+            $("#rh-competitor-tab3").removeClass("active");
+            $("#rh-competitor-tab4").removeClass("active");
             $("#pill-a-1").click();
+            $("#rh-competitor-tab1").addClass("active");
         });
         $("#pill-li-2").mouseover(function(){
+            $("#rh-competitor-tab1").removeClass("active");
+            $("#rh-competitor-tab2").removeClass("active");
+            $("#rh-competitor-tab3").removeClass("active");
+            $("#rh-competitor-tab4").removeClass("active");
             $("#pill-a-2").click();
+            $("#rh-competitor-tab2").addClass("active");
         });
         $("#pill-li-3").mouseover(function(){
+            $("#rh-competitor-tab1").removeClass("active");
+            $("#rh-competitor-tab2").removeClass("active");
+            $("#rh-competitor-tab3").removeClass("active");
+            $("#rh-competitor-tab4").removeClass("active");
             $("#pill-a-3").click();
+            $("#rh-competitor-tab3").addClass("active");
         });
         $("#pill-li-4").mouseover(function(){
+            $("#rh-competitor-tab1").removeClass("active");
+            $("#rh-competitor-tab2").removeClass("active");
+            $("#rh-competitor-tab3").removeClass("active");
+            $("#rh-competitor-tab4").removeClass("active");
             $("#pill-a-4").click();
+            $("#rh-competitor-tab4").addClass("active");
         });
 
+        /*jQuery('#seo-strategies-Carousel').carousel({
+    interval: 12000
+    });*/
+        
+
+        $('#seo-strategies-Carousel').carousel('pause'); /** load page with carousel paused **/
+
+        var getPageScroll = function(document_el, window_el) {
+        var xScroll = 0, yScroll = 0;
+        if (window_el.pageYOffset !== undefined) {
+          yScroll = window_el.pageYOffset;
+          xScroll = window_el.pageXOffset;
+        } else if (document_el.documentElement !== undefined && document_el.documentElement.scrollTop) {
+          yScroll = document_el.documentElement.scrollTop;
+          xScroll = document_el.documentElement.scrollLeft;
+        } else if (document_el.body !== undefined) {// all other Explorers
+          yScroll = document_el.body.scrollTop;
+          xScroll = document_el.body.scrollLeft;
+        }
+        return [xScroll,yScroll];
+      };
+
+      $(window).scroll(function(e) {
+          var top = $('#seo-strategies-Carousel').offset().top;
+          top -= 325;
+          if(top < getPageScroll(document,window)[1])
+          {
+              $('#seo-strategies-Carousel').carousel({
+                interval: 12000
+                },0);
+          }
+          else
+          {
+              $('#seo-strategies-Carousel').carousel('pause');
+          }
+      });
+        
         /*
          var originalVal;
 

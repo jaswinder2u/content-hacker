@@ -358,7 +358,7 @@ background-color: #005cb8;color: #fff;float: right;font-size: 22px;height: 50px;
 
 .try-competitor-form p {color: #231f20;float: left;font-size: 16px;margin: 20px 0 0;padding: 0;width: 100%;font-family: 'Montserrat', sans-serif;font-weight:normal;}
 
-.steps-info-section .step-title {color: #005cb8;float: left;font-size: 24px;line-height: normal;margin: 0 0 15px;padding: 0;width: 100%;font-family: 'Montserrat', sans-serif;font-weight: normal;max-width: 380px;}
+.steps-info-section .step-title {color: #005cb8;float: left;font-size: 24px;line-height: normal;margin: 0 0 15px;padding: 0;width: 100%;font-family: 'Montserrat', sans-serif;font-weight: normal;max-width: 500px;}
 
 .steps-info-section  .step-subtitle {color: #6D6E70;float: left;font-size: 21px;line-height: normal;margin: 0 0 15px;padding: 0;width: 100%;font-family: 'Montserrat', sans-serif;font-weight:normal;}
 
@@ -550,7 +550,7 @@ width: calc(100% - 335px) !important;}
 
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
 
-.blueprint-thumbnail{max-height: 370px;max-width: 400px;}
+.blueprint-thumbnail{max-height: 740px;max-width: 800px;cursor: pointer;}
 
 }
 
@@ -560,7 +560,7 @@ width: calc(100% - 335px) !important;}
 
 #site-header .navbar-default .navbar-nav > li > a {font-size: 16px;margin: 4px 5px;padding: 10px 15px;}
 
-.blueprint-thumbnail{max-height: 370px;max-width: 400px;}
+.blueprint-thumbnail{max-height: 740px;max-width: 800px;cursor: pointer;}
 
 .rh-storefornt-heading {font-size: 45px;}
 
@@ -611,7 +611,7 @@ width: calc(100% - 335px) !important;}
 
 .mission-blueprint-popup .carousel-control {height: 35px;margin-top: -18px;width: 20px;}
 
-.blueprint-thumbnail{max-height: 370px;max-width: 400px;}
+.blueprint-thumbnail{max-height: 740px;max-width: 800px;cursor: pointer;}
 
 .rh-storefornt-heading {font-size: 38px;}
 
@@ -682,7 +682,7 @@ width: calc(100% - 335px) !important;}
 
 .mission-blueprint-popup .modal-header {margin-bottom: 10px;}
 
-.blueprint-thumbnail{max-height: 370px;max-width: 400px;}
+.blueprint-thumbnail{max-height: 740px;max-width: 800px;cursor: pointer;}
 
 .packages-outer {padding: 50px 15px 20px;}
 
@@ -770,7 +770,7 @@ ul.package-feature li {font-size: 18px;padding: 10px 0;}
 
 .mission-blueprint-popup button.close {font-size: 30px;}
 
-.blueprint-thumbnail{max-height: 470px;max-width: 600px;}
+.blueprint-thumbnail{max-height: 705px;max-width: 900px;cursor: pointer;}
 
 .package-box-outer {float: none;margin: 20px auto;display: table;width: 100%;max-width: 425px;}
 
@@ -836,7 +836,7 @@ width: calc(100% - 125px);}
 
 .content-hacker-logo img {max-width: 150px;}
 
-.blueprint-thumbnail{max-height: 270px;max-width: 370px;}
+.blueprint-thumbnail{max-height: 270px;max-width: 370px;cursor: pointer;}
 
 .rh-competitor-nav ul.nav.nav-pills li a {font-size: 13px;}
 

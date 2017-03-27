@@ -232,6 +232,7 @@ width: calc(100% - 340px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
+        cursor: pointer;
 }
 }
 
@@ -243,6 +244,7 @@ width: calc(100% - 340px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
+        cursor: pointer;
 }
 
 
@@ -283,6 +285,7 @@ width: calc(100% - 270px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
+        cursor: pointer;
 }
 
 
@@ -316,7 +319,7 @@ width: calc(100% - 270px);}
 .blueprint-thumbnail{
 	max-height: 370px;
 	max-width: 400px;
-
+        cursor: pointer;
 }
 
 
@@ -358,6 +361,7 @@ width: calc(100%);}
 .blueprint-thumbnail{
 	max-height: 470px;
 	max-width: 600px;
+        cursor: pointer;
 }
 
 }
@@ -372,6 +376,7 @@ width: calc(100%);}
 .blueprint-thumbnail{
 	max-height: 270px;
 	max-width: 370px;
+        cursor: pointer;
 }
 
 }

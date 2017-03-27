@@ -1117,7 +1117,7 @@ border: 1px solid #e2e5e5;
     background-color: #3d3d3d;
     //background-color: #fff;
     text-align: left;
-    padding: 6px;
+    padding: 10px;
     position: absolute;
     top: 0px;
     left: 275px;
@@ -1125,7 +1125,7 @@ border: 1px solid #e2e5e5;
     display: block;
     float: left;
     height: 84px;
-    width: -moz-calc(100% - 900px);width: -webkit-calc(100% - 900px);width: -o-calc(100% - 900px);width: calc(100% - 900px);
+    width: -moz-calc(100% - 925px);width: -webkit-calc(100% - 925px);width: -o-calc(100% - 925px);width: calc(100% - 925px);
 }
 .warning-message {
     color: #faaf40;
