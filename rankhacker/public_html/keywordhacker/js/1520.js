@@ -7704,3 +7704,870 @@ function prepareErrorPage()
 {
     refreshCartDropdown();
 }
+
+function loadMissionData()
+{
+    var username = getCookie("username");
+    var projectID = getURLParameter("pid");
+    if(username != '')
+    {
+        if(projectID != '')
+        {
+            $.ajax({url: restURL, data: {'command':'getProjectData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var projectInfo = info.projectSummary;
+                        var projectUsername = projectInfo.username;
+                        if(projectUsername !== username && username !== "admin@fairmarketing.com" && username !== "hari.patel@1520holdings.com")
+                        {
+                            window.location = "dashboard.html";
+                        }
+                        else
+                        {
+                            //Save this to local storage so that it can be sent to the PDF printer service
+                            $('#json').val(returnData);
+                            displayMissionInfo('keyword',false);
+                        }
+                    }
+                }
+            });
+        }
+        else
+        {
+            window.location = "dashboard.html";
+        }
+        
+        //Show the manageIndustries link for admin
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
+        {
+            $('#industry-link').remove();
+            $('#users-link').remove();
+        }
+        
+        refreshCartDropdown();
+    }
+    else
+    {
+        window.location = "index.html";
+    }
+}
+
+function displayMissionInfo(field,sort)
+{
+    $('body').addClass('wait');
+    var returnData = $('#json').val();
+    var info = JSON.parse(returnData);
+
+    //Fill in the project data here
+    var projectInfo = info.projectSummary;
+        var projectID = projectInfo.projectID;
+        var runDate = projectInfo.runDate;
+        var costPerLevel = projectInfo.costPerLevel;
+        var searchVolume = projectInfo.searchVolume;
+        var clientURL = projectInfo.clientURL;
+        var valuePerCustomer = projectInfo.valuePerCustomer;
+        var active = projectInfo.active;
+        var completed = projectInfo.completed;
+        var totalPowerLevel = projectInfo.totalPowerLevel;
+        var incomingTraffic = Math.round(projectInfo.incomingTraffic,0);
+        var keywordCount = projectInfo.keywordCount;
+        var geoLocation = projectInfo.geoLocation;
+        var monthlyVisitors = projectInfo.monthlyVisitors;
+        var payingCustomers = projectInfo.payingCustomers;
+        var currencyHexCode = projectInfo.currencyHexCode;
+        var useGoogle = projectInfo.useGoogle;
+        var useBing = projectInfo.useBing;
+        var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
+        var projectOrdered = projectInfo.projectOrdered;
+        
+        var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
+        
+        var customerConversionRate = projectInfo.defaultConversionRate;
+        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        {
+            customerConversionRate = (payingCustomers / monthlyVisitors);
+        }
+        
+        var monthlyCustomers = Math.round(incomingTraffic * customerConversionRate,0);
+        var monthlySales = Math.round(monthlyCustomers * valuePerCustomer,0);
+        var costPerMonth = Math.round((projectTotalContentDiff * costPerLevel),0);
+        var keywordNetWorth = (monthlySales - costPerMonth);
+        
+        var netWorthClass = "green-bg-total";
+        if(keywordNetWorth < 0 || completed !== 1)
+        {
+            netWorthClass = "red-bg-total";
+        }
+        
+        var keywordNetWorthString = "";
+        
+        //Iterate through the keywords to see if any are in "hacking" status; if so, show the warning message
+        var currentlyHacking = false;
+        var currentlyAdding = false;
+        var tempKeywordInfo = info.keywordData;
+        for(var t=0; t<tempKeywordInfo.length; t++)
+        {
+            var tempEntry = tempKeywordInfo[t];
+            var tempStatus = tempEntry.status;
+            if(tempStatus === "hacking")
+            {
+                currentlyHacking = true;
+            }
+            if(tempStatus === "adding")
+            {
+                currentlyAdding = true;
+            }
+        }
+        
+        
+        if(completed !== 1 || currentlyHacking || currentlyAdding)
+        {
+            keywordNetWorthString = "<span class=\"loader__dot\" style=\"font-size:15px;color:#fff;\">calculating...</span>";
+            //Show the warning message at top, and set the flag to keep checking
+            $("#message-bar").addClass("progress-message");
+            if(currentlyAdding)
+            {
+                $("#message-header").html("<img src=\"images/blue-message-text.png\" class=\"message-icon\"/>ADDING KEYWORDS");
+                $("#message-content").html("Manually refresh this page to get the latest info, or hang out and we'll let you know as soon as all the numbers are in!");
+            }
+            else if(currentlyHacking)
+            {
+                $("#message-header").html("<img src=\"images/blue-message-text.png\" class=\"message-icon\"/>HACKING COMPETITORS' STRATEGIES");
+                $("#message-content").html("This report could take several minutes but it's worth the wait! Periodically refresh this page or give us a sec and we'll let you know as soon as it completes!");
+            }
+            $("#check-project-done-flag").val(1);
+        }
+        else
+        {
+            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth);
+        }
+        
+        var activeString = "";
+        if(active === 1)
+        {
+            activeString = "ACTIVE";
+        }
+        else
+        {
+            activeString = "INACTIVE";
+        }
+        
+        /*$('#currency-code-1').html(currencyHexCode);
+        $('#currency-code-2').html(currencyHexCode);
+        $('#currency-code-3').html(currencyHexCode);*/
+        
+        if(useGoogle === 1 && useBing !== 1)
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> google");
+        }
+        else if(useGoogle !== 1 && useBing === 1)
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> yahoo/bing");
+        }
+        else
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> google, yahoo/bing");
+        }
+        
+        if(typeof searchVolume === 'undefined') {searchVolume = 0;}
+        if(typeof incomingTraffic === 'undefined') {incomingTraffic = 0;}
+        if(typeof payingCustomers === 'undefined') {payingCustomers = 0;}
+        if(typeof monthlyVisitors === 'undefined') {monthlyVisitors = 0.0000001;}
+        if(typeof monthlySales === 'undefined') {monthlySales = 0;}
+        if(typeof costPerMonth === 'undefined' || keywordCount === 0) {costPerMonth = 0;}
+        
+        /*var locationTitleText = "Total monthly search volume for the city you typed in above.";
+        if(typeof projectInfo.useNational != "undefined")
+        {
+            if(projectInfo.useNational == 1)
+            {
+                locationTitleText = "Total monthly search volume for the country that your city resides within.";
+            }
+        }*/
+        
+        $("#mission-location-1").html("<label>Location:</label> "+geoLocation);
+        $("#mission-title-1").html(clientURL);
+        $("#mission-title-2").html(clientURL+"<strong class=\"position-relative\" onclick=\"gotoCreateProject('"+projectID+"');\"><i class=\"edit-icon\" title=\"Edit mission\"></i></strong>");
+        
+        var missionDataHTML = "<div class=\"top-check-selection\" style=\"display:none;\">" +
+							"<input class=\"\" type=\"checkbox\">SEO "+
+							"<input class=\"\" type=\"checkbox\">PPC"+
+						"</div>"+
+                        "<div class=\"panel-group keyword-networth-project-outer\" id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">";
+        
+        missionDataHTML += "<table class=\"keyword-networth-project\" id=\"keyword-summary-table\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">"+
+                                "<thead>"+
+                                    "<tr class=\"table-heading\">"+
+                                        "<td colspan=\"2\" onclick=\"displayMissionInfo('keyword',true);\">"+
+                                            "<h2 class=\"table-title\" id=\"keyword-count-1\">"+keywordCount+" active <span>KEYWORD PHRASES</span></h2>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\" onclick=\"displayMissionInfo('searchVolume',true);\">"+
+                                            "<h2 class=\"table-title\" id=\"mission-search-volume\">"+numberWithCommas(searchVolume)+" <span>MO. SEARCH VOLUME <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The monthly average searches for each keyword\"></i></strong></span></h2>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\" onclick=\"displayMissionInfo('monthlyVisitors',true);\">"+
+                                            "<h2 class=\"table-title\" id=\"mission-monthly-visitors\">"+numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\" onclick=\"displayMissionInfo('monthlyCustomers',true);\">"+
+                                            "<h2 class=\"table-title\" id=\"mission-monthly-customers\">"+numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>MONTHLY CUSTOMERS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('monthlySales',true);\">"+
+                                            "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>MONTHLY SALES</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\"  style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
+                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span></h2><i class=\"addincart-icon\" id=\"project-add-to-cart\"> </i>"+
+                                        "</td>"+
+                                        "<td class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
+                                            "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span></h2>"+
+                                        "</td>"+
+                                    "</tr>"+
+
+                                    "<tr class=\"sorttable_nosort\"> <td style=\"border-right: none;\"><div class=\"margin10t\"></div></td></tr>"+
+                                    
+                                "</thead>"+
+                                "<tbody>";
+        
+        //Output the keyword summary rows here
+        //Let's sort the keyword data by the specified field first
+        var currSortMethod = $('#keyword-sort-method').val();
+        var sortMethod = $('#keyword-sort-reversed').val();
+        var reversed = false;
+
+        //Find the data
+        var keywordInfo = info.keywordData;
+
+        //Got the data, now let's sort it (if sort=true)
+        if(sort)
+        {
+            if(field == 'keyword')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('keyword', reversed, function(a){return a.toUpperCase()}));
+            }
+            else if(field == 'powerLevelGoal')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('powerLevelGoal', reversed, parseInt));
+            }
+            else if(field == 'searchVolume')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('searchVolume', reversed, parseInt));
+            }
+            else if(field == 'monthlyVisitors')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('monthlyVisitors', reversed, parseInt));
+            }
+            else if(field == 'monthlyCustomers')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('monthlyCustomers', reversed, parseInt));
+            }
+            else if(field == 'monthlySales')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('monthlySales', reversed, parseInt));
+            }
+            else if(field == 'costPerMonth')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('costPerMonth', reversed, parseInt));
+            }
+            else if(field == 'keywordNetWorth')
+            {
+                if(field == currSortMethod)
+                {
+                    if(sortMethod == "false")
+                    {
+                        reversed = true;
+                    }
+                    else
+                    {
+                        reversed = false;
+                    }
+                }
+                keywordInfo.sort(keywords_sort_by('keywordNetWorth', reversed, parseInt));
+            }
+
+            //Save the new sort method and reversed status
+            $('#keyword-sort-method').val(field);
+            $('#keyword-sort-reversed').val(reversed);
+        }
+        
+        //Fill in the keyword data here
+        for(var i=0; i<keywordInfo.length; i++)
+        {
+            var thisEntry = keywordInfo[i];
+            var thisCompetitorArray = thisEntry.competitorData;
+
+            var keywordID = thisEntry.keywordID;
+            var searchVolume = thisEntry.searchVolume;
+            var clientRanking = thisEntry.clientRanking;
+            var keywordActive = thisEntry.active;
+            //var avgCTR = Math.round(thisEntry.avgCTR);
+            //var avgCTRExact = Math.round(thisEntry.avgCTRExact);
+            var keywordHidden = thisEntry.hidden;
+            var clientPowerLevel = thisEntry.clientKeywordPowerLevel;
+            var errorExists = thisEntry.errorFlag;
+
+            //var competitorsAverageMonthlyContent = thisEntry.competitorsAverageMonthlyContent;
+            var userMonthlyContent = thisEntry.userMonthlyContent;
+            var userMonthlyBacklinks = thisEntry.userMonthlyBacklinks;
+            var keywordTotalContentDiff = thisEntry.keywordTotalContentDiff;
+
+            if(userMonthlyContent === "-1")
+            {
+                userMonthlyContent = "?";
+            }
+            if(userMonthlyBacklinks === "-1")
+            {
+                userMonthlyBacklinks = "?";
+            }
+
+            var clientCTR = Math.round(thisEntry.clientCTR);
+            //var avgRank = thisEntry.avgRank;
+            var totalPowerLevel = thisEntry.totalPowerLevel;     //Add back the client power level to the total power level for this keyword
+            var keyword = thisEntry.keyword;
+
+            var monthlyVisitors = thisEntry.monthlyVisitors;
+            var monthlyCustomers = thisEntry.monthlyCustomers;
+            var monthlySales = thisEntry.monthlySales;
+            var costPerMonth = thisEntry.costPerMonth;
+            var keywordNetWorth = thisEntry.keywordNetWorth;
+            var keywordStatus = thisEntry.status;
+            var numCartEntries = thisEntry.numCartEntries;
+            var cartOpacity = "1.0";
+            var cartOnclick = "addToCart('"+keywordID+"');";
+            if(numCartEntries>0)
+            {
+                cartOpacity = "0.25";
+                cartOnclick = "javascript:void(0);";
+            }
+
+            var keywordTotalContentDiffHTML = "";
+            var topKWNetworth = "";
+            var topHackContentHTML = "";
+            var topHackExpand = "";
+            var boxGoalHTML = "";
+            var shadedString = "";
+            var errorTriangleHTML = "";
+
+            if(errorExists === 1)
+            {
+                errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
+            }
+
+            if(keywordStatus === "hacked")
+            {
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
+                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+                boxGoalHTML = keywordTotalContentDiff;
+                if(keywordTotalContentDiff >= 0)
+                {
+                    keywordTotalContentDiffHTML = "+" + keywordTotalContentDiff;
+                }
+                else
+                {
+                    keywordTotalContentDiffHTML = keywordTotalContentDiff;
+                }
+            }
+            else if(keywordStatus === "hacking")
+            {
+                topHackContentHTML = "";
+                topHackExpand = "";
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                boxGoalHTML = "?";
+                keywordTotalContentDiffHTML = "?";
+            }
+            else if(keywordStatus === "adding")
+            {
+                topHackExpand = "";
+                topHackContentHTML = "$0 (0 pcs)";
+                topKWNetworth = "";
+                boxGoalHTML = "?";
+                keywordTotalContentDiffHTML = "?";
+            }
+            else
+            {
+                //It's just been added, not yet hacked
+                shadedString = " disabled";
+                topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                if(keywordActive === 1)
+                {
+                    topHackContentHTML = "<i class=\"revealsmall-icon\"> </i>";
+                }
+                else
+                {
+                    topHackContentHTML = "<i class=\"revealsmall-icon\"> </i>";
+                }
+                boxGoalHTML = "?";
+                keywordTotalContentDiffHTML = "?";
+            }
+
+            var keywordCheckboxStatus = "";
+            var rowBGText = "";
+            var keywordToggle = "";
+            var progressBarDisplay = "none";
+            if(keywordActive === 1 && (keywordStatus === "hacked" || keywordStatus === "added"))
+            {
+                keywordCheckboxStatus = "checked";
+                rowBGText = "style=\"opacity:1.0;cursor:pointer;\"";                
+                keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
+
+            }
+            else if(keywordActive === 1 && (keywordStatus === "hacking" || keywordStatus === "adding"))
+            {
+                keywordCheckboxStatus = "checked";
+                rowBGText = "style=\"opacity:1.0;\"";
+                keywordToggle = "";
+                progressBarDisplay = "table-row";
+            }
+            else
+            {
+                rowBGText = "style=\"opacity:0.33;\"";
+                keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
+            }
+
+            if(keywordHidden === 1)
+            {
+                rowBGText = "style=\"display:none;\"";
+            }
+
+            //Add the summary row for the accordian HTML
+            missionDataHTML += "<tr class=\"project-head panel sortable-row\" "+rowBGText+" id=\"kw-summary-row-"+keywordID+"\" data-question-id=\""+keywordID+"\">\n" +
+"                                        <td class=\"checkbox-ot\"><input class=\"\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
+"                                        <td class=\"project-name-ot\" "+keywordToggle+"><a class=\"\">"+keyword+"</a>"+errorTriangleHTML+"</td>\n" +
+"                                        <td data-label=\"MO. SEARCH VOLUME\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(searchVolume)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" "+keywordToggle+">"+topHackContentHTML+" <i class=\"cart-disable-icon\"> </i></div></td>\n" +
+"                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
+"                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n" +
+"                                    </tr>\n" +
+"                                    <tr class=\"progress-row sorttable_nosort\" style=\"display:"+progressBarDisplay+";\">\n" +
+"                                        <td colspan=\"9\" style=\"border-right: none !important\">\n" +
+"                                            <div class=\"progress-loader\">\n" +
+"                                                <div class=\"indeterminate\"></div>\n" +
+"                                            </div>\n" +
+"                                        </td>\n" +
+"                                    </tr>";
+
+                //Add the competitors panel
+                missionDataHTML += "<tr class=\"project-info sorttable_nosort\" data-answer-id=\""+keywordID+"\">\n" +
+"                                        <td colspan=\"9\" style=\"border-right: none !important\">\n" +
+"                                            <div id=\"kw-competitors-panel-"+keywordID+"\" class=\"panel-collapse collapse\">\n" +
+"                                                <div class=\"row\">\n" +
+"                                                    <div class=\"col-sm-7 content-goal-info\">\n" +
+"                                                        <h2 class=\"title\">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>\n" +
+"                                                       <div class=\"table-outer\">\n" +
+"                                                       <span class=\"reveal-mark\"> REVEAL </span>\n" +
+"                                                        <table class=\"content-goal-table sortable\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n" +
+"                                                            <tbody>\n" +
+"                                                                <tr class=\"table-heading2\">\n" +
+"                                                                    <th class=\"col-sm-1\"></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Rank</th>\n" +
+"                                                                    <th class=\"col-sm-7 text-left\">URL</th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">CTR <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword\"></i></strong></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Total Backlinks <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The total number of backlinks this competitor has\"></i></strong></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Monthly Content <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\"></i></strong></th>\n" +
+"                                                                </tr>\n";
+
+
+                            //Populate for each competitor
+                            var competitorsCount = 0;
+                            var totalCTR = 0;
+                            //var totalPowerLevel = 0;
+                            var totalRank = 0;
+                            var totalBacklinks = 0;
+
+                            var disabled = false;
+
+                            var unhackedCompetitorExists = false;
+                            for(var j=0; j<thisCompetitorArray.length; j++)
+                            {
+                                var thisCompetitor = thisCompetitorArray[j];
+
+                                if(thisCompetitor.disabled === 1)
+                                {
+                                    disabled = true;
+                                }
+                                else
+                                {
+                                    disabled = false;
+                                }
+                                var competitorID = thisCompetitor.competitorID;
+                                var competitorActive = thisCompetitor.active;
+                                var competitorAhrefsStarted = thisCompetitor.ahrefsStarted;
+                                var competitorAhrefsCompleted = thisCompetitor.ahrefsCompleted;
+                                var competitorPositionRank = thisCompetitor.positionRank;
+                                var competitorURL = thisCompetitor.url;
+                                    var competitorURLShort = competitorURL.substring(0,60);
+                                    if(competitorURL.length > 60) { competitorURLShort += "..."; }
+
+                                if(competitorAhrefsStarted === 0 && competitorActive === 1)
+                                {
+                                    unhackedCompetitorExists = true;
+                                }
+
+                                var competitorCTR = Math.round(thisCompetitor.traffic);
+                                var competitorCTRExact = Math.round(thisCompetitor.trafficExact);
+
+                                var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
+                                var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+                                var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
+                                var competitorContentCountHTML = "";
+                                var competitorMonthlyBacklinksHTML = "";
+                                if(competitorPowerLevel < 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                {
+                                    competitorContentCountHTML = "0";
+                                }
+                                else if(competitorPowerLevel < 0)
+                                {
+                                    competitorContentCountHTML = "";
+                                }
+                                else
+                                {
+                                    competitorContentCountHTML = competitorPowerLevel;
+                                }
+
+                                if(competitorAhrefsCompleted === 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                {
+                                    competitorMonthlyBacklinksHTML = "";
+                                }
+                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted === 0)
+                                {
+                                    competitorContentCountHTML = "";
+                                }
+                                else
+                                {
+                                    competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
+                                }
+
+                                var competitorCheckboxStatus = "";
+                                var seoInsuranceHTML = "";
+                                if(competitorActive === 1 && !disabled)
+                                {
+                                    competitorCheckboxStatus = "checked";
+                                    competitorsCount++;
+                                    totalCTR += competitorCTR;
+                                    totalPowerLevel += competitorPowerLevel;
+                                    totalRank += competitorPositionRank;
+                                    totalBacklinks += competitorMonthlyBacklinks;
+                                }
+
+                                if(thisCompetitor.disabled === 1)
+                                {
+                                    competitorCheckboxStatus = " disabled";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                                }
+                                
+                                missionDataHTML +=
+"                                                                <tr class=\"project-head2\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+"> </td>\n" +
+"                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-left"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+seoInsuranceHTML+"</td>\n" +
+"                                                                </tr>\n";
+                            }
+                            
+                            if(competitorsCount === 0) { competitorsCount = 1;}
+        
+                            //Hidden element to keep track of how many competitors you've selected
+                            missionDataHTML += "<input id=\"kwid-"+keywordID+"-competitorsCount\" type=\"hidden\" value=\""+competitorsCount+"\">\n";
+
+                            var competitorAvgCount = Math.ceil(totalPowerLevel/competitorsCount);
+                            var competitorAvgBacklinks = Math.round(totalBacklinks/competitorsCount);
+                            if(competitorAvgCount < 0)
+                            {
+                                competitorAvgCount = "?";
+                            }
+                            if(competitorAvgBacklinks < 0 || unhackedCompetitorExists)
+                            {
+                                competitorAvgBacklinks = "?";
+                            }
+
+                                missionDataHTML +=
+"                                                            </tbody>\n" +
+"                                                            <tfoot>\n" +
+"                                                                <tr class=\"project-head2 them-row\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
+"                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+competitorAvgBacklinks+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"</td>\n" +
+"                                                                </tr>\n" +
+"                                                                <tr class=\"project-head2 you-row\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
+"                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></strong></td>\n" +
+"                                                                </tr>\n" +
+"                                                                <tr class=\"project-head2 result-row\">\n" +
+"                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">6</td>\n" +
+"                                                                </tr>\n" +
+"                                                            </tfoot>\n" +
+"                                                        </table>\n" +
+"							 </div>\n" +
+"\n" +
+"                                        <p class=\"tip-note\"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>\n" +
+"                                        </div>\n" +
+"\n" +
+"                                        <div class=\"col-sm-5 right-side-goalinfo\">\n" +
+"                                            <div class=\"info-block\" style=\"margin-top:40px;\">\n" +
+"                                                <h3>DO THIS FIRST <i class=\"checked-icon\"> </i></h3>\n" +
+"                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>\n" +
+"                                            </div>\n" +
+"                                            <div class=\"info-block\">\n" +
+"                                                <h3>NEXT DO THIS <i class=\"revealsmall-icon\"> </i></h3>\n" +
+"                                                <p>Reveal the monthly content strategies of your selected competitors</p>\n" +
+"                                            </div>\n" +
+"                                            <div class=\"info-block\">\n" +
+"                                                <h3>REVIEW AND TAKE ACTION <i class=\"blueproject-eagle-icon\"> </i></h3>\n" +
+"                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>\n" +
+"                                            </div>\n" +
+"\n" +
+"                                            <div class=\"info-block calculator-lt\">\n" +
+"                                                <p class=\"calculator-logo\"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>\n" +
+"                                                    <br>Start by defining your monthly sales goal using our <a href=\"salesgoalcalculator.html\" target=\"_blank\">calculator</a>.</p>\n" +
+"                                            </div>\n" +
+"\n" +
+"                                        </div>\n" +
+"\n" +
+"                                        </div>\n" +
+"                                        </div>\n" +
+"                                        </td>\n" +
+"\n" +
+"                                    </tr>";
+        }
+        
+            //Outout the keyword competitors panel here
+        
+        //Close the table
+        missionDataHTML += "</tbody>"+
+                "</table>";
+        
+        
+        
+        //Add the keyword suggestions
+        var suggestedKeywordsHTML = "";
+        var suggestedKeywords;
+        var grSuggestedKeywords = info.grSuggestedKeywords;
+        if(grSuggestedKeywords.length > 0)
+        {
+            suggestedKeywords = info.grSuggestedKeywords;
+        }
+        else
+        {
+            suggestedKeywords = info.suggestedKeywords;
+        }
+
+        for(var i=0; i<suggestedKeywords.length; i++)
+        {
+            if(i<35)
+            {
+                suggestedKeywordsHTML += "<li data-type=\"1\">"+suggestedKeywords[i]+"</li>";
+            }
+            else
+            {
+                suggestedKeywordsHTML += "<li data-type=\"1\" class=\"read-more-target\">"+suggestedKeywords[i]+"</li>";
+            }
+        }
+        //$("#suggestedKeywordsList").html(suggestedKeywordsHTML);
+
+        var altSuggestedKeywordsHTML = "";
+        var altSuggestedKeywords = info.altSuggestedKeywords;
+        for(var i=0; i<altSuggestedKeywords.length; i++)
+        {
+            if(i<35)
+            {
+                altSuggestedKeywordsHTML += "<li data-type=\"2\">"+altSuggestedKeywords[i]+"</li>";
+            }
+            else
+            {
+                altSuggestedKeywordsHTML += "<li data-type=\"2\" class=\"read-more-target\">"+altSuggestedKeywords[i]+"</li>";
+            }
+        }
+        //$("#altSuggestedKeywordsList").html(altSuggestedKeywordsHTML);
+        
+        
+        missionDataHTML += "<div>\n" +
+"\n" +
+"                                <div class=\"add-custom-keyword-outer\">\n" +
+"                                    <div id=\"url-list\">\n" +
+"                                        <a href=\"#add-more-url\" class=\"add-more-url\" id=\"button-add-url\">+ ENTER KEYWORD PHRASE</a>\n" +
+"                                    </div>\n" +
+"                                    <div id=\"url-box-template\">\n" +
+"                                        <div class=\"url-box\">\n" +
+"                                            <input id=\"custom-url\" class=\"url-input\" value=\"\" type=\"text\" placeholder=\"\">\n" +
+"                                        </div>\n" +
+"                                    </div>\n" +
+"                                </div>\n" +
+"\n" +
+"                                <div class=\"add-custom-keyword-outer\" id=\"new-phrase-container\" style=\"display:none;\">\n" +
+"                                    <input type=\"hidden\" id=\"keyword-count\" value=\"0\"/>\n" +
+"                                    <div class=\"add-keywords-list\">\n" +
+"                                        <ul id=\"ctc\">\n" +
+"\n" +
+"                                        </ul>\n" +
+"                                    </div>\n" +
+"                                    <div class=\"add-keywords-list\">\n" +
+"                                        <div id=\"submit-button-block\">\n" +
+"                                            <a class=\"orange-btn btn pull-left\" onclick=\"recalculateProject();\" id=\"add-keywords-button\" style=\"opacity:0.0;\">ADD 0 KEYWORDS</a>\n" +
+"                                        </div>\n" +
+"                                    </div>\n" +
+"                                </div>\n" +
+"\n" +
+"\n" +
+"                                <div class=\"suggest-keywords-list-1\" style=\"margin-top:30px;\">\n" +
+"                                    <p class=\"suggest-keywords-label\">+ Click to Add Suggested Keywords</p>\n" +
+"                                    <!--<label for=\"post-2\" id=\"read-more-button-label\" class=\"read-more-trigger\" onclick=\"toggleReadMore();\">SHOW MORE KEYWORDS</label>-->\n" +
+"                                    <input type=\"checkbox\" class=\"read-more-state\" id=\"post-2\"/>\n" +
+"                                        <ul id=\"suggestedKeywordsList\" class=\"read-more-wrap\">\n"
+                                            +suggestedKeywordsHTML+
+"                                        </ul>\n" +
+"                                    <div class=\"bth-more-text-outer\">\n" +
+"                                    <div class=\"show-more-text clear-both\" id=\"show-more-text-1\" style=\"cursor:pointer;\" onclick=\"clickReadMoreTrigger('1');\">SHOW MORE</div>\n" +
+"                                    <div class=\"show-more-button\"><label for=\"post-2\" id=\"read-more-button-label-1\" class=\"read-more-trigger\" onclick=\"toggleReadMore('1');\"></label></div>\n" +
+"                                    </div>\n" +
+"                                </div>\n" +
+"\n" +
+"                                <div class=\"suggest-keywords-list-2\" style=\"margin-top:30px;\">\n" +
+"                                    <p class=\"suggest-keywords-label\">+ Click to Add Niche Suggested Keywords</p>\n" +
+"                                    <!--<label for=\"post-2\" id=\"read-more-button-label\" class=\"read-more-trigger\" onclick=\"toggleReadMore();\">SHOW MORE KEYWORDS</label>-->\n" +
+"                                    <input type=\"checkbox\" class=\"read-more-state\" id=\"post-3\"/>\n" +
+"                                        <ul id=\"altSuggestedKeywordsList\" class=\"read-more-wrap\">\n"
+                                            +altSuggestedKeywordsHTML+
+"                                        </ul>\n" +
+"                                    <div class=\"bth-more-text-outer\">\n" +
+"                                    <div class=\"show-more-text clear-both\" id=\"show-more-text-2\" style=\"cursor:pointer;\" onclick=\"clickReadMoreTrigger('2');\">SHOW MORE</div>\n" +
+"                                    <div class=\"show-more-button\"><label for=\"post-3\" id=\"read-more-button-label-2\" class=\"read-more-trigger\" onclick=\"toggleReadMore('2');\"></label></div>\n" +
+"                                    </div>\n" +
+"                                </div>\n" +
+"\n" +
+"                                <div class=\"card-box-bottom\" id=\"dateDivBottom\">\n" +
+"                                    <div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div><a class=\"project-status-card  project_status_sort\" href=\"javascript:void(0);\">"+activeString+"</a>\n"+
+"                                </div>\n" +
+"\n" +
+"                            </div>\n" +
+"\n" +
+"                        </div>";
+        
+        //Output the contents of the report
+        $("#mission-data").html(missionDataHTML);
+        
+        //Remove the waiting class from the cursor
+        $('body').removeClass('wait');
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+        
+        //Set the styling and JS for the project-level cart
+        var cartOpacity = "1.0";
+        var cartOnclick = "addToCart('-1');";
+
+        if(projectOrdered)
+        {
+            cartOpacity = "0.25";
+            cartOnclick = "javascript:void(0);";
+        }
+        var newClick = new Function(cartOnclick);
+        $("#project-add-to-cart").attr("onclick","").click(newClick);
+        $("#project-add-to-cart").css("opacity",cartOpacity);
+        
+        //All done!
+}
+
+function togglePanel(keywordID)
+{
+    if($("#kw-competitors-panel-"+keywordID).hasClass("in"))
+    {
+        //Close it
+        $("#kw-summary-row-"+keywordID).removeClass("open");
+        $("#kw-competitors-panel-"+keywordID).removeClass("in");
+    }
+    else
+    {
+        //Open it
+        $("#kw-summary-row-"+keywordID).addClass("open");
+        $("#kw-competitors-panel-"+keywordID).addClass("in");
+    }
+}

@@ -70,9 +70,9 @@
 
 .keyword-networth-project-outer .panel {border: none;box-shadow: 0 0 0 transparent;}
 
-.price-widthbox {width: 160px;}
+.price-widthbox {width: 160px;text-align:left;}
 
-.keyword-networth-project td {color:#58595B;font-size:12px;text-align: left;}
+.keyword-networth-project td {color:#58595B;font-size:12px;}
 
 .keyword-networth-project td.checkbox-ot {width: 50px;text-align: center;}
 
@@ -94,7 +94,7 @@
 
 .keyword-networth-project th h2.table-title,.keyword-networth-project td h2.table-title {font-size: 20px;font-weight: 600;color: #58595B;margin: 0;padding: 0;float: left;width: 100%;text-align: left;}
 
-.keyword-networth-project th,.keyword-networth-project td {vertical-align:top;}
+.keyword-networth-project th,.keyword-networth-project td {/*vertical-align:bottom;*/}
 
 .keyword-networth-project th h2.table-title span,.keyword-networth-project td h2.table-title span {color:#231F20;float:left;width:100%;margin:3px 0 0 0;padding:0;font-weight:500;font-size:10px;}
 
@@ -102,7 +102,7 @@
 
 .keyword-networth-project th,.keyword-networth-project .table-heading td {vertical-align: top;padding: 10px 5px;position: relative;}
 
-.blue-text {color:#005CB8 !important;}
+.blue-text,.blue-text:hover {color:#005CB8 !important;cursor:default;}
 
 .keyword-networth-project th:first-child h2.table-title,.keyword-networth-project td:first-child h2.table-title{color:#005CB8 !important;font-size:24px;padding-left: 10px;}
 
@@ -168,7 +168,7 @@
 
 .content-goal-table tfoot  tr.you-row {background-color: #D4EEF9;}
 
-.content-goal-table tfoot  tr.them-row , .content-goal-table tfoot  tr.you-row , .content-goal-table tfoot  tr.them-row td, .content-goal-table tfoot  tr.you-row td{border-color:#D0D2D3;}
+.content-goal-table tfoot  tr.them-row , .content-goal-table tfoot  tr.you-row , .content-goal-table tfoot  tr.them-row td, .content-goal-table tfoot  tr.you-row td{border-color:#D0D2D3;vertical-align:middle;}
 
 .content-goal-table tfoot tr.result-row, .content-goal-table tfoot tr.result-row td {background-color: #26A9E0;border-right: none;font-size: 20px;color: #FFFFFF;}
 
@@ -183,12 +183,14 @@
 .keyword-networth-project th h2.table-title sup,.keyword-networth-project td h2.table-title sup {top: -4px;font-size: 14px;}
 
 .green-bg-total {background-color: #37B34A;color: #fff;padding: 5px 10px;float: left;width: calc(100% - 10px);margin-top: -5px;}
+.red-bg-total {background-color: #BE1E2D;color: #fff;padding: 5px 10px;float: left;width: calc(100% - 10px);margin-top: -5px;}
 
-.negative-sign , .equal-sign{border-right:1px solid #E6E7E8 !important;position:relative !important;}
+.negative-sign , .equal-sign, .negative-sign-2 , .equal-sign-2{border-right:1px solid #E6E7E8 !important;position:relative !important;}
 
 .negative-sign::after, .equal-sign::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 100%;top: 50%;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.negative-sign-2::after, .equal-sign-2::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 125%;top: 100%;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 
-.equal-sign::after {content: "=";}
+.equal-sign::after,.equal-sign-2::after {content: "=";}
 
 .blueproject-eagle-icon, .revealsmall-icon, .checked-icon {background-image: url("../images_cart/content-goal-icons.png");background-position: center 0;background-repeat: no-repeat;background-size: auto auto;height: 25px;margin-right: 8px !important;width: 25px;float: none;display: inline-block;position: relative;top: 7px;margin-left: 5%;}
 
@@ -235,7 +237,7 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project td.price-widthbox.equal-sign {padding-right: 25px;}
 
-.reveal-mark {position: absolute !important;right: 45px;font-size: 30px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 50%;margin-top: -25px;
+.reveal-mark {cursor:pointer;position: absolute !important;font-size: 18px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 40%;right:2%;
 -ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
 
 .table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}

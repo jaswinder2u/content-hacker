@@ -72,8 +72,8 @@
         function run(){
             refreshCartDropdown();
             //loadProjectData();
-            loadMissionData();
-            /*setInterval(checkProjectDone, 10000);*/
+            /*loadMissionData();
+            setInterval(checkProjectDone, 10000);*/
         }
     </script>
 </head>
@@ -168,26 +168,233 @@
                             <li><i class="black_eagle-rh"> </i><a href="#">MISSION DASHBOARD</a>
                             </li>
                             <li><a href="dashboard.html">KEYWORD HACKER</a> </li>
-                            <li id="mission-title-1"></li>
+                            <li id="mission-title-1">YOUR MISSION</li>
                         </ul>
                     </div>
                     <div id="shadow"> </div>
 
 
-                    <div id="mission-heading" class="project-location-it">
+                    <div class="project-location-it">
                         <ul>
-                            <li id="mission-title-2"></li>
-                            <li id="mission-location-1"></li>
-                            <li id="mission-search-engines-1"></li>
-                                
+                            <li id="mission-title-2">
+                                YOUR MISSION <strong class="position-relative" onclick="gotoCreateProject('projectID');"><i class="edit-icon" title="Edit mission"></i></strong>
+                            </li>
+                            <li id="mission-location-1">
+                                <label>Location:</label> USA, Canada</li>
+                            <li id="mission-search-engines-1">
+                                <label>Projections for:</label> google, yahoo/bing</li>
                         </ul>
                     </div>
 
-                    <div class="white-box" id="mission-data">
-						
-                        <div style="margin-top:25px;"><img src='images/apple_spinner.gif' id='loading_spinner' class='apple-spinner-large'/></div>
-                        <br>
-                        <div style="color:#404040;margin-left:0x;margin-top:5px;" id="loading_spinner_message">One moment while we hack your competitors...</div>
+                    <div class="white-box">
+						<div class="top-check-selection" style="display:none;">
+							<input class="" type="checkbox">SEO 
+							<input class="" type="checkbox">PPC
+						</div>
+                        <div class="panel-group keyword-networth-project-outer" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            <table class="keyword-networth-project" id="keyword-summary-table" cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr class="table-heading">
+                                        <td colspan="2" onclick="displayMissionInfo('keyword',true);">
+                                            <h2 class="table-title" id="keyword-count-1">3 active <span>KEYWORD PHRASES</span></h2>
+                                        </td>
+                                        <td class="price-widthbox" onclick="displayMissionInfo('searchVolume',true);">
+                                            <h2 class="table-title" id="mission-search-volume">75,797 <span>MO. SEARCH VOLUME <br/><strong class="position-relative"><i class="info-icon" title="The monthly average searches for each keyword"></i></strong></span></h2>
+                                        </td>
+                                        <td class="price-widthbox" onclick="displayMissionInfo('monthlyVisitors',true);">
+                                            <h2 class="table-title" id="mission-monthly-visitors">25,435<span>MONTHLY VISITORS</span><span class="blue-text">PROJECTED </span></h2>
+                                        </td>
+                                        <td class="price-widthbox" onclick="displayMissionInfo('monthlyCustomers',true);">
+                                            <h2 class="table-title" id="mission-monthly-customers">17<span>MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
+                                        </td>
+                                        <td class="price-widthbox" style="padding-right: 0" onclick="displayMissionInfo('monthlySales',true);">
+                                            <h2 class="table-title negative-sign" id="mission-monthly-sales"><sup>$</sup>51,000<span>MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
+                                        </td>
+                                        <td class="price-widthbox"  style="padding-right: 0" onclick="displayMissionInfo('costPerMonth',true);">
+                                            <h2 class="table-title equal-sign" id="mission-content-goal"><sup>$</sup>200<small>(2pcs)</small><span>CONTENT GOAL & COST <strong class="position-relative"><i class="info-icon" title="Target amount of monthly content and its cost"></i></strong></span></h2><i class="addincart-icon"> </i>
+                                        </td>
+                                        <td class="price-widthbox" colspan="2" onclick="displayMissionInfo('keywordNetWorth',true);">
+                                            <h2 class="table-title" id="mission-networth"><strong class="green-bg-total"><sup>$</sup>50,800</strong><span>KEYWORD NET WORTH <br/><strong class="position-relative"><i class="info-icon" title="Projected return on your invested marketing dollars for this keyword"></i></strong></span></h2>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="sorttable_nosort"> <td style="border-right: none;"><div class="margin10t"></div></td></tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    <tr class="project-head panel sortable-row open" id="kw-summary-row-3" data-question-id="3">
+                                        <td class="checkbox-ot"><input class="" type="checkbox"></td>
+                                        <td onclick="togglePanel('3');" class="project-name-ot"><a class="" data-toggle="collapse" data-parent="#accordion" href="#collapse3">water leaks</a></td>
+                                        <td onclick="togglePanel('3');" data-label="MO. SEARCH VOLUME" class="price-widthbox">3,000</td>
+                                        <td onclick="togglePanel('3');" data-label="MONTHLY VISITORS PROJECTED" class="price-widthbox">300</td>
+                                        <td onclick="togglePanel('3');" data-label="MONTHLY CUSTOMERS PROJECTED " class="price-widthbox">300</td>
+                                        <td onclick="togglePanel('3');" data-label="MONTHLY SALES PROJECTED" class="price-widthbox"><div class="negative-sign">$300</div></td>
+                                        <td data-label="CONTENT GOAL & COST" class="price-widthbox"><div class="equal-sign" onclick="togglePanel('3');">$100 (1pc) <i class="cart-disable-icon"> </i></div></td>
+                                        <td onclick="togglePanel('3');" data-label="KEYWORD NET WORTH" class="price-widthbox">$100</td>
+                                        <td class="delect-row"><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> 
+                                    </tr>
+                                    <tr class="progress-row" style="display:none;">
+                                        <td colspan="9" style="border-right: none !important">
+                                            <div class="progress-loader">
+                                                <div class="indeterminate"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="project-info sorttable_nosort" data-answer-id="3">
+                                        <td colspan="9" style="border-right: none !important">
+                                            <div id="kw-competitors-panel-3" class="panel-collapse collapse in">
+                                                <div class="row">
+
+                                                    <div class="col-sm-7 content-goal-info">
+
+                                                        <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+												<div class="table-outer">
+                                                 <span class="reveal-mark"> REVEAL </span>
+                                                        <table class="content-goal-table sortable" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr class="table-heading2">
+                                                                    <th class="col-sm-1"></th>
+                                                                    <th class="col-sm-1 text-center">Rank</th>
+                                                                    <th class="col-sm-7 text-left">URL</th>
+                                                                    <th class="col-sm-1 text-center">CTR <br/><strong class="position-relative"><i class="info-icon" title="Click Through Rate for the ranking position and current keyword"></i></strong></th>
+                                                                    <th class="col-sm-1 text-center">Total Backlinks <br/><strong class="position-relative"><i class="info-icon" title="The total number of backlinks this competitor has"></i></strong></th>
+                                                                    <th class="col-sm-1 text-center">Monthly Content <br/><strong class="position-relative"><i class="info-icon" title="The amount of off-site content produced each month with this keyword phrase as the topic"></i></strong></th>
+                                                                </tr>
+
+                                                                <tr class="project-head2">
+                                                                    <td class="checkbox-ot"><input class="" type="checkbox"> </td>
+                                                                    <td data-label="Rank" class="text-center">3</td>
+                                                                    <td data-label="URL" class="text-left">http://www.wikipedia.com/water-leaks</td>
+                                                                    <td data-label="CTR" class="text-center">98%</td>
+                                                                    <td data-label="Monthly Backlinks" class="text-left disabled"></td>
+                                                                    <td data-label="Monthly Content" class="text-center disabled"></td>
+                                                                </tr>
+                                                            </tbody>
+
+                                                            <tfoot>
+                                                                <tr class="project-head2 them-row">
+                                                                    <td class="checkbox-ot"><strong>THEM</strong></td>
+                                                                    <td data-label="Rank" class="text-center">16</td>
+                                                                    <td data-label="URL" class="text-left"><strong>SELECTED COMPETITORS</strong></td>
+                                                                    <td data-label="CTR" class="text-center">64%</td>
+                                                                    <td data-label="Monthly Backlinks" class="text-center negative-sign-2">20</td>
+                                                                    <td data-label="Monthly Content" style="font-size:20px;text-align:center;">10</td>
+                                                                </tr>
+
+                                                                <tr class="project-head2 you-row">
+                                                                    <td class="checkbox-ot"><strong>YOU</strong></td>
+                                                                    <td class="text-center">39</td>
+                                                                    <td data-label="URL" class="text-left">http://www.ME.com/</td>
+                                                                    <td data-label="CTR" class="text-center">66%</td>
+                                                                    <td data-label="Monthly Backlinks" class="text-center equal-sign-2">10</td>
+                                                                    <td data-label="Monthly Content" style="font-size:20px;text-align:center;"><input type="number" class="transparent-text-input-2" onchange="changeUserMonthlyContent('kwid','kwcounter');" id="kwid-kwid-your-pl" value="0"><strong class="position-relative"><i class="info-icon" title="Click the number to change your monthly content count"></i></strong></td>
+                                                                </tr>
+
+                                                                <tr class="project-head2 result-row">
+                                                                    <td colspan="5" class="text-right">YOUR MONTHLY CONTENT GOAL</td>
+                                                                    <td colspan="2" style="text-align:center;">6</td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+										</div>
+
+                                        <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+
+                                        </div>
+
+                                        <div class="col-sm-5 right-side-goalinfo">
+
+                                            <div class="info-block" style="margin-top:40px;">
+                                                <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                                                <p>Reveal the monthly content strategies of your selected competitors</p>
+                                            </div>
+
+                                            <div class="info-block">
+                                                <h3>REVIEW AND TAKE ACTION <i class="blueproject-eagle-icon"> </i></h3>
+                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>
+                                            </div>
+
+                                            <div class="info-block calculator-lt">
+                                                <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                                    <br>Start by defining your monthly sales goal using our <a href="salesgoalcalculator.html" target="_blank">calculator</a>.</p>
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                        </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+
+                                <div class="add-custom-keyword-outer">
+                                    <div id="url-list">
+                                        <a href="#add-more-url" class="add-more-url" id="button-add-url">+ ENTER KEYWORD PHRASE</a>
+                                    </div>
+                                    <div id="url-box-template">
+                                        <div class="url-box">
+                                            <input id="custom-url" class="url-input" value="" type="text" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="add-custom-keyword-outer" id="new-phrase-container" style="display:none;">
+                                    <input type="hidden" id="keyword-count" value="0"/>
+                                    <div class="add-keywords-list">
+                                        <ul id="ctc">
+
+                                        </ul>
+                                    </div>
+                                    <div class="add-keywords-list">
+                                        <div id="submit-button-block">
+                                            <a class="orange-btn btn pull-left" onclick="recalculateProject();" id="add-keywords-button" style="opacity:0.0;">ADD 0 KEYWORDS</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="suggest-keywords-list-1" style="margin-top:30px;">
+                                    <p class="suggest-keywords-label">+ Click to Add Suggested Keywords</p>
+                                    <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
+                                    <input type="checkbox" class="read-more-state" id="post-2"/>
+                                        <ul id="suggestedKeywordsList" class="read-more-wrap">
+                                            <li data-type="1">themeforest</li><li data-type="1">theme forest</li><li data-type="1">salient theme</li><li data-type="1">themeforest wordpress</li><li data-type="1">apex theme</li><li data-type="1">petta</li><li data-type="1">enfold theme</li><li data-type="1">best wordpress themes</li><li data-type="1">enfold</li><li data-type="1">woocommerce themes</li><li data-type="1">manthan services</li><li data-type="1">manthan systems careers</li><li data-type="1">manthan systems bangalore address</li><li data-type="1">product affinity</li><li data-type="1">wall street</li><li data-type="1">product affinity analysis</li><li data-type="1">retail performance management</li><li data-type="1">manthen</li><li data-type="1" style="display: none;">call manthan</li><li data-type="1">djia today</li><li data-type="1">presidential election 2016 date</li><li data-type="1">sophia burset</li><li data-type="1">journal</li><li data-type="1">djia futures</li><li data-type="1">financial advisor</li><li data-type="1">cvx stock price</li><li data-type="1">leadership styles</li><li data-type="1">wwe stock</li>
+                                        </ul>
+                                    <div class="bth-more-text-outer">
+                                    <div class="show-more-text clear-both" id="show-more-text-1" style="cursor:pointer;" onclick="clickReadMoreTrigger('1');">SHOW MORE</div>
+                                    <div class="show-more-button"><label for="post-2" id="read-more-button-label-1" class="read-more-trigger" onclick="toggleReadMore('1');"></label></div>
+                                    </div>
+                                </div>
+
+                                <div class="suggest-keywords-list-2" style="margin-top:30px;">
+                                    <p class="suggest-keywords-label">+ Click to Add Niche Suggested Keywords</p>
+                                    <!--<label for="post-2" id="read-more-button-label" class="read-more-trigger" onclick="toggleReadMore();">SHOW MORE KEYWORDS</label>-->
+                                    <input type="checkbox" class="read-more-state" id="post-3"/>
+                                        <ul id="altSuggestedKeywordsList" class="read-more-wrap">
+                                            <li data-type="2">seo for ecommerce</li><li data-type="2">seo ecommerce</li><li data-type="2">search engine optimization ecommerce</li><li data-type="2">ecommerce search engine optimization</li><li data-type="2">e-commerce seo</li><li data-type="2">seo for ecommerce sites</li><li data-type="2">seo for ecommerce websites</li><li data-type="2">ecommerce website seo</li><li data-type="2">seo for ecommerce site</li><li data-type="2">seo for ecommerce website</li>
+                                        </ul>
+                                    <div class="bth-more-text-outer">
+                                    <div class="show-more-text clear-both" id="show-more-text-2" style="cursor:pointer;" onclick="clickReadMoreTrigger('2');">SHOW MORE</div>
+                                    <div class="show-more-button"><label for="post-3" id="read-more-button-label-2" class="read-more-trigger" onclick="toggleReadMore('2');"></label></div>
+                                    </div>
+                                </div>
+
+                                <div class="card-box-bottom" id="dateDivBottom"></div>
+
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
