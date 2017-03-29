@@ -25,41 +25,40 @@
     <!-- =========================
              STYLESHEETS
         ============================== -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=53" rel="stylesheet">-->
-    <link href="css/custom-style.css?v=53" rel="stylesheet" id="theme-change">
-    <link href="css/rankhacker.css?v=53" rel="stylesheet" id="theme-change">
-    <link href="css/bootstrap-slider.min.css?v=53" rel="stylesheet" id="theme-change">
-    <link href="css/media-queries.css?v=53" rel="stylesheet" type="text/css">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=54" rel="stylesheet">-->
+    <link href="css/custom-style.css?v=54" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=54" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=54" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=54" rel="stylesheet" type="text/css">
 
     <!--google js file-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     
     <!--1520 files-->
-    <script src="js/sorttable.js"></script>
-    <script src="js/1520.js?v=53"></script>
-    <link href="css/1520.css?v=53" rel="stylesheet" id="theme-change">
-    <link href="css/spinner.css?v=53" rel="stylesheet" id="theme-change">
-    <script src="js/bootstrap-slider.js?v=53"></script>
+    <script src="js/1520.js?v=54"></script>
+    <link href="css/1520.css?v=54" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=54" rel="stylesheet" id="theme-change">
+    <script src="js/bootstrap-slider.js?v=54"></script>
     <script src="js/clipboard.min.js"></script>
     <script src="js/readmore.js"></script>
     <!--<script src="js/jquery-sortable.js"></script>-->
-    <link href="css/shimmer.css?v=53" rel="stylesheet" id="theme-change">
+    <link href="css/shimmer.css?v=54" rel="stylesheet" id="theme-change">
 
-    <link href="css/media-queries.css?v=53" rel="stylesheet" type="text/css">
+    <link href="css/media-queries.css?v=54" rel="stylesheet" type="text/css">
     
     <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
-    <link href="css_storefront/bootstrap.min.css?v=53" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=53" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_storefront/bootstrap.min.css?v=54" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=54" rel="stylesheet" id="theme-change-storefront">
     <link href="css_cart/keyword-networth.css" rel="stylesheet" id="theme-change-storefront">
     
     <!-- material design lite -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link href="css/bootstrap.min.css?v=53" rel="stylesheet">
-    <link href="css/custom-style-material.css?v=53" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap.min.css?v=54" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=54" rel="stylesheet" id="theme-change">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--jquery dropdown-->
@@ -195,6 +194,49 @@
             </div>
         </div>
 
+<div id="dimmer" class="dimmer"></div>
+        
+<div id="delete-project-window" class="delete-project-window">
+    <input id="delete-keyword-id" type="hidden" value="0"/>
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2" id="setup-box-outer">
+        <br/>
+        <h2 class="setup-heading" style="color:#337ab7;">Confirmation</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section">
+                <p>Are you sure you want to delete this keyword?</p>
+            </div>
+
+            <div id="submit-button-block" style="text-align:center;">
+                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="cancelDeleteKeywordHackerProject();">CANCEL</a>
+                <a class="orange-btn btn pull-right" style="margin-right:10px;" onclick="deleteKeyword();">Delete</a>
+            </div>
+        </form>
+        <div class="project-setup-input row"><span id="delete-project-response" class="col-lg-12" style="text-align:center;"></span></div>
+    </div>
+    
+</div>
+        
+<!-- Alert modal -->
+<div id="alert-window" class="alert-window">
+    <div class="row">
+        <div class="col-lg-12 text-center" id="alert-msg-body">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a class="alert-close-btn" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+        </div>
+    </div>
+</div>
+        
     </section>
 
 <!-- =========================
@@ -304,43 +346,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.left = "-300px";
 }
 
-
-/*jQuery('.project-name-ot a').on('click',function(){
-   if(jQuery(this).hasClass('collapsed')){
-         jQuery(this).closest('.project-head').addClass('open');
-         jQuery('.open').next('tr').addClass('active');
-   }
-   else{
-   		 jQuery('.open').next('tr').removeClass('active');
-         jQuery(this).closest('.project-head').removeClass('open');
-
-   }
-});*/
-
-
-
-
-
-
-
-/*jQuery('#accordion').on('show.bs.collapse', function () {
-    jQuery('.panel-collapse').collapse('hide');
-    addRemoveClass();
-});*/
-
-
-/*jQuery('#accordion').on('shown.bs.collapse', function () {
-    var a = jQuery("a[aria-expanded=true]").attr('href');
-    console.log(a);
-});*/
-
-/*jQuery('#accordion').on('shown.bs.collapse', function () {
-    var a = jQuery("a[aria-expanded=false]").attr('href');
-    $(a).removeClass('collapsed');
-});*/
-
-
-function addRemoveClass(){
+/*function addRemoveClass(){
 
       jQuery('#accordion').find('tr').each(function(){
        if(jQuery(this).find('a').hasClass('collapsed')){
@@ -351,7 +357,7 @@ function addRemoveClass(){
             jQuery(this).next('tr').removeClass('open');
        }
    });
-}
+}*/
 
 </script>
 
@@ -367,7 +373,7 @@ function addRemoveClass(){
         new Clipboard('.copy-button');
         //enableSort();
         
-        $(".suggest-keywords-list-1 ul ").on("click", "li", function () {
+        /*$(".suggest-keywords-list-1 ul ").on("click", "li", function () {
             var returnData = $('#json').val();
             var info = JSON.parse(returnData);
 
@@ -554,10 +560,12 @@ function addRemoveClass(){
                 addKeywordInReport(url_val,'0');
             }
                 
-        });
+        });*/
 
     });
 </script>
+
+<!--<script src="js/sorttable.js"></script>-->
 
 <input type="hidden" id="json" value=""/>
 <input type="hidden" id="orig-competitor-id" value=""/>
@@ -565,7 +573,7 @@ function addRemoveClass(){
 <input type="hidden" id="competitor-sort-method" value="google-rank"/>
 <input type="hidden" id="competitor-sort-reversed" value="false"/>
 
-<input type="hidden" id="keyword-sort-method" value="keyword"/>
+<input type="hidden" id="keyword-sort-method" value=""/>
 <input type="hidden" id="keyword-sort-reversed" value="false"/>
 
 <input type="hidden" id="check-project-done-flag" value="0"/>

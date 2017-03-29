@@ -41,6 +41,202 @@ $(".show-more a").on("click", function() {
     return false;
 });
 
+function registerMissionReportListeners()
+{
+    $(".suggest-keywords-list-1 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'1');
+            }
+            
+        });
+
+
+
+$(".suggest-keywords-list-2 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'2');
+            }
+            
+        });
+
+
+
+
+$("a#button-add-url").on("click", function (event) {
+            event.preventDefault();
+
+            $(this).hide();
+            var url_box = $("#url-box-template").html();
+            $(this).parent().before(url_box);
+            //toggle_add_more();
+            $('#custom-url').focus();
+        });
+
+        $('.add-custom-keyword-outer').on('keypress', '.url-input', function (e) {
+            if (e.which == 13) {
+                $(this).blur();
+            }
+        });
+
+        $('.add-custom-keyword-outer').on('blur', '.url-input', function () {
+            var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+            //console.log(parent_get);
+            var parent_id = "#" + parent_get;
+            var url_val = $(this).val();
+            if (url_val == "") {
+
+            } else {
+                
+            }
+            $(this).remove();
+            $("a#button-add-url").show();
+            
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                //Here's where we add the keyword to the list
+                addKeywordInReport(url_val,'0');
+            }
+                
+        });
+}
+
 /*var sortableHelper = function (e, ui) {
     ui.children().each(function () {
         $(this).width($(this).width());
@@ -460,7 +656,7 @@ function createKeywordHackerProject(e,id)
                     {
                         //window.location = "dashboard.html";
                         var projectID = info.message;
-                        window.location = "keywordhacker.html?pid="+projectID;
+                        window.location = "missionreport.html?pid="+projectID;
                     }
                     else
                     {
@@ -487,7 +683,7 @@ function createKeywordHackerProject(e,id)
 
                     if(info.status == "success")
                     {
-                        window.location = "keywordhacker.html?pid="+projectID;
+                        window.location = "missionreport.html?pid="+projectID;
                     }
                 }
             });
@@ -719,13 +915,13 @@ function loadProjectDashboard(flip)
         {
             //keywordNetWorthString = "<span style=\"color:red;display:block;\" class=\"loader__dot\">"+completionPercent+"%&nbsp;data collected</span>";
             keywordNetWorthString = "<span style=\"color:red;display:block;font-size:20px;line-height:20px;vertical-align:middle;text-align:center;padding:5px 0;padding-right:-2px;\" class=\"loader__dot\">gathering intel</span>";
-            anchorAhref = "onclick=\"window.location='keywordhacker.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
+            anchorAhref = "onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
             plSum = "--";
         }
         else
         {
             keywordNetWorthString = currencyHexCode+keywordNetWorth;
-            anchorAhref = "onclick=\"window.location='keywordhacker.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
+            anchorAhref = "onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
             //plSum = totalPowerLevel;
             plSum = totalContentDiff;
         }
@@ -2629,8 +2825,8 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
 {
     $('body').addClass('wait');
     //Hide the Get the Hack buttons
-    $("#get-the-hack-1-"+keywordCounter).hide(200);
-    $("#get-the-hack-2-"+keywordCounter).hide(200);
+    //$("#get-the-hack-1-"+keywordCounter).hide(200);
+    //$("#get-the-hack-2-"+keywordCounter).hide(200);
     //document.getElementById("get-the-hack-1-"+keywordCounter).style.display = "none";
     //document.getElementById("get-the-hack-2-"+keywordCounter).style.display = "none";
 
@@ -2653,16 +2849,17 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
         canSelect = false;
     }*/
     
-    if(competitorID != '' && projectID != '')
+    if(competitorID !== '' && projectID !== '')
     {
         if(canSelect)
         {
             //Overwrite the project-level and keyword-level keyword net worth texts with the progress bar spinner
+            /*
             //$("#kwNetWorth").html("<img src=\"images/thin_stripe_progress.gif\" class=\"medium-progress-bar\"/>");
             $("#kwNetWorth").html("<span class=\"loader__dot\" style=\"font-size:15px;color:red;\">calculating...</span>");
             //$("#kwid-"+keywordID+"-kw-net-worth").html("<img src=\"images/thin_stripe_progress.gif\" class=\"intermediate-progress-bar\"/>");
             $("#top-hack-content-"+keywordCounter).html("<img src=\"images/thin_stripe_progress.gif\" class=\"mini-progress-bar\"/>");
-            
+            */
             //Save the original competitor ID and value
             $("#orig-competitor-id").val(competitorID);
             if(active == "1")
@@ -2682,11 +2879,9 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
                         $('#json').val(returnData);
 
                         var field = $('#keyword-sort-method').val();
-                        refreshKeywordInfo(returnData,field,keywordID);
+                        //refreshKeywordInfo(returnData,field,keywordID);
+                        refreshMissionKeyword(returnData,field,keywordID);
                         refreshKeywordSuggestions();
-                        //refreshProjectData_old(keywordCounter);
-                        //refreshProjectData(keywordCounter);
-                        
                     }
                 }
             });
@@ -2721,23 +2916,21 @@ function toggleKeyword(keywordID,checked)
         
         //Overwrite the project-level and keyword-level keyword net worth texts with the progress bar spinner
         //$("#kwNetWorth").html("<img src=\"images/thin_stripe_progress.gif\" class=\"medium-progress-bar\"/>");
-        $("#kwNetWorth").html("<span class=\"loader__dot\" style=\"font-size:15px;color:red;\">calculating...</span>");
+        //$("#kwNetWorth").html("<span class=\"loader__dot\" style=\"font-size:15px;color:red;\">calculating...</span>");
         //$("#kwid-"+keywordID+"-kw-net-worth").html("<img src=\"images/thin_stripe_progress.gif\" class=\"intermediate-progress-bar\"/>");
         //$("#top-hack-content-"+keywordID).html("<img src=\"images/thin_stripe_progress.gif\" class=\"mini-progress-bar\"/>");
         
         //Change the background color if it's inactive
         if(active == "0")
         {
-            //$("#keyword-phraser-heading"+keywordID).css('background-color','#b3b3b3');
-            $("#keyword-phraser-heading"+keywordID).fadeTo(400,0.33,function(){});
+            $("#kw-summary-row-"+keywordID).fadeTo(400,0.33,function(){});
             
             //First update the keyword count
             keywordCount = parseInt($("#numKeywords").html())-1;
         }
         else
         {
-            //$("#keyword-phraser-heading"+keywordID).css('background-color','#fff');
-            $("#keyword-phraser-heading"+keywordID).fadeTo(400,1.0,function(){});
+            $("#kw-summary-row-"+keywordID).fadeTo(400,1.0,function(){});
             //First update the keyword count
             keywordCount = parseInt($("#numKeywords").html())+1;
         }
@@ -2749,7 +2942,7 @@ function toggleKeyword(keywordID,checked)
 
                 if(info.status == "success")
                 {
-                    refreshProjectData(-1,keywordID);
+                    refreshMissionData(-1,keywordID);
                     $('body').removeClass('wait');
                 }
             }
@@ -3809,7 +4002,7 @@ function recalculateProject()
                     //Show the warning message at top, and set the flag to keep checking
                     //$("#warning-message").show(400);
                     //$("#check-project-done-flag").val(1);
-                    window.location = "keywordhacker.html?pid="+projectID;
+                    window.location = "missionreport.html?pid="+projectID;
                 }
             }
         });
@@ -4258,13 +4451,14 @@ function checkProjectDone()
                             
                             if(completed == "1")
                             {
-                                //Hide the warning message and show the success message
-                                $("#warning-message").hide(400);
-                                $("#success-message").show(400);
+                                //Also show the message at the top
+                                $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("error-message").addClass("success-message");
+                                $("#message-header").html("<img src=\"images/green-check.png\" class=\"message-icon\"/>YOUR REPORT IS READY");
+                                $("#message-content").html("We're done hacking your competitors' strategies. Check out the data below to see what they're up to!");
                                 $("#check-project-done-flag").val(0);
                                 
                                 //Update the keyword net-worth text to say "ready" in static green
-                                $('#kwNetWorth').html("<h2><span class=\"loader__dot\" style=\"font-size:15px;color:#088D0C;background-color:#fff;cursor:pointer;\" onclick=\"javascript:window.location.reload();\">refresh to view</span><span style=\"background-color:#fff;\">KEYWORD NET-WORTH</span></h2>");
+                                //$('#kwNetWorth').html("<h2><span class=\"loader__dot\" style=\"font-size:15px;color:#088D0C;background-color:#fff;cursor:pointer;\" onclick=\"javascript:window.location.reload();\">refresh to view</span><span style=\"background-color:#fff;\">KEYWORD NET-WORTH</span></h2>");
                             }
                         }
                     }
@@ -4555,7 +4749,7 @@ function changeUserMonthlyContent(keywordID,keywordCounter)
     }
     
     //Put the loading bar in the content goal box
-    $("#kwid-"+keywordID+"-plg-3").html("<img src=\"images/thin_stripe_progress.gif\" class=\"mini-progress-bar\"/>");
+    //$("#kwid-"+keywordID+"-plg-3").html("<img src=\"images/thin_stripe_progress.gif\" class=\"mini-progress-bar\"/>");
     
     if(keywordID != '' && projectID != '')
     {
@@ -4564,8 +4758,8 @@ function changeUserMonthlyContent(keywordID,keywordCounter)
 
                 if(info.status == "success")
                 {
-                    refreshProjectData(keywordCounter,keywordID);
-                    $("#kwid-"+keywordID+"-user-monthly-content-count").html(newValue);
+                    refreshMissionData(keywordCounter,keywordID);
+                    //$("#kwid-"+keywordID+"-user-monthly-content-count").html(newValue);
                     $('body').removeClass('wait');
                 }
             }
@@ -4799,7 +4993,7 @@ function prepareWizard()
     
     if(projectID !== "0" && projectID !== "")
     {
-        $("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"keywordhacker.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
+        $("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"missionreport.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
         $("#header-text").html("[   Update Mission Details  ]")
         $("#keyword-section").hide();
         if(projectIDValue < 260)
@@ -5093,7 +5287,7 @@ function closeWizard()
     var projectID = getURLParameter("pid");
     if(projectID !== "0" && projectID !== "")
     {
-        window.location = "keywordhacker.html?pid="+projectID;
+        window.location = "missionreport.html?pid="+projectID;
     }
     else
     {
@@ -7315,7 +7509,7 @@ function refreshCartDetails()
                         {
                             //Output the mission-level elements
                             cartHTML += "<div class=\"mission-heading\">"+
-                                                "<label>"+projectInfo.project+"</label> <a href=\"keywordhacker.html?pid="+projectInfo.projectID+"\" class=\"view-mission-link\">VIEW MISSION </a> </div>"+
+                                                "<label>"+projectInfo.project+"</label> <a href=\"missionreport.html?pid="+projectInfo.projectID+"\" class=\"view-mission-link\">VIEW MISSION </a> </div>"+
                                         "<div class=\"table-spacing\">";
 
                             var keywords = projectInfo.keywords;
@@ -8119,22 +8313,23 @@ function displayMissionInfo(field,sort)
             var keywordTotalContentDiffHTML = "";
             var topKWNetworth = "";
             var topHackContentHTML = "";
-            var topHackExpand = "";
-            var boxGoalHTML = "";
             var shadedString = "";
             var errorTriangleHTML = "";
 
             if(errorExists === 1)
             {
                 errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
+                //Also show the message at the top
+                $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("success-message").addClass("error-message");
+                $("#message-header").html("<img src=\"images/red-close.png\" class=\"message-icon\"/>SOMETHING WENT WRONG");
+                $("#message-content").html("One or more of your keywords below errored out during processing. You can click the red triangle next to a keyword to try re-running it.");
+                
             }
 
             if(keywordStatus === "hacked")
             {
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
-                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)<img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
-                boxGoalHTML = keywordTotalContentDiff;
+                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
                 if(keywordTotalContentDiff >= 0)
                 {
                     keywordTotalContentDiffHTML = "+" + keywordTotalContentDiff;
@@ -8147,34 +8342,29 @@ function displayMissionInfo(field,sort)
             else if(keywordStatus === "hacking")
             {
                 topHackContentHTML = "";
-                topHackExpand = "";
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                boxGoalHTML = "?";
                 keywordTotalContentDiffHTML = "?";
             }
             else if(keywordStatus === "adding")
             {
-                topHackExpand = "";
                 topHackContentHTML = "$0 (0 pcs)";
                 topKWNetworth = "";
-                boxGoalHTML = "?";
                 keywordTotalContentDiffHTML = "?";
             }
             else
             {
                 //It's just been added, not yet hacked
-                shadedString = " disabled";
-                topHackExpand = "style=\"cursor:pointer;\" data-toggle=\"collapse\" href=\"#keyword-phraser-collapse"+i+"\" aria-expanded=\"true\" aria-controls=\"keyword-phraser-collapse"+i+"\"";
+                shadedString = " disabled";                
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 if(keywordActive === 1)
                 {
-                    topHackContentHTML = "<i class=\"revealsmall-icon\"> </i>";
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
                 }
                 else
                 {
-                    topHackContentHTML = "<i class=\"revealsmall-icon\"> </i>";
+                    //topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
                 }
-                boxGoalHTML = "?";
                 keywordTotalContentDiffHTML = "?";
             }
 
@@ -8187,7 +8377,6 @@ function displayMissionInfo(field,sort)
                 keywordCheckboxStatus = "checked";
                 rowBGText = "style=\"opacity:1.0;cursor:pointer;\"";                
                 keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
-
             }
             else if(keywordActive === 1 && (keywordStatus === "hacking" || keywordStatus === "adding"))
             {
@@ -8200,6 +8389,7 @@ function displayMissionInfo(field,sort)
             {
                 rowBGText = "style=\"opacity:0.33;\"";
                 keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
+                progressBarDisplay = "none";
             }
 
             if(keywordHidden === 1)
@@ -8215,11 +8405,11 @@ function displayMissionInfo(field,sort)
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
-"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" "+keywordToggle+">"+topHackContentHTML+" <i class=\"cart-disable-icon\"> </i></div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" style=\"cursor:default;\">"+topHackContentHTML+"</div></td>\n" +
 "                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
 "                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n" +
 "                                    </tr>\n" +
-"                                    <tr class=\"progress-row sorttable_nosort\" style=\"display:"+progressBarDisplay+";\">\n" +
+"                                    <tr id=\"progress-row-"+keywordID+"\" class=\"progress-row sorttable_nosort\" style=\"display:"+progressBarDisplay+";\">\n" +
 "                                        <td colspan=\"9\" style=\"border-right: none !important\">\n" +
 "                                            <div class=\"progress-loader\">\n" +
 "                                                <div class=\"indeterminate\"></div>\n" +
@@ -8227,17 +8417,23 @@ function displayMissionInfo(field,sort)
 "                                        </td>\n" +
 "                                    </tr>";
 
+                var revealButtonDisplay = "block";
+                if(keywordStatus === "hacked")
+                {
+                    revealButtonDisplay = "none";
+                }
+
                 //Add the competitors panel
-                missionDataHTML += "<tr class=\"project-info sorttable_nosort\" data-answer-id=\""+keywordID+"\">\n" +
+                missionDataHTML += "<tr id=\"project-info-"+keywordID+"\" class=\"project-info sorttable_nosort\" data-answer-id=\""+keywordID+"\">\n" +
 "                                        <td colspan=\"9\" style=\"border-right: none !important\">\n" +
 "                                            <div id=\"kw-competitors-panel-"+keywordID+"\" class=\"panel-collapse collapse\">\n" +
 "                                                <div class=\"row\">\n" +
 "                                                    <div class=\"col-sm-7 content-goal-info\">\n" +
 "                                                        <h2 class=\"title\">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>\n" +
 "                                                       <div class=\"table-outer\">\n" +
-"                                                       <span class=\"reveal-mark\"> REVEAL </span>\n" +
+"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>\n" +
 "                                                        <table class=\"content-goal-table sortable\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n" +
-"                                                            <tbody>\n" +
+"                                                            <thead>\n" +
 "                                                                <tr class=\"table-heading2\">\n" +
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\">Rank</th>\n" +
@@ -8245,8 +8441,9 @@ function displayMissionInfo(field,sort)
 "                                                                    <th class=\"col-sm-1 text-center\">CTR <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword\"></i></strong></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\">Total Backlinks <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The total number of backlinks this competitor has\"></i></strong></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\">Monthly Content <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\"></i></strong></th>\n" +
-"                                                                </tr>\n";
-
+"                                                                </tr>\n"+
+"                                                            </thead>\n"+
+"                                                            <tbody>\n";
 
                             //Populate for each competitor
                             var competitorsCount = 0;
@@ -8327,7 +8524,7 @@ function displayMissionInfo(field,sort)
                                     totalCTR += competitorCTR;
                                     totalPowerLevel += competitorPowerLevel;
                                     totalRank += competitorPositionRank;
-                                    totalBacklinks += competitorMonthlyBacklinks;
+                                    totalBacklinks += parseInt(competitorTotalBacklinks);
                                 }
 
                                 if(thisCompetitor.disabled === 1)
@@ -8338,17 +8535,17 @@ function displayMissionInfo(field,sort)
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+"> </td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"> </td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
-"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-left"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+seoInsuranceHTML+"</td>\n" +
 "                                                                </tr>\n";
                             }
                             
                             if(competitorsCount === 0) { competitorsCount = 1;}
-        
+                            
                             //Hidden element to keep track of how many competitors you've selected
                             missionDataHTML += "<input id=\"kwid-"+keywordID+"-competitorsCount\" type=\"hidden\" value=\""+competitorsCount+"\">\n";
 
@@ -8371,7 +8568,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
-"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+competitorAvgBacklinks+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"</td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 you-row\">\n" +
@@ -8380,11 +8577,11 @@ function displayMissionInfo(field,sort)
 "                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></strong></td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
-"                                                                    <td colspan=\"2\" style=\"text-align:center;\">6</td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"</td>\n" +
 "                                                                </tr>\n" +
 "                                                            </tfoot>\n" +
 "                                                        </table>\n" +
@@ -8420,8 +8617,6 @@ function displayMissionInfo(field,sort)
 "\n" +
 "                                    </tr>";
         }
-        
-            //Outout the keyword competitors panel here
         
         //Close the table
         missionDataHTML += "</tbody>"+
@@ -8553,7 +8748,11 @@ function displayMissionInfo(field,sort)
         $("#project-add-to-cart").attr("onclick","").click(newClick);
         $("#project-add-to-cart").css("opacity",cartOpacity);
         
-        //All done!
+        //Load the sorttable script
+        $.getScript("js/sorttable.js", function(){});
+        
+        //All done, register the listners!
+        registerMissionReportListeners();
 }
 
 function togglePanel(keywordID)
@@ -8562,12 +8761,534 @@ function togglePanel(keywordID)
     {
         //Close it
         $("#kw-summary-row-"+keywordID).removeClass("open");
+        $("#project-info-"+keywordID).removeClass("active");
         $("#kw-competitors-panel-"+keywordID).removeClass("in");
     }
     else
     {
         //Open it
         $("#kw-summary-row-"+keywordID).addClass("open");
+        $("#project-info-"+keywordID).addClass("active");
         $("#kw-competitors-panel-"+keywordID).addClass("in");
     }
+}
+
+function refreshMissionData(keywordCounter,keywordID)
+{
+    var projectID = getURLParameter("pid");
+    if(projectID != '')
+    {
+        $.ajax({url: restURL, data: {'command':'getProjectData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    //Save this to local storage so that it can be sent to the PDF printer service
+                    $('#json').val(returnData);
+
+                    var field = $('#keyword-sort-method').val();
+
+                    //if(keywordCounter > -1)
+                    if(false)
+                    {
+                        refreshMissionKeyword(returnData,field,keywordID);
+                        refreshKeywordSuggestions();
+                    }
+                    else
+                    {
+                        displayMissionInfo(field,false);
+                    }
+                }
+            }
+        });
+    }
+    else
+    {
+        window.location = "dashboard.html";
+    }
+}
+
+function refreshMissionKeyword(returnData,field,keywordID)
+{
+    var info = JSON.parse(returnData);
+
+    //Fill in the project data here
+    var projectInfo = info.projectSummary;
+        var projectID = projectInfo.projectID;
+        var runDate = projectInfo.runDate;
+        var costPerLevel = projectInfo.costPerLevel;
+        var searchVolume = projectInfo.searchVolume;
+        var clientURL = projectInfo.clientURL;
+        var valuePerCustomer = projectInfo.valuePerCustomer;
+        var active = projectInfo.active;
+        var completed = projectInfo.completed;
+        var totalPowerLevel = projectInfo.totalPowerLevel;
+        var incomingTraffic = Math.round(projectInfo.incomingTraffic,0);
+        var keywordCount = projectInfo.keywordCount;
+        var geoLocation = projectInfo.geoLocation;
+        var monthlyVisitors = projectInfo.monthlyVisitors;
+        var payingCustomers = projectInfo.payingCustomers;
+        var currencyHexCode = projectInfo.currencyHexCode;
+        var useGoogle = projectInfo.useGoogle;
+        var useBing = projectInfo.useBing;
+        var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
+        var projectOrdered = projectInfo.projectOrdered;
+
+        var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
+
+        var customerConversionRate = projectInfo.defaultConversionRate;
+        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        {
+            customerConversionRate = (payingCustomers / monthlyVisitors);
+        }
+
+        var monthlyCustomers = Math.round(incomingTraffic * customerConversionRate,0);
+        var monthlySales = Math.round(monthlyCustomers * valuePerCustomer,0);
+        var costPerMonth = Math.round((projectTotalContentDiff * costPerLevel),0);
+        var keywordNetWorth = (monthlySales - costPerMonth);
+
+        var netWorthClass = "green-bg-total";
+        if(keywordNetWorth < 0 || completed !== 1)
+        {
+            netWorthClass = "red-bg-total";
+        }
+
+        var keywordNetWorthString = "";
+    
+    //Find the data
+    var keywordInfo = info.keywordData;
+
+    //Iterate through the keywords to see if any are in "hacking" status; if so, show the warning message
+    var currentlyHacking = false;
+    var currentlyAdding = false;
+    var tempKeywordInfo = info.keywordData;
+    var keywordCounter = 0;
+    for(var t=0; t<tempKeywordInfo.length; t++)
+    {
+        var tempEntry = tempKeywordInfo[t];
+        var tempStatus = tempEntry.status;
+        if(tempStatus === "hacking")
+        {
+            currentlyHacking = true;
+        }
+        if(tempStatus === "adding")
+        {
+            currentlyAdding = true;
+        }
+
+        if(tempEntry.keywordID === keywordID)
+        {
+            keywordCounter = t;
+        }
+    }
+
+    if(completed !== 1 || currentlyHacking || currentlyAdding)
+        {
+            keywordNetWorthString = "<span class=\"loader__dot\" style=\"font-size:15px;color:#fff;\">calculating...</span>";
+            //Show the warning message at top, and set the flag to keep checking
+            $("#message-bar").addClass("progress-message");
+            if(currentlyAdding)
+            {
+                $("#message-header").html("<img src=\"images/blue-message-text.png\" class=\"message-icon\"/>ADDING KEYWORDS");
+                $("#message-content").html("Manually refresh this page to get the latest info, or hang out and we'll let you know as soon as all the numbers are in!");
+            }
+            else if(currentlyHacking)
+            {
+                $("#message-header").html("<img src=\"images/blue-message-text.png\" class=\"message-icon\"/>HACKING COMPETITORS' STRATEGIES");
+                $("#message-content").html("This report could take several minutes but it's worth the wait! Periodically refresh this page or give us a sec and we'll let you know as soon as it completes!");
+            }
+            $("#check-project-done-flag").val(1);
+        }
+        else
+        {
+            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth);
+        }
+
+
+    /*$('#currency-code-1').html(currencyHexCode);
+    $('#currency-code-2').html(currencyHexCode);
+    $('#currency-code-3').html(currencyHexCode);*/
+
+    if(useGoogle === 1 && useBing !== 1)
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> google");
+        }
+        else if(useGoogle !== 1 && useBing === 1)
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> yahoo/bing");
+        }
+        else
+        {
+            $("#mission-search-engines-1").html("<label>Projections for:</label> google, yahoo/bing");
+        }
+
+    if(typeof searchVolume === 'undefined') {searchVolume = 0;}
+    if(typeof incomingTraffic === 'undefined') {incomingTraffic = 0;}
+    if(typeof payingCustomers === 'undefined') {payingCustomers = 0;}
+    if(typeof monthlyVisitors === 'undefined') {monthlyVisitors = 0.0000001;}
+    if(typeof monthlySales === 'undefined') {monthlySales = 0;}
+    if(typeof costPerMonth === 'undefined' || keywordCount == 0) {costPerMonth = 0;}
+
+    $("#mission-location-1").html("<label>Location:</label> "+geoLocation);
+    $("#mission-title-1").html(clientURL);
+    $("#mission-title-2").html(clientURL+"<strong class=\"position-relative\" onclick=\"gotoCreateProject('"+projectID+"');\"><i class=\"edit-icon\" title=\"Edit mission\"></i></strong>");
+
+    $("#keyword-count-1").html(keywordCount+" active <span>KEYWORD PHRASES</span>");
+    $("#mission-search-volume").html(numberWithCommas(searchVolume)+" <span>MO. SEARCH VOLUME <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The monthly average searches for each keyword\"></i></strong></span>");
+    $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
+    $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>MONTHLY CUSTOMERS</span><span class=\"blue-text\">PROJECTED </span>");
+    $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>MONTHLY SALES</span><span class=\"blue-text\">PROJECTED </span>");
+    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
+    $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span>");
+    
+
+    //Fill in the keyword data here
+        var i = keywordCounter;
+        var thisEntry = keywordInfo[keywordCounter];
+        var thisCompetitorArray = thisEntry.competitorData;
+
+        //var keywordID = thisEntry.keywordID;
+        var searchVolume = thisEntry.searchVolume;
+            var clientRanking = thisEntry.clientRanking;
+            var keywordActive = thisEntry.active;
+            //var avgCTR = Math.round(thisEntry.avgCTR);
+            //var avgCTRExact = Math.round(thisEntry.avgCTRExact);
+            var keywordHidden = thisEntry.hidden;
+            var clientPowerLevel = thisEntry.clientKeywordPowerLevel;
+            var errorExists = thisEntry.errorFlag;
+
+            //var competitorsAverageMonthlyContent = thisEntry.competitorsAverageMonthlyContent;
+            var userMonthlyContent = thisEntry.userMonthlyContent;
+            var userMonthlyBacklinks = thisEntry.userMonthlyBacklinks;
+            var keywordTotalContentDiff = thisEntry.keywordTotalContentDiff;
+
+            if(userMonthlyContent === "-1")
+            {
+                userMonthlyContent = "?";
+            }
+            if(userMonthlyBacklinks === "-1")
+            {
+                userMonthlyBacklinks = "?";
+            }
+
+            var clientCTR = Math.round(thisEntry.clientCTR);
+            //var avgRank = thisEntry.avgRank;
+            var totalPowerLevel = thisEntry.totalPowerLevel;     //Add back the client power level to the total power level for this keyword
+            var keyword = thisEntry.keyword;
+
+            var monthlyVisitors = thisEntry.monthlyVisitors;
+            var monthlyCustomers = thisEntry.monthlyCustomers;
+            var monthlySales = thisEntry.monthlySales;
+            var costPerMonth = thisEntry.costPerMonth;
+            var keywordNetWorth = thisEntry.keywordNetWorth;
+            var keywordStatus = thisEntry.status;
+            var numCartEntries = thisEntry.numCartEntries;
+            var cartOpacity = "1.0";
+            var cartOnclick = "addToCart('"+keywordID+"');";
+            if(numCartEntries>0)
+            {
+                cartOpacity = "0.25";
+                cartOnclick = "javascript:void(0);";
+            }
+        
+            var keywordTotalContentDiffHTML = "";
+            var topKWNetworth = "";
+            var topHackContentHTML = "";
+            var shadedString = "";
+            var errorTriangleHTML = "";
+        
+            if(errorExists == 1)
+            //if(true)
+            {
+                errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
+            }
+
+        if(keywordStatus === "hacked")
+            {
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+                if(keywordTotalContentDiff >= 0)
+                {
+                    keywordTotalContentDiffHTML = "+" + keywordTotalContentDiff;
+                }
+                else
+                {
+                    keywordTotalContentDiffHTML = keywordTotalContentDiff;
+                }
+            }
+            else if(keywordStatus === "hacking")
+            {
+                topHackContentHTML = "";
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                keywordTotalContentDiffHTML = "?";
+            }
+            else if(keywordStatus === "adding")
+            {
+                topHackContentHTML = "$0 (0 pcs)";
+                topKWNetworth = "";
+                keywordTotalContentDiffHTML = "?";
+            }
+            else
+            {
+                //It's just been added, not yet hacked
+                shadedString = " disabled";                
+                topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
+                if(keywordActive === 1)
+                {
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                }
+                else
+                {
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                }
+                keywordTotalContentDiffHTML = "?";
+            }
+
+            var keywordCheckboxStatus = "";
+            var rowBGText = "";
+            var keywordToggle = "";
+            var progressBarDisplay = "none";
+            if(keywordActive === 1 && (keywordStatus === "hacked" || keywordStatus === "added"))
+            {
+                keywordCheckboxStatus = "checked";
+                rowBGText = "style=\"opacity:1.0;cursor:pointer;\"";                
+                keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
+            }
+            else if(keywordActive === 1 && (keywordStatus === "hacking" || keywordStatus === "adding"))
+            {
+                keywordCheckboxStatus = "checked";
+                rowBGText = "style=\"opacity:1.0;\"";
+                keywordToggle = "";
+                progressBarDisplay = "table-row";
+            }
+            else
+            {
+                rowBGText = "style=\"opacity:0.33;\"";
+                keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
+                progressBarDisplay = "none";
+            }
+
+            if(keywordHidden === 1)
+            {
+                rowBGText = "style=\"display:none;\"";
+            }
+        
+        /*var summaryRowHTML = "<td class=\"checkbox-ot\"><input class=\"\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
+"                                        <td class=\"project-name-ot\" "+keywordToggle+"><a class=\"\">"+keyword+"</a>"+errorTriangleHTML+"</td>\n" +
+"                                        <td data-label=\"MO. SEARCH VOLUME\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(searchVolume)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
+"                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" style=\"cursor:default;\">"+topHackContentHTML+"</div></td>\n" +
+"                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
+"                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n";
+        $("#kw-summary-row-"+keywordID).html(summaryRowHTML);
+        $("#progress-row-"+keywordID).css("display",progressBarDisplay);*/
+        
+        var revealButtonDisplay = "block";
+        if(keywordStatus === "hacked")
+        {
+            revealButtonDisplay = "none";
+        }
+        
+        var collapseHTML = "";
+        if($("#kw-competitors-panel-"+keywordID).hasClass("in"))
+        {
+            collapseHTML = "in";
+        }
+        
+        var missionDataHTML = "<td colspan=\"9\" style=\"border-right: none !important\">\n" +
+"                                            <div id=\"kw-competitors-panel-"+keywordID+"\" class=\"panel-collapse collapse "+collapseHTML+"\">\n" +
+"                                                <div class=\"row\">\n" +
+"                                                    <div class=\"col-sm-7 content-goal-info\">\n" +
+"                                                        <h2 class=\"title\">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>\n" +
+"                                                       <div class=\"table-outer\">\n" +
+"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>\n" +
+"                                                        <table class=\"content-goal-table sortable\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n" +
+"                                                            <thead>\n" +
+"                                                                <tr class=\"table-heading2\">\n" +
+"                                                                    <th class=\"col-sm-1\"></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Rank</th>\n" +
+"                                                                    <th class=\"col-sm-7 text-left\">URL</th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">CTR <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword\"></i></strong></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Total Backlinks <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The total number of backlinks this competitor has\"></i></strong></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\">Monthly Content <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\"></i></strong></th>\n" +
+"                                                                </tr>\n"+
+"                                                            </thead>\n"+
+"                                                            <tbody>\n";
+
+                            //Populate for each competitor
+                            var competitorsCount = 0;
+                            var totalCTR = 0;
+                            //var totalPowerLevel = 0;
+                            var totalRank = 0;
+                            var totalBacklinks = 0;
+
+                            var disabled = false;
+
+                            var unhackedCompetitorExists = false;
+                            for(var j=0; j<thisCompetitorArray.length; j++)
+                            {
+                                var thisCompetitor = thisCompetitorArray[j];
+
+                                if(thisCompetitor.disabled === 1)
+                                {
+                                    disabled = true;
+                                }
+                                else
+                                {
+                                    disabled = false;
+                                }
+                                var competitorID = thisCompetitor.competitorID;
+                                var competitorActive = thisCompetitor.active;
+                                var competitorAhrefsStarted = thisCompetitor.ahrefsStarted;
+                                var competitorAhrefsCompleted = thisCompetitor.ahrefsCompleted;
+                                var competitorPositionRank = thisCompetitor.positionRank;
+                                var competitorURL = thisCompetitor.url;
+                                    var competitorURLShort = competitorURL.substring(0,60);
+                                    if(competitorURL.length > 60) { competitorURLShort += "..."; }
+
+                                if(competitorAhrefsStarted === 0 && competitorActive === 1)
+                                {
+                                    unhackedCompetitorExists = true;
+                                }
+
+                                var competitorCTR = Math.round(thisCompetitor.traffic);
+                                var competitorCTRExact = Math.round(thisCompetitor.trafficExact);
+
+                                var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
+                                var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
+                                var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
+                                var competitorContentCountHTML = "";
+                                var competitorMonthlyBacklinksHTML = "";
+                                if(competitorPowerLevel < 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                {
+                                    competitorContentCountHTML = "0";
+                                }
+                                else if(competitorPowerLevel < 0)
+                                {
+                                    competitorContentCountHTML = "";
+                                }
+                                else
+                                {
+                                    competitorContentCountHTML = competitorPowerLevel;
+                                }
+
+                                if(competitorAhrefsCompleted === 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                {
+                                    competitorMonthlyBacklinksHTML = "";
+                                }
+                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted === 0)
+                                {
+                                    competitorContentCountHTML = "";
+                                }
+                                else
+                                {
+                                    competitorMonthlyBacklinksHTML = numberWithCommas(parseInt(competitorTotalBacklinks));
+                                }
+
+                                var competitorCheckboxStatus = "";
+                                var seoInsuranceHTML = "";
+                                if(competitorActive === 1 && !disabled)
+                                {
+                                    competitorCheckboxStatus = "checked";
+                                    competitorsCount++;
+                                    totalCTR += competitorCTR;
+                                    totalPowerLevel += competitorPowerLevel;
+                                    totalRank += competitorPositionRank;
+                                    totalBacklinks += parseInt(competitorTotalBacklinks);
+                                }
+
+                                if(thisCompetitor.disabled === 1)
+                                {
+                                    competitorCheckboxStatus = " disabled";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                                }
+                                
+                                missionDataHTML +=
+"                                                                <tr class=\"project-head2\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+"> </td>\n" +
+"                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+seoInsuranceHTML+"</td>\n" +
+"                                                                </tr>\n";
+                            }
+                            
+                            if(competitorsCount === 0) { competitorsCount = 1;}
+                            
+                            //Hidden element to keep track of how many competitors you've selected
+                            missionDataHTML += "<input id=\"kwid-"+keywordID+"-competitorsCount\" type=\"hidden\" value=\""+competitorsCount+"\">\n";
+
+                            var competitorAvgCount = Math.ceil(totalPowerLevel/competitorsCount);
+                            var competitorAvgBacklinks = Math.round(totalBacklinks/competitorsCount);
+                            if(competitorAvgCount < 0)
+                            {
+                                competitorAvgCount = "?";
+                            }
+                            if(competitorAvgBacklinks < 0 || unhackedCompetitorExists)
+                            {
+                                competitorAvgBacklinks = "?";
+                            }
+
+                                missionDataHTML +=
+"                                                            </tbody>\n" +
+"                                                            <tfoot>\n" +
+"                                                                <tr class=\"project-head2 them-row\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
+"                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"</td>\n" +
+"                                                                </tr>\n" +
+"                                                                <tr class=\"project-head2 you-row\">\n" +
+"                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
+"                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
+"                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
+"                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
+"                                                                </tr>\n" +
+"                                                                <tr class=\"project-head2 result-row\">\n" +
+"                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"</td>\n" +
+"                                                                </tr>\n" +
+"                                                            </tfoot>\n" +
+"                                                        </table>\n" +
+"							 </div>\n" +
+"\n" +
+"                                        <p class=\"tip-note\"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>\n" +
+"                                        </div>\n" +
+"\n" +
+"                                        <div class=\"col-sm-5 right-side-goalinfo\">\n" +
+"                                            <div class=\"info-block\" style=\"margin-top:40px;\">\n" +
+"                                                <h3>DO THIS FIRST <i class=\"checked-icon\"> </i></h3>\n" +
+"                                                <p>Select competitors with high rankings and high CTR (click through rate)</p>\n" +
+"                                            </div>\n" +
+"                                            <div class=\"info-block\">\n" +
+"                                                <h3>NEXT DO THIS <i class=\"revealsmall-icon\"> </i></h3>\n" +
+"                                                <p>Reveal the monthly content strategies of your selected competitors</p>\n" +
+"                                            </div>\n" +
+"                                            <div class=\"info-block\">\n" +
+"                                                <h3>REVIEW AND TAKE ACTION <i class=\"blueproject-eagle-icon\"> </i></h3>\n" +
+"                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>\n" +
+"                                            </div>\n" +
+"\n" +
+"                                            <div class=\"info-block calculator-lt\">\n" +
+"                                                <p class=\"calculator-logo\"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>\n" +
+"                                                    <br>Start by defining your monthly sales goal using our <a href=\"salesgoalcalculator.html\" target=\"_blank\">calculator</a>.</p>\n" +
+"                                            </div>\n" +
+"\n" +
+"                                        </div>\n" +
+"\n" +
+"                                        </div>\n" +
+"                                        </div>\n" +
+"                                        </td>";
+
+                $("#project-info-"+keywordID).html(missionDataHTML);
+    
+    $('body').removeClass('wait');
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 }

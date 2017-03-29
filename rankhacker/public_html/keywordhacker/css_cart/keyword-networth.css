@@ -90,7 +90,7 @@
 
 .keyword-networth-project td a {color: #58595B;position: relative;}
 
-.keyword-networth-project td.project-name-ot::before {content: "\f0da";font-family: FontAwesome;position: absolute;font-size: 20px;left: 10px;top: 3px;color: #58595B;} 
+.keyword-networth-project td.project-name-ot::before {content: "\f0da";font-family: FontAwesome;position: absolute;font-size: 20px;left: 10px;top: 2px;color: #58595B;} 
 
 .keyword-networth-project th h2.table-title,.keyword-networth-project td h2.table-title {font-size: 20px;font-weight: 600;color: #58595B;margin: 0;padding: 0;float: left;width: 100%;text-align: left;}
 
@@ -150,7 +150,7 @@
 
 .project-location-it ul li i {color: #A6A8AB;font-size: 18px;margin-left: 8px;}
 
-.keyword-networth-project td.project-name-ot::after {background-image: url("../images_cart/arrow-process.png");content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
+.keyword-networth-project td.project-name-ot::after {/*background-image: url("../images_cart/arrow-process.png");*/content: "";background-repeat: no-repeat;width: 25px;height: 18px;float: right;background-position: 0 0;}
 
 .content-goal-info .title {background-color: #D0D2D3;font-size: 14px;font-weight: bold;color: #26A9E0;float: left;width: 100%;margin: 0;padding: 8px 10px;line-height: normal;}
 
@@ -238,6 +238,9 @@ position: absolute;right: 10px;top: 0;}
 .keyword-networth-project td.price-widthbox.equal-sign {padding-right: 25px;}
 
 .reveal-mark {cursor:pointer;position: absolute !important;font-size: 18px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 40%;right:2%;
+-ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
+
+.reveal-mark-small {cursor:pointer;position: absolute !important;font-size: 8px;color: #BE1E2D !important;border: 1px solid #BE1E2D;padding: 1px 5px;left:10%; margin-top:-7px;
 -ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
 
 .table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
