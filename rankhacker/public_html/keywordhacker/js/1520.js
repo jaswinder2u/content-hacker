@@ -732,7 +732,7 @@ function loadProjectDashboard(flip)
         });
         
         //Show the manageIndustries link for admin
-        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
+        if(username != 'admin@fairmarketing.com' && username != 'hari.patel@1520holdings.com' && $('#industry-link').length)
         {
             $('#industry-link').remove();
             $('#users-link').remove();
@@ -808,7 +808,7 @@ function loadProjectDashboard(flip)
     
     //Save the new sort method and reversed status (but only if we're not filtering!)
     var useFilter = false;
-    if(typeof filterString !== 'undefined' && filterString !== '')
+    if(typeof filterString !== 'undefined' && filterString != '')
     {
         useFilter = true;
     }
@@ -871,7 +871,7 @@ function loadProjectDashboard(flip)
         }
         
         var customerConversionRate = entry.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -1808,7 +1808,7 @@ function displayProjectInfo(field,sort)
         var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
         
         var customerConversionRate = projectInfo.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -2842,9 +2842,9 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
     }
     
     var canSelect = true;
-    var selectedCount = $("#kwid-"+keywordID+"-competitorsCount").val();
+    /*var selectedCount = $("#kwid-"+keywordID+"-competitorsCount").val();
     
-    /*if(active == "1" && selectedCount >= 5)
+    if(active == "1" && selectedCount >= 5)
     {
         canSelect = false;
     }*/
@@ -2882,6 +2882,7 @@ function toggleCompetitor(competitorID,checked,keywordCounter,keywordID)
                         //refreshKeywordInfo(returnData,field,keywordID);
                         refreshMissionKeyword(returnData,field,keywordID);
                         refreshKeywordSuggestions();
+                        $('body').removeClass('wait');
                     }
                 }
             });
@@ -3036,7 +3037,7 @@ function refreshProjectInfo(keywordCounter)
         var projectTotalContentDiff = projectInfo.projectTotalContentDiff;
         
         var customerConversionRate = projectInfo.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -4609,7 +4610,7 @@ function getAllIndustries()
     var username = getCookie("username");
     if(username != '')
     {
-        if(username == 'admin@fairmarketing.com')
+        if(username == 'admin@fairmarketing.com' || username == 'hari.patel@1520holdings.com')
         {
             $.ajax({url: restURL, data: {'command':'getAllIndustries'}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
@@ -6007,7 +6008,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
         var projectTotalContentDiff = projectInfo.projectTotalContentDiff;
         
         var customerConversionRate = projectInfo.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -7975,11 +7976,12 @@ function displayMissionInfo(field,sort)
         var useBing = projectInfo.useBing;
         var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
         var projectOrdered = projectInfo.projectOrdered;
+        var eCommerce = projectInfo.eCommerce;
         
         var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
         
         var customerConversionRate = projectInfo.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -7990,7 +7992,7 @@ function displayMissionInfo(field,sort)
         var keywordNetWorth = (monthlySales - costPerMonth);
         
         var netWorthClass = "green-bg-total";
-        if(keywordNetWorth < 0 || completed !== 1)
+        if(keywordNetWorth < 0 || completed != 1)
         {
             netWorthClass = "red-bg-total";
         }
@@ -8005,18 +8007,18 @@ function displayMissionInfo(field,sort)
         {
             var tempEntry = tempKeywordInfo[t];
             var tempStatus = tempEntry.status;
-            if(tempStatus === "hacking")
+            if(tempStatus == "hacking")
             {
                 currentlyHacking = true;
             }
-            if(tempStatus === "adding")
+            if(tempStatus == "adding")
             {
                 currentlyAdding = true;
             }
         }
         
         
-        if(completed !== 1 || currentlyHacking || currentlyAdding)
+        if(completed != 1 || currentlyHacking || currentlyAdding)
         {
             keywordNetWorthString = "<span class=\"loader__dot\" style=\"font-size:15px;color:#fff;\">calculating...</span>";
             //Show the warning message at top, and set the flag to keep checking
@@ -8039,7 +8041,7 @@ function displayMissionInfo(field,sort)
         }
         
         var activeString = "";
-        if(active === 1)
+        if(active == 1)
         {
             activeString = "ACTIVE";
         }
@@ -8052,11 +8054,11 @@ function displayMissionInfo(field,sort)
         $('#currency-code-2').html(currencyHexCode);
         $('#currency-code-3').html(currencyHexCode);*/
         
-        if(useGoogle === 1 && useBing !== 1)
+        if(useGoogle == 1 && useBing != 1)
         {
             $("#mission-search-engines-1").html("<label>Projections for:</label> google");
         }
-        else if(useGoogle !== 1 && useBing === 1)
+        else if(useGoogle != 1 && useBing == 1)
         {
             $("#mission-search-engines-1").html("<label>Projections for:</label> yahoo/bing");
         }
@@ -8070,7 +8072,7 @@ function displayMissionInfo(field,sort)
         if(typeof payingCustomers === 'undefined') {payingCustomers = 0;}
         if(typeof monthlyVisitors === 'undefined') {monthlyVisitors = 0.0000001;}
         if(typeof monthlySales === 'undefined') {monthlySales = 0;}
-        if(typeof costPerMonth === 'undefined' || keywordCount === 0) {costPerMonth = 0;}
+        if(typeof costPerMonth === 'undefined' || keywordCount == 0) {costPerMonth = 0;}
         
         /*var locationTitleText = "Total monthly search volume for the city you typed in above.";
         if(typeof projectInfo.useNational != "undefined")
@@ -8080,6 +8082,14 @@ function displayMissionInfo(field,sort)
                 locationTitleText = "Total monthly search volume for the country that your city resides within.";
             }
         }*/
+    
+        var monthlyCustomersText = "MONTHLY CUSTOMERS";
+        var monthlySalesText = "MONTHLY SALES";
+        if(eCommerce != 1)
+        {
+            monthlyCustomersText = "MONTHLY LEADS";
+            monthlySalesText = "POTENTIAL SALES";
+        }
         
         $("#mission-location-1").html("<label>Location:</label> "+geoLocation);
         $("#mission-title-1").html(clientURL);
@@ -8104,10 +8114,10 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title\" id=\"mission-monthly-visitors\">"+numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\" onclick=\"displayMissionInfo('monthlyCustomers',true);\">"+
-                                            "<h2 class=\"table-title\" id=\"mission-monthly-customers\">"+numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>MONTHLY CUSTOMERS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                            "<h2 class=\"table-title\" id=\"mission-monthly-customers\">"+numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('monthlySales',true);\">"+
-                                            "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>MONTHLY SALES</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                            "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\"  style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
                                             "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span></h2><i class=\"addincart-icon\" id=\"project-add-to-cart\"> </i>"+
@@ -8281,11 +8291,11 @@ function displayMissionInfo(field,sort)
             var userMonthlyBacklinks = thisEntry.userMonthlyBacklinks;
             var keywordTotalContentDiff = thisEntry.keywordTotalContentDiff;
 
-            if(userMonthlyContent === "-1")
+            if(userMonthlyContent == "-1")
             {
                 userMonthlyContent = "?";
             }
-            if(userMonthlyBacklinks === "-1")
+            if(userMonthlyBacklinks == "-1")
             {
                 userMonthlyBacklinks = "?";
             }
@@ -8316,7 +8326,7 @@ function displayMissionInfo(field,sort)
             var shadedString = "";
             var errorTriangleHTML = "";
 
-            if(errorExists === 1)
+            if(errorExists == 1)
             {
                 errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
                 //Also show the message at the top
@@ -8326,7 +8336,7 @@ function displayMissionInfo(field,sort)
                 
             }
 
-            if(keywordStatus === "hacked")
+            if(keywordStatus == "hacked")
             {
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
@@ -8339,13 +8349,13 @@ function displayMissionInfo(field,sort)
                     keywordTotalContentDiffHTML = keywordTotalContentDiff;
                 }
             }
-            else if(keywordStatus === "hacking")
+            else if(keywordStatus == "hacking")
             {
                 topHackContentHTML = "";
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 keywordTotalContentDiffHTML = "?";
             }
-            else if(keywordStatus === "adding")
+            else if(keywordStatus == "adding")
             {
                 topHackContentHTML = "$0 (0 pcs)";
                 topKWNetworth = "";
@@ -8356,7 +8366,7 @@ function displayMissionInfo(field,sort)
                 //It's just been added, not yet hacked
                 shadedString = " disabled";                
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                if(keywordActive === 1)
+                if(keywordActive == 1)
                 {
                     topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
                 }
@@ -8372,13 +8382,13 @@ function displayMissionInfo(field,sort)
             var rowBGText = "";
             var keywordToggle = "";
             var progressBarDisplay = "none";
-            if(keywordActive === 1 && (keywordStatus === "hacked" || keywordStatus === "added"))
+            if(keywordActive == 1 && (keywordStatus == "hacked" || keywordStatus == "added"))
             {
                 keywordCheckboxStatus = "checked";
                 rowBGText = "style=\"opacity:1.0;cursor:pointer;\"";                
                 keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
             }
-            else if(keywordActive === 1 && (keywordStatus === "hacking" || keywordStatus === "adding"))
+            else if(keywordActive == 1 && (keywordStatus == "hacking" || keywordStatus == "adding"))
             {
                 keywordCheckboxStatus = "checked";
                 rowBGText = "style=\"opacity:1.0;\"";
@@ -8392,7 +8402,7 @@ function displayMissionInfo(field,sort)
                 progressBarDisplay = "none";
             }
 
-            if(keywordHidden === 1)
+            if(keywordHidden == 1)
             {
                 rowBGText = "style=\"display:none;\"";
             }
@@ -8418,7 +8428,7 @@ function displayMissionInfo(field,sort)
 "                                    </tr>";
 
                 var revealButtonDisplay = "block";
-                if(keywordStatus === "hacked")
+                if(keywordStatus == "hacked")
                 {
                     revealButtonDisplay = "none";
                 }
@@ -8459,7 +8469,7 @@ function displayMissionInfo(field,sort)
                             {
                                 var thisCompetitor = thisCompetitorArray[j];
 
-                                if(thisCompetitor.disabled === 1)
+                                if(thisCompetitor.disabled == 1)
                                 {
                                     disabled = true;
                                 }
@@ -8476,7 +8486,7 @@ function displayMissionInfo(field,sort)
                                     var competitorURLShort = competitorURL.substring(0,60);
                                     if(competitorURL.length > 60) { competitorURLShort += "..."; }
 
-                                if(competitorAhrefsStarted === 0 && competitorActive === 1)
+                                if(competitorAhrefsStarted == 0 && competitorActive == 1)
                                 {
                                     unhackedCompetitorExists = true;
                                 }
@@ -8489,7 +8499,7 @@ function displayMissionInfo(field,sort)
                                 var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
                                 var competitorContentCountHTML = "";
                                 var competitorMonthlyBacklinksHTML = "";
-                                if(competitorPowerLevel < 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                if(competitorPowerLevel < 0 && keywordStatus == "hacking" && competitorActive == 1)
                                 {
                                     competitorContentCountHTML = "0";
                                 }
@@ -8502,11 +8512,11 @@ function displayMissionInfo(field,sort)
                                     competitorContentCountHTML = competitorPowerLevel;
                                 }
 
-                                if(competitorAhrefsCompleted === 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                if(competitorAhrefsCompleted == 0 && keywordStatus == "hacking" && competitorActive == 1)
                                 {
                                     competitorMonthlyBacklinksHTML = "";
                                 }
-                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted === 0)
+                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted == 0)
                                 {
                                     competitorContentCountHTML = "";
                                 }
@@ -8517,7 +8527,7 @@ function displayMissionInfo(field,sort)
 
                                 var competitorCheckboxStatus = "";
                                 var seoInsuranceHTML = "";
-                                if(competitorActive === 1 && !disabled)
+                                if(competitorActive == 1 && !disabled)
                                 {
                                     competitorCheckboxStatus = "checked";
                                     competitorsCount++;
@@ -8527,7 +8537,7 @@ function displayMissionInfo(field,sort)
                                     totalBacklinks += parseInt(competitorTotalBacklinks);
                                 }
 
-                                if(thisCompetitor.disabled === 1)
+                                if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
                                     seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
@@ -8544,7 +8554,7 @@ function displayMissionInfo(field,sort)
 "                                                                </tr>\n";
                             }
                             
-                            if(competitorsCount === 0) { competitorsCount = 1;}
+                            if(competitorsCount == 0) { competitorsCount = 1;}
                             
                             //Hidden element to keep track of how many competitors you've selected
                             missionDataHTML += "<input id=\"kwid-"+keywordID+"-competitorsCount\" type=\"hidden\" value=\""+competitorsCount+"\">\n";
@@ -8833,11 +8843,12 @@ function refreshMissionKeyword(returnData,field,keywordID)
         var useBing = projectInfo.useBing;
         var useDefaultConversionRate = projectInfo.useDefaultConversionRate;
         var projectOrdered = projectInfo.projectOrdered;
+        var eCommerce = projectInfo.eCommerce;
 
         var projectTotalContentDiff = Math.max(0,projectInfo.projectTotalContentDiff);
 
         var customerConversionRate = projectInfo.defaultConversionRate;
-        if(monthlyVisitors !== 0 && payingCustomers !== 0 && useDefaultConversionRate !== 1)
+        if(monthlyVisitors != 0 && payingCustomers != 0 && useDefaultConversionRate != 1)
         {
             customerConversionRate = (payingCustomers / monthlyVisitors);
         }
@@ -8848,7 +8859,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
         var keywordNetWorth = (monthlySales - costPerMonth);
 
         var netWorthClass = "green-bg-total";
-        if(keywordNetWorth < 0 || completed !== 1)
+        if(keywordNetWorth < 0 || completed != 1)
         {
             netWorthClass = "red-bg-total";
         }
@@ -8867,22 +8878,22 @@ function refreshMissionKeyword(returnData,field,keywordID)
     {
         var tempEntry = tempKeywordInfo[t];
         var tempStatus = tempEntry.status;
-        if(tempStatus === "hacking")
+        if(tempStatus == "hacking")
         {
             currentlyHacking = true;
         }
-        if(tempStatus === "adding")
+        if(tempStatus == "adding")
         {
             currentlyAdding = true;
         }
 
-        if(tempEntry.keywordID === keywordID)
+        if(tempEntry.keywordID == keywordID)
         {
             keywordCounter = t;
         }
     }
 
-    if(completed !== 1 || currentlyHacking || currentlyAdding)
+    if(completed != 1 || currentlyHacking || currentlyAdding)
         {
             keywordNetWorthString = "<span class=\"loader__dot\" style=\"font-size:15px;color:#fff;\">calculating...</span>";
             //Show the warning message at top, and set the flag to keep checking
@@ -8909,11 +8920,11 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $('#currency-code-2').html(currencyHexCode);
     $('#currency-code-3').html(currencyHexCode);*/
 
-    if(useGoogle === 1 && useBing !== 1)
+    if(useGoogle == 1 && useBing != 1)
         {
             $("#mission-search-engines-1").html("<label>Projections for:</label> google");
         }
-        else if(useGoogle !== 1 && useBing === 1)
+        else if(useGoogle != 1 && useBing == 1)
         {
             $("#mission-search-engines-1").html("<label>Projections for:</label> yahoo/bing");
         }
@@ -8929,6 +8940,14 @@ function refreshMissionKeyword(returnData,field,keywordID)
     if(typeof monthlySales === 'undefined') {monthlySales = 0;}
     if(typeof costPerMonth === 'undefined' || keywordCount == 0) {costPerMonth = 0;}
 
+    var monthlyCustomersText = "MONTHLY CUSTOMERS";
+    var monthlySalesText = "MONTHLY SALES";
+    if(eCommerce != 1)
+    {
+        monthlyCustomersText = "MONTHLY LEADS";
+        monthlySalesText = "POTENTIAL SALES";
+    }
+
     $("#mission-location-1").html("<label>Location:</label> "+geoLocation);
     $("#mission-title-1").html(clientURL);
     $("#mission-title-2").html(clientURL+"<strong class=\"position-relative\" onclick=\"gotoCreateProject('"+projectID+"');\"><i class=\"edit-icon\" title=\"Edit mission\"></i></strong>");
@@ -8936,8 +8955,8 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $("#keyword-count-1").html(keywordCount+" active <span>KEYWORD PHRASES</span>");
     $("#mission-search-volume").html(numberWithCommas(searchVolume)+" <span>MO. SEARCH VOLUME <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The monthly average searches for each keyword\"></i></strong></span>");
     $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>MONTHLY CUSTOMERS</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>MONTHLY SALES</span><span class=\"blue-text\">PROJECTED </span>");
+    $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span>");
+    $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
     $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span>");
     
@@ -8962,11 +8981,11 @@ function refreshMissionKeyword(returnData,field,keywordID)
             var userMonthlyBacklinks = thisEntry.userMonthlyBacklinks;
             var keywordTotalContentDiff = thisEntry.keywordTotalContentDiff;
 
-            if(userMonthlyContent === "-1")
+            if(userMonthlyContent == "-1")
             {
                 userMonthlyContent = "?";
             }
-            if(userMonthlyBacklinks === "-1")
+            if(userMonthlyBacklinks == "-1")
             {
                 userMonthlyBacklinks = "?";
             }
@@ -9003,7 +9022,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
             }
 
-        if(keywordStatus === "hacked")
+        if(keywordStatus == "hacked")
             {
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
@@ -9016,13 +9035,13 @@ function refreshMissionKeyword(returnData,field,keywordID)
                     keywordTotalContentDiffHTML = keywordTotalContentDiff;
                 }
             }
-            else if(keywordStatus === "hacking")
+            else if(keywordStatus == "hacking")
             {
                 topHackContentHTML = "";
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 keywordTotalContentDiffHTML = "?";
             }
-            else if(keywordStatus === "adding")
+            else if(keywordStatus == "adding")
             {
                 topHackContentHTML = "$0 (0 pcs)";
                 topKWNetworth = "";
@@ -9033,7 +9052,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 //It's just been added, not yet hacked
                 shadedString = " disabled";                
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                if(keywordActive === 1)
+                if(keywordActive == 1)
                 {
                     topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
                 }
@@ -9048,13 +9067,13 @@ function refreshMissionKeyword(returnData,field,keywordID)
             var rowBGText = "";
             var keywordToggle = "";
             var progressBarDisplay = "none";
-            if(keywordActive === 1 && (keywordStatus === "hacked" || keywordStatus === "added"))
+            if(keywordActive == 1 && (keywordStatus == "hacked" || keywordStatus == "added"))
             {
                 keywordCheckboxStatus = "checked";
                 rowBGText = "style=\"opacity:1.0;cursor:pointer;\"";                
                 keywordToggle = " onclick=\"togglePanel('"+keywordID+"');\"";
             }
-            else if(keywordActive === 1 && (keywordStatus === "hacking" || keywordStatus === "adding"))
+            else if(keywordActive == 1 && (keywordStatus == "hacking" || keywordStatus == "adding"))
             {
                 keywordCheckboxStatus = "checked";
                 rowBGText = "style=\"opacity:1.0;\"";
@@ -9068,7 +9087,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 progressBarDisplay = "none";
             }
 
-            if(keywordHidden === 1)
+            if(keywordHidden == 1)
             {
                 rowBGText = "style=\"display:none;\"";
             }
@@ -9086,7 +9105,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
         $("#progress-row-"+keywordID).css("display",progressBarDisplay);*/
         
         var revealButtonDisplay = "block";
-        if(keywordStatus === "hacked")
+        if(keywordStatus == "hacked")
         {
             revealButtonDisplay = "none";
         }
@@ -9131,7 +9150,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                             {
                                 var thisCompetitor = thisCompetitorArray[j];
 
-                                if(thisCompetitor.disabled === 1)
+                                if(thisCompetitor.disabled == 1)
                                 {
                                     disabled = true;
                                 }
@@ -9148,7 +9167,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                     var competitorURLShort = competitorURL.substring(0,60);
                                     if(competitorURL.length > 60) { competitorURLShort += "..."; }
 
-                                if(competitorAhrefsStarted === 0 && competitorActive === 1)
+                                if(competitorAhrefsStarted == 0 && competitorActive == 1)
                                 {
                                     unhackedCompetitorExists = true;
                                 }
@@ -9161,7 +9180,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
                                 var competitorContentCountHTML = "";
                                 var competitorMonthlyBacklinksHTML = "";
-                                if(competitorPowerLevel < 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                if(competitorPowerLevel < 0 && keywordStatus == "hacking" && competitorActive == 1)
                                 {
                                     competitorContentCountHTML = "0";
                                 }
@@ -9174,11 +9193,11 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                     competitorContentCountHTML = competitorPowerLevel;
                                 }
 
-                                if(competitorAhrefsCompleted === 0 && keywordStatus === "hacking" && competitorActive === 1)
+                                if(competitorAhrefsCompleted == 0 && keywordStatus == "hacking" && competitorActive == 1)
                                 {
                                     competitorMonthlyBacklinksHTML = "";
                                 }
-                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted === 0)
+                                else if(competitorMonthlyBacklinks < 0 || competitorAhrefsStarted == 0)
                                 {
                                     competitorContentCountHTML = "";
                                 }
@@ -9189,7 +9208,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 
                                 var competitorCheckboxStatus = "";
                                 var seoInsuranceHTML = "";
-                                if(competitorActive === 1 && !disabled)
+                                if(competitorActive == 1 && !disabled)
                                 {
                                     competitorCheckboxStatus = "checked";
                                     competitorsCount++;
@@ -9199,7 +9218,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                     totalBacklinks += parseInt(competitorTotalBacklinks);
                                 }
 
-                                if(thisCompetitor.disabled === 1)
+                                if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
                                     seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
@@ -9207,7 +9226,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+"> </td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"> </td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
@@ -9216,7 +9235,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                </tr>\n";
                             }
                             
-                            if(competitorsCount === 0) { competitorsCount = 1;}
+                            if(competitorsCount == 0) { competitorsCount = 1;}
                             
                             //Hidden element to keep track of how many competitors you've selected
                             missionDataHTML += "<input id=\"kwid-"+keywordID+"-competitorsCount\" type=\"hidden\" value=\""+competitorsCount+"\">\n";
