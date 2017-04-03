@@ -1865,7 +1865,7 @@ width: 100%;}
   margin-right:-4px;
 }
 
-.tooltip-hover, .tooltip-hover:hover {color:#000;cursor:pointer;}
+.tooltip-hover, .tooltip-hover:hover {color:#000;cursor:pointer;border-radius:0;}
 .tooltip-hover + .tooltip > .tooltip-inner { text-align:left; }
 
 .new-mission-background {background-image: url("../images/black-eagle-icon.png");background-position: center 4px;background-repeat: no-repeat;background-size: 100% auto;border: medium none !important;height: 40px;margin-right: 0px !important;margin-top: -13px !important;padding: 0 !important;position: relative;width: 45px;}

@@ -1650,7 +1650,7 @@ function sortKeywordCompetitors(selectedKeywordID,field)
             if(thisCompetitor.disabled == 1)
             {
                 competitorCheckboxStatus = " disabled";
-                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
             }
             
             //if(competitorsCount == 0) { competitorsCount = 1;}
@@ -2560,7 +2560,7 @@ console.log(projectOrdered);
             if(thisCompetitor.disabled == 1)
             {
                 competitorCheckboxStatus = " disabled";
-                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
             }
             //if(competitorsCount == 0) { competitorsCount = 1;}
             
@@ -3290,7 +3290,7 @@ function refreshProjectInfo(keywordCounter)
             if(thisCompetitor.disabled == 1)
             {
                 competitorCheckboxStatus = " disabled";
-                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
             }
             
             /*if(competitorID == origCompetitorID && competitorActive != origCompetitorChecked)
@@ -5760,7 +5760,7 @@ function displayKeywordAccordian(keywordID,keywordCounter)
             if(thisCompetitor.disabled == 1)
             {
                 competitorCheckboxStatus = " disabled";
-                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
             }
             //if(competitorsCount == 0) { competitorsCount = 1;}
             
@@ -6743,7 +6743,7 @@ function refreshKeywordInfo(returnData,field,keywordID)
             if(thisCompetitor.disabled == 1)
             {
                 competitorCheckboxStatus = " disabled";
-                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
             }
             //if(competitorsCount == 0) { competitorsCount = 1;}
             
@@ -8540,7 +8540,7 @@ function displayMissionInfo(field,sort)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
@@ -9221,7 +9221,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:25px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=

@@ -1279,3 +1279,5 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.tooltip.top .tooltip-inner {border-radius:0;}
