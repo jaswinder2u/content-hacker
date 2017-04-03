@@ -152,7 +152,7 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .mission-heading {align-items: center;background-color: #e6e7e8;display: flex;float: left;margin: 15px 0 0;padding: 10px;width: 100%;}
 
-.mission-heading label {color: #000;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;text-align: left;width: auto;align-self: center;}
+.mission-heading label {color: #000;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;text-align: left;width: auto;align-self: center;height:auto; }
 
 .mission-heading a.view-mission-link {color: #005cb8;float: right;font-family: "Roboto",sans-serif;font-size: 12px;font-weight: bold;line-height: normal;margin: 0 0 0 auto;padding: 0;text-align: left;text-decoration: underline;width: auto;}
 
