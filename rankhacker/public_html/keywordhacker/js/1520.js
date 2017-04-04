@@ -7008,25 +7008,27 @@ function addToCart(keywordID)
             setTimeout(function(){
                     $("#project-add-to-cart").attr("src","images/cart-inactive.png");
                     $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+                    
+                    var jsonData = $("#json").val();
+                    var info = JSON.parse(jsonData);
+                    var keywordInfo = info.keywordData;
+                    for(var i=0; i<keywordInfo.length; i++)
+                    {
+                        var thisEntry = keywordInfo[i];
+                        var thisKeywordID = thisEntry.keywordID;
+                        if($("#cart-icon-"+thisKeywordID).length)
+                        {
+                            //$("#cart-icon-"+thisKeywordID).css("opacity","0.25");
+                            $("#cart-icon-"+thisKeywordID).attr("src","images/cart-inactive.png");
+                            $("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+                        }
+                    }
+                    
+                    //Hide all of the competitor table carts
+                    $(".keyword-cart").hide();
+                    
                 }, 1500);
 
-            //Hide all of the competitor table carts
-            $(".keyword-cart").hide();
-
-            var jsonData = $("#json").val();
-            var info = JSON.parse(jsonData);
-            var keywordInfo = info.keywordData;
-            for(var i=0; i<keywordInfo.length; i++)
-            {
-                var thisEntry = keywordInfo[i];
-                var thisKeywordID = thisEntry.keywordID;
-                if($("#cart-icon-"+thisKeywordID).length)
-                {
-                    //$("#cart-icon-"+thisKeywordID).css("opacity","0.25");
-                    $("#cart-icon-"+thisKeywordID).attr("src","images/cart-inactive.png");
-                    $("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
-                }
-            }
             
             $.ajax({url: restURL, data: {'command':'addProjectContentToCart','username':username,'projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
@@ -7050,6 +7052,7 @@ function addToCart(keywordID)
             //$("#cart-icon-"+keywordID).css("opacity","0.25");
             $("#cart-icon-"+keywordID).attr("src","images/cart-inactive.png");
             $("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+            
             /*setTimeout(function(){
                 $("#cart-icon-"+keywordID).attr("src","images/cart-inactive.png");
                 $("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
@@ -8384,6 +8387,7 @@ function displayMissionInfo(field,sort)
                 {
                     keywordTotalContentDiffHTML = keywordTotalContentDiff;
                 }
+                keywordCartDisplay = "block";
             }
             else if(keywordStatus == "hacking")
             {
@@ -9091,6 +9095,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 {
                     keywordTotalContentDiffHTML = keywordTotalContentDiff;
                 }
+                keywordCartDisplay = "block";
             }
             else if(keywordStatus == "hacking")
             {
