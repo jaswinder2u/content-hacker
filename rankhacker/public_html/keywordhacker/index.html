@@ -157,7 +157,7 @@
 
 				<form class="try-competitor-form">
 					<label>YOU’LL BE ON YOUR WAY TO OUTRANKING YOUR COMPETITORS IN NO TIME.</label>
-					<input type="email" id="user-email-1" required class="rh-storefornt-input" placeholder="VALIDATE EMAIL ADDRESS">
+					<input type="email" id="user-email-1" required class="rh-storefornt-input" placeholder="VALIDATE EMAIL ADDRESS" onblur="showPlaceholder('user-email-1','VALIDATE EMAIL ADDRESS');" onclick="hidePlaceholder('user-email-1');">
                                         <a class="rh-storefornt-btn" onclick="registerUser1(event);" id="try-it-for-free-button"><div id="try-it-for-free-button-text">TRY IT FOR FREE</div></a>
 				</form>
 			</div>
@@ -192,7 +192,7 @@
 		<div class="col-sm-6 text-center step-image" > <a class="fancybox" href="images/step1.jpg" data-fancybox-group="gallery" title="Step 1"><img src="images/step1.jpg" alt=""/></a> </div>
 		<div class="col-sm-6 steps-info-section">
 			<h3 class="step-title"><span class="step-no">1</span>PERFORM KEYWORD RESEARCH</h3>
-			<h4 class="step-subtitle">Import a list of keywords or select from Rank Hackers suggestions.</h4>
+			<h4 class="step-subtitle">Import a list of keywords or select from Rank Hacker's suggestions.</h4>
 			<p>We’ll take your current conversion data plus keywords you want to rank organically for and build your mission.</p>
 		</div>
 	</div>
@@ -205,7 +205,7 @@
 			<div class="col-sm-6 steps-info-section">
 				<h3 class="step-title"><span class="step-no">2</span>SELECT PHRASES</h3>
 				<h4 class="step-subtitle">Choose phrases that have the highest monthly ROI.</h4>
-				<p>We call this Keyword Networth. Organic web traffic, online sales, and budget alocation are calculated to project true ROI on phrases.</p>
+				<p>We call this Keyword Networth<sup style="font-size:12px;">TM</sup>. Organic web traffic, online sales, and budget alocation are calculated to project true ROI on phrases.</p>
 			</div>
 		</div>
     </div>
@@ -215,8 +215,8 @@
 		<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step3.jpg" data-fancybox-group="gallery" title="Step 3"><img src="images/step3.jpg" alt=""/></a></div>
 		<div class="col-sm-6 steps-info-section">
 			<h3 class="step-title"><span class="step-no">3</span>REVEAL STRATEGIES</h3>
-			<h4 class="step-subtitle">Reveal your competitors monthly publicaion strategy and generate your content goal.</h4>
-			<p>Revealing the amount of off-page content built by competitors gives you an edge over the competition.</p>
+			<h4 class="step-subtitle">Reveal your competitors monthly publication strategy and generate your content goal.</h4>
+			<p>Revealing the amount of off-page content built by your competitors gives you an edge over them.</p>
 		</div>
 		</div>
     </div>
@@ -237,7 +237,7 @@
 		<div class="col-sm-6 text-center step-image"> <a class="fancybox" href="images/step5.jpg" data-fancybox-group="gallery" title="Step 5"><img src="images/step5.jpg" alt=""/></a> </div>
 		<div class="col-sm-6 steps-info-section">
 			<h3 class="step-title"><span class="step-no">5</span>MANAGE CONTENT ORDERS</h3>
-			<h4 class="step-subtitle">Assign content types, provide writing direction, and even add Project Management.</h4>
+			<h4 class="step-subtitle">Assign content types, provide writing direction, and even add project management.</h4>
 			<p>Rank Hacker will do the rest and send you the content once it’s ready!</p>
 		</div>
   	</div>
@@ -277,7 +277,7 @@
 			<div class="container">
 				<h2 class="rh-storefornt-heading">Free Beta Access:</h2>
 				<form class="try-competitor-form">
-					<input type="email" id="user-email-2" required class="rh-storefornt-input" placeholder="EMAIL ADDRESS">
+					<input type="email" id="user-email-2" required class="rh-storefornt-input" placeholder="EMAIL ADDRESS" onblur="showPlaceholder('user-email-2','EMAIL ADDRESS');" onclick="hidePlaceholder('user-email-2');">
                                         <a class="rh-storefornt-btn" onclick="registerUser2(event);" id="get-verified-button"><div id="get-verified-button-text">GET VERIFIED</div></a>
 					<!--<p>ARE YOU AN AGENCY? <a href="#">CLICK HERE</a></p>-->
 				</form>
@@ -533,7 +533,7 @@
           if(top < getPageScroll(document,window)[1])
           {
               $('#seo-strategies-Carousel').carousel({
-                interval: 12000
+                interval: 24000
                 },0);
           }
           else

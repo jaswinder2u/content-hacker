@@ -8037,7 +8037,7 @@ function displayMissionInfo(field,sort)
         }
         else
         {
-            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth);
+            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth)+"<div style=\"text-align:right;float:right;clear:both;display:inline-block;color:#fff;font-size:12px;font-weight:bold;margin-top:3px;\">/mo</div>";
         }
         
         var activeString = "";
@@ -8123,7 +8123,7 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span></h2><i class=\"addincart-icon\" id=\"project-add-to-cart\"> </i>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
-                                            "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span></h2>"+
+                                            "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH<sup style=\"font-size:8px;\">TM</sup> <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span></h2>"+
                                         "</td>"+
                                     "</tr>"+
 
@@ -8912,7 +8912,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
         }
         else
         {
-            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth);
+            keywordNetWorthString = "<sup>"+currencyHexCode+"</sup>"+numberWithCommas(keywordNetWorth)+"<div style=\"text-align:right;float:right;clear:both;display:inline-block;color:#fff;font-size:12px;font-weight:bold;margin-top:3px;\">/mo</div>";
         }
 
 
@@ -8957,8 +8957,8 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
-    $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span>");
+    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT COST & GOAL <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
+    $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH<sup style=\"font-size:8px;\">TM</sup> <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span>");
     
 
     //Fill in the keyword data here
@@ -9310,4 +9310,18 @@ function refreshMissionKeyword(returnData,field,keywordID)
     
     $('body').removeClass('wait');
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+}
+
+function hidePlaceholder(elementID)
+{
+    $("#"+elementID).prop("placeholder","");
+}
+
+function showPlaceholder(elementID,text)
+{
+    var currVal = $("#"+elementID).val();
+    if(currVal.trim() == "")
+    {
+        $("#"+elementID).prop("placeholder",text);
+    }
 }
