@@ -1936,7 +1936,6 @@ function displayProjectInfo(field,sort)
         
         var cartOpacity = "1.0";
         var cartOnclick = "addToCart('-1');";
-console.log(projectOrdered);
         if(projectOrdered)
         {
             cartOpacity = "0.25";
@@ -7001,11 +7000,18 @@ function addToCart(keywordID)
         if(keywordID == -1)
         {
             //Show the added! text
+            flashCart();
             flashAddedMessage(window.event);
 
             //Disable the top add to cart icon, and all of the keyword add to cart icons
-            $("#project-add-to-cart").css("opacity","0.25");
-            $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+            //$("#project-add-to-cart").css("opacity","0.25");
+            setTimeout(function(){
+                    $("#project-add-to-cart").attr("src","images/cart-inactive.png");
+                    $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+                }, 1500);
+
+            //Hide all of the competitor table carts
+            $(".keyword-cart").hide();
 
             var jsonData = $("#json").val();
             var info = JSON.parse(jsonData);
@@ -7016,7 +7022,8 @@ function addToCart(keywordID)
                 var thisKeywordID = thisEntry.keywordID;
                 if($("#cart-icon-"+thisKeywordID).length)
                 {
-                    $("#cart-icon-"+thisKeywordID).css("opacity","0.25");
+                    //$("#cart-icon-"+thisKeywordID).css("opacity","0.25");
+                    $("#cart-icon-"+thisKeywordID).attr("src","images/cart-inactive.png");
                     $("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
                 }
             }
@@ -7026,8 +7033,9 @@ function addToCart(keywordID)
 
                     if(info.status == "success")
                     {
-                        refreshCartDropdown();
-                        
+                        setTimeout(function(){
+                            refreshCartDropdown();
+                        }, 1500);
                     }
                 }
             });
@@ -7035,11 +7043,18 @@ function addToCart(keywordID)
         else
         {
             //Show the added! text
+            flashCart();
             flashAddedMessage(window.event);
 
             //Disable this particular add to cart icon
-            $("#cart-icon-"+keywordID).css("opacity","0.25");
+            //$("#cart-icon-"+keywordID).css("opacity","0.25");
+            $("#cart-icon-"+keywordID).attr("src","images/cart-inactive.png");
             $("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+            /*setTimeout(function(){
+                $("#cart-icon-"+keywordID).attr("src","images/cart-inactive.png");
+                $("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
+            }, 1500);*/
+            
             
             //Go through the rest of the mission; if no other keywords are available to add, disable the project-level one too
             var disable = true;
@@ -7052,17 +7067,25 @@ function addToCart(keywordID)
                 var thisKeywordID = thisEntry.keywordID;
                 if($("#cart-icon-"+thisKeywordID).length)
                 {
-                    var thisOpacity = $("#cart-icon-"+thisKeywordID).css("opacity");
-                    if(thisOpacity == 1)
+                    var thisSrc = $("#cart-icon-"+keywordID).attr("src");
+                    var loc = thisSrc.indexOf("-static");
+                    if(loc > -1)
                     {
                         disable = false;
                     }
+                    /*var thisOpacity = $("#cart-icon-"+thisKeywordID).css("opacity");
+                    if(thisOpacity == 1)
+                    {
+                        disable = false;
+                    }*/
                 }
             }
             if(disable)
             {
-                $("#project-add-to-cart").css("opacity","0.25");
+                //$("#project-add-to-cart").css("opacity","0.25");
+                $("#project-add-to-cart").attr("src","images/cart-inactive.png");
                 $("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
+                
             }
             
             $.ajax({url: restURL, data: {'command':'addKeywordContentToCart','username':username,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
@@ -7070,7 +7093,9 @@ function addToCart(keywordID)
 
                     if(info.status == "success")
                     {
-                        refreshCartDropdown();
+                        setTimeout(function(){
+                            refreshCartDropdown();
+                        }, 1500);
                     }
                 }
             });
@@ -7100,11 +7125,11 @@ function refreshCartDropdown()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            iconSrc = "../keywordhacker/images/cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -7393,11 +7418,11 @@ function refreshCartDropdownForCalculator()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            iconSrc = "../keywordhacker/images/cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -7432,11 +7457,11 @@ function refreshCartDetails()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart_empty.png";
+                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart_full.png";
+                            iconSrc = "../keywordhacker/images/cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -8083,6 +8108,14 @@ function displayMissionInfo(field,sort)
             }
         }*/
     
+        var cartSrc = "images/cart-static.png";
+        var cartOnclick = "addToCart('-1');";
+        if(projectOrdered)
+        {
+            cartSrc = "images/cart-inactive.png";
+            cartOnclick = "javascript:void(0);";
+        }
+    
         var monthlyCustomersText = "MONTHLY CUSTOMERS";
         var monthlySalesText = "MONTHLY SALES";
         if(eCommerce != 1)
@@ -8120,7 +8153,7 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\"  style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
-                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span></h2><i class=\"addincart-icon\" id=\"project-add-to-cart\"> </i>"+
+                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><div class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span>CONTENT GOAL & COST <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span></h2>"+
                                         "</td>"+
                                         "<td class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
                                             "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH<sup style=\"font-size:8px;\">TM</sup> <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span></h2>"+
@@ -8312,14 +8345,17 @@ function displayMissionInfo(field,sort)
             var keywordNetWorth = thisEntry.keywordNetWorth;
             var keywordStatus = thisEntry.status;
             var numCartEntries = thisEntry.numCartEntries;
-            var cartOpacity = "1.0";
+            
+            var keywordCartDisplay = "block";
+            var cartSrc = "images/cart-static.png";
             var cartOnclick = "addToCart('"+keywordID+"');";
             if(numCartEntries>0)
             {
-                cartOpacity = "0.25";
+                cartSrc = "images/cart-inactive.png";
                 cartOnclick = "javascript:void(0);";
+                keywordCartDisplay = "none";
             }
-
+            
             var keywordTotalContentDiffHTML = "";
             var topKWNetworth = "";
             var topHackContentHTML = "";
@@ -8339,7 +8375,7 @@ function displayMissionInfo(field,sort)
             if(keywordStatus == "hacked")
             {
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span>";
                 if(keywordTotalContentDiff >= 0)
                 {
                     keywordTotalContentDiffHTML = "+" + keywordTotalContentDiff;
@@ -8354,12 +8390,14 @@ function displayMissionInfo(field,sort)
                 topHackContentHTML = "";
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 keywordTotalContentDiffHTML = "?";
+                keywordCartDisplay = "none";
             }
             else if(keywordStatus == "adding")
             {
                 topHackContentHTML = "$0 (0 pcs)";
                 topKWNetworth = "";
                 keywordTotalContentDiffHTML = "?";
+                keywordCartDisplay = "none";
             }
             else
             {
@@ -8369,6 +8407,7 @@ function displayMissionInfo(field,sort)
                 if(keywordActive == 1)
                 {
                     topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    keywordCartDisplay = "none";
                 }
                 else
                 {
@@ -8415,7 +8454,7 @@ function displayMissionInfo(field,sort)
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
-"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" style=\"cursor:default;\">"+topHackContentHTML+"</div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div id=\"kw-"+keywordID+"-content-goal\" class=\"equal-sign\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></div></td>\n" +
 "                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
 "                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n" +
 "                                    </tr>\n" +
@@ -8591,7 +8630,7 @@ function displayMissionInfo(field,sort)
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
-"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"</td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" style=\"display:"+keywordCartDisplay+";\" onclick=\"addToCart('"+keywordID+"');\"></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                            </tfoot>\n" +
 "                                                        </table>\n" +
@@ -8746,7 +8785,14 @@ function displayMissionInfo(field,sort)
         $("body").tooltip({ selector: '[data-toggle=tooltip]' });
         
         //Set the styling and JS for the project-level cart
-        var cartOpacity = "1.0";
+        /*var cartSrc = "images/cart-static.png";
+        var cartOnclick = "addToCart('"+keywordID+"');";
+        if(projectOrdered>0)
+        {
+            cartSrc = "images/cart-inactive.png";
+            cartOnclick = "javascript:void(0);";
+        }*/
+        /*var cartOpacity = "1.0";
         var cartOnclick = "addToCart('-1');";
 
         if(projectOrdered)
@@ -8757,7 +8803,7 @@ function displayMissionInfo(field,sort)
         var newClick = new Function(cartOnclick);
         $("#project-add-to-cart").attr("onclick","").click(newClick);
         $("#project-add-to-cart").css("opacity",cartOpacity);
-        
+        */
         //Load the sorttable script
         $.getScript("js/sorttable.js", function(){});
         
@@ -8940,6 +8986,14 @@ function refreshMissionKeyword(returnData,field,keywordID)
     if(typeof monthlySales === 'undefined') {monthlySales = 0;}
     if(typeof costPerMonth === 'undefined' || keywordCount == 0) {costPerMonth = 0;}
 
+    var cartSrc = "images/cart-static.png";
+    var cartOnclick = "addToCart('-1');";
+    if(projectOrdered)
+    {
+        cartSrc = "images/cart-inactive.png";
+        cartOnclick = "javascript:void(0);";
+    }
+
     var monthlyCustomersText = "MONTHLY CUSTOMERS";
     var monthlySalesText = "MONTHLY SALES";
     if(eCommerce != 1)
@@ -8957,7 +9011,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><span>CONTENT COST & GOAL <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
+    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><div class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span>CONTENT COST & GOAL <strong class=\"position-relative\"><i class=\"info-icon\" title=\"Target amount of monthly content and its cost\"></i></strong></span>");
     $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span>KEYWORD NET WORTH<sup style=\"font-size:8px;\">TM</sup> <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Projected return on your invested marketing dollars for this keyword\"></i></strong></span>");
     
 
@@ -9002,14 +9056,17 @@ function refreshMissionKeyword(returnData,field,keywordID)
             var keywordNetWorth = thisEntry.keywordNetWorth;
             var keywordStatus = thisEntry.status;
             var numCartEntries = thisEntry.numCartEntries;
-            var cartOpacity = "1.0";
+            
+            var keywordCartDisplay = "block";
+            var cartSrc = "images/cart-static.png";
             var cartOnclick = "addToCart('"+keywordID+"');";
             if(numCartEntries>0)
             {
-                cartOpacity = "0.25";
+                cartSrc = "images/cart-inactive.png";
                 cartOnclick = "javascript:void(0);";
+                keywordCartDisplay = "none";
             }
-        
+            
             var keywordTotalContentDiffHTML = "";
             var topKWNetworth = "";
             var topHackContentHTML = "";
@@ -9025,7 +9082,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
         if(keywordStatus == "hacked")
             {
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
-                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span><span style=\"float:right;text-align:right;clear:right;padding-right:5px;\"><img src=\"images/add-to-cart-icon.png\" id=\"cart-icon-"+keywordID+"\" style=\"margin-left:10px;margin-top:-5px;height:20px;width:auto;cursor:pointer;opacity:"+cartOpacity+";\" onclick=\""+cartOnclick+"\"></span>";
+                topHackContentHTML = "<span style=\"font-size:12px;color:#808080;cursor:pointer;\" onclick=\"togglePanel('"+keywordID+"');\">"+currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)</span>";
                 if(keywordTotalContentDiff >= 0)
                 {
                     keywordTotalContentDiffHTML = "+" + keywordTotalContentDiff;
@@ -9040,12 +9097,14 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 topHackContentHTML = "";
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 keywordTotalContentDiffHTML = "?";
+                keywordCartDisplay = "none";
             }
             else if(keywordStatus == "adding")
             {
                 topHackContentHTML = "$0 (0 pcs)";
                 topKWNetworth = "";
                 keywordTotalContentDiffHTML = "?";
+                keywordCartDisplay = "none";
             }
             else
             {
@@ -9055,10 +9114,12 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 if(keywordActive == 1)
                 {
                     topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    keywordCartDisplay = "none";
                 }
                 else
                 {
-                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    //topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
                 }
                 keywordTotalContentDiffHTML = "?";
             }
@@ -9091,6 +9152,9 @@ function refreshMissionKeyword(returnData,field,keywordID)
             {
                 rowBGText = "style=\"display:none;\"";
             }
+        
+        //Update the summary info based on ids
+        $("#kw-"+keywordID+"-content-goal").html(topHackContentHTML+"<div class=\"mission-cart-div\"><img src=\""+cartSrc+"\" style=\"display:"+keywordCartDisplay+";\" id=\"cart-icon-"+keywordID+"\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div>");
         
         /*var summaryRowHTML = "<td class=\"checkbox-ot\"><input class=\"\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
 "                                        <td class=\"project-name-ot\" "+keywordToggle+"><a class=\"\">"+keyword+"</a>"+errorTriangleHTML+"</td>\n" +
@@ -9272,7 +9336,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
-"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"</td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" style=\"display:"+keywordCartDisplay+";\" onclick=\"addToCart('"+keywordID+"');\"></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                            </tfoot>\n" +
 "                                                        </table>\n" +
@@ -9324,4 +9388,19 @@ function showPlaceholder(elementID,text)
     {
         $("#"+elementID).prop("placeholder",text);
     }
+}
+
+function flashCart()
+{
+    $("#cart-image").fadeOut(0,function(){
+        $("#cart-image").attr("src","images/cart-hover.png").fadeIn(0,function(){
+            $("#cart-image").addClass("shadow-filter");
+            $("#cart-image").fadeOut(750,function(){
+                $("#cart-image").removeClass("shadow-filter");
+                $("#cart-image").attr("src","images/cart-static.png").fadeIn(750,function(){
+                    
+                });
+            });
+        });
+    });
 }

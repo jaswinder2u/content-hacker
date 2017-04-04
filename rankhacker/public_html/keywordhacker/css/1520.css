@@ -1281,3 +1281,34 @@ input::-webkit-inner-spin-button {
 }
 
 .tooltip.top .tooltip-inner {border-radius:0;}
+
+.mission-cart-icon {
+    width: auto;
+    height: 22px;
+    margin-left:10px;
+    margin-top:-2px;
+    cursor:pointer;
+}
+
+.mission-cart-div {
+    clear: both;
+    display: inline-block;
+    float: right;
+}
+
+.white-shadow
+{
+    -moz-box-shadow: 0 0 5px #fff;
+    -webkit-box-shadow: 0 0 5px #fff;
+    box-shadow: 0px 0px 5px #fff;
+}
+
+.shadow-filter {
+	-webkit-filter: drop-shadow(0px 0px 5px rgba(255,255,255,1.0));
+	-webkit-transition: all 0.75s linear;
+	-o-transition: all 0.75s linear;
+	transition: all 0.75s linear;
+	
+}
+
+.keyword-cart {z-index:999;cursor:pointer;display: inline-block;height: 20px;left: 0;margin-left: 0;position: relative;top: 4px;width: auto; font-weight:normal;}

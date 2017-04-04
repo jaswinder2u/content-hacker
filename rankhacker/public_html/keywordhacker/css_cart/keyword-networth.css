@@ -239,7 +239,7 @@ position: absolute;right: 10px;top: 0;}
 .keyword-networth-project td.price-widthbox.equal-sign {padding-right: 25px;}
 
 .reveal-mark {cursor:pointer;position: absolute !important;font-size: 18px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 40%;right:2%;
--ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
+-ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);z-index:999;}
 
 .reveal-mark-small {cursor:pointer;position: absolute !important;font-size: 8px;color: #BE1E2D !important;border: 1px solid #BE1E2D;padding: 1px 5px;left:10%; margin-top:-7px;
 -ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
