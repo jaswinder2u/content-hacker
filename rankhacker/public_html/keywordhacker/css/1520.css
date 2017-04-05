@@ -1294,6 +1294,7 @@ input::-webkit-inner-spin-button {
     clear: both;
     display: inline-block;
     float: right;
+    z-index: 999;
 }
 
 .white-shadow
@@ -1312,3 +1313,5 @@ input::-webkit-inner-spin-button {
 }
 
 .keyword-cart {z-index:999;cursor:pointer;display: inline-block;height: 20px;left: 0;margin-left: 0;position: relative;top: 4px;width: auto; font-weight:normal;}
+
+.opaque {background-color:#f1f1f2;};
