@@ -2376,7 +2376,7 @@ function checkProjectDone()
                                 //Also show the message at the top
                                 $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("error-message").addClass("success-message");
                                 $("#message-header").html("<img src=\"images/green-check.png\" class=\"message-icon\"/>YOUR REPORT IS READY");
-                                $("#message-content").html("We're done hacking your competitors' strategies. Check out the data below to see what they're up to!");
+                                $("#message-content").html("We're done hacking your competitors' strategies. Refresh your browser to see what they're up to!");
                                 $("#check-project-done-flag").val(0);
                                 
                                 //Update the keyword net-worth text to say "ready" in static green
@@ -4778,7 +4778,7 @@ function displayMissionInfo(field,sort)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:27px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
@@ -4817,7 +4817,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 you-row\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
@@ -5484,7 +5484,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;padding-right:5px;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:18px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:27px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
@@ -5523,7 +5523,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 you-row\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
