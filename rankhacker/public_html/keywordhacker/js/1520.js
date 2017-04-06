@@ -4298,13 +4298,13 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title\" id=\"mission-search-volume\">"+numberWithCommas(searchVolume)+" <span class=\"info-icon-2\" title=\"The monthly average searches for each keyword\">MO. SEARCH VOLUME</span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-monthly-visitors\" class=\"price-widthbox\" onclick=\"displayMissionInfo('monthlyVisitors',true);\">"+
-                                            "<h2 class=\"table-title\" id=\"mission-monthly-visitors\">"+numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                            "<h2 class=\"table-title\" id=\"mission-monthly-visitors\">"+numberWithCommas(incomingTraffic)+"<span class=\"info-icon-2\" title=\"Applying each keyword's average Click Through Rate to the Monthly Search Volume, based on selected competitors\">MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-monthly-customers\" class=\"price-widthbox\" onclick=\"displayMissionInfo('monthlyCustomers',true);\">"+
-                                            "<h2 class=\"table-title\" id=\"mission-monthly-customers\">"+numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                            "<h2 class=\"table-title\" id=\"mission-monthly-customers\">"+numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span class=\"info-icon-2\" title=\"Applying your website's current Conversion Rate to Projected Monthly Visitors\">"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-monthly-sales\" class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('monthlySales',true);\">"+
-                                            "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
+                                            "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span class=\"info-icon-2\" title=\"Projected Customers multiplied by the monetary value of one paying customer\">"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-cost-per-month\" class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
                                             "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
@@ -4622,7 +4622,7 @@ function displayMissionInfo(field,sort)
 
             //Add the summary row for the accordian HTML
             missionDataHTML += "<tr class=\"project-head panel sortable-row\" "+hideText+" id=\"kw-summary-row-"+keywordID+"\" data-question-id=\""+keywordID+"\">\n" +
-"                                        <td class=\"checkbox-ot"+checkboxBGClass+"\"><input class=\"\" style=\"opacity: 1.0 !important; z-index:999;\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
+"                                        <td class=\"checkbox-ot"+checkboxBGClass+"\"><input class=\"magic-checkbox\" style=\"opacity: 1.0 !important; z-index:999;\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"><label for=\"chk-content-all-kw"+keywordID+"\"</td>\n" +
 "                                        <td class=\"project-name-ot\" "+keywordToggle+" "+rowBGText+"><a class=\"\" "+anchorCursorStyle+">"+keyword+"</a>"+errorTriangleHTML+"</td>\n" +
 "                                        <td data-label=\"MO. SEARCH VOLUME\" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+">"+numberWithCommas(searchVolume)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
@@ -4659,11 +4659,11 @@ function displayMissionInfo(field,sort)
 "                                                            <thead>\n" +
 "                                                                <tr class=\"table-heading2\">\n" +
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Rank</th>\n" +
-"                                                                    <th class=\"col-sm-7 text-left\">URL</th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">CTR <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword\"></i></strong></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Total Backlinks <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The total number of backlinks this competitor has\"></i></strong></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Monthly Content <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\"></i></strong></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-7 text-left\"><span>URL<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +
 "                                                                </tr>\n"+
 "                                                            </thead>\n"+
 "                                                            <tbody>\n";
@@ -4753,12 +4753,12 @@ function displayMissionInfo(field,sort)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:27px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:-3px;width:27px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"> </td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label> </td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
@@ -5365,12 +5365,11 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                            <thead>\n" +
 "                                                                <tr class=\"table-heading2\">\n" +
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Rank</th>\n" +
-"                                                                    <th class=\"col-sm-7 text-left\">URL</th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">CTR <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"Click Through Rate for the ranking position and current keyword\"></i></strong></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Total Backlinks <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The total number of backlinks this competitor has\"></i></strong></th>\n" +
-"                                                                    <th class=\"col-sm-1 text-center\">Monthly Content <br/><strong class=\"position-relative\"><i class=\"info-icon\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\"></i></strong></th>\n" +
-"                                                                </tr>\n"+
+"                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-7 text-left\"><span>URL<br/>&nbsp;</th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +"                                                                </tr>\n"+
 "                                                            </thead>\n"+
 "                                                            <tbody>\n";
 
@@ -5459,12 +5458,12 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"\" data-original-title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"width:27px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:-3px;width:27px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"> </td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" id=\"chk-content-all-c"+competitorID+"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label></td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
