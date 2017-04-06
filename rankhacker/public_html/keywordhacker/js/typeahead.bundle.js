@@ -1128,12 +1128,12 @@
                 },
                 input: {
                     position: "relative",
-                    verticalAlign: "top",
+                    verticalAlign: "baseline",
                     backgroundColor: "transparent"
                 },
                 inputWithNoHint: {
                     position: "relative",
-                    verticalAlign: "top"
+                    verticalAlign: "baseline"
                 },
                 menu: {
                     position: "absolute",
@@ -1533,7 +1533,7 @@
         });
         return Input;
         function buildOverflowHelper($input) {
-            return $('<pre aria-hidden="true"></pre>').css({
+            return $('<pre id="project-location-pre" aria-hidden="true"></pre>').css({
                 position: "absolute",
                 visibility: "hidden",
                 whiteSpace: "pre",

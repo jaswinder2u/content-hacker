@@ -42,6 +42,7 @@
     <script src="js/1520.js?v=56"></script>
     <link href="css/1520.css?v=56" rel="stylesheet" id="theme-change">
     <link href="css/spinner.css?v=56" rel="stylesheet" id="theme-change">
+    <link href="css/magic-check.css?v=56" rel="stylesheet" id="theme-change">
     
     <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
@@ -70,6 +71,7 @@
     
     <script>
         function run(){
+            prepareNewWizard();
             loadProjectDashboard(false);
             setInterval(loadProjectDashboard.bind(false), 30000);
         }
@@ -263,7 +265,7 @@
 <!-- Edit project modal -->
 <div id="dimmer" class="dimmer"></div>
 
-<div id="edit-project-window" class="edit-project-window">
+<!--<div id="edit-project-window" class="edit-project-window">
     <input id="edit-project-id" type="hidden" value="0"/>
     
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2" id="setup-box-outer">
@@ -376,7 +378,7 @@
         <div class="project-setup-input row"><span id="edit-project-response" class="col-lg-12" style="text-align:center;"></span></div>
     </div>
     
-</div>
+</div>-->
 
 <div id="delete-project-window" class="delete-project-window">
     <input id="delete-project-id" type="hidden" value="0"/>
@@ -488,6 +490,97 @@
       </footer>
 	  <!--Footer close here-->
 
+<a href="javascript:void(0);" id="side-wizard-rh-eagle"></a>
+	  
+
+<div class="side-wizard-outer">
+    <div class="overflow-scroll">
+            <div class="block-css" style="position: relative;">
+                <div class="side-wizard-image matchheight" style="margin:0 0 -7px 0!important;background-color: #E4E5E6;">.&nbsp;</div>
+                <ul class="nav nav-tabs side-wizard-tabs matchheight">
+                    <li id="basic-tab" class="active" onclick="toggleTab('basic');" style="cursor:pointer;"><a>NEW MISSION SETUP</a></li>
+                    <li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>
+                </ul>
+                <a href="javascript:void(0);" id="side-wizard-close-btn">X</a>
+            </div>
+        <div class="side-wizard-inner">
+            <div class="side-wizard-image">
+            <img src="images/rh-plus-logo.png">
+            </div>
+
+            <div class="side-wizard-content">
+                <div class="tab-content">
+                    <div id="new-mission-setup" class="tab-pane fade in active">
+                        <form class="side-wizard-form">
+                            <h2>We’ll start by gathering some intel on your goal.</h2>
+                            <h4>Customize your goal by clicking within the statement:</h4>
+                            <label class="side-wizard-label">
+                                I’d like
+                                <select class="side-wizard-select" id="e-commerce-selection" onchange="refreshIndustries();">
+                                    <option value="0">my non-ecommerce</option>
+                                    <option value="1">my e-commerce</option>
+                                </select>
+                                <input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/>
+                                which is located in 
+                                <span id="scrollable-dropdown-menu" style="display:inline-block;">
+                                    <input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/>
+                                </span>
+                                 <br>to rank on 
+                                 
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox" id="use-google" value="1" checked="checked" onclick="checkRequiredEngine('google','bing');">
+                                     <label for="use-google" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Google</label></span>
+                                 
+                                 and
+                                       
+                                 <span style="padding-left:5px;"><input type="checkbox" class="magic-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
+                                     <label for="use-bing" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Bing+Yahoo</label></span>
+                                 
+                                 <br>for <span class="keyword-phrases-input">
+                                    <!--<span class="import-keywords fileinput-button pull-right">
+                                        <input type="file" name="File Upload" id="fileupload" accept=".csv" />
+                                    </span>-->
+                                    <input type="hidden" id="keyword-count" value="0"/>
+                                    <input id="new-keyword" type="text" placeholder="Keyword Phrases" class="side-wizard-input"/>
+                                    <span class="import-keywords btn fileinput-button">
+                                        <span>Import Phrases</span>
+                                        <!-- The file input field used as target for the file upload widget -->
+                                        <input type="file" name="File Upload" id="fileupload" accept=".csv" />
+                                    </span>
+                                    <!--<a class="import-keywords" value="">Import Phrases</a>-->
+                                 </span>
+                                <br>targeting <select class="side-wizard-select" id="industry-selection">
+                                    <option value='0'>Select...</option>
+                                </select>in 
+                                <select class="side-wizard-select" id="local-national">
+                                    <option value="local">my city</option>
+                                    <option value="regional" id="metro-option">my metro area</option>
+                                    <option value="national">my country</option>
+                                </select>
+                                and I sell my product/service for<input type="text" placeholder="$" id="ex8SliderVal" class="side-wizard-input dolar-input"/> .
+                            </label>
+                            <span id="advanced-options" style="display:none;">
+                            <h4 class="margin20t margin15b">On average:</h4>
+                            <label class="side-wizard-label">About<input type="text" id="ex6SliderVal" placeholder="" class="side-wizard-input dolar-input"/>visitors land on my website each month.</label>
+                            <label class="side-wizard-label">Of those<input type="text" id="ex7SliderVal" placeholder="" class="side-wizard-input dolar-input"/>convert to actual paying customers.	</label>
+                            <label class="side-wizard-label">It costs me<input type="text" id="ex9SliderVal" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.</label>
+                            </span>
+                            <a onclick="createKeywordHackerProject(event,'2');" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </form>
+                        <div class="wz-reveal-signup">
+                            <!--<h2>Next we’ll reveal their secrets and identify your mission:</h2>
+                            <form class="wz-signup-form">
+                                <input type="text" placeholder="Enter Your Email to Reveal*" class="rh-storefornt-input" />   <button class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <span class="validation-msg">A verification email will sent to confirm email accuracy prior to dashboard access.</span>
+                            </form>
+                            <h3 class="already-registered">ALREADY REGISTERED?<a href="#">LOG IN</a></h3>-->
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+          
 <!-- =========================
      JS SCRIPTS
 ============================== -->
@@ -499,11 +592,114 @@
 <script src="js/jquery.matchHeight-min.js"></script>
 <script src="js/materialize.min.js"></script>
 <script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.csv.js"></script>
 <script src="js/bootstrap-slider.js?v=56"></script>
+
+<!-- TypeAhead js files -->
+<script type="text/javascript" src="js/georankerregions-data.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+
 
 <script type="text/javascript">
     jQuery(function ($) {
         $('.matchheight').matchHeight();
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery('#side-wizard-rh-eagle').on('click', function(){
+    jQuery('.side-wizard-outer').addClass('wizard-show');
+    });
+
+    jQuery('#side-wizard-close-btn').on('click', function(){
+    jQuery('.side-wizard-outer').removeClass('wizard-show');
+    });
+</script>
+
+<script>
+    
+    var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+$('#scrollable-dropdown-menu .typeahead').typeahead(null, {
+  name: 'countries',
+  limit: 20,
+  source: substringMatcher(regions)/*,
+  afterSelect: function(item){
+        console.log("got here");
+        var userLocale = $("#project-location").val();
+        var beginLoc = userLocale.indexOf("[");
+        var endLoc = userLocale.length - 1;
+        var country = userLocale.substring(beginLoc,endLoc);
+        console.log(country);
+  }*/
+});
+
+function validateSelection()
+{
+    var userEntry = $("#project-location").val();
+    if ($.inArray(userEntry, regions) === -1)
+    {
+        $(".typeahead").typeahead('val','');
+    }
+}
+
+$('#scrollable-dropdown-menu .typeahead').on(
+    {
+        'typeahead:selected': function(e, datum) {
+            var beginLoc = datum.indexOf("[")+1;
+            var endLoc = datum.length - 1;
+            var country = datum.substring(beginLoc,endLoc);
+            var countryLoc = countries.indexOf(country);
+            var currencyCode = currencies[countryLoc];
+            $("#currency-code-1").html(currencyCode);
+            $("#currency-code-2").html(currencyCode);
+        },
+        'typeahead:autocompleted': function(e, datum) {
+            var beginLoc = datum.indexOf("[")+1;
+            var endLoc = datum.length - 1;
+            var country = datum.substring(beginLoc,endLoc);
+            var countryLoc = countries.indexOf(country);
+            var currencyCode = currencies[countryLoc];
+            $("#currency-code-1").html(currencyCode);
+            $("#currency-code-2").html(currencyCode);
+        }
+}); 
+    
+    
+    jQuery(document).ready(function () {
+        
+        $('[data-toggle="tooltip"]').tooltip();
+        refreshIndustries();
+
+        // The event listener for the file upload
+        document.getElementById('fileupload').addEventListener('change', upload, false);
+
+        
+        // ADD Comma after three numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+        }
+
     });
 </script>
 
@@ -593,71 +789,6 @@
         });
 
         
-        //range slider custom js
-        $("#ex6").slider();
-        $("#ex6").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex6 = numeral(slideEvt.value).format('0,0');
-            //var slider_num_ex6 = tooltip-inner;
-            $("#ex6SliderVal").val(slider_num_ex6);
-        });
-        $("#ex6SliderVal").change(function(){
-            var sliderVal = parseInt($("#ex6SliderVal").val().replace(",",""));
-            if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
-            $("#ex6").slider({
-                value: sliderVal
-                });
-            $("#ex6").slider('refresh');
-            $("#ex6SliderVal").val(numberWithCommas(sliderVal));
-        });
-
-
-        $("#ex7").slider();
-        $("#ex7").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex7 = numeral(slideEvt.value).format('0,0');
-            $("#ex7SliderVal").val(slider_num_ex7);
-        });
-        $("#ex7SliderVal").change(function(){
-            var sliderVal = parseInt($("#ex7SliderVal").val().replace(",",""));
-            if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
-            $("#ex7").slider({
-                value: sliderVal
-                });
-            $("#ex7").slider('refresh');
-            $("#ex7SliderVal").val(numberWithCommas(sliderVal));
-        });
-
-
-        $("#ex8").slider();
-        $("#ex8").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex8 = numeral(slideEvt.value).format('0,0');
-            $("#ex8SliderVal").val(slider_num_ex8);
-        });
-        $("#ex8SliderVal").change(function(){
-            var sliderVal = parseInt($("#ex8SliderVal").val().replace(",",""));
-            if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
-            $("#ex8").slider({
-                value: sliderVal
-                });
-            $("#ex8").slider('refresh');
-            $("#ex8SliderVal").val(numberWithCommas(sliderVal));
-        });
-        
-        $("#ex9").slider();
-        $("#ex9").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex9 = numeral(slideEvt.value).format('0,0');
-            $("#ex9SliderVal").val(slider_num_ex9);
-        });
-        $("#ex9SliderVal").change(function(){
-            var sliderVal = parseInt($("#ex9SliderVal").val().replace(",",""));
-            if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
-            $("#ex9").slider({
-                value: sliderVal
-                });
-            $("#ex9").slider('refresh');
-            $("#ex9SliderVal").val(numberWithCommas(sliderVal));
-        });
-
-
     });
 
 

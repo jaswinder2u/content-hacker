@@ -41,6 +41,10 @@ $(".show-more a").on("click", function() {
     return false;
 });
 
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
 function registerMissionReportListeners()
 {
     $(".suggest-keywords-list-1 ul ").on("click", "li", function () {
@@ -486,17 +490,21 @@ function getSessionID(callback)
     
 }
 
-function createKeywordHackerProject(e,id)
+function createKeywordHackerProject(e)
 {
     var e = e || window.event;
     //this.event.preventDefault();
     e.preventDefault();
     
     var projectID = getURLParameter("pid");
+        if(projectID == "" || projectID == null || projectID == "null" || typeof projectID === "undefined")
+        {
+            projectID = "0";
+        }
     
     var projectURL = $('#project-url').val();
     var projectLocation = $('#project-location').val();
-    var currentKeywordCount = parseInt($('#keyword-count').val());
+    //var currentKeywordCount = parseInt($('#keyword-count').val());
     //var eCommerce = $('#e-commerce-selection').val();
     var industry = $('#industry-selection').val();
     
@@ -563,77 +571,45 @@ function createKeywordHackerProject(e,id)
         useNational = 1;
     }
     
-    /*if($('#use-local').is(':checked'))
-    {
-        useLocal = 1;
-    }
-    else
-    {
-        useLocal = 0;
-    }
-    
-    if($('#use-national').is(':checked'))
-    {
-        useNational = 1;
-    }
-    else
-    {
-        useNational = 0;
-    }*/
-    
     var username = getCookie("username");
 
+    var id = "1";
+    if($("#advanced-options").css("display") !== "none")
+    {
+        id = "2";
+    }
+    
+    var keywordsList = $("#new-keyword").val();
+            keywordsList = keywordsList.replace(new RegExp(',', 'g'), ';');
+    
     if(username == "")
     {
         window.location = 'index.html';
     }
     else if((id == "2") && projectID == "0" && projectURL.trim() == '')
     {
-        showAlert("Please enter the project URL.");
+        showAlert("Please enter your site's URL.");
     }
     else if((id == "2") && projectID == "0" && projectLocation.trim() == '')
     {
-        showAlert("Please enter the project location.");
+        showAlert("Please enter your business location.");
     }
-    else if((id == "2") && projectID == "0" && currentKeywordCount == 0)
+    else if((id == "2") && projectID == "0" && keywordsList.trim() == '')
     {
         showAlert("Please enter at least one keyword phrase.");
     }
-    else if((id == "1") && projectID == "0" && currentKeywordCount == 0)
+    else if((id == "1") && projectID == "0" && keywordsList.trim() == '')
     {
         showAlert("Please enter at least one keyword phrase.");
     }
     else if((id == "2") && ($('#ex6SliderVal').val() == 0 || $('#ex7SliderVal').val() == 0 || $('#ex9SliderVal').val() == 0))
     {
-        showAlert("Please enter a value for monthly visitors, paying customers and content costs in order to hack actual net-worth.");
+        showAlert("Please enter a value for monthly visitors, paying customers and content costs in order to reveal using advanced options.");
     }
     else
     {
         //Show the spinner
-        //$("#submit-button-block-"+id).html("<div class='three-quarters-loader-small' style='float:right;margin-right:60px;'></div>");
-        $("#submit-button-block-"+id).html("<div><img src='images/apple_spinner.gif' class='apple-spinner-small'/></div>");
-        //$("#submit-button-block-2").html("<div class='three-quarters-loader-small' style='float:right;margin-right:60px;'></div>");
-        //projectURL = encodeURI(projectURL);
-        
-        //Build the keywords list
-        var keywordsList = "";
-        for(var i=1; i<=currentKeywordCount; i++)
-        {
-            var keywordString = $('#keyword'+i).html();
-            var keywordEndLoc = keywordString.indexOf("<span");
-            var keyword = keywordString.substring(0,keywordEndLoc);
-            if(keywordsList == "")
-            {
-                //keywordsList = i+"="+keyword;
-                keywordsList = keyword;
-            }
-            else
-            {
-                //keywordsList += ";"+i+"="+keyword;
-                keywordsList += ";"+keyword;
-            }
-        }
-        //keywordsList = encodeURI(keywordsList);
+        $("#reveal-button").html("<div><img src='images/apple_spinner.gif' class='apple-spinner-small'/></div>");
         
         var monthlyVisitors = $('#ex6SliderVal').val();
         var payingCustomers = $('#ex7SliderVal').val();
@@ -645,7 +621,7 @@ function createKeywordHackerProject(e,id)
         {
             useDefaultConvRate = 1;
         }
-        
+
         if(projectID == "0")
         {
             //Once you have required info, create the project
@@ -660,8 +636,7 @@ function createKeywordHackerProject(e,id)
                     }
                     else
                     {
-                        $("#submit-button-block-1").html("<a class=\"calculate-networth-btn\" onclick=\"createKeywordHackerProject(event,'1');\">CALCULATE ESTIMATED NETWORTH</a>");
-                        $("#submit-button-block-2").html("<a class=\"calculate-networth-btn\" onclick=\"createKeywordHackerProject(event,'2');\">CALCULATE ACTUAL NETWORTH</a>");
+                        $("#reveal-button").html("Reveal <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>");
                         $("#alert-window").removeClass("alert-window");
                         $("#alert-window").addClass("alert-window-large");
                         showAlert(info.message);
@@ -1113,8 +1088,8 @@ function loadProjectDashboard(flip)
 
     var addMoreHTML = "<li class=\"col-lg-4 matchheight element-item\" id=\"project-card-0\">" +
                       "<div class=\"project-cart-box box-shadow-ot\">"+
-                      "<div class=\"card-header\"><span style=\"float:right;padding:5px;margin-top:-70px;\"><img src=\"images/start-icon.png\" style=\"margin-bottom:5px;\"><br><img src=\"images/create-new-icon.png\" style=\"cursor:pointer;width:35px;height:auto;margin-left:120px;\" onclick=\"showActivate();\"></span></div>"+
-                        "<div class=\"active-link-outer\"><span class=\"active-new-project-link\" style=\"cursor:pointer;\" onclick=\"showActivate();\"> <a style=\"cursor:pointer;\">[ Activate New Mission ]</a> </span></div>" +
+                      "<div class=\"card-header\"><!--<span style=\"float:right;padding:5px;margin-top:-70px;\"><img src=\"images/start-icon.png\" style=\"margin-bottom:5px;\"><br><img src=\"images/create-new-icon.png\" style=\"cursor:pointer;width:35px;height:auto;margin-left:120px;\" onclick=\"showActivate();\"></span>--></div>"+
+                        "<div class=\"active-link-outer\"><span class=\"active-new-project-link\" style=\"cursor:pointer;\" onclick=\"showActivate();\"> <a style=\"cursor:pointer;\"><img src=\"images/rh-plus-logo.png\"><br/><br/>[ Activate New Mission ]</a> </span></div>" +
                       "<div class=\"card-box-bottom\">&nbsp;</div>"+
                       "</div>"+
 
@@ -1168,15 +1143,15 @@ function addKeyword(e)
             
             var newKWLength = kwArray.length;
             var maxKWLoc = Math.min(maxKeywordsPerProject-currentCount,newKWLength);
-            var upperLimit = Math.max(0,maxKWLoc);
+            //var upperLimit = Math.max(0,maxKWLoc);
 
             for(var j=0; j<maxKWLoc; j++)
             {
                 var currentKeywordCount = $('#keyword-count').val();
-                var existingKeywords = $('#ctc').html();
+                var existingKeywords = $('#new-keyword').html();
                 var newKeywordCount = parseInt(currentKeywordCount) + 1;
-                var newKeywords = existingKeywords + "<li id=\"keyword"+newKeywordCount+"\">"+kwArray[j].trim()+"<span style=\"padding:5px;color:#ec1c24;font-weight:bold;cursor:pointer;\" id=\"remove-keyword"+newKeywordCount+"\" title=\"Remove\" onclick=\"removeKeyword(this);\">X</span></li>";
-                $('#ctc').html(newKeywords);
+                var newKeywords = existingKeywords + ","+kwArray[j].trim();
+                //$('#ctc').html(newKeywords);
                 //$('#new-keyword').val('');
                 $('#keyword-count').val(newKeywordCount);
             }
@@ -1185,9 +1160,9 @@ function addKeyword(e)
             {
                 $("#alert-window").removeClass("alert-window");
                 $("#alert-window").addClass("alert-window-large");
-                showAlert("The number of keywords allowed per mission is currently limited. Only the first 25 phrases have been added.");
+                showAlert("The number of keywords allowed per mission is currently limited. Only the first "+maxKeywordsPerProject+" phrases have been included.");
             }
-            $('#new-keyword').val('');
+            $('#new-keyword').val(newKeywords);
             // The event listener for the file upload
             //document.getElementById('fileupload').addEventListener('change', upload, false);
         }
@@ -2346,8 +2321,9 @@ function hideActivate()
 
 function showActivate()
 {
-    document.getElementById("activate-new-window").style.display = "block";
-    document.getElementById("dimmer").style.display = "block";
+    $("#side-wizard-rh-eagle").click();
+    //document.getElementById("activate-new-window").style.display = "block";
+    //document.getElementById("dimmer").style.display = "block";
 }
 
 function hideShow(hide,show)
@@ -3079,7 +3055,6 @@ if (!browserSupportFileUpload()) {
                       {
                           dataToShow = thisEntry;
                       }
-
                   }
                   else
                   {
@@ -3095,7 +3070,7 @@ if (!browserSupportFileUpload()) {
               }
 
               $("#new-keyword").val(dataToShow);
-              addKeyword("addme");
+              //addKeyword("addme");
               $("#fileupload").val("");
 
             } else {
@@ -5614,4 +5589,247 @@ function setHeadingBG(color)
     $("#mission-heading-monthly-sales").css("background-color",color);
     $("#mission-heading-cost-per-month").css("background-color",color);
     $("#mission-heading-keyword-networth").css("background-color",color);
+}
+
+function prepareNewWizard()
+{
+    var projectID = getURLParameter("pid");
+        var projectIDValue = parseInt(projectID);
+    var username = getCookie("username");
+    var userFullName = getCookie("userFullName");
+    var userLastName = userFullName.substring(userFullName.indexOf(" ")+1,userFullName.length);
+    //Show the manageIndustries link for admin
+    /*if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
+    {
+        $('#industry-link').remove();
+        $('#users-link').remove();
+    }
+    
+    refreshCartDropdown();
+    
+    //Set the welcome message
+    $('#welcome-message').html("welcome <strong>AGENT "+userLastName.toUpperCase()+"</strong> <strong>[</strong> activate your mission below <strong>]</strong>");
+    */
+    
+    if(projectID !== "0" && projectID !== "")
+    {
+        /*$("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"missionreport.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
+        $("#header-text").html("[   Update Mission Details  ]")
+        $("#keyword-section").hide();*/
+        if(projectIDValue < 260)
+        {
+            $("#metro-option").remove();
+        }
+        $("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed.\" id=\"project-url\"></a>, and");
+        
+        //Get the project summary info and set the values
+        $.ajax({url: restURL, data: {'command':'getProjectSetupData','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var projectInfo = info.projectSummary;
+
+                    var projectURL = projectInfo.clientURL;
+                    var geoLocation = projectInfo.geoLocation;
+                    var monthlyVisitors = parseInt(projectInfo.monthlyVisitors);
+                    var payingCustomers = parseInt(projectInfo.payingCustomers);
+                    var valuePerCustomer = parseInt(projectInfo.valuePerCustomer);
+                    var costPerLevel = parseInt(projectInfo.costPerLevel);
+                    var useGoogle = projectInfo.useGoogle;
+                    var useBing = projectInfo.useBing;
+                    var useYouTube = projectInfo.useYouTube;
+                    var useAppStore = projectInfo.useAppStore;
+                    var useLocal = projectInfo.useLocal;
+                    var useRegional = projectInfo.useRegional;
+                    var useNational = projectInfo.useNational;
+                    var currencyHexCode = projectInfo.currencyHexCode;
+                    var industryID = projectInfo.industryID;
+                    var eCommerce = projectInfo.eCommerce;
+                    var projectUsername = projectInfo.username;
+                    if(projectUsername !== username && username !== "admin@fairmarketing.com" && username !== "hari.patel@1520holdings.com")
+                    {
+                        window.location = "dashboard.html";
+                    }
+                    else
+                    {
+                        //Update the inputs with the appropriate values
+                        $('#project-url').html(projectURL);
+                        $('#project-location').html(geoLocation);
+                        $('#currency-code-1').html(currencyHexCode);
+                        $('#currency-code-2').html(currencyHexCode);
+
+                        if(typeof eCommerce !== "undefined")
+                        {
+                            if(eCommerce == 1)
+                            {
+                                $('#e-commerce-selection option')[1].selected = true;
+                            }
+                            else
+                            {
+                                $('#e-commerce-selection option')[0].selected = true;
+                            }
+                        }
+                        refreshIndustries();
+
+                        if(typeof industryID !== "undefined")
+                        {
+                            $('#industry-selection').val(parseInt(industryID));
+                        }
+
+                        if(useGoogle == 1)
+                        {
+                            $('#use-google').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-google').prop('checked',false); 
+                        }
+
+                        if(useBing == 1)
+                        {
+                            $('#use-bing').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-bing').prop('checked',false); 
+                        }
+
+                        if(useYouTube == 1)
+                        {
+                            $('#use-you-tube').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-you-tube').prop('checked',false); 
+                        }
+
+                        if(useAppStore == 1)
+                        {
+                            $('#use-app-store').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-app-store').prop('checked',false); 
+                        }
+
+                        /*if(useLocal == 1)
+                        {
+                            $('#use-local').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-local').prop('checked',false); 
+                        }
+
+                        if(useNational == 1)
+                        {
+                            $('#use-national').prop('checked',true);
+                        }
+                        else
+                        {
+                           $('#use-national').prop('checked',false); 
+                        }*/
+
+                        if(useLocal == 1)
+                        {
+                            $('#local-national option')[0].selected = true;
+                        }
+                        else if(useRegional == 1)
+                        {
+                            $('#local-national option')[1].selected = true;
+                        }
+                        else
+                        {
+                           $('#local-national option')[2].selected = true;
+                        }
+
+                        /*$('#ex6SliderVal').val(numberWithCommas(monthlyVisitors));
+                        $('#ex7SliderVal').val(numberWithCommas(payingCustomers));
+                        $('#ex8SliderVal').val(numberWithCommas(valuePerCustomer));
+                        $('#ex9SliderVal').val(numberWithCommas(costPerLevel));*/
+
+                        //$("#ex6").slider();
+                        var sliderVal = monthlyVisitors;
+                        /*if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
+                        $("#ex6").slider({
+                            value: sliderVal
+                            });
+                        $("#ex6").slider('refresh');*/
+                        $("#ex6SliderVal").val(numberWithCommas(sliderVal));
+
+                        //$("#ex7").slider();
+                        var sliderVal = payingCustomers;
+                        /*if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
+                        $("#ex7").slider({
+                            value: sliderVal
+                            });
+                        $("#ex7").slider('refresh');*/
+                        $("#ex7SliderVal").val(numberWithCommas(sliderVal));
+
+                        //$("#ex8").slider();
+                        var sliderVal = valuePerCustomer;
+                        /*if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
+                        $("#ex8").slider({
+                            value: sliderVal
+                            });
+                        $("#ex8").slider('refresh');*/
+                        $("#ex8SliderVal").val(numberWithCommas(sliderVal));
+
+                        //$("#ex9").slider();
+                        var sliderVal = costPerLevel;
+                        /*if(isNaN(sliderVal) || sliderVal < 0){ sliderVal = 0; }
+                        $("#ex9").slider({
+                            value: sliderVal
+                            });
+                        $("#ex9").slider('refresh');*/
+                        $("#ex9SliderVal").val(numberWithCommas(sliderVal));
+
+                        //Hide the keyword phrases input, set the website URL and location to readonly and add the tooltip about creating a new project
+                        //$("#header-text").html("[   Update Project Details  ]")
+                        //$("#keyword-section").hide();
+                        //$("#project-url-html").html("My website's URL is <a data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission URL cannot be changed; however, you can click here to start a new mission.\" id=\"project-url\" onclick=\"gotoCreateProject('0');\">"+projectURL+"</a>, and");
+                        $("#scrollable-dropdown-menu").html("<label style=\"margin-top:0;\">My business is located in</label><span style=\"margin-top:20px;padding-top:20px;\"><a style=\"font-size:18px;font-weight:700;font-family: \"Montserrat\";\" data-toggle=\"tooltip\" class=\"tooltip-hover\" title=\"Sorry, the mission location cannot be changed.\" id=\"project-location\">"+geoLocation+"</a></span>");
+                        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+                    }
+                }
+            }
+        });
+    }
+    else
+    {
+        //Make sure the user can create a new mission
+        $.ajax({url: restURL, data: {'command':'checkUserMissionsAvailable','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    if(info.canCreate == "false")
+                    {
+                        window.location = "dashboard.html";
+                    }
+                }
+            }
+        });
+    }
+    
+}
+
+function toggleTab(name)
+{
+    if(name == "basic")
+    {
+        //Hide advanced options and update the li active class
+        $("#advanced-options").hide();
+        $("#advanced-tab").removeClass("active");
+        $("#basic-tab").addClass("active");
+    }
+    else
+    {
+        //Show advanced options and update the li active class
+        $("#advanced-options").show();
+        $("#basic-tab").removeClass("active");
+        $("#advanced-tab").addClass("active");
+        
+    }
 }

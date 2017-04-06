@@ -233,7 +233,7 @@ TWO TONE SPINNER
 .user-info a{color: #231f20;}
 
 
-#dashboard-header {float: left;margin-bottom: 25px;margin-top: 100px;padding-bottom: 0;position: relative;width: 100%;}
+#dashboard-header {float: left;margin-bottom: 25px;margin-top: 30px;padding-bottom: 0;position: relative;width: 100%;}
 
 #dashboard-header .view-option-outer ul li ,#dashboard-header .rh-sort-menu ul li ,#dashboard-header .rh-views-menu ul li ,#dashboard-header .rh-actions-menu ul li  {color:#818d94;}
 
@@ -1375,7 +1375,7 @@ width: 100%;}
 
 .active-link-outer {display: table;float: left;height: 75%;vertical-align: middle;text-align: center;width: 100%;}
 
-.active-new-project-link  {display: table-cell;vertical-align: middle;padding:20px 25px; background: url("../images/watermark-eagle-icon-125.png"); z-index:-1; background-repeat:no-repeat; background-position:center;}
+.active-new-project-link  {display: table-cell;vertical-align: middle;padding:20px 25px; /*background: url("../images/watermark-eagle-icon-125.png"); z-index:-1; background-repeat:no-repeat; background-position:center;*/}
 
 .active-new-project-link  a{color: #9cc0cf !important;font-size:24px;font-weight: bold;text-transform:none;}
 

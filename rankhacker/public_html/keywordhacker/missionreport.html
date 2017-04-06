@@ -282,12 +282,23 @@
 
 
 
+
 <!-- =========================
      JS SCRIPTS
 ============================== -->
 
 <!--Text typing effect js -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    jQuery('#side-wizard-rh-eagle').on('click', function(){
+    jQuery('.side-wizard-outer').addClass('wizard-show');
+    });
+
+    jQuery('#side-wizard-close-btn').on('click', function(){
+    jQuery('.side-wizard-outer').removeClass('wizard-show');
+    });
+</script>
 
 <script type='text/javascript'> 
 
