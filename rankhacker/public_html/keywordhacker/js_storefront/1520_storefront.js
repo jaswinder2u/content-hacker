@@ -62,28 +62,39 @@ function getCookie(paramName)
     return "";
 }
 
-function loginAccount()
+function loginAccount(e)
 {
+    var e = e || window.event;
+    e.preventDefault();
+    
     clearCookies();
     
     var email = $('#user-email').val().trim();
     var password = $('#user-password').val().trim();
 
+    $("#user-email").removeClass("input-error");
+    $("#user-password").removeClass("input-error");
+
     if(email == '' || email.indexOf("@") == -1)
     {
-        $("#login-response").addClass("error-text");
-        $("#login-response").html("Error: Please provide a valid email address.");
+        $("#login-response").html("PLEASE PROVIDE A VALID EMAIL ADDRESS.");
+        $("#user-email").addClass("input-error");
+        $("#login-response").show();
     }
     else if(password == '')
     {
-        $("#login-response").addClass("error-text");
-        $("#login-response").html("Error: Please enter your password.");
+        $("#login-response").html("PLEASE ENTER YOUR PASSWORD.");
+        $("#user-password").addClass("input-error");
+        $("#login-response").show();
     }
     else
     {
         //Show the spinner
-        $("#login-response").removeClass("error-text");
-        $("#login-response").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+        $("#login-button").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+        $("#user-email").removeClass("input-error");
+        $("#user-password").removeClass("input-error");
+        $("#login-response").html("");
+        $("#login-response").hide();
         
         $.ajax({url: restURL, data: {'command':'loginAccount','username':email,'password':password}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
@@ -97,8 +108,12 @@ function loginAccount()
                 }
                 else if(info.status == "error")
                 {
-                    $("#login-response").addClass("error-text");
-                    $("#login-response").html(info.message);
+                    var response = info.message;
+                    response = response.toUpperCase();
+                    
+                    $("#login-response").html(response);
+                    $("#login-response").show();
+                    $("#login-button").html("SUBMIT LOGIN");
                 }
             }
         });
@@ -107,30 +122,37 @@ function loginAccount()
 
 function remindPassword()
 {
-    var email = $('#user-email').val();
+    var email = $('#recovery-email').val();
     if(email.trim() == '')
     {
-        $("#login-response").addClass("error-text");
-        $("#login-response").html("Error: Please provide a valid email address.");
+        $("#recovery-message").removeClass("rh-blue-text").addClass("rh-error-text");
+        $("#recovery-message").html("THE EMAIL ADDRESS YOU ENTERED IS NOT ON FILE.<BR>PLEASE ENTER A VALID EMAIL ADDRESS.");
+        $("#recovery-email").addClass("input-error");
     }
     else
     {
         //Show the spinner
-        $("#login-response").removeClass("error-text");
-        $("#login-response").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+        $("#recovery-message").removeClass("rh-error-text").addClass("rh-blue-text");
+        $("#remind-button").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+        $("#recovery-email").removeClass("input-error");
+        
         
         $.ajax({url: restURL, data: {'command':'remindPassword','username':email}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
                 {
-                    $("#login-response").addClass("error-text");
-                    $("#login-response").html("Please check your email for a message from Rank Hacker Admin containing a new password for your account.");
+                    $("#confirmation-email").html(email);
+                    $("#password-recovery").hide();
+                    $("#reset-sent").show();
+                    
                 }
                 else if(info.status == "error")
                 {
-                    $("#login-response").addClass("error-text");
-                    $("#login-response").html("Error: We were unable to find an account under that email address.");
+                    $("#recovery-message").removeClass("rh-blue-text").addClass("rh-error-text");
+                    $("#recovery-message").html("WE WERE UNABLE TO FIND THAT EMAIL ADDRESS IN OUR SYSTEM.");
+                    $("#recovery-email").addClass("input-error");
+                    $("#remind-button").html("SEND PASSWORD");
                 }
             }
         });
@@ -375,4 +397,10 @@ function registerUser2(e)
             }
         });
     }
+}
+
+function showRemindPassword()
+{
+    $("#login-form").hide();
+    $("#password-recovery").show();
 }

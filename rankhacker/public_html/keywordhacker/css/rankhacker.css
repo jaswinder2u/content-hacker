@@ -76,7 +76,7 @@ a {
 }
 
 a:visited {
-    color: rgba(255,255,255,.6);
+    /*color: rgba(255,255,255,.6);*/
 }
 
 button a:visited {

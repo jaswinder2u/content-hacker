@@ -25,36 +25,36 @@
     <!-- =========================
              STYLESHEETS
         ============================== -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=56" rel="stylesheet">-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=57" rel="stylesheet">-->
     <!--<link href="css/materialize.css" rel="stylesheet" id="theme-change">-->
-    <!--<link href="css/materialize.min-120816.css?v=56" rel="stylesheet" id="theme-change">-->
-    <link href="css/custom-style.css?v=56" rel="stylesheet" id="theme-change">
-    <link href="css/rankhacker.css?v=56" rel="stylesheet" id="theme-change">
-    <link href="css/bootstrap-slider.min.css?v=56" rel="stylesheet" id="theme-change">
-    <link href="css/media-queries.css?v=56" rel="stylesheet" type="text/css">
+    <!--<link href="css/materialize.min-120816.css?v=57" rel="stylesheet" id="theme-change">-->
+    <link href="css/custom-style.css?v=57" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=57" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=57" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=57" rel="stylesheet" type="text/css">
 
     <!--google js file-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     
     <!--1520 files-->
-    <script src="js/bootstrap-slider.js?v=56"></script>
-    <script src="js/1520.js?v=56"></script>
-    <link href="css/1520.css?v=56" rel="stylesheet" id="theme-change">
-    <link href="css/spinner.css?v=56" rel="stylesheet" id="theme-change">
-    <link href="css/magic-check.css?v=56" rel="stylesheet" id="theme-change">
+    <script src="js/bootstrap-slider.js?v=57"></script>
+    <script src="js/1520.js?v=57"></script>
+    <link href="css/1520.css?v=57" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=57" rel="stylesheet" id="theme-change">
+    <link href="css/magic-check.css?v=57" rel="stylesheet" id="theme-change">
     
     <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
-    <link href="css_storefront/bootstrap.min.css?v=56" rel="stylesheet">
-    <link href="css_storefront/custom-style.css?v=56" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_storefront/bootstrap.min.css?v=57" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=57" rel="stylesheet" id="theme-change-storefront">
     
     <!-- material design lite -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link href="css/bootstrap.min.css?v=56" rel="stylesheet">
-    <link href="css/custom-style-material.css?v=56" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap.min.css?v=57" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=57" rel="stylesheet" id="theme-change">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--jquery dropdown-->
@@ -498,8 +498,8 @@
             <div class="block-css" style="position: relative;">
                 <div class="side-wizard-image matchheight" style="margin:0 0 -7px 0!important;background-color: #E4E5E6;">.&nbsp;</div>
                 <ul class="nav nav-tabs side-wizard-tabs matchheight">
-                    <li id="basic-tab" class="active" onclick="toggleTab('basic');" style="cursor:pointer;"><a>NEW MISSION SETUP</a></li>
-                    <li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>
+                    <li id="basic-tab" class="active"><a>NEW MISSION SETUP</a></li>
+                    <!--<li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>-->
                 </ul>
                 <a href="javascript:void(0);" id="side-wizard-close-btn">X</a>
             </div>
@@ -513,17 +513,17 @@
                     <div id="new-mission-setup" class="tab-pane fade in active">
                         <form class="side-wizard-form">
                             <h2>We’ll start by gathering some intel on your goal.</h2>
-                            <h4>Customize your goal by clicking within the statement:</h4>
+                            <h4 style="width:100%;">Customize your goal by clicking within the statement:<span style="margin-right:50px;float:right;text-align:right;color:#BE1E2D;font-weight:bold;">* required</span></h4>
                             <label class="side-wizard-label">
-                                I’d like
+                                I’d like my
                                 <select class="side-wizard-select" id="e-commerce-selection" onchange="refreshIndustries();">
-                                    <option value="0">my non-ecommerce</option>
-                                    <option value="1">my e-commerce</option>
+                                    <option value="0">non-ecommerce</option>
+                                    <option value="1">e-commerce</option>
                                 </select>
-                                <input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/>
+                                <span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/>
                                 which is located in 
                                 <span id="scrollable-dropdown-menu" style="display:inline-block;">
-                                    <input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/>
+                                    <span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/>
                                 </span>
                                  <br>to rank on 
                                  
@@ -532,10 +532,10 @@
                                  
                                  and
                                        
-                                 <span style="padding-left:5px;"><input type="checkbox" class="magic-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
                                      <label for="use-bing" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Bing+Yahoo</label></span>
                                  
-                                 <br>for <span class="keyword-phrases-input">
+                                 for <span class="required">*</span><span class="keyword-phrases-input">
                                     <!--<span class="import-keywords fileinput-button pull-right">
                                         <input type="file" name="File Upload" id="fileupload" accept=".csv" />
                                     </span>-->
@@ -556,15 +556,18 @@
                                     <option value="regional" id="metro-option">my metro area</option>
                                     <option value="national">my country</option>
                                 </select>
-                                and I sell my product/service for<input type="text" placeholder="$" id="ex8SliderVal" class="side-wizard-input dolar-input"/> .
+                                and I sell my product/service for<span class="required">*</span><input type="text" placeholder="$" id="customer-value" class="side-wizard-input dolar-input top-padded"/> .
                             </label>
-                            <span id="advanced-options" style="display:none;">
-                            <h4 class="margin20t margin15b">On average:</h4>
-                            <label class="side-wizard-label">About<input type="text" id="ex6SliderVal" placeholder="" class="side-wizard-input dolar-input"/>visitors land on my website each month.</label>
-                            <label class="side-wizard-label">Of those<input type="text" id="ex7SliderVal" placeholder="" class="side-wizard-input dolar-input"/>convert to actual paying customers.	</label>
-                            <label class="side-wizard-label">It costs me<input type="text" id="ex9SliderVal" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.</label>
+                            <span id="advanced-options">
+                            <h2>Then we'll collect <u>optional</u> advanced conversion data.</h2>
+                            <h4>On average:</h4>
+                            <label class="side-wizard-label">About<input type="text" id="monthly-visitors" placeholder="#" class="side-wizard-input dolar-input"/>visitors land on my website each month, of those
+                            <input type="text" id="monthly-customers" placeholder="#" class="side-wizard-input dolar-input"/>convert to actual paying customers; it costs me approximately
+                            <input type="text" id="content-cost" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.
+                            <a onclick="createKeywordHackerProject(event);" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </label>
                             </span>
-                            <a onclick="createKeywordHackerProject(event,'2');" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            
                         </form>
                         <div class="wz-reveal-signup">
                             <!--<h2>Next we’ll reveal their secrets and identify your mission:</h2>
@@ -593,7 +596,7 @@
 <script src="js/materialize.min.js"></script>
 <script src="js/isotope.pkgd.min.js"></script>
 <script src="js/jquery.csv.js"></script>
-<script src="js/bootstrap-slider.js?v=56"></script>
+<script src="js/bootstrap-slider.js?v=57"></script>
 
 <!-- TypeAhead js files -->
 <script type="text/javascript" src="js/georankerregions-data.js"></script>

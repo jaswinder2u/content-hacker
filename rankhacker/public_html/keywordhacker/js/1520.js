@@ -574,7 +574,7 @@ function createKeywordHackerProject(e)
     var username = getCookie("username");
 
     var id = "1";
-    if($("#advanced-options").css("display") !== "none")
+    if($("#monthly-visitors").val().trim() !== "" || $("#monthly-customers").val().trim() !== "" || $("#content-cost").val().trim() !== "")
     {
         id = "2";
     }
@@ -586,23 +586,23 @@ function createKeywordHackerProject(e)
     {
         window.location = 'index.html';
     }
-    else if((id == "2") && projectID == "0" && projectURL.trim() == '')
+    else if(projectID == "0" && projectURL.trim() == '')
     {
         showAlert("Please enter your site's URL.");
     }
-    else if((id == "2") && projectID == "0" && projectLocation.trim() == '')
+    else if(projectID == "0" && projectLocation.trim() == '')
     {
         showAlert("Please enter your business location.");
     }
-    else if((id == "2") && projectID == "0" && keywordsList.trim() == '')
+    else if(projectID == "0" && keywordsList.trim() == '')
     {
         showAlert("Please enter at least one keyword phrase.");
     }
-    else if((id == "1") && projectID == "0" && keywordsList.trim() == '')
+    else if(projectID == "0" && $('#customer-value').val().trim() == "")
     {
-        showAlert("Please enter at least one keyword phrase.");
+        showAlert("Please enter a value for your product/service price.");
     }
-    else if((id == "2") && ($('#ex6SliderVal').val() == 0 || $('#ex7SliderVal').val() == 0 || $('#ex9SliderVal').val() == 0))
+    else if((id == "2") && ($('#monthly-visitors').val().trim() == "" || $('#monthly-customers').val().trim() == "" || $('#content-cost').trim() == ""))
     {
         showAlert("Please enter a value for monthly visitors, paying customers and content costs in order to reveal using advanced options.");
     }
@@ -611,10 +611,10 @@ function createKeywordHackerProject(e)
         //Show the spinner
         $("#reveal-button").html("<div><img src='images/apple_spinner.gif' class='apple-spinner-small'/></div>");
         
-        var monthlyVisitors = $('#ex6SliderVal').val();
-        var payingCustomers = $('#ex7SliderVal').val();
-        var customerValue = $('#ex8SliderVal').val();
-        var costPerLevel = $('#ex9SliderVal').val();
+        var monthlyVisitors = $('#monthly-visitors').val();
+        var payingCustomers = $('#monthly-customers').val();
+        var customerValue = $('#customer-value').val();
+        var costPerLevel = $('#content-cost').val();
         
         var useDefaultConvRate = 0;
         if(id == "1")

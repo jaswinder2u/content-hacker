@@ -537,7 +537,7 @@ body {min-width: 320px;overflow: scroll;}
 #validated-message {display:none;}
 
 .apple-spinner-small {
-    width: 45px;
+    width: 30px;
     height: auto;
 }
 
@@ -574,3 +574,5 @@ body {min-width: 320px;overflow: scroll;}
     z-index:30;
 }
 }
+
+.underline-link:hover{text-decoration:underline !important;}
