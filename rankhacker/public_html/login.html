@@ -132,11 +132,11 @@
 		<h1 class="account-heading">INTELLIGENCE AWAITS</h1>
 		<div class="rh-form-outer">
 		  <h3 class="account-title"><i class="rh-password-icon-sm" aria-hidden="true"></i>PASSWORD RECOVERY</h3>
-		  <p id="recovery-message" class="rh-blue-text">Enter the email address used to create your account.An email will be sent to the address you enter.</p>
+		  <p id="recovery-message" class="rh-blue-text">Enter the email address used to create your account. An email will be sent to the address you enter.</p>
 		  <form id="rh-form-box3">
 		  <input class="rh-input" type="email" placeholder="EMAIL ADDRESS" id="recovery-email">
 		  <a href="login.html" class="rh-other-link">Login</a> 
-		  <button class="form-submit-btn" type="button" id="remind-button" onclick="remindPassword();">SEND PASSWORD</button>
+		  <button class="form-submit-btn" type="button" id="remind-button" onclick="remindPassword('');">SEND PASSWORD</button>
 		  </form>
 		</div>
 	</div>
@@ -146,8 +146,8 @@
 		<h1 class="account-heading">INTELLIGENCE AWAITS</h1>
 		<div class="rh-form-outer">
 		  <i class="rh-password-icon active" aria-hidden="true"></i>
-		  <p class="rh-blue-text margin30b">A verification email is being sent to<span class="rh-email-address" id="confirmation-email"></span></p>		  
-		  <!--<a onclick="remindPassword();" class="rh-other-link">Resend Password Reminder</a>-->
+                  <p class="rh-blue-text margin30b" id="reset-response"></p>		  
+		  <a onclick="remindPassword('resend');" class="rh-other-link">Resend Password Reminder</a>
 		  <a href="login.html" class="rh-other-link" style="float: right; color: rgb(0, 92, 184);">Login</a> 
 		</div>
 	</div>

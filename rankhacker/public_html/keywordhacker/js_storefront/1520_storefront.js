@@ -120,7 +120,7 @@ function loginAccount(e)
     }
 }
 
-function remindPassword()
+function remindPassword(type)
 {
     var email = $('#recovery-email').val();
     if(email.trim() == '')
@@ -144,7 +144,16 @@ function remindPassword()
                 {
                     $("#confirmation-email").html(email);
                     $("#password-recovery").hide();
+                    if(type == "resend")
+                    {
+                        $("#reset-response").html("Another verification email is being sent to<span class=\"rh-email-address\" id=\"confirmation-email\">"+email+"</span>");
+                    }
+                    else
+                    {
+                        $("#reset-response").html("A verification email is being sent to<span class=\"rh-email-address\" id=\"confirmation-email\">"+email+"</span>");
+                    }
                     $("#reset-sent").show();
+                    
                     
                 }
                 else if(info.status == "error")
