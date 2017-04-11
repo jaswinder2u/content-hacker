@@ -1,7 +1,7 @@
-var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -275,10 +275,19 @@ var desc = false;
 
 var sort_by = function(field, reverse, primer){
    var key = function (x) {return primer ? primer(x[field]) : x[field]};
+   var key2 = function(x2) {return x2["deleted"];}
    
    return function (a,b) {
-	  var A = key(a), B = key(b);
-	  return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
+	  /*var A = key(a), B = key(b);
+	  return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];*/
+        var A = key(a), B = key(b);
+          var A2 = key2(a), B2 = key2(b);
+	  //return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
+          if(A2 < B2) return 1 * [-1,1][+!!false];
+          if(A2 > B2) return -1 * [-1,1][+!!false];
+          if(A < B) return -1 * [-1,1][+!!reverse];
+          if(A > B) return 1 * [-1,1][+!!reverse];
+          return 0 * [-1,1][+!!reverse];
    }
 }
 
@@ -574,7 +583,7 @@ function createKeywordHackerProject(e)
     var username = getCookie("username");
 
     var id = "1";
-    if($("#monthly-visitors").val().trim() !== "" || $("#monthly-customers").val().trim() !== "" || $("#content-cost").val().trim() !== "")
+    if($("#monthly-visitors").val().trim() !== "" || $("#monthly-customers").val().trim() !== "")
     {
         id = "2";
     }
@@ -602,9 +611,9 @@ function createKeywordHackerProject(e)
     {
         showAlert("Please enter a value for your product/service price.");
     }
-    else if((id == "2") && ($('#monthly-visitors').val().trim() == "" || $('#monthly-customers').val().trim() == "" || $('#content-cost').trim() == ""))
+    else if((id == "2") && ($('#monthly-visitors').val().trim() == "" || $('#monthly-customers').val().trim() == ""))
     {
-        showAlert("Please enter a value for monthly visitors, paying customers and content costs in order to reveal using advanced options.");
+        showAlert("Please enter a value for both monthly visitors and paying customers in order to reveal using advanced options.");
     }
     else
     {
@@ -732,23 +741,23 @@ function loadProjectDashboard(flip)
     
     var info = JSON.parse(returnData);
     var data = info.data;
-    
-    
-    if(sortMethod == 'runDate')
+
+    if(sortMethod == 'runDate' || sortMethod == 'projectID')
     {
         if(sortMethod == currSortMethod)
         {
             if(sortMethodReversed == "true" && flip)
             {
                 reversed = false;
-                data.sort(date_sort_asc);
+                //data.sort(date_sort_asc);
             }
             else
             {
                 reversed = true;
-                data.sort(date_sort_desc);
+                //data.sort(date_sort_desc);
             }
         }
+        data.sort(sort_by('projectID', reversed, parseInt));
     }
     else if(sortMethod == 'project')
     {
@@ -780,7 +789,7 @@ function loadProjectDashboard(flip)
         }
         data.sort(sort_by('completed', reversed, parseInt));
     }
-    
+
     //Save the new sort method and reversed status (but only if we're not filtering!)
     var useFilter = false;
     if(typeof filterString !== 'undefined' && filterString != '')
@@ -792,8 +801,6 @@ function loadProjectDashboard(flip)
         $('#curr_sort').val(sortMethod);
         $('#curr_sort_reversed').val(reversed);        
     }
-    
-    
     
     var finalOutput = "";
     var cardHTML = "";
@@ -825,6 +832,7 @@ function loadProjectDashboard(flip)
         var numberOfKeywords = entry.keywordCount;
         var completed = entry.completed;
         var active = entry.active;
+        var deleted = entry.deleted;
         var monthlyVisitors = entry.monthlyVisitors;
         var payingCustomers = entry.payingCustomers;
         var valuePerCustomer = entry.valuePerCustomer;
@@ -890,7 +898,7 @@ function loadProjectDashboard(flip)
         {
             //keywordNetWorthString = "<span style=\"color:red;display:block;\" class=\"loader__dot\">"+completionPercent+"%&nbsp;data collected</span>";
             keywordNetWorthString = "<span style=\"color:red;display:block;font-size:20px;line-height:20px;vertical-align:middle;text-align:center;padding:5px 0;padding-right:-2px;\" class=\"loader__dot\">gathering intel</span>";
-            anchorAhref = "onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
+            anchorAhref = "style=\"cursor:pointer;\" onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
             plSum = "--";
         }
         else
@@ -899,6 +907,11 @@ function loadProjectDashboard(flip)
             anchorAhref = "onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
             //plSum = totalPowerLevel;
             plSum = totalContentDiff;
+        }
+        
+        if(deleted != "")
+        {
+            anchorAhref = "style=\"cursor:default;\" onclick=\"javascript:void(0);\" ";
         }
 
         if(active != '1')
@@ -955,7 +968,7 @@ function loadProjectDashboard(flip)
         
         if(rhActive == 1)
         {
-            rhHTML += "<a style=\"cursor:pointer;\" "+anchorAhref+" id=\"rh-module-"+projectID+"\" class=\"module-link keyword-hacker-module\">";
+            rhHTML += "<a "+anchorAhref+" id=\"rh-module-"+projectID+"\" class=\"module-link keyword-hacker-module\">";
             rhHTML += "<img src=\"images/tabDivider.png\" id=\"RHdivider-"+projectID+"\" class=\"rh-folder-tab\">";
             rhHTML += "<h2 class=\"module-heading text-left\">Keyword Hacker Data</h2>";
             rhHTML += "<div class=\"module-detail-section\">";
@@ -996,7 +1009,15 @@ function loadProjectDashboard(flip)
             rhHTML += "</div>";
             rhHTML += "<div class=\"module-details-left\">";
             rhHTML += "<h2 class=\"module-heading\">Content<br/>costs<span style=\"text-align:left;\">"+currencyHexCode+marketingCosts+"</span></h2>";
-            rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\"></div>";
+            if(deleted != "1")
+            {
+                rhHTML += "<img class=\"launch-icon\" src=\"images/launch-icon.png\">";
+            }
+            else
+            {
+                rhHTML += "<img style=\"cursor:default;\" onclick=\"javascript:void(0);\" class=\"launch-icon\" src=\"images/blank.png\">";
+            }
+            rhHTML += "</div>";
             rhHTML += "</div>";
             rhHTML += "</div>";
             rhHTML += "</div>";
@@ -1063,26 +1084,55 @@ function loadProjectDashboard(flip)
         //if(true)
         if(canShow)
         {
-            cardHTML += "<li class=\"col-lg-4 matchheight element-item\" id=\"project-card-"+projectID+"\">";
-            cardHTML += "<div class=\"project-cart-box box-shadow-ot\">";
-            cardHTML += "<div class=\"card-header\">";
-            cardHTML += "<span class=\"card-header-mission-text\">The Mission</span>";
-            //cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><a style=\"cursor:pointer;\" "+anchorAhref+">"+projectTitle+"</a></h1>";
-            cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><span style=\"cursor:default;color:#404040;\">"+projectTitle+"</span></h1>";
-            cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><!--<a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a><a class=\"delete-icon\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a>--></div>";
-            cardHTML += "</div>";
-            
-            cardHTML += rhHTML;
-            cardHTML += chHTML;
-            
-            cardHTML += "<div class=\"card-box-bottom\">";
-            cardHTML += "<div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div>";
-            //cardHTML += "<a style=\"cursor:pointer;\" "+anchorAhref+" class=\"project-status-card  project_status_sort \" href=\"javascript:void(0);\"> "+activeString+" </a>";
-            //cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><!--<a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a>--><a class=\"delete-icon-orig\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a></div>";
-            cardHTML += "<div style=\"clear:both;text-align:right;float:right;\"><span class=\"delete-icon-small\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon-small\"></span></div>";
-            cardHTML += "</div>";
-            cardHTML += "</div>";
-            cardHTML += "</li>";
+            if(deleted != "1")
+            {
+                cardHTML += "<li class=\"col-lg-4 matchheight element-item\" id=\"project-card-"+projectID+"\">";
+                cardHTML += "<div class=\"project-cart-box box-shadow-ot\">";
+                cardHTML += "<div class=\"card-header\">";
+                cardHTML += "<span class=\"card-header-mission-text\">The Mission</span>";
+                //cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><a style=\"cursor:pointer;\" "+anchorAhref+">"+projectTitle+"</a></h1>";
+                cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><span style=\"cursor:default;color:#404040;\">"+projectTitle+"</span></h1>";
+                cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><!--<a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a><a class=\"delete-icon\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a>--></div>";
+                cardHTML += "</div>";
+
+                cardHTML += rhHTML;
+                cardHTML += chHTML;
+
+                cardHTML += "<div class=\"card-box-bottom\">";
+                cardHTML += "<div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div>";
+                //cardHTML += "<a style=\"cursor:pointer;\" "+anchorAhref+" class=\"project-status-card  project_status_sort \" href=\"javascript:void(0);\"> "+activeString+" </a>";
+                //cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><!--<a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a>--><a class=\"delete-icon-orig\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a></div>";
+                cardHTML += "<div style=\"clear:both;text-align:right;float:right;\"><span class=\"delete-icon-small\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon-small\"></span></div>";
+                cardHTML += "</div>";
+                cardHTML += "</div>";
+                cardHTML += "</li>";
+            }
+            else
+            {
+                //Add a gray overlay to it
+                cardHTML += "<li class=\"col-lg-4 matchheight element-item\" id=\"project-card-"+projectID+"\">";
+                    cardHTML += "<div class=\"gray-card-overlay\">";
+                cardHTML += "<div class=\"project-cart-box box-shadow-ot\" style=\"opacity:1.0;\">";
+                cardHTML += "<div class=\"card-header\">";
+                cardHTML += "<span class=\"card-header-mission-text\">The Mission</span>";
+                //cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><a style=\"cursor:pointer;\" "+anchorAhref+">"+projectTitle+"</a></h1>";
+                cardHTML += "<h1 class=\"project_name_sort\"><label for=\"chk-content-all1\"></label><span style=\"cursor:default;color:#404040;\">"+projectTitle+"</span></h1>";
+                //cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><!--<a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a><a class=\"delete-icon\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a>--></div>";
+                cardHTML += "</div>";
+
+                cardHTML += rhHTML;
+                cardHTML += chHTML;
+
+                cardHTML += "<div class=\"card-box-bottom\">";
+                cardHTML += "<div class=\"project-date-card date_sort\"><i class=\"eagle-icon\"></i>Initiated "+runDate+"</div>";
+                //cardHTML += "<a style=\"cursor:pointer;\" "+anchorAhref+" class=\"project-status-card  project_status_sort \" href=\"javascript:void(0);\"> "+activeString+" </a>";
+                //cardHTML += "<div style=\"clear:both;text-align:right;float:right;margin-top:-20px;\"><!--<a style=\"cursor:pointer;\" class=\"edit-icon\" title=\"Edit Mission\" onclick=\"gotoCreateProject('"+projectID+"');\"></a><a style=\"cursor:pointer;color:rgba(61,61,61,.25);\" title=\"Download\" class=\"download-icon\" onclick=\"saveTextAsFileFromDashboard('"+projectID+"');\"></a>--><a class=\"delete-icon-orig\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"></a></div>";
+                //cardHTML += "<div style=\"clear:both;text-align:right;float:right;\"><span class=\"delete-icon-small\" style=\"float:right;text-align:right;padding-right:5px;\" title=\"Delete Mission\" onclick=\"displayProjectDeleteWindow('"+projectID+"');\"><img src=\"images/ic_delete_forever_gray.png\" class=\"delete-icon-small\"></span></div>";
+                cardHTML += "</div>";
+                cardHTML += "</div>";
+                    cardHTML += "</div>";
+                cardHTML += "</li>";
+            }
         }
     }
 
@@ -1724,8 +1774,8 @@ function deleteKeywordHackerProject()
                     //$("#delete-project-response").html("");
                     hideDeleteProject();
                     $('body').removeClass('wait');
-                    //loadProjectDashboard(false);
                     $("#project-card-"+projectID).hide(400);
+                    loadProjectDashboard(false);
                 }
             }
         });
@@ -4307,7 +4357,7 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span class=\"info-icon-2\" title=\"Projected Customers multiplied by the monetary value of one paying customer\">"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-cost-per-month\" class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
-                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
+                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" ("+projectTotalContentDiff+" pcs)<div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-keyword-networth\" class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
                                             "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span></h2>"+
@@ -4577,6 +4627,12 @@ function displayMissionInfo(field,sort)
                 keywordCartDisplay = "none !important";
             }
             
+            var keywordCartDisplay2 = keywordCartDisplay;
+            if(numCartEntries > 0)
+            {
+                keywordCartDisplay2 = "none !important";
+            }
+            
             var keywordCheckboxStatus = "";
             var rowBGText = "";
             var checkboxBGClass = "";
@@ -4804,7 +4860,7 @@ function displayMissionInfo(field,sort)
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
-"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" id=\"goal-cart-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" onclick=\"addToCart(event,'"+keywordID+"');\"></span></td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" id=\"goal-cart-"+keywordID+"\" style=\"display:"+keywordCartDisplay2+";\" onclick=\"addToCart(event,'"+keywordID+"');\"></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                            </tfoot>\n" +
 "                                                        </table>\n" +
@@ -4823,7 +4879,7 @@ function displayMissionInfo(field,sort)
 "                                                <p>Reveal the monthly content strategies of your selected competitors</p>\n" +
 "                                            </div>\n" +
 "                                            <div class=\"info-block\">\n" +
-"                                                <h3>REVIEW AND TAKE ACTION <i class=\"blueproject-eagle-icon\"> </i></h3>\n" +
+"                                                <h3>REVIEW AND TAKE ACTION <img src=\"images/cart-static.png\" style=\"height:18px;margin-top:-3px;margin-left:30px;\"><!--<i class=\"blueproject-eagle-icon\"> </i>--></h3>\n" +
 "                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>\n" +
 "                                            </div>\n" +
 "\n" +
@@ -5172,7 +5228,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+"<small> ("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span>");
+    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" ("+projectTotalContentDiff+" pcs)<div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span>");
     $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span>");
     
 
@@ -5284,6 +5340,17 @@ function refreshMissionKeyword(returnData,field,keywordID)
                     topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
                 }
                 keywordTotalContentDiffHTML = "?";
+            }
+
+            if(keywordActive != 1)
+            {
+                keywordCartDisplay = "none !important";
+            }
+            
+            var keywordCartDisplay2 = keywordCartDisplay;
+            if(numCartEntries > 0)
+            {
+                keywordCartDisplay2 = "none !important";
             }
 
             var keywordCheckboxStatus = "";
@@ -5509,7 +5576,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
-"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" style=\"display:"+keywordCartDisplay+";\" onclick=\"addToCart(event,'"+keywordID+"');\"></span></td>\n" +
+"                                                                    <td colspan=\"2\" style=\"text-align:center;\">"+keywordTotalContentDiffHTML+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:2px;\"><img src=\"images/cart-dropshadow.png\" class=\"keyword-cart\" style=\"display:"+keywordCartDisplay2+";\" onclick=\"addToCart(event,'"+keywordID+"');\"></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                            </tfoot>\n" +
 "                                                        </table>\n" +
@@ -5528,7 +5595,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                <p>Reveal the monthly content strategies of your selected competitors</p>\n" +
 "                                            </div>\n" +
 "                                            <div class=\"info-block\">\n" +
-"                                                <h3>REVIEW AND TAKE ACTION <i class=\"blueproject-eagle-icon\"> </i></h3>\n" +
+"                                                <h3>REVIEW AND TAKE ACTION <img src=\"images/cart-static.png\" style=\"height:18px;margin-top:-3px;margin-left:30px;\"><!--<i class=\"blueproject-eagle-icon\"> </i>--></h3>\n" +
 "                                                <p>View your monthly content goal—this is how much content you will need to create and publish each month to match your competition.</p>\n" +
 "                                            </div>\n" +
 "\n" +
@@ -5830,5 +5897,32 @@ function toggleTab(name)
         $("#basic-tab").removeClass("active");
         $("#advanced-tab").addClass("active");
         
+    }
+}
+
+function restoreKeywordHackerProject(projectID)
+{
+    //Show the spinner
+    //$("#delete-project-response").html("<div><img src='images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+    $('body').addClass('wait');
+    
+    //Get the new values to update with
+    if(projectID != '')
+    {
+        //Make the AJAX call
+        $.ajax({url: restURL, data: {'command':'restoreKHProject','projectid':projectID}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    //On success, hide the window
+                    //$("#delete-project-response").html("");
+                    hideDeleteProject();
+                    $('body').removeClass('wait');
+                    loadProjectDashboard(false);
+                    //$("#project-card-"+projectID).hide(400);
+                }
+            }
+        });
     }
 }

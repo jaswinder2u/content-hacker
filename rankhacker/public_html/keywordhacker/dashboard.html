@@ -72,8 +72,8 @@
     <script>
         function run(){
             prepareNewWizard();
-            loadProjectDashboard(false);
-            setInterval(loadProjectDashboard.bind(false), 30000);
+            loadProjectDashboard(true);
+            setInterval(loadProjectDashboard.bind(true), 30000);
         }
     </script>
     
@@ -164,7 +164,7 @@
                     <div class="col-lg-6 view-option-outer pull-left">
                         <ul>
                             <li class="black_eagle-rh"></li>
-                            <li><a href="dashboard.html">Missions</a><span style="padding-left:10px;"><img src="images/create-new-icon.png" style="cursor:pointer;width:15px;height:auto;margin-bottom:3px;" onclick="showActivate();"></span></li>
+                            <li><a href="dashboard.html">Missions</a></li>
                             <!--li class="active"><a href="#">Project View </a> </li>
                             <li><a href="#"> Research View</a> </li-->
                         </ul>
@@ -201,7 +201,7 @@
                                         <button class="sort-btns" data-sort-by="project_name_sort" onclick="displayDashboardCards('project',true,'');">Mission</button>
                                     </li>
                                     <li>
-                                        <button class="sort-btns" data-sort-by="date_sort" onclick="displayDashboardCards('runDate',true,'');">Publish Date</button>
+                                        <button class="sort-btns" data-sort-by="date_sort" onclick="displayDashboardCards('projectID',true,'');">Publish Date</button>
                                     </li>
                                     <li>
                                         <button class="sort-btns" data-sort-by="project_status_sort" onclick="displayDashboardCards('status',true,'');">Status</button>
@@ -520,10 +520,10 @@
                                     <option value="0">non-ecommerce</option>
                                     <option value="1">e-commerce</option>
                                 </select>
-                                <span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/>
+                                <div style="clear:both;display:inline-block;"><span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/></div>
                                 which is located in 
                                 <span id="scrollable-dropdown-menu" style="display:inline-block;">
-                                    <span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/>
+                                    <div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/></div>
                                 </span>
                                  <br>to rank on 
                                  
@@ -556,7 +556,7 @@
                                     <option value="regional" id="metro-option">my metro area</option>
                                     <option value="national">my country</option>
                                 </select>
-                                and I sell my product/service for<span class="required">*</span><input type="text" placeholder="$" id="customer-value" class="side-wizard-input dolar-input top-padded"/> .
+                                and I sell my product/service for<div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="$" id="customer-value" class="side-wizard-input dolar-input top-padded"/></div> .
                             </label>
                             <span id="advanced-options">
                             <h2>Then we'll collect <u>optional</u> advanced conversion data.</h2>
@@ -798,8 +798,8 @@ $('#scrollable-dropdown-menu .typeahead').on(
 </script>
 
 <input type="hidden" id="json" value=""/>
-<input type="hidden" id="curr_sort" value="runDate"/>
-<input type="hidden" id="curr_sort_reversed" value="false"/>
+<input type="hidden" id="curr_sort" value="projectID"/>
+<input type="hidden" id="curr_sort_reversed" value="true"/>
 
 <script type="text/javascript">
 (function() {

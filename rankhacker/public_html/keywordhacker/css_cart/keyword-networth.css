@@ -140,11 +140,11 @@
 
 .add-new-keywords-btn:hover {background-color: #333;color: #fff;text-decoration: none;}
 
-.project-location-it {float: left;width: 100%;margin: 10px 0 0 0;padding: 0;color: #333;}
+.project-location-it {float: left;width: 100%;margin: 10px 0 0 0;padding: 0;color: #333;vertical-align:top;}
 
-.project-location-it ul, .project-location-it ul li {float: left;width: 100%;margin: 0;padding: 0;}
+.project-location-it ul, .project-location-it ul li {float: left;width: 100%;margin: 0;padding: 0;vertical-align:top;}
 
-.project-location-it ul li {width: auto;margin: 0 35px 0 0;text-transform: uppercase;font-size: 14px;line-height: normal;color: #231F20;font-weight: 600;}
+.project-location-it ul li {width: auto;margin: 0 35px 0 0;text-transform: uppercase;font-size: 14px;line-height: normal;color: #231F20;font-weight: 600;vertical-align:top;}
 
 .project-location-it ul li label {font-weight: normal;margin: 0 5px 0 0;}
 
@@ -244,8 +244,7 @@ position: absolute;right: 10px;top: 0;}
 .reveal-mark {cursor:pointer;position: absolute !important;font-size: 18px;color: #BE1E2D !important;border: 3px solid #BE1E2D;line-height: 30px;padding: 5px 20px;top: 40%;right:2%;
 -ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);z-index:999;}
 
-.reveal-mark-small {cursor:pointer;position: absolute !important;font-size: 8px;color: #BE1E2D !important;border: 1px solid #BE1E2D;padding: 1px 5px;left:10%; margin-top:-7px;
--ms-transform: rotate(-15deg);; /* IE 9 */-webkit-transform: rotate(-15deg);; /* Safari */transform: rotate(-15deg);}
+.reveal-mark-small {cursor:pointer;position: absolute !important;font-size: 8px;color: #BE1E2D !important;border: 1px solid #BE1E2D;padding: 1px 5px;left:10%; margin-top:-7px;}
 
 .table-outer {float: left;width: 100%;margin: 0;padding: 0;position: relative;}
 

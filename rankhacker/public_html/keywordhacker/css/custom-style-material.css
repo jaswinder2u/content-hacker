@@ -544,7 +544,7 @@ min-height: calc(100vh - 100px) !important;}
 
 .block-center {margin: 55px auto;width: 530px;max-width: 100%;position: relative;padding: 0 15px;word-wrap: break-word;}
 
-.block-center::before {float: left;width: 250px;height: 210px;background-image: url("../images/rh-store3-bg.png");background-position: right center;background-size: auto 100%;top: auto;content: "";position: absolute;right: -150px;bottom: 0;z-index: -1;background-repeat: no-repeat;}
+.block-center::before {float: left;width: 250px;height: 210px;background-image: url("../images/rh-store3-bg.png");background-position: right center;background-size: auto 110%;top: 40%;content: "";position: absolute;right: -150px;bottom: 0;z-index: -1;background-repeat: no-repeat;}
 
 .rh-form-outer {float: left;width: 100%;margin: 0px;padding: 25px;background-color: #FFF;color: #6D6E70;}
 
@@ -1354,7 +1354,7 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
     z-index: 999;
     color: #BE1E2D;
     font-size: 18px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     position: relative;
     top: 3px;
     left: 24px;

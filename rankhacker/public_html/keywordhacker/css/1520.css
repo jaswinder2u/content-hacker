@@ -322,11 +322,11 @@ cursor:pointer;
     padding: 0 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 275px;
+    width: 225px;
 }
 .typeahead {
     background-color: #fff;
-    width: 275px;
+    width: 225px;
     border: 1px solid #666;
 }
 .typeahead:focus {
@@ -351,7 +351,7 @@ cursor:pointer;
     margin-top: 12px;
     margin-left: 10px;
     margin-right: auto;
-    width: 275px;
+    width: 225px;
     cursor: pointer;
     overflow-y: auto;
 }
@@ -1327,4 +1327,12 @@ input::-webkit-inner-spin-button {
     content: "";
     background: #fff;
     color: #005cb8;
+}
+
+.gray-card-overlay {
+    width:100%;
+    height:100%;
+    background-color:#000;
+    opacity:0.45;
+    z-index:998;
 }
