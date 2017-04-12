@@ -501,7 +501,7 @@
                     <li id="basic-tab" class="active"><a>NEW MISSION SETUP</a></li>
                     <!--<li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>-->
                 </ul>
-                <a href="javascript:void(0);" id="side-wizard-close-btn">X</a>
+                <a href="javascript:void(0);" onclick="restoreWizardFields();" id="side-wizard-close-btn">X</a>
             </div>
         <div class="side-wizard-inner">
             <div class="side-wizard-image">
@@ -512,6 +512,7 @@
                 <div class="tab-content">
                     <div id="new-mission-setup" class="tab-pane fade in active">
                         <form class="side-wizard-form">
+                            <input type="hidden" id="editing-project-id" value="0">
                             <h2>We’ll start by gathering some intel on your goal.</h2>
                             <h4 style="width:100%;">Customize your goal by clicking within the statement:<span style="margin-right:50px;float:right;text-align:right;color:#BE1E2D;font-weight:bold;">* required</span></h4>
                             <label class="side-wizard-label">
@@ -520,7 +521,7 @@
                                     <option value="0">non-ecommerce</option>
                                     <option value="1">e-commerce</option>
                                 </select>
-                                <div style="clear:both;display:inline-block;"><span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/></div>
+                                <div style="clear:both;display:inline-block;" id="website-url-input"><span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/></div>
                                 which is located in 
                                 <span id="scrollable-dropdown-menu" style="display:inline-block;">
                                     <div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/></div>
@@ -535,19 +536,14 @@
                                  <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
                                      <label for="use-bing" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Bing+Yahoo</label></span>
                                  
-                                 for <span class="required">*</span><span class="keyword-phrases-input">
-                                    <!--<span class="import-keywords fileinput-button pull-right">
-                                        <input type="file" name="File Upload" id="fileupload" accept=".csv" />
-                                    </span>-->
+                                 <span id="phrase-input">for <span class="required">*</span><span class="keyword-phrases-input">
                                     <input type="hidden" id="keyword-count" value="0"/>
                                     <input id="new-keyword" type="text" placeholder="Keyword Phrases" class="side-wizard-input"/>
                                     <span class="import-keywords btn fileinput-button">
                                         <span>Import Phrases</span>
-                                        <!-- The file input field used as target for the file upload widget -->
                                         <input type="file" name="File Upload" id="fileupload" accept=".csv" />
                                     </span>
-                                    <!--<a class="import-keywords" value="">Import Phrases</a>-->
-                                 </span>
+                                     </span></span>
                                 <br>targeting <select class="side-wizard-select" id="industry-selection">
                                     <option value='0'>Select...</option>
                                 </select>in 

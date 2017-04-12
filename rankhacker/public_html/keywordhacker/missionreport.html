@@ -277,7 +277,95 @@
       </footer>
       <!--Footer close here-->
 
+<a href="javascript:void(0);" id="side-wizard-rh-eagle"></a>
+	  
 
+<div class="side-wizard-outer">
+    <div class="overflow-scroll">
+            <div class="block-css" style="position: relative;">
+                <div class="side-wizard-image" style="margin:0 0 -7px 0!important;background-color: #E4E5E6;height:32px !important;">.&nbsp;</div>
+                <ul class="nav nav-tabs side-wizard-tabs matchheight">
+                    <li id="basic-tab" class="active"><a>NEW MISSION SETUP</a></li>
+                    <!--<li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>-->
+                </ul>
+                <a href="javascript:void(0);" id="side-wizard-close-btn">X</a>
+            </div>
+        <div class="side-wizard-inner">
+            <div class="side-wizard-image">
+            <img src="images/rh-plus-logo.png">
+            </div>
+
+            <div class="side-wizard-content">
+                <div class="tab-content">
+                    <div id="new-mission-setup" class="tab-pane fade in active">
+                        <form class="side-wizard-form">
+                            <input type="hidden" id="editing-project-id" value="0">
+                            <h2>We’ll start by gathering some intel on your goal.</h2>
+                            <h4 style="width:100%;">Customize your goal by clicking within the statement:<span style="margin-right:50px;float:right;text-align:right;color:#BE1E2D;font-weight:bold;">* required</span></h4>
+                            <label class="side-wizard-label">
+                                I’d like my
+                                <select class="side-wizard-select" id="e-commerce-selection" onchange="refreshIndustries();">
+                                    <option value="0">non-ecommerce</option>
+                                    <option value="1">e-commerce</option>
+                                </select>
+                                <div style="clear:both;display:inline-block;" id="website-url-input"><span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/></div>
+                                which is located in 
+                                <span id="scrollable-dropdown-menu" style="display:inline-block;">
+                                    <div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/></div>
+                                </span>
+                                 <br>to rank on 
+                                 
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox" id="use-google" value="1" checked="checked" onclick="checkRequiredEngine('google','bing');">
+                                     <label for="use-google" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Google</label></span>
+                                 
+                                 and
+                                       
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
+                                     <label for="use-bing" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Bing+Yahoo</label></span>
+                                 
+                                 <span id="phrase-input">for <span class="required">*</span><span class="keyword-phrases-input">
+                                    <input type="hidden" id="keyword-count" value="0"/>
+                                    <input id="new-keyword" type="text" placeholder="Keyword Phrases" class="side-wizard-input"/>
+                                    <span class="import-keywords btn fileinput-button">
+                                        <span>Import Phrases</span>
+                                        <input type="file" name="File Upload" id="fileupload" accept=".csv" />
+                                    </span>
+                                     </span></span>
+                                <br>targeting <select class="side-wizard-select" id="industry-selection">
+                                    <option value='0'>Select...</option>
+                                </select>in 
+                                <select class="side-wizard-select" id="local-national">
+                                    <option value="local">my city</option>
+                                    <option value="regional" id="metro-option">my metro area</option>
+                                    <option value="national">my country</option>
+                                </select>
+                                and I sell my product/service for<div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="$" id="customer-value" class="side-wizard-input dolar-input top-padded"/></div> .
+                            </label>
+                            <span id="advanced-options">
+                            <h2>Then we'll collect <u>optional</u> advanced conversion data.</h2>
+                            <h4>On average:</h4>
+                            <label class="side-wizard-label">About<input type="text" id="monthly-visitors" placeholder="#" class="side-wizard-input dolar-input"/>visitors land on my website each month, of those
+                            <input type="text" id="monthly-customers" placeholder="#" class="side-wizard-input dolar-input"/>convert to actual paying customers; it costs me approximately
+                            <input type="text" id="content-cost" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.
+                            <a onclick="createKeywordHackerProject(event);" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </label>
+                            </span>
+                            
+                        </form>
+                        <div class="wz-reveal-signup">
+                            <!--<h2>Next we’ll reveal their secrets and identify your mission:</h2>
+                            <form class="wz-signup-form">
+                                <input type="text" placeholder="Enter Your Email to Reveal*" class="rh-storefornt-input" />   <button class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <span class="validation-msg">A verification email will sent to confirm email accuracy prior to dashboard access.</span>
+                            </form>
+                            <h3 class="already-registered">ALREADY REGISTERED?<a href="#">LOG IN</a></h3>-->
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
 
 
 
@@ -285,6 +373,10 @@
 <!-- =========================
      JS SCRIPTS
 ============================== -->
+
+<!-- TypeAhead js files -->
+<script type="text/javascript" src="js/georankerregions-data.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
 
 <!--Text typing effect js -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>

@@ -526,7 +526,7 @@ width: calc(100% - 335px) !important;}
 
 .side-wizard-tabs.nav.nav-tabs::before {content: "";background-color: #B9BBBD;position: absolute;left:auto;right: 100%;width: 40px;top: 0;float: right;z-index: 2;bottom: 0;-ms-transform:skewX(20deg);-webkit-transform: skewX(20deg);transform: skewX(20deg);margin-left: -31px;}
 
-#side-wizard-rh-eagle {background-image: url(../images/rh-sideicon.png);position: fixed;left: 0;top: 40%;width: 60px;height: 68px;z-index: 99;background-repeat: no-repeat;background-position: left center;margin: 0;margin-top: -30px;}
+#side-wizard-rh-eagle {background-image: url(../images/rh-sideicon.png);position: fixed;left: 0;top: 37%;width: 60px;height: 68px;z-index: 99;background-repeat: no-repeat;background-position: left center;margin: 0;margin-top: -30px;}
 
 #side-wizard-close-btn {font-size: 24px;color: #fff;position: absolute;right: 5px;top: 0;z-index: 99;}
 
