@@ -73,7 +73,7 @@
         function run(){
             prepareNewWizard();
             loadProjectDashboard(true);
-            setInterval(loadProjectDashboard.bind(false), 30000);
+            //setInterval(loadProjectDashboard.bind(false), 30000);
         }
     </script>
     
@@ -552,14 +552,14 @@
                                     <option value="regional" id="metro-option">my metro area</option>
                                     <option value="national">my country</option>
                                 </select>
-                                and I sell my product/service for<div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="$" id="customer-value" class="side-wizard-input dolar-input top-padded"/></div> .
+                                and I sell my product/service for<div style="clear:both;display:inline-block;"><span class="dollar-sign-prefix-required">$</span><span class="required">*</span><input type="text" placeholder="" id="customer-value" class="side-wizard-input dolar-input top-padded" style="padding-left:26px !important;"/></div> .
                             </label>
                             <span id="advanced-options">
                             <h2>Then we'll collect <u>optional</u> advanced conversion data.</h2>
                             <h4>On average:</h4>
                             <label class="side-wizard-label">About<input type="text" id="monthly-visitors" placeholder="#" class="side-wizard-input dolar-input"/>visitors land on my website each month, of those
                             <input type="text" id="monthly-customers" placeholder="#" class="side-wizard-input dolar-input"/>convert to actual paying customers; it costs me approximately
-                            <input type="text" id="content-cost" placeholder="$ " class="side-wizard-input dolar-input"/>to produce one piece of marketing content.
+                            <div style="clear:both;display:inline-block;"><span class="dollar-sign-prefix">$</span><input type="text" id="content-cost" placeholder="" class="side-wizard-input dolar-input"/></div>to produce one piece of marketing content.
                             <a onclick="createKeywordHackerProject(event);" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                             </label>
                             </span>

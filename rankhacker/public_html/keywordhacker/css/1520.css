@@ -1314,7 +1314,7 @@ input::-webkit-inner-spin-button {
 	
 }
 
-.keyword-cart {z-index:999;cursor:pointer;display: inline-block;height: 20px;left: 0;margin-left: 0;position: relative;top: 4px;width: auto; font-weight:normal;}
+.keyword-cart {z-index:999;cursor:pointer;display: inline-block;height: 17px;left: 0;margin-left: 0;position: relative;top: 4px;width: auto; font-weight:normal;}
 
 .opaque {background-color:#f1f1f2;};
 
@@ -1332,7 +1332,6 @@ input::-webkit-inner-spin-button {
 .gray-card-overlay {
     width:100%;
     height:100%;
-    background-color:#000;
-    opacity:0.45;
-    z-index:998;
+    background-color: #000;
+    opacity: 0.45;
 }
