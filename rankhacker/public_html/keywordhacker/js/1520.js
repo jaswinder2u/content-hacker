@@ -1,7 +1,7 @@
-/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -505,7 +505,7 @@ function createKeywordHackerProject(e)
     //this.event.preventDefault();
     e.preventDefault();
     
-    var projectID = $("#editing-project-id");
+    var projectID = $("#editing-project-id").val();
     if(projectID == "" || projectID == null || projectID == "null" || typeof projectID === "undefined")
     {
         projectID = "0";
@@ -756,12 +756,12 @@ function loadProjectDashboard(flip)
         {
             if(sortMethodReversed == "true" && flip)
             {
-                reversed = false;
+                reversed = true;
                 //data.sort(date_sort_asc);
             }
             else
             {
-                reversed = true;
+                reversed = false;
                 //data.sort(date_sort_desc);
             }
         }
@@ -1233,6 +1233,7 @@ function gotoCreateProject(projectID)
     $("#website-url-input").html("website, <label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardURL+"</label>,");
     $("#scrollable-dropdown-menu").html("<label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardGeolocation+"</label>");
     $("#phrase-input").hide();
+    $("#line-spacer").hide();
     $("#editing-project-id").val(projectID);
     
     if(typeof wizardECommerce !== "undefined")
@@ -1915,7 +1916,7 @@ function deleteKeywordHackerProject()
                     hideDeleteProject();
                     $('body').removeClass('wait');
                     $("#project-card-"+projectID).hide(400);
-                    loadProjectDashboard(false);
+                    //loadProjectDashboard(false);
                 }
             }
         });
@@ -2546,7 +2547,7 @@ function checkProjectDone()
                                 $("#check-project-done-flag").val(0);
                                 
                                 //Update the keyword net-worth text to say "ready" in static green
-                                //$('#kwNetWorth').html("<h2><span class=\"loader__dot\" style=\"font-size:15px;color:#088D0C;background-color:#fff;cursor:pointer;\" onclick=\"javascript:window.location.reload();\">refresh to view</span><span style=\"background-color:#fff;\">KEYWORD NET-WORTH</span></h2>");
+                                $('#mission-networth').html("<strong class=\"green-bg-total loader__dot\">refresh page<div style=\"text-align:right;float:right;clear:both;display:inline-block;color:#fff;font-size:12px;font-weight:bold;margin-top:3px;\"></div></strong>");
                             }
                         }
                     }
@@ -3466,11 +3467,11 @@ function refreshCartDropdown()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
+                        var iconSrc = "../keywordhacker/images/header-cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart-static.png";
+                            iconSrc = "../keywordhacker/images/header-cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -3759,11 +3760,11 @@ function refreshCartDropdownForCalculator()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
+                        var iconSrc = "../keywordhacker/images/header-cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart-static.png";
+                            iconSrc = "../keywordhacker/images/header-cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -3798,11 +3799,11 @@ function refreshCartDetails()
                         var keywordCount = 0;
                         var projectManagementCount = 0;
                         
-                        var iconSrc = "../keywordhacker/images/cart-inactive.png";
+                        var iconSrc = "../keywordhacker/images/header-cart-inactive.png";
                         
                         if(totalContent > 0)
                         {
-                            iconSrc = "../keywordhacker/images/cart-static.png";
+                            iconSrc = "../keywordhacker/images/header-cart-static.png";
                             missionCount = info.missions;
                             keywordCount = info.keywords;
                             projectManagementCount = info.project_management;
@@ -4524,7 +4525,7 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span class=\"info-icon-2\" title=\"Projected Customers multiplied by the monetary value of one paying customer\">"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-cost-per-month\" class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
-                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" ("+projectTotalContentDiff+" pcs)<div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
+                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" <small>("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-keyword-networth\" class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
                                             "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span></h2>"+
@@ -5496,7 +5497,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
     $("#mission-monthly-visitors").html(numberWithCommas(incomingTraffic)+"<span>MONTHLY VISITORS</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-customers").html(numberWithCommas(Math.round(incomingTraffic * customerConversionRate,0))+"<span>"+monthlyCustomersText+"</span><span class=\"blue-text\">PROJECTED </span>");
     $("#mission-monthly-sales").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span>"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span>");
-    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" ("+projectTotalContentDiff+" pcs)<div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span>");
+    $("#mission-content-goal").html("<sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" <small>("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span>");
     $("#mission-networth").html("<strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span>");
     
 
@@ -5902,11 +5903,11 @@ function showPlaceholder(elementID,text)
 function flashCart()
 {
     $("#cart-image").fadeOut(0,function(){
-        $("#cart-image").attr("src","images/cart-hover.png").fadeIn(0,function(){
+        $("#cart-image").attr("src","images/header-cart-hover.png").fadeIn(0,function(){
             $("#cart-image").addClass("shadow-filter");
             $("#cart-image").fadeOut(750,function(){
                 $("#cart-image").removeClass("shadow-filter");
-                $("#cart-image").attr("src","images/cart-static.png").fadeIn(750,function(){
+                $("#cart-image").attr("src","images/header-cart-static.png").fadeIn(750,function(){
                     
                 });
             });
@@ -6187,8 +6188,8 @@ function restoreKeywordHackerProject(projectID)
                     //$("#delete-project-response").html("");
                     hideDeleteProject();
                     $('body').removeClass('wait');
-                    loadProjectDashboard(false);
-                    //$("#project-card-"+projectID).hide(400);
+                    $("#project-card-"+projectID).hide(400);
+                    //loadProjectDashboard(false);
                 }
             }
         });
@@ -6200,5 +6201,6 @@ function restoreWizardFields()
     $("#website-url-input").html("<span class=\"required\">*</span><input id=\"project-url\" type=\"text\" placeholder=\"Website URL\" class=\"side-wizard-input\" style=\"width:225px;\"/>");
     $("#scrollable-dropdown-menu").html("<div style=\"clear:both;display:inline-block;\"><span class=\"required\">*</span><input type=\"text\" placeholder=\"Business Location\" onblur=\"validateSelection();\" id=\"project-location\" class=\"typeahead side-wizard-input\"/></div>");
     $("#phrase-input").show();
+    $("#line-spacer").show();
     $("#metro-option").show();
 }
