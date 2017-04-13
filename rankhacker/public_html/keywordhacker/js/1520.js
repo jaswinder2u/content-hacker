@@ -1510,7 +1510,6 @@ function addKeywordToProject(keyword)
 
                 if(info.status == "success")
                 {
-                    //loadProjectData();
                     window.location.reload();
                 }
             }
@@ -1891,6 +1890,65 @@ function cancelDeleteKeywordHackerProject()
     document.getElementById("delete-project-window").style.display = "none";
 }
 
+function removeContent()
+{
+    var username = getCookie("username");
+    if(username != '')
+    {
+        var type = $("#delete-content-type").val();
+        if(type == "project")
+        {
+            var projectID = $("#delete-project-content-id").val();
+            $('body').addClass('wait');
+            $.ajax({url: restURL, data: {'command':'removeProjectContentFromCart','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        loadMissionData(true);
+                        hideRemoveContent();
+                        $('body').removeClass('wait');
+                    }
+                }
+            });
+        }
+        else if(type == "keyword")
+        {
+            var keywordID = $("#delete-keyword-content-id").val();
+            $('body').addClass('wait');
+            $.ajax({url: restURL, data: {'command':'removeKeywordContentFromCart','keywordid':keywordID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        loadMissionData(true);
+                        hideRemoveContent();
+                        $('body').removeClass('wait');
+                    }
+                }
+            });
+        }
+    }
+}
+
+function cancelRemoveContent()
+{
+    //Reset the hidden inputs
+    $('#delete-keyword-content-id').val(0);
+    $('#delete-project-content-id').val(0);
+    $("#delete-content-type").val("keyword");
+    
+    //Hide the modal
+    document.getElementById("dimmer").style.display = "none";
+    document.getElementById("delete-content-window").style.display = "none";
+}
+
+function hideRemoveContent()
+{
+    document.getElementById("dimmer").style.display = "none";
+    document.getElementById("delete-content-window").style.display = "none";
+}
+
 function hideDeleteProject()
 {
     document.getElementById("dimmer").style.display = "none";
@@ -1900,6 +1958,12 @@ function hideDeleteProject()
 function showDeleteProject()
 {
     document.getElementById("delete-project-window").style.display = "block";
+    document.getElementById("dimmer").style.display = "block";
+}
+
+function showDeleteContent()
+{
+    document.getElementById("delete-content-window").style.display = "block";
     document.getElementById("dimmer").style.display = "block";
 }
 
@@ -2141,7 +2205,7 @@ function deleteKeyword()
 
                 if(info.status == "success")
                 {
-                    loadProjectData();
+                    loadMissionData(true);
                     hideDeleteProject();
                     $('body').removeClass('wait');
                 }
@@ -2695,7 +2759,6 @@ function generateContentReport(keywordCounter)
                     setTimeout(function(){
                         window.location.reload();
                     }, 2000);
-                    //loadProjectData();
                     
                 }
             }
@@ -3306,7 +3369,7 @@ function addToCart(e,keywordID)
                         {
                             //$("#cart-icon-"+thisKeywordID).css("opacity","0.25");
                             $("#cart-icon-"+thisKeywordID).attr("src","images/cart-inactive.png");
-                            $("#cart-icon-"+thisKeywordID).attr("onclick","javascript:void(0);");
+                            $("#cart-icon-"+thisKeywordID).attr("onclick","javascript:displayContentDeleteWindow('0','"+thisKeywordID+"','keyword');");
                             //$("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
                         }
                     }
@@ -3314,7 +3377,7 @@ function addToCart(e,keywordID)
                     //Hide all of the competitor table carts
                     $(".keyword-cart").hide();
                     $("#project-add-to-cart").attr("src","images/cart-inactive.png");
-                    $("#project-add-to-cart").attr("onclick","javascript:void(0);");
+                    $("#project-add-to-cart").attr("onclick","javascript:displayContentDeleteWindow('"+projectID+"','0','project');");
                     //$("#mission-cart-div").html("<img src=\"images/cart-inactive.png\" id=\"project-add-to-cart\" class=\"mission-cart-icon\">");
                     
                 }, 1500);
@@ -3345,7 +3408,7 @@ function addToCart(e,keywordID)
             //Disable this particular add to cart icon
             //$("#cart-icon-"+keywordID).css("opacity","0.25");
             $("#cart-icon-"+keywordID).attr("src","images/cart-inactive.png");
-            $("#cart-icon-"+keywordID).attr("onclick","javascript:void(0);");
+            $("#cart-icon-"+keywordID).attr("onclick","javascript:displayContentDeleteWindow('0','"+keywordID+"','keyword');");
             //$("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
             $("#goal-cart-"+keywordID).hide();
             /*$("#goal-cart-"+keywordID).attr("src","images/cart-inactive.png");
@@ -3385,7 +3448,7 @@ function addToCart(e,keywordID)
             {
                 //$("#project-add-to-cart").css("opacity","0.25");
                 $("#project-add-to-cart").attr("src","images/cart-inactive.png");
-                $("#project-add-to-cart").attr("onclick","javascript:void(0);");
+                $("#project-add-to-cart").attr("onclick","javascript:displayContentDeleteWindow('"+projectID+"','0','project');");
                 //$("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
                 
             }
@@ -4426,7 +4489,7 @@ function displayMissionInfo(field,sort)
         if(projectOrdered)
         {
             cartSrc = "images/cart-inactive.png";
-            cartOnclick = "javascript:void(0);";
+            cartOnclick = "javascript:displayContentDeleteWindow('"+projectID+"','0','project');;";
         }
     
         var monthlyCustomersText = "MONTHLY CUSTOMERS";
@@ -4789,7 +4852,7 @@ function displayMissionInfo(field,sort)
             if(numCartEntries>0)
             {
                 cartSrc = "images/cart-inactive.png";
-                cartOnclick = "javascript:void(0);";
+                cartOnclick = "javascript:displayContentDeleteWindow('0','"+keywordID+"','keyword');";
                 keywordCartDisplay = "none";
             }
             
@@ -5441,7 +5504,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
     if(projectOrdered)
     {
         cartSrc = "images/cart-inactive.png";
-        cartOnclick = "javascript:void(0);";
+        cartOnclick = "javascript:displayContentDeleteWindow('"+projectID+"','0','project');";
     }
 
     var monthlyCustomersText = "MONTHLY CUSTOMERS";
@@ -5513,7 +5576,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
             if(numCartEntries>0)
             {
                 cartSrc = "images/cart-inactive.png";
-                cartOnclick = "javascript:void(0);";
+                cartOnclick = "javascript:displayContentDeleteWindow('0','"+keywordID+"','keyword');";
                 keywordCartDisplay = "none";
             }
             
@@ -6167,4 +6230,16 @@ function restoreWizardFields()
     $("#phrase-input").show();
     $("#line-spacer").show();
     $("#metro-option").show();
+}
+
+function displayContentDeleteWindow(projectID,keywordID,type)
+{
+    if(type != '')
+    {
+        //Set the ids
+        $('#delete-project-content-id').val(projectID);
+        $('#delete-keyword-content-id').val(keywordID);
+        $('#delete-content-type').val(type);
+        showDeleteContent();
+    }
 }
