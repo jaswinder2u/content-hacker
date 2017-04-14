@@ -2574,7 +2574,7 @@ function checkProjectDone()
                                 $("#check-project-done-flag").val(0);
                                 
                                 //Update the keyword net-worth text to say "ready" in static green
-                                $('#mission-networth').html("<strong class=\"green-bg-total loader__dot\">refresh page<div style=\"text-align:right;float:right;clear:both;display:inline-block;color:#fff;font-size:12px;font-weight:bold;margin-top:3px;\"></div></strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span>");
+                                $('#mission-networth').html("<strong class=\"green-bg-total loader__dot\" onclick=\"javascript:window.location.reload();\">refresh page<div style=\"text-align:right;float:right;clear:both;display:inline-block;color:#fff;font-size:12px;font-weight:bold;margin-top:3px;\"></div></strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span>");
                             }
                         }
                     }
