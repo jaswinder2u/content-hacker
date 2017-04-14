@@ -441,7 +441,7 @@ function hideAlert()
 
 function showAlert(msgContent)
 {
-    $('#alert-msg-body').addClass("red-text");
+    /*$('#alert-msg-body').addClass("red-text");*/
     $('#alert-msg-body').html(msgContent);
     document.getElementById("alert-window").style.display = "block";
     document.getElementById("dimmer").style.display = "block";
@@ -587,11 +587,17 @@ function createKeywordHackerProject(e)
     var username = getCookie("username");
 
     var id = "1";
-    if($("#monthly-visitors").val().trim() !== "" || $("#monthly-customers").val().trim() !== "" || $("#monthly-visitors").val().trim() != "0" || $("#monthly-customers").val().trim() != "0")
+    if($("#monthly-visitors").val().trim() !== "" || $("#monthly-customers").val().trim() !== "")
     {
         id = "2";
     }
     
+    if($("#monthly-visitors").val().trim() == "0" && $("#monthly-customers").val().trim() == "0")
+    {
+        id = "1";
+    }
+    
+console.log(id);
     var keywordsList = "";
     if(projectID == "0")
     {
@@ -1883,7 +1889,7 @@ function cancelDeleteKeywordHackerProject()
 {
     //Set the id of the project back to 0
     $('#delete-project-id').val(0);
-    $("#delete-project-response").html("");
+    //$("#delete-project-response").html("");
     
     //Hide the modal
     document.getElementById("dimmer").style.display = "none";
@@ -2780,10 +2786,7 @@ function getKeywordCompetitorsAhrefs(keywordCounter)
     //Send the user to the RH Storefront
     //gotoStorefrontPrefill(keywordCounter);
     
-    console.log("projectid = "+projectID);
-    console.log("keywordid = "+keywordID);
-    
-    /*$.ajax({url: restURL, data: {'command':'getKeywordCompetitorsAhrefs','projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
+    $.ajax({url: restURL, data: {'command':'getKeywordCompetitorsAhrefs','projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
@@ -2792,7 +2795,7 @@ function getKeywordCompetitorsAhrefs(keywordCounter)
                     window.location.reload();
                 }
             }
-        });*/
+        });
 }
 
 function changeUserMonthlyContent(keywordID,keywordCounter)

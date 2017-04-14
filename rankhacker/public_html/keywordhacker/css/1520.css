@@ -81,6 +81,7 @@ body.wait *, body.wait {
 .delete-project-window #setup-box-outer {
   background-color: rgba(255,255,255,1);
   float: left;
+  width: 65%;
   height: 100%;
   overflow: visible;
   padding: 35px;

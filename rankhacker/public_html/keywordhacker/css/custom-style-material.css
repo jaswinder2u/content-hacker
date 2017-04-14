@@ -1352,7 +1352,7 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 }
 
 .required {
-    z-index: 999;
+    z-index: 997;
     color: #BE1E2D;
     font-size: 18px;
     /*font-weight: bold;*/
@@ -1362,7 +1362,7 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 }
 
 .dollar-sign-prefix {
-    z-index: 999;
+    z-index: 997;
     color: #231f20;
     font-size: 14px;
     /*font-weight: bold;*/
@@ -1372,7 +1372,7 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 }
 
 .dollar-sign-prefix-required {
-    z-index: 999;
+    z-index: 997;
     color: #231f20;
     font-size: 14px;
     /*font-weight: bold;*/

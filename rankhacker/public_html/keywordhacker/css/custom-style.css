@@ -1313,7 +1313,7 @@ width: 100%;}
 
 .project-setup-form .project-setup-input {clear: both;display: inline-block;margin-bottom: 10px;}
 
-.setup-heading   {color: #231f20;float: left;font-size:24px;font-weight: bold;line-height: normal;margin:0.5em 0 1.5em;padding: 0;text-align: left;text-transform: none;width: 100%;}
+.setup-heading   {color: #231f20;float: left;font-size:16px;font-weight: bold;line-height: normal;margin:0.5em 0 1.5em;padding: 0;text-align: left;text-transform: none;width: 100%;}
 
 .project-setup-input label {color: #000;font-size: 16px;font-weight: 700;line-height: 45px;margin: 0;}
 
