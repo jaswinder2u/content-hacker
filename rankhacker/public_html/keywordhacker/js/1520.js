@@ -3432,11 +3432,13 @@ function addToCart(e,keywordID)
             {
                 var thisEntry = keywordInfo[i];
                 var thisKeywordID = thisEntry.keywordID;
+                var thisKeywordActive = thisEntry.active;
+                
                 if($("#cart-icon-"+thisKeywordID).length)
                 {
                     var thisSrc = $("#cart-icon-"+thisKeywordID).attr("src");
                     var loc = thisSrc.indexOf("-static");
-                    if(loc > -1)
+                    if(loc > -1 && thisKeywordActive == 1)
                     {
                         disable = false;
                     }
@@ -4865,7 +4867,7 @@ function displayMissionInfo(field,sort)
             var shadedString = "";
             var errorTriangleHTML = "";
 
-            if(errorExists == 1)
+            if(errorExists == 1 && keywordHidden != 1)
             {
                 errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
                 //Also show the message at the top
@@ -4915,8 +4917,8 @@ function displayMissionInfo(field,sort)
                 }
                 else
                 {
-                    //topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
-                    topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"javascript:void(0);\"> REVEAL </span>";
+                    //topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
                 }
                 keywordTotalContentDiffHTML = "?";
             }
@@ -5589,7 +5591,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
             var shadedString = "";
             var errorTriangleHTML = "";
         
-            if(errorExists == 1)
+            if(errorExists == 1 && keywordHidden != 1)
             //if(true)
             {
                 errorTriangleHTML = "<a data-toggle=\"tooltip\" onclick=\"rerunKeyword('"+keywordID+"');\" class=\"tooltip-hover\" title=\"\" data-original-title=\"It looks like there was an issue running this keyword. Please click the triangle icon to try re-running the phrase.\"><img src=\"images/red-warning-icon.png\" class=\"restart-icon\"></a>";
@@ -5635,8 +5637,8 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 }
                 else
                 {
-                    //topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
-                    topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"javascript:void(0);\"> REVEAL </span>";
+                    //topHackContentHTML = currencyHexCode+numberWithCommas(costPerMonth)+" ("+keywordTotalContentDiff+" pcs)";
                 }
                 keywordTotalContentDiffHTML = "?";
             }
