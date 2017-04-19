@@ -400,11 +400,24 @@ position: absolute;right: 10px;top: 0;}
 
 .keyword-networth-project tr.table-heading th:nth-child(2n+1) {clear: left;}
 
-.keyword-networth-project .content-goal-table td::before {display: block;width: 140px;}
+.keyword-networth-project .content-goal-table td::before {display: block;width: 140px;font-size: 12px;}
+
+.keyword-networth-project .content-goal-table td:last-child::before {font-size: 14px;margin-top: 4px;text-align: left;}
 
 .keyword-networth-project .project-info .project-head2 td.checkbox-ot {border-right: none;text-align: left;padding-left: 8px;}
 
 .keyword-networth-project .project-info .project-head2 td {border-right: none;position: relative;padding-left: 150px;}
+
+.keyword-networth-project tr.table-heading th, .keyword-networth-project tr.table-heading td ,
+.keyword-networth-project tr.table-heading th:last-child, .keyword-networth-project tr.table-heading td:last-child{background-image: none;}
+
+.keyword-networth-project th, .keyword-networth-project .table-heading td {padding: 10px 15px !important;}
+
+.keyword-networth-project th:first-child h2.table-title, .keyword-networth-project td:first-child h2.table-title {padding-left: 0;}
+
+#keyword-networth .white-box {padding: 20px;}
+
+#keyword-summary-table .content-goal-info, #keyword-summary-table .right-side-goalinfo {float: left;padding-left: 10px;padding-right: 10px;width: 100%;}
 
 }
 
@@ -425,6 +438,8 @@ position: absolute;right: 10px;top: 0;}
 .project-breadcomb-outer ul li {font-size:0}
 
 .project-breadcomb-outer ul li::before{display:none;}
+
+#keyword-networth .white-box {padding: 15px;}
 
 }
 

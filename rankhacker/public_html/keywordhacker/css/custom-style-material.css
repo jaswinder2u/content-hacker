@@ -298,7 +298,7 @@ ul.package-feature li .info-icon {top: -4px;left: 0;}
 
 .rh-competitor-section {background-color: #fff;/*border: 1px solid #6d6e70;*/float: left;margin: 20px 0 0 0;padding: 30px;width: 100%;}
 
-.rh-secrets-section .container , .rh-store-st3 .container , .rh-storefornt-tagline .container , .rh-store-st4 .container , .try-beta-access .container{max-width: 1200px;}
+.rh-secrets-section .container , .rh-store-st3 .container , .rh-storefornt-tagline .container , .rh-store-st4 .container , .try-beta-access .container {max-width: 1200px;height: auto;}
 
 .rh-storefornt-tagline {background-color: #3d3d3d;color: #fff;float: left;margin: 0;overflow: hidden;padding: 60px 0;position: relative;width: 100%;}
 
@@ -835,8 +835,100 @@ table.mission-info-table tr.table-heading:hover {background-color: transparent;}
 
 .cart-heading .dropdown-menu li a:hover {background-color: #eee;color: #333;}
 
+/* agency page css  */
 
+#agency-page {color: #333 !important;text-align: left;background-color: #E4E5E7;}
 
+#agency-page .container{max-width: 1030px;height: auto;}
+
+.blue-section , .gray-section{background-color: #005cb8;color: #fff;position: relative;}
+
+.blue-section::before {background-color: #005cb8;content: "";height: 50px;margin: 0 0 0 -30px;padding: 0;position: absolute;top: -40px;transform: skewX(35deg);width: 50%;}
+
+.gray-section {background-color: #3D3D3D;}
+
+.blue-section  .rh-storefornt-subheading, .gray-section .rh-storefornt-subheading  , 
+#agency-page .gray-section .rh-storefornt-subheading ,#agency-page .blue-section  .rh-storefornt-subheading
+{color:#fff;}
+
+.agency-st1 , .agency-st2 , .agency-st3 , .agency-st4 , .agency-st5 , .agency-st6 , .agency-st7 {float:left;width:100%;margin:0;padding:60px 0;position:relative;}
+
+.agency-st1 p, .agency-st2 p, .agency-st3 p, .agency-st4 p, .agency-st5 p, .agency-st6 p, .agency-st7 p{float:left;width:100%;margin:0 0 10px;padding:0;position:relative;font-family: 'Avenir Roman';font-size:18px;line-height:28px;}
+
+#agency-page .white-box {background-color: #fff;box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.3);float: left;margin: 55px 0;padding:40px;width: 100%;}
+
+.agency-content-box {float: left;margin: 0;padding: 0 65px;width: 100%;}
+
+#agency-page  .rh-storefornt-subheading {color:#231F20;font-size:30px;}
+
+#agency-page .agency-main-heading {color: #005cb8;float: left;font-family: "Montserrat",sans-serif;font-size: 85px;font-weight: bold;line-height: 85px;margin: 0 0 25px;padding: 0;width: 100%;}
+
+.agency-st2 , .agency-st7 {padding-bottom: 0 !important;}
+
+.text-red {color:#EA1C24 !important;}
+
+.keyword-networth-process {display: flex;flex-flow: row nowrap;float: left;justify-content: center;margin:30px 0;padding: 0;text-align: center;width: 100%;}
+
+.keyword-networth-process li {position:relative;align-items: center;background-color: #26a7de;border-radius: 100%;display: flex;height: 180px;margin: 0 30px;padding: 40px 8px;width: 180px;}
+
+.keyword-networth-process li h2 {color: #3d3d3d;font-size: 22px;margin: 0 auto;overflow-wrap: break-word;text-align: center;width: 160px;}
+
+.keyword-networth-process li:nth-child(1)::after, .keyword-networth-process li:nth-child(2)::after {
+background-color: #EA1B23;content: "";height: 4px;left: 100%;margin-left: 15px;margin-top: -2px;position: absolute;top: 50%;width: 30px;}
+
+.keyword-networth-process li:nth-child(2)::after {background-color: transparent;border-bottom: 4px solid #009f4b;border-top: 4px solid #009f4b;height: 16px;margin-top: -8px;}
+
+.more-features-box {float: left;margin: 0 0 40px;padding: 0;width: 100%;}
+
+.more-features-box .row {clear: both;}
+
+.features-img-box img {margin-top: 5px;}
+
+.agency-st3.gray-section {padding-bottom: 0;}
+
+.agency-st4 .agency-content-box h1.agency-main-heading {margin-top: 30px !important;}
+
+.agency-st3 .agency-content-box .rh-storefornt-subheading {margin-top: 30px !important;}
+
+.keyword-networth-process li:last-child::after {background-image: url("../images/arrow-agency-st3.png");background-position: 0 0;background-repeat: no-repeat;background-size: auto 100%;content: "";height: 125px;left: 100%;margin: 0 0 0 20px;padding: 0;position: absolute;top: 80px;width: 82px;z-index: 2;}
+
+.arrow-agency-st2 {position:relative;}
+
+.arrow-agency-st2::after {background-image: url("../images/arrow-agency-st4.png");background-position: 0 0;background-repeat: no-repeat;background-size: auto 100%;content: "";height: 156px;left: 100%;margin: 0 0 0 -65px;padding: 0;position: absolute;top: 80px;width: 100px;z-index: 2;}
+
+.agency-img1 ,.agency-img2 , .agency-img3 ,  .agency-img4 {width:100%;}
+.agency-img3 {margin-top:30px;}
+.agency-img2 {margin-top: 10px; margin-bottom: -50px;}
+.agency-img1 {margin-top: 30px; position: relative; z-index: 1; margin-bottom: -60px;}
+.agency-img4 {margin-top:-66px;}
+
+.agency-task-box .task-heading-storefornt {background-color: #e4e5e6;color: #005cb8;float: left;font-size: 12px;font-weight: bold;margin: 0;padding: 12px 10px;width: 100%;}
+
+.agency-task-box .time-est {color: #909295;float: left;font-size: 15px;list-style: outside none none;margin: 0 0 7px;padding: 0;width: 100%;display: flex;justify-content:center;}
+
+.agency-task-box .task-progress-storefornt {float:left;align-items: center;color: #26a7de;display: flex;font-size: 48px;font-weight: bold;justify-content: center;line-height: normal;margin: 0;padding: 0;width: 100%;}
+
+.agency-task-box .rh-clock-icon , .agency-task-box .rh-clock-deadline{background-image: url("../images/clock-img1.png");background-size: 100% 100%;background-position: center center;background-repeat: no-repeat;display: inline-block;height: 30px;margin: -2px 8px 0 0;padding: 0;width: 30px;}
+
+.agency-task-box .rh-clock-deadline {background-image: url("../images/clock-img2.png");}
+
+.agency-task-box .rh-greenup-arrow {background-image: url("../images/up-green-arrow.png");background-size: 100% 100%;background-position: center center;background-repeat: no-repeat;display: inline-block;height: 38px;margin: 0 8px 0 0;padding: 0;width: 32px;}
+
+.agency-task-box {margin-top: 25px;text-align:center;}
+
+#agency-page {display: block !important;height: auto !important;}
+
+.features-img-box img {max-width: 100%;}
+
+.agency-sub-heading {color: #6d6e70;float: left;font-size: 45px;font-weight: normal;margin: 0 0 10px;padding: 0;width: 100%;}
+
+.agency-sub-heading span {font-family: 'American Typewriter';font-weight:600;}
+
+.agency-st2 .arrow-agency-st2{position: relative;}
+
+.agency-st2 .arrow-agency-st2::after {background-image: url("../images/arrow-agency-st2.png");background-position: 0 0;background-repeat: no-repeat;background-size: auto 100%;content: "";height: 710px;left: 100%;margin: 0 0 0 -163px;padding: 0;position: absolute;top: 50px;width: 260px;z-index: 2;}
+
+.agency-st2 .arrow-agency-st2 .rh-storefornt-subheading{padding-right: 100px;}
 
 
 
@@ -877,6 +969,19 @@ table.mission-info-table tr.table-heading:hover {background-color: transparent;}
 .side-wizard-content {width: -moz-calc(100% - 200px);width: -webkit-calc(100% - 200px);width: -o-calc(100% - 200px);width: calc(100% - 200px);}
 
 .side-wizard-tabs.nav.nav-tabs {width: -moz-calc(100% - 225px) !important;width: -webkit-calc(100% - 225px) !important;width: -o-calc(100% - 225px) !important;width: calc(100% - 225px) !important;}
+
+#agency-page .agency-main-heading {font-size: 75px;line-height: 75px;margin: 0 0 20px;}
+
+.agency-sub-heading {font-size: 40px;}
+
+}
+
+@media (max-width: 1190px) {
+
+.agency-st2 .arrow-agency-st2::after {display: none;}
+
+.agency-st2 .arrow-agency-st2 .rh-storefornt-subheading{padding-right: 0;}
+
 
 }
 
@@ -993,6 +1098,54 @@ table.mission-info-table tr.table-heading:hover {background-color: transparent;}
 .rh-contact-info .form-group .contact-input-outer .dvs-input{padding-left: 5px;padding-right: 5px;}
 
 .white-options-section {padding: 0 10px;}
+
+#agency-page .agency-main-heading {font-size: 60px;line-height: 60px;margin: 0 0 15px;}
+
+.agency-sub-heading {font-size: 35px;margin-bottom: 5px;}
+
+#agency-page .rh-storefornt-subheading {font-size: 24px;}
+
+.agency-st1 p, .agency-st2 p, .agency-st3 p, .agency-st4 p, .agency-st5 p, .agency-st6 p, .agency-st7 p {font-size: 16px;line-height: 24px;}
+
+.agency-content-box {padding: 0 25px;}
+
+#agency-page .white-box {margin: 40px 0;padding: 25px;}
+
+.agency-task-box {padding-left: 5px;padding-right: 5px;}
+
+.agency-task-box .time-est {font-size: 13px;}
+
+.agency-task-box .task-progress-storefornt {font-size: 30px;margin: 10px 0 0;}
+
+.agency-task-box .rh-greenup-arrow {height: 30px;width: 22px;}
+
+.agency-task-box .rh-clock-icon, .agency-task-box .rh-clock-deadline {width: 25px;height: 25px;margin: 0 5px 0 0;}
+
+.keyword-networth-process li {height: 160px;margin: 0 20px;padding: 30px 5px;width: 160px;}
+
+.keyword-networth-process li h2 {font-size: 18px;width: 100%}
+
+.keyword-networth-process li:nth-child(1)::after, .keyword-networth-process li:nth-child(2)::after {height: 2px;margin-left: 11px;margin-top: -1px;width: 18px;}
+
+.keyword-networth-process li:nth-child(2)::after {border-bottom: 2px solid #009f4b;border-top: 2px solid #009f4b;height: 10px;margin-top: -5px;}
+
+.keyword-networth-process li:last-child::after {height: 80px;margin: 0 0 0 10px;top: 96px;width: 60px;}
+
+.keyword-networth-process {margin: 20px 0 18px;}
+
+.blue-section::before {height: 40px;top: -35px;}
+
+.agency-st1, .agency-st2, .agency-st3, .agency-st4, .agency-st5, .agency-st6, .agency-st7 {padding: 45px 0;}
+
+.agency-img2 {margin-bottom: -30px;}
+
+.agency-st4 .agency-content-box h1.agency-main-heading {margin-top: 15px !important;}
+
+.arrow-agency-st2::after {height: 115px;margin: 0 0 0 -35px;width: 66px;}
+
+.agency-img4 {margin-top: -40px;}
+
+.agency-img1 {margin-bottom: -50px;margin-top: 20px;}
 
 }
 
@@ -1116,6 +1269,24 @@ ul.package-feature li {font-size: 18px;padding: 10px 0;}
 .white-option-heading {font-size: 20px;}
 
 .white-options-inner {padding: 15px;}
+
+#agency-page .rh-storefornt-subheading {font-size: 22px;}
+
+#agency-page .agency-main-heading {font-size: 45px;line-height: 48px;margin: 0 0 10px;}
+
+.agency-sub-heading {font-size: 28px;}
+
+.blue-section::before {height: 30px;top: -30px;}
+
+.more-features-box {margin: 0 0 25px;}
+
+.keyword-networth-process li {height: 125px;margin: 0 20px;padding: 30px 5px;width: 125px;}
+
+.keyword-networth-process li h2 {font-size: 14px;}
+
+.keyword-networth-process li:last-child::after {top: 58px;}
+
+#agency-page .white-box {margin: 20px 0;padding: 20px;}
 
 }
 
@@ -1293,6 +1464,36 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 
 .rh-contact-info .form-actions button.submit {font-size: 16px;padding: 6px 25px;}
 
+#agency-page .rh-storefornt-subheading {font-size: 20px;}
+
+#agency-page .agency-main-heading {font-size: 34px;line-height: 38px;margin: 0 0 10px;}
+
+.agency-sub-heading {font-size: 22px;margin-top: 25px;}
+
+#agency-page .white-box {margin: 20px 0;padding: 15px;}
+
+.agency-content-box {padding: 0 10px;}
+
+.blue-section::before {height: 20px;top: -20px;}
+
+.agency-st1, .agency-st2, .agency-st3, .agency-st4, .agency-st5, .agency-st6, .agency-st7 {padding: 30px 0;}
+
+.agency-st1 p, .agency-st2 p, .agency-st3 p, .agency-st4 p, .agency-st5 p, .agency-st6 p, .agency-st7 p {font-size: 14px;line-height: 20px;}
+
+.agency-img4 {margin-top: -20px;}
+
+.arrow-agency-st2::after {height: 86px;width: 55px;}
+
+.keyword-networth-process li {height: 100px;margin: 0 12px;padding: 30px 5px;width: 100px;}
+
+.keyword-networth-process li:nth-child(1)::after, .keyword-networth-process li:nth-child(2)::after {margin-left: 5px;width: 14px;}
+
+.keyword-networth-process li h2 {font-size: 12px;}
+
+.keyword-networth-process li:last-child::after {height: 58px;margin: 0 0 0 8px;width: 48px;}
+
+.agency-img1 {margin-bottom: -33px;}
+
 }
 
 @media (max-width:479px) {
@@ -1348,6 +1549,22 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 .rh-contact-info .form-group .contact-input-outer {width: -moz-calc(100%);width: -webkit-calc(100%);width: -o-calc(100%);width: calc(100%);width: 100%;}
 
 .rh-contact-info .form-group label {font-size: 14px;width: 100%;margin: 0 0 3px 0;padding: 0;}
+
+#agency-page .agency-main-heading {font-size: 30px;line-height: 36px;}
+
+.agency-content-box {padding: 0;}
+
+.agency-task-box {margin-bottom: 15px;width: 100%;}
+
+.agency-img1 {margin-bottom: -25px;margin-top: 10px;}
+
+.agency-st3 .agency-content-box .rh-storefornt-subheading {margin-top: 10px !important;}
+
+.agency-img2 {margin-bottom: -11px;}
+
+.features-img-box, .features-content-box {margin-bottom: 15px;width: 100%;}
+
+.arrow-agency-st2::after , .keyword-networth-process li:last-child::after{display: none;}
 
 }
 
