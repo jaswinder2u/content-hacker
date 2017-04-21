@@ -46,7 +46,7 @@
 
 .project-breadcomb-outer {float: left;width: 100%;margin: 10px 0 8px;padding: 0;}
 
-.project-breadcomb-outer ul, .project-breadcomb-outer ul li {float: left;width: 100%;margin: 0;padding: 0;}
+.project-breadcomb-outer ul, .project-breadcomb-outer ul li {float: left;/*width: 100%*/;margin: 0;padding: 0;}
 
 .project-breadcomb-outer ul li {color: #231F20;float: left;font-family: 'Montserrat', sans-serif;font-size: 12px;font-weight: 500;/* line-height: normal; */margin: 0;padding: 0 15px;text-transform: uppercase !important;width: auto;line-height: 24px;position:relative;}
 

@@ -167,6 +167,9 @@
                             <li><i class="black_eagle-rh"> </i><a href="dashboard.html">MISSION DASHBOARD</a></li>
                             <li id="mission-title-1"></li>
                         </ul>
+                        <span class="add-mission-small info-icon-4" title="CREATE A NEW MISSION" >
+                            <img src="images/rh-plus-logo.png" style="height:25px;width:auto;cursor:pointer;" onclick="showAddMissionWizard();"/>
+                        </span>
                     </div>
                     <div id="shadow"> </div>
 
@@ -308,7 +311,7 @@
                     <li id="basic-tab" class="active"><a>NEW MISSION SETUP</a></li>
                     <!--<li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>-->
                 </ul>
-                <a href="javascript:void(0);" id="side-wizard-close-btn">X</a>
+                <a href="javascript:void(0);" onclick="restoreWizardFields();" id="side-wizard-close-btn">X</a>
             </div>
         <div class="side-wizard-inner">
             <div class="side-wizard-image">
@@ -347,8 +350,8 @@
                                     <input type="hidden" id="keyword-count" value="0"/>
                                     <input id="new-keyword" type="text" placeholder="Keyword Phrases" class="side-wizard-input"/>
                                     <span class="import-keywords btn fileinput-button">
-                                        <span>Import Phrases</span>
-                                        <input type="file" name="File Upload" id="fileupload" accept=".csv" />
+                                        <span>Import</span>
+                                        <input type="file" name="File Upload" id="fileupload" accept=".csv"/>
                                     </span>
                                      </span></span>
                                 <span id="line-spacer"><br></span>targeting <select class="side-wizard-select" id="industry-selection">
@@ -393,6 +396,8 @@
 <!-- =========================
      JS SCRIPTS
 ============================== -->
+
+<script src="js/jquery.csv.js"></script>
 
 <!-- TypeAhead js files -->
 <script type="text/javascript" src="js/georankerregions-data.js"></script>
@@ -494,6 +499,17 @@ function closeNav() {
         $('#side-wizard-close-btn').on('click', function(){
         $('.side-wizard-outer').removeClass('wizard-show');
         });
+        
+        $("#fileupload").on('click',function(){
+            setUploadTarget("new-keyword");
+        });
+        
+        $("#fileupload2").on('click',function(){
+            setUploadTarget("custom-url");
+        });
+        
+        // The event listener for the file uploads
+        document.getElementById('fileupload').addEventListener('change', upload, false);
         
         //enableSort();
         
@@ -701,6 +717,8 @@ function closeNav() {
 <input type="hidden" id="keyword-sort-reversed" value="false"/>
 
 <input type="hidden" id="check-project-done-flag" value="0"/>
+
+<input type="hidden" id="upload-event-destination" value=""/>
 
 <script type="text/javascript">
 (function() {

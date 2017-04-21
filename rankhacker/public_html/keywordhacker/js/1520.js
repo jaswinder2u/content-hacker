@@ -191,7 +191,7 @@ $(".suggest-keywords-list-2 ul ").on("click", "li", function () {
 $("a#button-add-url").on("click", function (event) {
             event.preventDefault();
 
-            $(this).hide();
+            //$(this).hide();
             var url_box = $("#url-box-template").html();
             $(this).parent().before(url_box);
             //toggle_add_more();
@@ -214,7 +214,9 @@ $("a#button-add-url").on("click", function (event) {
             } else {
                 
             }
-            $(this).remove();
+            $("#custom-url").val("");
+            //$(this).remove();
+            //$("#import-keywords2-span").remove();
             $("a#button-add-url").show();
             
             var returnData = $('#json').val();
@@ -239,6 +241,8 @@ $("a#button-add-url").on("click", function (event) {
             }
                 
         });
+        
+        document.getElementById('fileupload2').addEventListener('change', upload2, false);
 }
 
 /*var sortableHelper = function (e, ui) {
@@ -597,7 +601,6 @@ function createKeywordHackerProject(e)
         id = "1";
     }
     
-console.log(id);
     var keywordsList = "";
     if(projectID == "0")
     {
@@ -1060,8 +1063,8 @@ function loadProjectDashboard(flip)
             chHTML += "<h2 class=\"module-heading text-left\">Content Hacker Data</h2>";
             chHTML += "<div class=\"module-detail-section\">";
             chHTML += "<div class=\"row\">";
-            chHTML += "<div class=\"col-lg-12 module-details-outer\">";
-            chHTML += "<h2 class=\"activate-link\" style=\"margin-top:50px;cursor:default;\">[ Content Hacker Module ]</h2><h2 class=\"module-heading\"><span style=\"color:#cf102d;font-size:20px;text-align:center;\">Coming Soon</span></h2>";
+            chHTML += "<div class=\"col-lg-12 module-details-outer\" style=\"cursor:pointer;\" data-toggle=\"modal\" data-target=\"#mission-blueprint\">";
+            chHTML += "<h2 class=\"activate-link\" style=\"margin-top:50px;cursor:pointer;\">[ Content Hacker Module ]</h2><h2 class=\"module-heading\"><span style=\"color:#cf102d;font-size:20px;text-align:center;\">Coming Soon</span></h2>";
             chHTML += "</div>";
             chHTML += "</div>";
             chHTML += "</div>";
@@ -1877,7 +1880,7 @@ function deleteKeywordHackerProject()
                     //$("#delete-project-response").html("");
                     hideDeleteProject();
                     $('body').removeClass('wait');
-                    $("#project-card-"+projectID).hide(400);
+                    $("#project-card-"+projectID).hide(400,loadProjectDashboard(false));
                     //loadProjectDashboard(false);
                 }
             }
@@ -3258,7 +3261,7 @@ if (!browserSupportFileUpload()) {
 
             if (data && data.length > 0) {
               var dataToShow = "";
-
+              
               for(var i=0; i<data.length; i++)
               {
                   var thisEntry = data[i].toString().replace(/[,]+/g, ",");
@@ -3289,6 +3292,70 @@ if (!browserSupportFileUpload()) {
               $("#new-keyword").val(dataToShow);
               //addKeyword("addme");
               $("#fileupload").val("");
+
+            } else {
+                showAlert('No data to import!');
+            }
+        };
+        reader.onerror = function() {
+            showAlert('Unable to read ' + file.fileName);
+        };
+    }
+}
+
+function upload2(evt) {
+if (!browserSupportFileUpload()) {
+    showAlert('The necessary file APIs are not fully supported in this browser! Please use an HTML5-compliant browser such as Google Chrome.');
+    } else {
+        var data = null;
+        var file = evt.target.files[0];
+
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function(event) {
+            var csvData = event.target.result;
+
+            /*csvData = csvData.replace(/[, ]+/g, ",");
+            csvData.replace(/$/mg, ",");
+            console.log(csvData);
+            $("#new-keyword").val(csvData);*/
+            data = $.csv.toArrays(csvData);
+
+            if (data && data.length > 0) {
+              var dataToShow = "";
+              
+              for(var i=0; i<data.length; i++)
+              {
+                  var thisEntry = data[i].toString().replace(/[,]+/g, ",");
+                  if(i==0)
+                  {
+                      if(thisEntry.slice(-1) == ",")
+                      {
+                          dataToShow = thisEntry.substring(0,thisEntry.length-1);
+                      }
+                      else
+                      {
+                          dataToShow = thisEntry;
+                      }
+                  }
+                  else
+                  {
+                      if(thisEntry.slice(-1) == ",")
+                      {
+                          dataToShow += ","+thisEntry.substring(0,thisEntry.length-1);
+                      }
+                      else
+                      {
+                          dataToShow += ","+thisEntry;
+                      }
+                  }
+              }
+
+              $("#custom-url").val(dataToShow);
+              $("#custom-url").focus();
+              $("#custom-url").blur();
+              //addKeyword("addme");
+              $("#fileupload2").val("");
 
             } else {
                 showAlert('No data to import!');
@@ -5111,17 +5178,17 @@ function displayMissionInfo(field,sort)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:-3px;width:27px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:0;width:23px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label> </td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+seoInsuranceHTML+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
 "                                                                </tr>\n";
                             }
                             
@@ -5250,13 +5317,17 @@ function displayMissionInfo(field,sort)
         missionDataHTML += "<div>\n" +
 "\n" +
 "                                <div class=\"add-custom-keyword-outer\">\n" +
-"                                    <div id=\"url-list\">\n" +
+"                                    <div id=\"url-list\" style=\"display:none;\">\n" +
 "                                        <p class=\"suggest-keywords-label text-left\" style=\"margin-bottom:5px;\">Add Another Phrase to Your Mission</p>" +
 "                                        <a href=\"#add-more-url\" class=\"add-more-url\" id=\"button-add-url\">+ ENTER KEYWORD PHRASE</a>\n" +
 "                                    </div>\n" +
 "                                    <div id=\"url-box-template\">\n" +
 "                                        <div class=\"url-box\">\n" +
-"                                            <input id=\"custom-url\" class=\"url-input\" value=\"\" type=\"text\" placeholder=\"\">\n" +
+"                                            <input id=\"custom-url\" class=\"url-input\" style=\"color:#9da0a1 !important;font-size:20px;\" value=\"\" type=\"text\" placeholder=\"+ ENTER KEYWORD PHRASE\">\n" +
+"                                            <span id=\"import-keywords2-span\" class=\"import-keywords2 btn fileinput-button\" style=\";margin:30px 0;position:relative !important;float:left;\">\n" +
+"                                                <span>Import</span>\n" +
+"                                                <input type=\"file\" name=\"File Upload 2\" id=\"fileupload2\" accept=\".csv\"/>\n" +
+"                                            </span>\n" +
 "                                        </div>\n" +
 "                                    </div>\n" +
 "                                </div>\n" +
@@ -5827,17 +5898,17 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 if(thisCompetitor.disabled == 1)
                                 {
                                     competitorCheckboxStatus = " disabled";
-                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:-3px;width:27px;height:auto;\"></a></span>";
+                                    seoInsuranceHTML = "<span class=\"text-right\" style=\"vertical-align:middle;float:right;margin-right:-8px;padding-right:0;padding-top:10px;\"><a class=\"insurance-icon\" title=\"Coming soon! Buy insurance for your top 10 ranking!\"><img src=\"images/seo-insurance-icon.png\" style=\"position:absolute;right:0;top:0;width:23px;height:auto;\"></a></span>";
                                 }
                                 
                                 missionDataHTML +=
 "                                                                <tr class=\"project-head2\">\n" +
-"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" id=\"chk-content-all-c"+competitorID+"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label></td>\n" +
+"                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" id=\"chk-content-all-c"+competitorID+"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+seoInsuranceHTML+"</td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
 "                                                                </tr>\n";
                             }
                             
@@ -6221,7 +6292,7 @@ function restoreKeywordHackerProject(projectID)
                     //$("#delete-project-response").html("");
                     hideDeleteProject();
                     $('body').removeClass('wait');
-                    $("#project-card-"+projectID).hide(400);
+                    $("#project-card-"+projectID).hide(400,loadProjectDashboard(false));
                     //loadProjectDashboard(false);
                 }
             }
@@ -6229,10 +6300,79 @@ function restoreKeywordHackerProject(projectID)
     }
 }
 
+function validateSelection()
+{
+    var userEntry = $("#project-location").val();
+    if ($.inArray(userEntry, regions) === -1)
+    {
+        $(".typeahead").typeahead('val','');
+    }
+}
+
 function restoreWizardFields()
 {
+    $("#editing-project-id").val("0");
     $("#website-url-input").html("<span class=\"required\">*</span><input id=\"project-url\" type=\"text\" placeholder=\"Website URL\" class=\"side-wizard-input\" style=\"width:225px;\"/>");
     $("#scrollable-dropdown-menu").html("<div style=\"clear:both;display:inline-block;\"><span class=\"required\">*</span><input type=\"text\" placeholder=\"Business Location\" onblur=\"validateSelection();\" id=\"project-location\" class=\"typeahead side-wizard-input\"/></div>");
+    
+    var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+          var matches, substringRegex;
+
+          // an array that will be populated with substring matches
+          matches = [];
+
+          // regex used to determine if a string contains the substring `q`
+          substrRegex = new RegExp(q, 'i');
+
+          // iterate through the pool of strings and for any string that
+          // contains the substring `q`, add it to the `matches` array
+          $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) {
+              matches.push(str);
+            }
+          });
+
+          cb(matches);
+        };
+      };
+    
+    $('#scrollable-dropdown-menu .typeahead').typeahead(null, {
+        name: 'countries',
+        limit: 20,
+        source: substringMatcher(regions)/*,
+        afterSelect: function(item){
+              console.log("got here");
+              var userLocale = $("#project-location").val();
+              var beginLoc = userLocale.indexOf("[");
+              var endLoc = userLocale.length - 1;
+              var country = userLocale.substring(beginLoc,endLoc);
+              console.log(country);
+        }*/
+      });
+
+        $('#scrollable-dropdown-menu .typeahead').on(
+            {
+                'typeahead:selected': function(e, datum) {
+                    var beginLoc = datum.indexOf("[")+1;
+                    var endLoc = datum.length - 1;
+                    var country = datum.substring(beginLoc,endLoc);
+                    var countryLoc = countries.indexOf(country);
+                    var currencyCode = currencies[countryLoc];
+                    $("#currency-code-1").html(currencyCode);
+                    $("#currency-code-2").html(currencyCode);
+                },
+                'typeahead:autocompleted': function(e, datum) {
+                    var beginLoc = datum.indexOf("[")+1;
+                    var endLoc = datum.length - 1;
+                    var country = datum.substring(beginLoc,endLoc);
+                    var countryLoc = countries.indexOf(country);
+                    var currencyCode = currencies[countryLoc];
+                    $("#currency-code-1").html(currencyCode);
+                    $("#currency-code-2").html(currencyCode);
+                }
+        });
+    
     $("#phrase-input").show();
     $("#line-spacer").show();
     $("#metro-option").show();
@@ -6258,4 +6398,15 @@ function refreshMissionReportPage(e,projectID)
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
     window.location="missionreport.html?pid="+projectID;
+}
+
+function setUploadTarget(value)
+{
+    $("#upload-event-destination").val(value);
+}
+
+function showAddMissionWizard()
+{
+    restoreWizardFields();
+    $('.side-wizard-outer').addClass('wizard-show');
 }

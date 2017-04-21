@@ -318,7 +318,12 @@ TWO TONE SPINNER
 
 .url-box-fixed, .url-label, .url-input {background-color: #808185;border: medium none;border-radius: 10px;color: #fff;float: left;font-family: "Montserrat",sans-serif;font-size: 25px;font-weight: normal;height: 50px;line-height: normal;margin: 10px 0;min-width: 120px;padding: 8px 35px 10px 15px;position: relative;text-align: left;width: 100%;}
 
-#url-list a{border: 1px solid #e8e8e8;float: left;margin-left:0; margin-right:0; margin-bottom: 15px; margin-top:0;padding:10px 15px;width: 100%;}
+#url-list a{border: 1px solid #e8e8e8;float: left;margin-left:0; margin-right:0; margin-bottom: 15px; margin-top:0;padding:10px 15px;
+    width: -moz-calc(100% - 75px);
+    width: -webkit-(100% - 75px);
+    width: -o-calc(100% - 75px);
+    width: calc(100% - 75px);
+}
 
 .links-main-box:last-child {margin-bottom:5px;}
 
@@ -818,7 +823,7 @@ display:block;
 }
 
 
-#url-box-template { display:none;}
+#url-box-template { /*display:none;*/}
 
 .url-input {
 background-color: #fff;
@@ -1083,6 +1088,7 @@ width: 100%;}
 .info-icon {background-image: url("../images/info-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor:pointer;display: inline-block;height: 15px;left: 0;margin-left: 0;position: relative;top: 4px;width: 15px; font-weight:normal;}
 .info-icon-2 {cursor:pointer;display: inline-block;height: 15px;left: 0;margin-left: 0;position: relative;top: 0;width: 15px; font-weight:normal;}
 .info-icon-3 {cursor:pointer;display: inline;height: 15px;left: 0;margin-left: 0;position: relative;top: 0;width: 15px; font-weight:bold;}
+.info-icon-4 {cursor:pointer;font-weight:bold;display:inline;position:relative;}
 .insurance-icon {cursor:pointer;display: inline;height: 15px;left: 0;margin-left: 0;position: relative;top: 0;width: 15px; font-weight:bold;}
 
 .edit-icon {clear:both;float:right;background-image: url("../images/edit-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor:pointer;display: block;height: 20px;left: 0;margin-left: 0;position: relative;top: -2px;width: 20px; font-weight:normal;}
@@ -1099,6 +1105,9 @@ width: 100%;}
 
 .info-icon-3:hover:after {background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;border-radius: 0;color: #fff;content: attr(title);font-size: 11px;left: -50%;margin: 0 auto;padding: 5px 15px;position: absolute;right: auto;width: 200px;z-index: 98;bottom: -moz-calc(100% - 2px);bottom: -webkit-calc(100% - 2px);bottom: -o-calc(100% - 2px);bottom: calc(100% - 2px); font-style:normal; font-weight:normal; text-align:left;}
 .info-icon-3:hover:before {bottom:10px;left: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(136, 183, 213, 0);border-top-color: rgba(0, 0, 0, 0.8);border-width: 10px;margin-left: -10px; font-weight:normal;}
+
+.info-icon-4:hover:after {background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;border-radius: 0;color: #fff;content: attr(title);font-size: 11px;right: -30%;margin: 0 auto;padding: 5px 15px;position: absolute;left: auto;width: 200px;z-index: 98;bottom: -moz-calc(100% + 10px);bottom: -webkit-calc(100% + 10px);bottom: -o-calc(100% + 10px);bottom: calc(100% + 10px); font-style:normal; font-weight:normal; text-align:left;}
+.info-icon-4:hover:before {bottom:15px;right: 0;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(136, 183, 213, 0);border-top-color: rgba(0, 0, 0, 0.8);border-width: 10px;margin-left: 0; font-weight:normal;}
 
 .insurance-icon:hover:after {background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;border-radius: 0;color: #fff;content: attr(title);font-size: 11px;margin-top: 0;margin-bottom:0;margin-right: auto;margin-left:-15px !important;padding: 5px 15px;position: absolute;left: 5%;width: 200px;z-index: 98;bottom: -moz-calc(100% + 10px);bottom: -webkit-calc(100% + 10px);bottom: -o-calc(100% + 10px);bottom: calc(100% + 10px); font-style:normal; font-weight:normal; text-align:left;}
 .insurance-icon:hover:before {bottom:-10px;left: 10%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: rgba(136, 183, 213, 0);border-top-color: rgba(0, 0, 0, 0.8);border-width: 10px;margin-left: -10px; font-weight:normal;}
@@ -1444,7 +1453,10 @@ width: 100%;}
   float: left;
   margin: 30px 0;
   padding:10px 15px;
-  width: 100%;
+  width: -moz-calc(100% - 75px);
+  width: -webkit-(100% - 75px);
+  width: -o-calc(100% - 75px);
+  width: calc(100% - 75px);
 }
 
 /*********** !4-1-16 ***********/

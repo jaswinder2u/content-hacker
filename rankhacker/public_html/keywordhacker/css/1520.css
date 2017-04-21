@@ -680,6 +680,8 @@ border: 1px solid #e2e5e5;
 }
 .fileinput-button input {
   position: absolute;
+  width: 100%;
+  height: 25px;
   top: 0;
   right: 0;
   margin: 0;
@@ -687,7 +689,6 @@ border: 1px solid #e2e5e5;
   -ms-filter: 'alpha(opacity=0)';
   font-size: 200px !important;
   direction: ltr;
-  cursor: pointer;
 }
 
 .transparent-text-input {
@@ -1343,4 +1344,10 @@ input::-webkit-inner-spin-button {
     height:100%;
     background-color: #000;
     opacity: 0.45;
+}
+
+.add-mission-small {
+    float:right;
+    margin-right:20px;
+    display:inline-block;
 }
