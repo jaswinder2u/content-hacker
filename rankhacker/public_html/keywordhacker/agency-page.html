@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- =========================
+              BASIC PAGE INFORMATION
+        ============================== --> 
+    <title>RankHacker - Store Front</title>
+    <meta name="description" content="Rank Hacker is the worlds only keyword tool that gives you true ROI for top ranking phrases and hacks competitors content strategies to outpace them.">
+    <meta name="keywords" content="content strategy, content roadmap, content calendar">
+    <meta name="author" content="fairmarketing.com">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
+
+    <!-- =========================
+             FONTS
+        ============================== -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- =========================
+             STYLESHEETS
+        ============================== -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=59" rel="stylesheet">-->
+    <link href="css/custom-style.css?v=59" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=59" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=59" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=59" rel="stylesheet" type="text/css"> 
+
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+    
+    <!--1520 files-->
+    <script src="js/1520.js?v=59"></script>
+    <link href="css/1520.css?v=59" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=59" rel="stylesheet" id="theme-change">
+
+    <link href="css/media-queries.css?v=59" rel="stylesheet" type="text/css">
+    
+    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="fonts/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="css_storefront/bootstrap.min.css?v=59" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=59" rel="stylesheet" id="theme-change-storefront">
+
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="css/bootstrap.min.css?v=59" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=59" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+</head>
+
+<body id="body" class="page-loading home noisy" >
+
+<!-- =========================
+     MAIN MENU
+============================== -->
+
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                    <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/cart_empty.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <div class="cart-header">
+                        <span id="cart-total-pieces">0</span>
+                        <span id="cart-total-pieces-text">Pieces of Content<br/>PER MONTH</span>
+                    </div>
+                    <div class="cart-breakdown">
+                        <div class="cart-breakdown-cell"><span id="cart-total-missions">0</span><br/><span class="cart-breakdown-text">MISSIONS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-keywords">0</span><br/><span class="cart-breakdown-text">KEYWORDS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-project-mgmt">0</span><br/><span class="cart-breakdown-text">PROJECT<br>MANAGEMENT</span></div>
+                    </div>
+                    <div class="cart-summary">
+                        <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>-->
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+</div>
+    
+
+<!-- =========================
+     HEADER
+============================== -->
+
+<section id="content-section" class="blurable">
+
+<div id="background-image"></div>
+<!--div class="scanlines"></div-->
+
+    <div class="overlay interface-outer padding0b" id="agency-page">
+		
+		<div class="agency-st1">
+		  <div class="container">
+			<div class="block-css text-center">
+			<h3 class="agency-sub-heading">Close <span class="text-red">65%</span> More Business:</h3>
+			<h1 class="agency-main-heading">AUTOMATE CLIENT <br>SEO STRATEGIES</h1>
+			<p>Rank Hacker™ uses the industries latest technologies alongside proprietary formulas to uncover the competition’s content marketing efforts, project monthly ROI (Keyword Networth™) and automate SEO content fulfillment.</p>	
+			</div>
+		
+		<div class="white-box">
+			<h3 class="rh-storefornt-subheading margin10b">Rank Hacker™ makes your job a lot easier.</h3>
+			<p>The average agency increases their close rate by <span class="text-red">65%</span> showing sales prospects a quantifiable plan of action and true ROI projections for SEO.  Check out a few more impressive numbers:</p>
+			<ul class="row">
+				<li class="col-sm-3 col-xs-6 agency-task-box">
+					<div class="time-est"><i class="rh-clock-icon"></i>SAVE TIME</div>
+					<h3 class="task-heading-storefornt">KEYWORD RESEARCH</h3>
+					<div class="task-progress-storefornt"><i class="rh-greenup-arrow"></i>47%</div>
+				</li>
+				<li class="col-sm-3 col-xs-6 agency-task-box">
+					<div class="time-est"><i class="rh-clock-icon"></i>SAVE TIME</div>
+					<h3 class="task-heading-storefornt">COMPETITOR ANALYSIS</h3>
+					<div class="task-progress-storefornt"><i class="rh-greenup-arrow"></i>84%</div>
+				</li>
+				<li class="col-sm-3 col-xs-6 agency-task-box">
+					<div class="time-est"><i class="rh-clock-icon"></i>SAVE TIME</div>
+					<h3 class="task-heading-storefornt">CONTENT PLANNING</h3>
+					<div class="task-progress-storefornt"><i class="rh-greenup-arrow"></i>95%</div>
+				</li>
+				<li class="col-sm-3 col-xs-6 agency-task-box">
+					<div class="time-est"><i class="rh-clock-deadline"></i>MEET DEADLINES</div>
+					<h3 class="task-heading-storefornt">CONTENT FULFILLMENT</h3>
+					<div class="task-progress-storefornt"><i class="rh-greenup-arrow"></i>76%</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="agency-content-box">
+		<h3 class="rh-storefornt-subheading margin20b">If you are ready to see a <span class="text-red">65%</span> increase in sales, then we urge you to keep reading.</h3>
+		<p>There is nothing more powerful than showing your sales prospects true data that is quantifiable! RankHacker™ eliminates the guess work and shows your prospects exactly how much money they can make once they reach page one of Google, and the exact content marketing strategy their competitors used.</p>
+		</div>
+		
+		</div>
+		</div>
+		
+		<div class="agency-st2 blue-section">
+		<div class="container">
+		
+		<div class="agency-content-box arrow-agency-st2">
+		<h3 class="rh-storefornt-subheading margin20b">We’ll tell you how much content marketing you should be building each month, for every client.</h3>
+		<p>Seriously! If your team has struggled with how much content marketing to build per month to rank for a phrase then this product is for you.<br><br>RankHacker™ is the only software that will crawl the web searching for every single piece of content that a page one competitor has written for a specific keyword phrase. With this information, we now have a monthly content goal that is true and realistic which sets the proper expectation and budget! </p>
+		</div>
+		<img src="images/agency-img1.png" alt="" class="agency-img1">
+		</div>
+		</div>
+		
+		<div class="agency-st3 gray-section">
+		<div class="container">
+		<div class="agency-content-box">
+		<h3 class="rh-storefornt-subheading margin20b">Better yet, we will tell you how much money can be made for ranking for a given phrase.</h3>
+		<p>Can you imagine how excited prospects will be when you show them ROI projections per keyword phrase?<br><br>Introducing Keyword Networth™ - our fancy word for organic keyword ROI. Rank Hacker™ is the only tool that determines a page one competitors organic click through rate (CTR)! And with CTR we can then project visitor traffic - and combined with an industry conversion rate, we now have ROI forecasting! </p>
+		
+		<ul class="keyword-networth-process">
+			<li><h2>PROJECTED MONTHLY SALES</h2></li>
+			<li><h2>MONTHLY MARKETING COSTS</h2></li>
+			<li><h2>KEYWORD NETWORTH™</h2></li>	
+		</ul>
+		</div>
+		<img src="images/agency-img2.png" alt="" class="agency-img2">
+		</div>
+		</div>
+		
+		<div class="agency-st4 text-center">
+		<div class="container">
+		<div class="agency-content-box">
+		<h1 class="agency-main-heading">WHAT MORE CAN <br>RANK HACKER™ <br>DO FOR YOU?</h1>
+		<p class="arrow-agency-st2">We’re so glad you asked. RankHacker™ not only automates ROI projections and SEO content strategies, it automates content fulfillment through our Content Strategy Center, allows you to generate valuable reports, and gives you the ability to white label the entire application.</p>
+		</div>
+		</div>
+		</div>
+		
+		<div class="agency-st5 blue-section">
+		<div class="container">
+		<div class="agency-content-box">
+		<div class="more-features-box">
+			<h3 class="rh-storefornt-subheading margin10b">Automate Content Creation</h3>
+			<div class="row">
+				<div class="features-img-box col-sm-4 col-xs-5"><img src="images/automate-content-creation-img.jpg" alt=""> </div>
+				<div class="features-content-box col-sm-8 col-xs-7">
+					<p>Once RankHacker™ outputs a monthly content goal it’s as easy as ‘add to cart’. Our team of writers will get to work producing high quality content such as articles, case studies, white papers, infographics, press releases and guest blogs. Get 24/7 access to our content strategy center to fully manage content orders and work with our team of writers. We also offer project management.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="more-features-box">
+			<h3 class="rh-storefornt-subheading margin10b">Manage Content Orders</h3>
+			<div class="row">
+				<div class="features-img-box col-sm-4 col-xs-5"><img src="images/manage-content-orders-img.jpg" alt=""> </div>
+				<div class="features-content-box col-sm-8 col-xs-7">
+					<p>RankHacker™ allows you to simply add your content goals ‘to cart’ and we’ll take it from there! Our ghost writers will create high quality content for your SEO efforts and once complete, we’ll email a link to our content strategy center where you can manage, review or edit the completed content. And if you’re too busy for all of that we also offer full turnkey project management!</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="more-features-box">
+			<h3 class="rh-storefornt-subheading margin10b">White Label Reports </h3>
+			<div class="row">
+				<div class="features-img-box col-sm-4 col-xs-5"><img src="images/white-label-reports-img.jpg" alt=""> </div>
+				<div class="features-content-box col-sm-8 col-xs-7">
+					<p>Every project is called a Mission. And your mission is to ‘hack rank’. As an agency you will have access to the mission (project) dashboard where you are able to download fully white labeled reports that show your clients ROI projections, content goals and content budgets. All of this information is based off exactly what the competition on page one is currently doing to rank!</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="more-features-box">
+			<h3 class="rh-storefornt-subheading margin10b">SEO Insurance</h3>
+			<div class="row">
+				<div class="features-img-box col-sm-4 col-xs-5"><img src="images/seo-insurance-img.jpg" alt=""> </div>
+				<div class="features-content-box col-sm-8 col-xs-7">
+					<p>Yes, you read the title correctly. RankHacker™ is the first agency to offer SEO Insurance! Wouldn’t it give you great comfort to know that even if your organic rankings tank, you have an insurance policy? Worry no more! If your organic listing on Google slips below page one for longer than one week our SEO Insurance policy will kick in! Learn more here.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="more-features-box">
+			<h3 class="rh-storefornt-subheading margin10b">PPC Projections</h3>
+			<div class="row">
+				<div class="features-img-box col-sm-4 col-xs-5"><img src="images/ppc-projections-img.jpg" alt=""> </div>
+				<div class="features-content-box col-sm-8 col-xs-7">
+					<p>Having ROI (Keyword Networth) projections for SEO is awesome but what’s better is combing that data with PPC. RankHacker™ will now give you the ability to toggle between both SEO and PPC ROI projections or combine them! In the near future we will also give you the ability create and manage PPC campaigns from within the RankHacker™ platform.</p> 
+				</div>
+			</div>
+		</div>
+		
+		</div>
+		</div>
+		</div>
+		
+		<div class="agency-st6 text-center">
+		<div class="container">
+		<h1 class="agency-main-heading">WANT TO CLOSE MORE BUSINESS NOW?</h1>
+		<p>Then by all means add RankHacker™ to your digital marketing arsenal. We offer several packages to get you on the road to closing more business. Most like minded business owners choose our Agency access package because they have several clients to maintain; others choose to white label the whole experience. </p>
+		<img src="images/agency-img3.png" alt="" class="agency-img3">
+		</div>
+		</div>
+		
+		<div class="agency-st7 blue-section">
+		<div class="container">
+		<div class="agency-content-box">
+		<h3 class="rh-storefornt-subheading margin20b">What are you waiting for? You’re clearly ready to eliminate SEO strategy guesswork and start automating!</h3>
+		<p>Go ahead, initiate your first two RankHacker™ missions on us.</p>
+		</div>
+		<img src="images/agency-img4.png" alt="" class="agency-img4">
+		</div>
+		</div>
+	
+	
+
+
+    </div>
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+============================== -->
+		  <!-- Footer start here -->
+          <footer id="main-footer">
+		   <div class="container">
+		    
+		  		<!--footer center socail icon section start here-->
+            <div class="footer-socail-icon">
+					<ul class="text-center">
+					<li> <a href="https://www.facebook.com/rankhacker/?fref=ts" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+					<li> <a href="https://twitter.com/rank_hacker?lang=en" target="_blank"> <i class="fa fa-twitter"></i> </a></li>
+					</ul>
+             </div>
+		<!--footer center socail icon section close here-->
+		
+		<div class="row">
+		 <!--Footer left section start here-->
+            <div class="footer-link col-sm-4">
+                  <ul class=""> 
+                <li> <a href="faq.html">FAQs</a>
+                <!--<li> <a href="#">What is this?</a></li>-->
+                <!--<li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>-->
+              </ul>
+                </div>
+		<!--footer left section close here-->
+
+		<!--copyright section start here-->		
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2017 All Rights Reserved </div>
+			<!--copyright section close here-->
+                        
+            <div class="account-section text-right col-sm-4">
+                <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
+            </div>
+			
+          </div>
+            </div>
+      </footer>
+	  <!--Footer close here-->
+	
+
+
+<!-- =========================
+     JS SCRIPTS
+============================== -->
+<!-- JQUERY -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+    <!-- Fancy box files -->
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <script src="js/jquery.fancybox.pack.js"></script>
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/jquery.matchHeight-min.js"></script>
+<script src="js/bootstrap-slider.js?v=59"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.matchheight').matchHeight();
+    });
+
+    jQuery('#seo-strategies-Carousel').carousel({
+    interval: 12000
+    }); 
+
+
+    jQuery('#side-wizard-rh-eagle').on('click', function(){
+    jQuery('.side-wizard-outer').addClass('wizard-show');
+    });
+
+    jQuery('#side-wizard-close-btn').on('click', function(){
+    jQuery('.side-wizard-outer').removeClass('wizard-show');
+    });
+
+</script>
+<script>
+    jQuery(document).ready(function () {
+
+        /*
+         var originalVal;
+
+         $('#ex6').slider().on('slideStart', function(slideEvt){
+         originalVal = $('#ex').data('slider').getValue();
+         });
+
+         $('#ex6').slider().on('slideStop', function(slideEvt){
+         var newVal = $('#ex6').data('slider').getValue();
+         if(originalVal != newVal) {
+         alert('Value Changed!');
+         alert('Value Changed!');
+         }
+         });
+         */
+
+        $('.fancybox').fancybox();
+
+
+        //range slider custom js
+        $("#ex6").slider();
+        $("#ex6").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex6 = numeral(slideEvt.value).format('0,0');
+            //var slider_num_ex6 = tooltip-inner;
+            $("#ex6SliderVal").val(slider_num_ex6);
+        });
+
+
+        $("#ex7").slider();
+        $("#ex7").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex7 = numeral(slideEvt.value).format('0,0');
+            $("#ex7SliderVal").val(slider_num_ex7);
+        });
+
+
+        $("#ex8").slider();
+        $("#ex8").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex8 = numeral(slideEvt.value).format('0,0');
+            $("#ex8SliderVal").val(slider_num_ex8);
+        });
+
+
+        $('.project-setup-input input.range-count').on("blur", function () {
+            var inputval = $(this).val();
+            //alert(inputval);
+            var inputval_new = numeral(inputval).format('0,0');
+            //	alert(inputval_new);
+            $(this).val(inputval_new);
+        });
+
+
+        // ADD Cumma after three numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+        }
+
+        $('.range-count').each(function () {
+            var v_pound = $(this).html();
+            v_pound = numberWithCommas(v_pound);
+
+            $(this).html(v_pound)
+
+        })
+
+
+    });
+</script>
+
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+
+</body>
+</html>
