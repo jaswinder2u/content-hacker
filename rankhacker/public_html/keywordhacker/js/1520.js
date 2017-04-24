@@ -6392,6 +6392,7 @@ function restoreWizardFields()
     $("#monthly-visitors").val("0");
     $("#monthly-customers").val("0");
     $("#content-cost").val("0");
+    $("#wizard-logo").attr("src","images/rh-plus-logo.png");
     refreshIndustries();
 }
 
