@@ -315,7 +315,7 @@
             </div>
         <div class="side-wizard-inner">
             <div class="side-wizard-image">
-            <img src="images/rh-edit-logo.png">
+            <img id="wizard-logo" src="images/rh-edit-logo.png">
             </div>
 
             <div class="side-wizard-content">
@@ -491,14 +491,22 @@ function closeNav() {
     $(document).ready(function () {
         
         new Clipboard('.copy-button');
+       
+        jQuery('#side-wizard-rh-eagle-edit').on('click', function(){
+        jQuery('.side-wizard-outer').addClass('wizard-show');
+        });
+
+        jQuery('#side-wizard-close-btn').on('click', function(){
+        jQuery('.side-wizard-outer').removeClass('wizard-show');
+        });
         
         /*$('#side-wizard-rh-eagle-edit').on('click', function(){
         //jQuery('.side-wizard-outer').addClass('wizard-show');
-        });*/
+        });
 
         $('#side-wizard-close-btn').on('click', function(){
         $('.side-wizard-outer').removeClass('wizard-show');
-        });
+        });*/
         
         $("#fileupload").on('click',function(){
             setUploadTarget("new-keyword");

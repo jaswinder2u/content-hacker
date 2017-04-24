@@ -1161,6 +1161,15 @@ function gotoCreateProject(projectID)
         projectID = getURLParameter("pid");
     }
     
+    if(projectID === "")
+    {
+        $("#wizard-logo").prop("src","images/rh-plus-logo.png");
+    }
+    else
+    {
+        $("#wizard-logo").prop("src","images/rh-edit-logo.png");
+    }
+    
     var wizardURL = $("#wizard-url-"+projectID).val();
     var wizardGeolocation = $("#wizard-geolocation-"+projectID).val();
     var wizardUseGoogle = $("#wizard-usegoogle-"+projectID).val();
@@ -4022,7 +4031,8 @@ function refreshCartDetails()
                                             missionSubtotal += (addonPrice*addonQuantity);
 
                                             cartHTML += "<tr>"+
-                                                                "<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
+                                                                //"<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
+                                                                "<td class=\"number text-center\">"+(a+1)+"</td>"+
                                                                 "<td>"+selectHTML+"</td>"+
                                                                 "<td class=\"instruction_data\"><input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/></td>"+
                                                                 "<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>"+
@@ -4601,10 +4611,11 @@ function displayMissionInfo(field,sort)
         missionDataHTML += "<input type=\"hidden\" id=\"wizard-contentcost-"+projectID+"\" value=\""+costPerLevel+"\">";
         
         //Attach the javascript for the wizard open
-        $("#side-wizard-rh-eagle-edit").click(function(){
-            $('.side-wizard-outer').addClass('wizard-show');
-            //gotoCreateProject(projectID);
-        });
+        //$("#side-wizard-rh-eagle-edit").attr("onclick","gotoCreateProject('"+projectID+"')");
+        /*$("#side-wizard-rh-eagle-edit").click(function(){
+            //$('.side-wizard-outer').addClass('wizard-show');
+            gotoCreateProject(projectID);
+        });*/
         
         missionDataHTML += "<table class=\"keyword-networth-project\" id=\"keyword-summary-table\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">"+
                                 "<thead>"+
@@ -4637,106 +4648,106 @@ function displayMissionInfo(field,sort)
                                 "</thead>"+
                                 "<tbody>";
         
-        var projectIDValue = parseInt(projectID);
-    if(projectIDValue < 260)
-    {
-        $("#metro-option").hide();
-    }
-    
-    //Fill in the form data
-    var wizardURL = projectTitle;
-    var wizardGeolocation = geoLocation;
-    var wizardUseGoogle = useGoogle;
-    var wizardUseBing = useBing;
-    var wizardUseYouTube = useYouTube;
-    var wizardUseAppStore = useAppStore;
-    var wizardUseLocal = useLocal;
-    var wizardUseRegional = useRegional;
-    var wizardUseNational = useNational;
-    var wizardIndustryID = industryID;
-    var wizardECommerce = eCommerce;
-    var wizardCustomerValue = valuePerCustomer;
-    var wizardMonthlyVisitors = monthlyVisitors;
-    var wizardMonthlyCustomers = payingCustomers;
-    var wizardContentCost = costPerLevel;
-    
-    
-    $("#website-url-input").html("website, <label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardURL+"</label>,");
-    $("#scrollable-dropdown-menu").html("<label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardGeolocation+"</label>");
-    $("#phrase-input").hide();
-    $("#editing-project-id").val(projectID);
-    
-    if(typeof wizardECommerce !== "undefined")
-    {
-        if(wizardECommerce == 1)
+        /*var projectIDValue = parseInt(projectID);
+        if(projectIDValue < 260)
         {
-            $('#e-commerce-selection option')[1].selected = true;
+            $("#metro-option").hide();
+        }
+
+        //Fill in the form data
+        var wizardURL = projectTitle;
+        var wizardGeolocation = geoLocation;
+        var wizardUseGoogle = useGoogle;
+        var wizardUseBing = useBing;
+        var wizardUseYouTube = useYouTube;
+        var wizardUseAppStore = useAppStore;
+        var wizardUseLocal = useLocal;
+        var wizardUseRegional = useRegional;
+        var wizardUseNational = useNational;
+        var wizardIndustryID = industryID;
+        var wizardECommerce = eCommerce;
+        var wizardCustomerValue = valuePerCustomer;
+        var wizardMonthlyVisitors = monthlyVisitors;
+        var wizardMonthlyCustomers = payingCustomers;
+        var wizardContentCost = costPerLevel;
+
+
+        $("#website-url-input").html("website, <label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardURL+"</label>,");
+        $("#scrollable-dropdown-menu").html("<label style=\"color:#005cb8;font-weight:300 !important;font-size:14px;\">"+wizardGeolocation+"</label>");
+        $("#phrase-input").hide();
+        $("#editing-project-id").val(projectID);
+
+        if(typeof wizardECommerce !== "undefined")
+        {
+            if(wizardECommerce == 1)
+            {
+                $('#e-commerce-selection option')[1].selected = true;
+            }
+            else
+            {
+                $('#e-commerce-selection option')[0].selected = true;
+            }
+        }
+        refreshIndustries();
+
+        if(typeof wizardIndustryID !== "undefined")
+        {
+            $('#industry-selection').val(parseInt(wizardIndustryID));
+        }
+
+        if(wizardUseGoogle == 1)
+        {
+            $('#use-google').prop('checked',true);
         }
         else
         {
-            $('#e-commerce-selection option')[0].selected = true;
+           $('#use-google').prop('checked',false); 
         }
-    }
-    refreshIndustries();
 
-    if(typeof wizardIndustryID !== "undefined")
-    {
-        $('#industry-selection').val(parseInt(wizardIndustryID));
-    }
+        if(wizardUseBing == 1)
+        {
+            $('#use-bing').prop('checked',true);
+        }
+        else
+        {
+           $('#use-bing').prop('checked',false); 
+        }
 
-    if(wizardUseGoogle == 1)
-    {
-        $('#use-google').prop('checked',true);
-    }
-    else
-    {
-       $('#use-google').prop('checked',false); 
-    }
+        if(wizardUseYouTube == 1)
+        {
+            $('#use-you-tube').prop('checked',true);
+        }
+        else
+        {
+           $('#use-you-tube').prop('checked',false); 
+        }
 
-    if(wizardUseBing == 1)
-    {
-        $('#use-bing').prop('checked',true);
-    }
-    else
-    {
-       $('#use-bing').prop('checked',false); 
-    }
+        if(wizardUseAppStore == 1)
+        {
+            $('#use-app-store').prop('checked',true);
+        }
+        else
+        {
+           $('#use-app-store').prop('checked',false); 
+        }
 
-    if(wizardUseYouTube == 1)
-    {
-        $('#use-you-tube').prop('checked',true);
-    }
-    else
-    {
-       $('#use-you-tube').prop('checked',false); 
-    }
+        if(wizardUseLocal == 1)
+        {
+            $('#local-national option')[0].selected = true;
+        }
+        else if(wizardUseRegional == 1)
+        {
+            $('#local-national option')[1].selected = true;
+        }
+        else
+        {
+           $('#local-national option')[2].selected = true;
+        }
 
-    if(wizardUseAppStore == 1)
-    {
-        $('#use-app-store').prop('checked',true);
-    }
-    else
-    {
-       $('#use-app-store').prop('checked',false); 
-    }
-
-    if(wizardUseLocal == 1)
-    {
-        $('#local-national option')[0].selected = true;
-    }
-    else if(wizardUseRegional == 1)
-    {
-        $('#local-national option')[1].selected = true;
-    }
-    else
-    {
-       $('#local-national option')[2].selected = true;
-    }
-
-    $("#customer-value").val(wizardCustomerValue);
-    $("#monthly-visitors").val(wizardMonthlyVisitors);
-    $("#monthly-customers").val(wizardMonthlyCustomers);
-    $("#content-cost").val(wizardContentCost);
+        $("#customer-value").val(wizardCustomerValue);
+        $("#monthly-visitors").val(wizardMonthlyVisitors);
+        $("#monthly-customers").val(wizardMonthlyCustomers);
+        $("#content-cost").val(wizardContentCost);*/
         
         //Output the keyword summary rows here
         //Let's sort the keyword data by the specified field first
@@ -6376,6 +6387,12 @@ function restoreWizardFields()
     $("#phrase-input").show();
     $("#line-spacer").show();
     $("#metro-option").show();
+    $("select#local-national").prop('selectedIndex',0);
+    $("#customer-value").val("0");
+    $("#monthly-visitors").val("0");
+    $("#monthly-customers").val("0");
+    $("#content-cost").val("0");
+    refreshIndustries();
 }
 
 function displayContentDeleteWindow(projectID,keywordID,type)
@@ -6408,5 +6425,6 @@ function setUploadTarget(value)
 function showAddMissionWizard()
 {
     restoreWizardFields();
+    $("#wizard-logo").prop("src","images/rh-plus-logo.png");
     $('.side-wizard-outer').addClass('wizard-show');
 }
