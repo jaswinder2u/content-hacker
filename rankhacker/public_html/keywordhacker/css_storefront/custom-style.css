@@ -210,7 +210,7 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .import-keywords:hover {background: #333;text-decoration:none;color:#fff;}
 
-.type-of-site {border: 1px solid #000;border-radius: 6px;color: #808185;float: none;font-family: "Montserrat";font-size: 17px;font-weight: normal;height: 36px;margin: 0 10px;padding: 0 5px;width: 168px;}
+.type-of-site {border: 1px solid #000;border-radius: 6px;color: #808185;float: none;font-family: "Montserrat";font-size: 17px;font-weight: normal;height: 36px;margin:5px 10px;padding: 0 5px;width: 168px;}
 
 .type-of-site option {padding:0 10px;}
 
@@ -259,6 +259,19 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 .calculate-networth-btn {background-color: #005cb8;color: #fff;display: table;float: none;font-size: 22px;font-weight: normal;margin: 0 auto;padding: 8px 15px;text-align: center;width: auto;}
 
 .calculate-networth-btn:hover {background-color: #333;color: #fff;text-decoration:none;}
+
+.rh-create-account .input-outer {float: none;max-width: 650px;width: 100%;margin-bottom: 25px;}
+
+.block-css {float: left;margin: 0 0 10px;padding: 0;width: 100%;}
+
+.new-project-details-outer .container {max-width: 800px;}
+
+#hack-actual-form #submit-button-block-2 {float: left;margin: 0;padding: 0;width: 100%;}
+
+.container {height: auto;}
+
+
+
 
 /*media css */
 
@@ -370,6 +383,8 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .project-welcome-section h4 {line-height: normal;}
 
+.rh-create-account .input-outer {margin-bottom: 20px;}
+
 }
 
 @media (max-width:767px) {
@@ -424,17 +439,11 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .calculate-networth-btn {font-size: 16px;}
 
-.email-address-helper-text {
-    font-family: "Courier New", Courier, monospace;
-    font-size:15px;
-    color:#26a9e0;
-    text-align:left;
-    position:absolute;
-    top:55px;
-    left:10px;
-    display:inline;
-    z-index:30;
-}
+.email-address-helper-text {font-family: "Courier New", Courier, monospace;font-size:15px;color:#26a9e0;text-align:left;position:absolute;top:55px;left:10px;display:inline;z-index:30;}
+
+.rh-create-account .input-outer {margin-bottom: 15px;}
+
+.twitter-typeahead input {max-width: 100% !important;width: 100% !important}
 
 }
 
@@ -492,6 +501,8 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .hack-actual-networth-options ul li .project-details-input {float: left;margin: 5px 0;padding: 0;width: 100%;}
 
+.hack-left-option, .hack-right-option {font-size: 13px;}
+
 }
 
 @media (max-width:400px) {
@@ -507,6 +518,8 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 body {min-width: 320px;overflow: scroll;}
 
 .logo img {max-height: 44px;height: 44px;width:auto;padding-left:15px;}
+
+.hack-left-option, .hack-right-option {font-size: 12px;}
 
 }
 
@@ -573,6 +586,10 @@ body {min-width: 320px;overflow: scroll;}
     display:inline;
     z-index:30;
 }
+
+.rh-create-account .input-outer {margin-bottom: 10px;}
+
+
 }
 
 .underline-link:hover{text-decoration:underline !important;}

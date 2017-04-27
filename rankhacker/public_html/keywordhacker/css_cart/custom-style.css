@@ -97,7 +97,7 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .cart-mission-outer {color: #000;float: left;margin:0;padding: 0;width: 100%;}
 
-.cart-mission-inner {color: #000;float: right;margin: 0;max-width: 100%;padding: 0;width: calc(100% - 400px);}
+.cart-mission-inner {color: #000;float: right;margin: 0;max-width: 100%;padding: 0;width: calc(100% - 400px);overflow-wrap: break-word;}
 
 .cartdetails-leftside {background-color: #f1f1f2;float: left;margin: 83px 0 0;padding: 15px;width: 380px;max-width: 100%;}
 
@@ -197,7 +197,7 @@ project-management-checkbox input[type="checkbox"], label {line-height:1.6em; he
 
 .cart-subtotal-section .price {color: #6d6e70;float: right;font-family: "Roboto",sans-serif;font-size: 30px;font-weight: bold;line-height: normal;margin: 0 0 0 auto;padding: 0;text-align: left;width: auto;}
 
-.top-cart-summary label {color: #c9e4ee;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
+.top-cart-summary label {height: auto;color: #c9e4ee;float: left;font-family: "Montserrat";font-size: 16px;font-weight: bold;line-height: normal;margin: 0;padding: 0;width: 100%;}
 
 .monthly-content-amount {text-align:right;}
 
@@ -659,7 +659,7 @@ position: absolute;right: 10px;top: 0;}
 
 #site-header .navbar-default ul.account-options.navbar-nav li a {padding:12px 10px;}
 
-.monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value {font-size: 50px;}
+.monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value , .top-cart-summary .monthly-content-sm .monthly-content-sm-value{font-size: 50px;}
 
 .top-cart-summary .monthly-content-sm label {width:50%;text-align:left;margin-top:15px;}
 
@@ -788,6 +788,8 @@ position: absolute;right: 10px;top: 0;}
 
 .bracket-sign-right::before, .bracket-sign-right::after, .bracket-sign-left::before, .bracket-sign-left::after {height: 2px;}
 
+.custom_tooltip {right: 0;}
+
 }
 
 @media (min-width: 640px) and (max-width:980px) {
@@ -800,7 +802,7 @@ position: absolute;right: 10px;top: 0;}
 
 .top-cart-summary label {font-size: 14px;}
 
-.monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value {font-size: 40px;}
+.monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value , .top-cart-summary .monthly-content-sm .monthly-content-sm-value{font-size: 40px;}
 
 .top-cart-summary .monthly-content-sm label {width: 85px;}
 
@@ -848,7 +850,7 @@ table.mission-info-table tr.add-new {text-align: center;border: 1px solid #e6e7e
 
 .terms_and_conditions-section a.pay-now-btn, .pay-now-btn {position: static;margin: 10px 0 -10px -10px;width: calc(100% + 20px);}
 
-.top-cart-summary .monthly-content-sm  , .top-cart-summary .monthly-short-info , .top-cart-summary .monthly-content-amount{float:left;width: 100%;text-align:center;}
+.top-cart-summary .monthly-content-sm  , .top-cart-summary .monthly-short-info , .top-cart-summary .monthly-content-amount{float:left;width: 100%;text-align:center;padding-top: 10px;padding-bottom: 10px;}
 
 .top-cart-summary {display: block;}
 
@@ -895,6 +897,15 @@ table.mission-info-table tr.add-new {text-align: center;border: 1px solid #e6e7e
 .cart-mission-inner {width: calc(100%);width: 100%;}
 
 .bracket-sign-right, .bracket-sign-left , .bracket-sign-right::before, .bracket-sign-right::after, .bracket-sign-left::before, .bracket-sign-left::after{display: none !important;}
+
+.monthly-content-amount span.amount-mn, .monthly-content-sm span.monthly-content-sm-value, .top-cart-summary .monthly-content-sm .monthly-content-sm-value {
+font-size: 40px;}
+
+table.mission-info-table tr td.number, table.mission-info-table tr td.delect-row {width: 35px;}
+
+.cart-subtotal-section {display: block;}
+
+#cart-detail-page {display: block !important;height: auto !important;}
 
 }
 

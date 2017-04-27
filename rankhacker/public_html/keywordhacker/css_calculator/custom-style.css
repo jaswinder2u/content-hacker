@@ -83,7 +83,7 @@ body {background: #ffffff;color: #ffffff;font-weight: 400;font-size: 16px;overfl
 
 .account-options li a {font-weight: 800 !important;}
 
-.kwnw_calculator-section {background-color: #ffffff;color: #fff;float: left;padding: 70px;width: 70%;margin-top:50px;margin-bottom:0;margin-left:15%;margin-right:15%;}
+.kwnw_calculator-section {background-color: #f9f9f9;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);color: #fff;display: inline-block;text-align:left;float: none;margin: 50px auto 0;max-width: 1200px;padding: 70px;width: 100%;}
 
 .kwnw-heading {color: #000;float: left;font-family: "Oswald",sans-serif;font-size: 34px;font-weight: 600;line-height: normal;margin: 0 0 15px;padding: 0;text-align: center;width:100%;	}
 
@@ -282,7 +282,7 @@ padding: 25px 10px;
 
 .range-slider-outer .in_btn.glyphicon-plus {position: absolute;right: 0;top: 0;}
 
-.kwnw-calculator-outer {display: inline-block;float: none;max-width: 100%;padding: 0;width: 270px;}
+.kwnw-calculator-outer {display: inline-block;float: none;max-width: 340px;padding: 0;width: 100%;}
 
 .kwnw_calculator-section {padding: 25px 10px;text-align: center;}
 
