@@ -100,7 +100,7 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .rh-login-form {float: left;margin: 64px 0 0;padding: 0;width: 100%;}
 
-.input-outer {border: 1px solid #000;border-radius: 8px;clear: both;display: inline-block;float: left;height: 65px;margin: 0;position: relative;width: 100%;}
+.input-outer {border: 1px solid #000;border-radius: 0;clear: both;display: inline-block;float: left;height: 65px;margin: 0;position: relative;width: 100%;}
 
 .login-email::before {background: #231f20 none repeat scroll 0 0;bottom: 100%;content: "";height: 70px;right: 35%;margin: 0;padding: 0;position: absolute;width: 1px;}
 
@@ -108,11 +108,11 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .login-password::before {background: #231f20 none repeat scroll 0 0;content: "";height: 86px;left: 22%;margin: 0;padding: 0;position: absolute;top: 100%;width: 1px;}
 
-.input-outer label {border-bottom-left-radius: 7px;border-top-left-radius: 7px;background-color: #000;float: left;height: 100%;left: 0;margin: 0;padding: 0;position: absolute;text-align: center;top: 0;vertical-align: middle;width: 77px;z-index: 99;}
+.input-outer label {border-bottom-left-radius: 0;border-top-left-radius: 0;background-color: #000;float: left;height: 100%;left: 0;margin: 0;padding: 0;position: absolute;text-align: center;top: 0;vertical-align: middle;width: 77px;z-index: 99;}
 
 .input-outer label i {color: #26a9e0;font-size: 40px;line-height: 62px;}
 
-.input-outer input {background: #fff none repeat scroll 0 0;border: medium none;border-radius: 8px;color: #808184;float: left;font-family: 'Montserrat';font-size: 28px;height: 100%;margin: 0;padding: 0 0 0 100px;width: 100%;}
+.input-outer input {background: #fff none repeat scroll 0 0;border: medium none;border-radius: 0;color: #808184;float: left;font-family: 'Montserrat';font-size: 28px;height: 100%;margin: 0;padding: 0 0 0 100px;width: 100%;}
 
 .input-outer input::-webkit-input-placeholder {color:#808184;opacity:1;}
 
