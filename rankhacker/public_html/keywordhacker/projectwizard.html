@@ -169,9 +169,10 @@
             </div>
             </div>
             <div class="row row-v-spacing"></div>
+        <div class="block-css" style="clear: left;padding: 0 15px;">
             <div class="new-project-details-outer">
                 <section class="project-welcome-section">
-                    <div class="wrapper">
+                    <div class="container">
                         <h4><span class="close-btn-red" onclick="closeWizard();" title="Close">X</span></h4>
                         <br><br>
                         <h4>HACK THE KEYWORD NETWORTH™ OF PHRASES THAT MEET OR EXCEED YOUR SALES GOALS</h4>
@@ -180,7 +181,7 @@
                 </section>
 
                 <section class="project-keyword-section" id="keyword-section">
-                    <div class="wrapper">
+                    <div class="container">
                         <div class="project-pay-content">
                             <!--<a href="#" class="import-keywords pull-right">-or- IMPORT KEYWORDS</a>-->
                             <span class="orange-btn-small btn fileinput-button pull-right">
@@ -207,7 +208,7 @@
                 </section>
 
                 <section class="project-websiteurl-section">
-                    <div class="wrapper">
+                    <div class="container">
                         <div class="websiteurl-input" id="project-url-html">
                             <input placeholder="ENTER YOUR URL" required="" type="url" id="project-url">
                             <label> <i class="globe-icon globe-blue"><span class="name-tag-g">My</span></i> </label>
@@ -224,7 +225,7 @@
                 </section>
 
                 <section class="monetary-pay-section">
-                    <div class="wrapper">
+                    <div class="container">
                         <div class="project-pay-content">
                             <label>The monetary value of one paying customer is <span id="currency-code-1">$</span></label>
                             <input type="text" class="project-details-input" id="ex8SliderVal">
@@ -234,7 +235,7 @@
                 </section>
 
                 <section class="business-location-section">
-                    <div class="wrapper">
+                    <div class="container">
 
                         <div class="project-pay-content">
                             <span id="scrollable-dropdown-menu" style="float:left;display:inline-block;"><label>My business is located in</label><input type="text" class="typeahead business-location-input project-details-input" style="float:left;width:450px;" id="project-location" placeholder="Enter location"></span>
@@ -248,35 +249,27 @@
                             </span>
                             
                             
-                            <span class="col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                            <span class="mixed-use-paragraph text-left">
                                 <ul>
-                                    <li style="padding:0;margin-top:-2px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                    <li class="checkbox-outer mixed-use-paragraph">
                                         <h2 style="float:left;margin:0 0 0 0;">
                                             <input type="checkbox" class="filled-in rh-checkbox" id="use-google" value="1" checked="checked" onclick="checkRequiredEngine('google','bing');">
                                             <label for="use-google" style="color:#5a5a5a;font-size:18px;padding-left:27px;margin-bottom:15px;">Google</label>
                                         </h2>
                                     </li>
-                                </ul>
-                                </span>
-                            <span class="mixed-use-paragraph text-left">
-                                <ul>
-                                    <li style="padding:0;margin-top:-3px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                    <li class="checkbox-outer mixed-use-paragraph">
                                         <h2 style="float:left;margin:0 0 0 0;">
                                             <label style="font-size:18px;color:#1b75bb;">and</label>
                                         </h2>
                                     </li>
-                                </ul>
-                            </span>
-                            <span class="col-lg-2 col-md-2 mixed-use-paragraph text-left">
-                                <ul>
-                                    <li style="padding:0;margin-top:-2px;" class="checkbox-outer col-lg-2 col-md-2 mixed-use-paragraph text-left">
+                                    <li class="checkbox-outer mixed-use-paragraph">
                                         <h2 style="float:left;margin:0 0 0 3px;">
                                             <input type="checkbox" class="filled-in rh-checkbox" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
                                             <label for="use-bing" style="color:#5a5a5a;font-size:18px;padding-left:27px;margin-bottom:15px;">Bing+Yahoo</label>
                                         </h2>
                                     </li>
                                 </ul>
-                            </span>
+                                </span>
                             <!--<span class="checkbox-outer"><input type="checkbox" name="Google" value="Google">Google,</span> <span class="checkbox-outer"><input type="checkbox" name="Yahoo_Bing" value="Yahoo_Bing">Yahoo + Bing </span>-->
                         </div>
 
@@ -298,13 +291,13 @@
                 </section>
                 
                 <section class="hack-actual-networth-options" id="hack-estimated-form" style="display:none;">
-                    <div class="wrapper">
+                    <div class="container">
                         <span id="submit-button-block-1"><a class="calculate-networth-btn" onclick="createKeywordHackerProject(event,'1');">CALCULATE ESTIMATED NETWORTH</a></span>
                      </div>
                 </section>
                 
                 <section class="hack-actual-networth-options" id="hack-actual-form" style="display:none;">
-                    <div class="wrapper">
+                    <div class="container">
                         <ul>
                         <li>About <input type="text" id="ex6SliderVal" class="project-details-input"> visitors land on my website each month.</li>
                         <li>Of those,<input type="text" id="ex7SliderVal" class="project-details-input">  convert to actual paying customers.</li>
@@ -315,7 +308,7 @@
                 </section>
 
             </div>
-
+        </div>
     </div>
     
 <!-- Alert modal -->

@@ -952,7 +952,7 @@ border-color:#26A9E0;
 
 .page-info {color: #231f20;float: left;font-family: "Montserrat",sans-serif !important;font-size: 28px;font-weight: normal;line-height: normal;margin: 0;text-align: center;text-transform: none;width: 100%;}
  
-.rh-actions-menu, .view-option-outer {padding:1.5em 0 0;}
+.rh-actions-menu, .view-option-outer {padding:1.5em 0 10px;}
 
 .page-info sup {font-size: 16px;font-weight: normal;}
 
@@ -1429,7 +1429,7 @@ width: 100%;}
 
 .sort-navigation li.active button {color:#231F20;}
 
-.project-cards-outer ul li {float: left; box-sizing:border-box;margin:0  0 30px;width: 33.33%;height: 587px;}
+.project-cards-outer ul li {box-sizing: border-box;float: left;height: 595px;margin: 0 0 30px;padding-bottom: 0;width: 33.33%;}
 
 .custom-input-keyword input {background-color: #fff;border: medium none;color: #000;font-size: 12px;height: auto;margin: 0;padding: 0;width: 100%;}
 
