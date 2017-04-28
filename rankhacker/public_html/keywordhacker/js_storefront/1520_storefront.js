@@ -301,7 +301,7 @@ function loginAuthenticatedAccount(e)
                     clearCookies();
                     document.cookie = "username="+email;
                     document.cookie = "userFullName="+info.userfullname;
-                    window.location = "keywordhacker/projectwizard.html?pid=0";
+                    window.location = "keywordhacker/dashboard.html?new=y";
                 }
                 else
                 {

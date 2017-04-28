@@ -6256,7 +6256,15 @@ function prepareNewWizard()
                 {
                     if(info.canCreate == "false")
                     {
-                        window.location = "dashboard.html";
+                        //window.location = "dashboard.html";
+                        jQuery('.side-wizard-outer').removeClass('wizard-show');
+                    }
+                    else
+                    {
+                        if(getURLParameter("new")=="y")
+                        {
+                            jQuery('.side-wizard-outer').addClass('wizard-show');
+                        }
                     }
                 }
             }
