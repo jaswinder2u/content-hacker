@@ -6048,6 +6048,7 @@ function prepareNewWizard()
     var username = getCookie("username");
     var userFullName = getCookie("userFullName");
     var userLastName = userFullName.substring(userFullName.indexOf(" ")+1,userFullName.length);
+    
     //Show the manageIndustries link for admin
     /*if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
     {
@@ -6061,7 +6062,7 @@ function prepareNewWizard()
     $('#welcome-message').html("welcome <strong>AGENT "+userLastName.toUpperCase()+"</strong> <strong>[</strong> activate your mission below <strong>]</strong>");
     */
     
-    if(projectID !== "0" && projectID !== "")
+    if(projectID !== "0" && projectID !== "" && projectID !== "null" && projectID !== null)
     {
         /*$("#breadcrumbs-li").html("<a href=\"dashboard.html\">Missions</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a href=\"missionreport.html?pid="+projectID+";\">Mission Report</a> &nbsp; <i class=\"fa fa-angle-right\"></i> &nbsp; <a style=\"cursor:default;\">Project Wizard</a>")
         $("#header-text").html("[   Update Mission Details  ]")
@@ -6248,6 +6249,7 @@ function prepareNewWizard()
     }
     else
     {
+console.log("got here");
         //Make sure the user can create a new mission
         $.ajax({url: restURL, data: {'command':'checkUserMissionsAvailable','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
@@ -6257,13 +6259,14 @@ function prepareNewWizard()
                     if(info.canCreate == "false")
                     {
                         //window.location = "dashboard.html";
-                        jQuery('.side-wizard-outer').removeClass('wizard-show');
+                        $("#side-wizard-close-btn").click();
                     }
                     else
                     {
-                        if(getURLParameter("new")=="y")
+                        var newUser = getURLParameter("new");
+                        if(newUser == "y")
                         {
-                            jQuery('.side-wizard-outer').addClass('wizard-show');
+                            $("#side-wizard-rh-eagle").click();
                         }
                     }
                 }
