@@ -1085,7 +1085,7 @@ width: 100%;}
 
 .interface-outer {margin:0;padding:60px 0;vertical-align: middle;}
 
-.info-icon {background-image: url("../images/info-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor:pointer;display: inline-block;height: 15px;left: 0;margin-left: 0;position: relative;top: 4px;width: 15px; font-weight:normal;}
+.info-icon {background-image: url("../images/info-icon.png");background-repeat: no-repeat;background-size: 100% auto;cursor:pointer;display: inline-block;height: 15px;left: 0;margin-left: 0;position: relative;top: 4px;width: 15px; font-weight:normal;line-height:16px !important;}
 .info-icon-2 {cursor:pointer;display: inline-block;height: 15px;left: 0;margin-left: 0;position: relative;top: 0;width: 15px; font-weight:normal;}
 .info-icon-3 {cursor:pointer;display: inline;height: 15px;left: 0;margin-left: 0;position: relative;top: 0;width: 15px; font-weight:bold;}
 .info-icon-4 {cursor:pointer;font-weight:bold;display:inline;position:relative;}
@@ -1983,4 +1983,11 @@ background-color: white;
 	background-color: black;
 	font-style: white;
 	margin-bottom: -2px;
+}
+
+.packages-subtext{
+    font-size:16px;
+    color: #005cb8;
+    clear: both;
+    font-weight: normal;
 }

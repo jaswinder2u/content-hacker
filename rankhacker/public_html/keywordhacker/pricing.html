@@ -35,12 +35,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     
-    <!--<script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
-    <script type="text/javascript" src="https://js.chargebee.com/v1/chargebee.js"></script>
-    
     <!--1520 files-->
     <script src="js/1520.js?v=66"></script>
     <link href="css/1520.css?v=66" rel="stylesheet" id="theme-change">
@@ -65,201 +59,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     
-    <style>
-        #content_frame_part {
-            margin-bottom:0 !important;
-            margin-top:0 !important;
-        }
-        
-        #content_frame_part {
-            margin-left:0 !important;
-        }
-    </style>
-    
-    <script type="text/javascript">
-            // This parameter will decide to show the checkout page 
-            // as pop up or as embeded in document
-            var popup = false;
-            
-            jQuery.validator.setDefaults({
-                errorClass: "text-danger",
-                errorElement: "small"
-            });
-            
-            $(document).ready(function() {
-                $("#subscribe-form").validate({
-                    rules: {
-                        zip_code: {number: true},
-                        phone: {number: true}
-                    }
-                });
-               
-               function showProcessing() {
-                   $(".alert-danger").hide();
-                   $('.subscribe-process').show();
-               }
-               
-               function subscribeResponseHandler(response){
-                   if(popup) {
-                       subscribeResponsePopupHandler(response);
-                   } else {
-                       subscribeResponseEmbedHandler(response);
-                   }
-               }
-               
-               
-              function subscribeResponsePopupHandler(response) {
-                   var hostedPageId = response.hosted_page_id;
-                   $('.subscribe-process').show();
-                   
-                   ChargeBee.bootStrapModal(response.url, 
-                                    response.site_name, "paymentModal").load({
-                  
-                   /**
-                    * This function is called once the checkout form is loaded in the popup.
-                    */
-                   onLoad: function() {
-                       hideProcessing();
-                       $('.submit-btn').attr("disabled", "disabled");
-                    },
-                    
-                    /* This function will be called after subscribe button is clicked 
-                     * and checkout is completed in the iframe checkout page.
-                     */
-                    onSuccess: function() {
-                        redirectCall(hostedPageId);
-                    },
-                    
-                    /* This function will be called after cancel button is clicked in 
-                     * the iframe checkout page.
-                     */
-                    onCancel: function() {
-                        $(".alert-danger").show().text("Payment Aborted !!");
-                        $('.submit-btn').removeAttr("disabled");
-                    }
-                  });
-               }
-               
-               
-               
-               function subscribeResponseEmbedHandler(response) {
-                    var hostedPageId = response.hosted_page_id;
-                    var customerContainer = $('#customer-info');
-                    var iframeContainer = $('#checkout-info');
-                    ChargeBee.embed(response.url, response.site_name).load({
-                       /*
-                        * This function will be called when iframe is created.
-                        * addIframe callback will recieve iframe as parameter.
-                        * you can use this iframe to add iframe to your page.
-                        * Loading image in container can also be showed in this callback.
-                        * Note: visiblity will be none for the iframe at this moment
-                        */
-                        addIframe: function(iframe) {
-                            iframeContainer.append(iframe);
-                        },
-                                
-                       /*
-                        * This function will be called once when iframe is loaded.
-                        * Since checkout pages are responsive you need to handle only height.
-                        */        
-                        onLoad: function(iframe, width, height) {
-                            hideProcessing();
-                            $(customerContainer).slideUp(1000);
-                            var style= 'border:none;overflow:hidden;width:100%;';                            
-                            style = style + 'height:' + height + 'px;';
-                            style = style + 'display:none;';//This is for slide down effect
-                            iframe.setAttribute('style', style);
-                            $(iframe).slideDown(1000);
-                        },
-                                
-                        /*
-                         * This will be triggered when any content of iframe is resized.
-                         */        
-                        onResize: function(iframe, width, height) {
-                            var style = 'border:none;overflow:hidden;width:100%;';
-                            style = style + 'height:' + height + 'px;';
-                            iframe.setAttribute('style',style);
-                        },
-                                
-                        /*
-                         * This will be triggered when checkout is complete.
-                         */        
-                        onSuccess: function(iframe) {
-                            redirectCall(hostedPageId);
-                        },
-                                
-                        /*
-                         * This will be triggered when user clicks on cancel button. 
-                         */
-                        onCancel: function(iframe) {
-                            $(iframe).slideDown(100,function (){
-                                $(iframeContainer).empty();
-                                $(customerContainer).slideDown(200);
-                            });
-                            $(".alert-danger").show().text("Payment Aborted !!");
-                        }
-                    });
-               }
-               
-                
-               
-               function redirectCall(hostedPageId){
-                  window.location.href = "/checkout_iframe/redirect_handler?id=" 
-                      + encodeURIComponent(hostedPageId);
-                
-               }
-                
-               function hideProcessing(){
-                    $('.subscribe-process').hide();
-               }
-               
-               /* This method is called if error is returned from the server.                
-                */
-              function subscribeErrorHandler(jqXHR, textStatus, errorThrown) {
-                try{
-                     hideProcessing();
-                     var resp = JSON.parse(jqXHR.responseText);
-                     if ('error_param' in resp) {
-                       var errorMap = {};
-                        var errParam = resp.error_param;
-                        var errMsg = resp.error_msg;
-                        errorMap[errParam] = errMsg;
-                        $("#subscribe-form").validate().showErrors(errorMap);
-                     } else {
-                        var errMsg = resp.error_msg;
-                        $(".alert-danger").show().text(errMsg);
-                     }
-                    } catch(err) {
-                       $(".alert-danger").show().text("Error while processing your request");
-                    }
-                }  
-               
-               
-               /* Doing ajax form submit of the form data.
-                */
-               $("#subscribe-form").on("submit", function(e) {
-                  if (!$(this).valid()) {
-                        return false;
-                  }
-                  var options = {
-                        beforeSend: showProcessing,
-                        error: subscribeErrorHandler, 
-                        success: subscribeResponseHandler, 
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                        dataType: 'json'
-                  };
-                  $(this).ajaxSubmit(options);
-                  return false;
-               })
-               
-               
-            })
-        </script>
 </head>
 
-<body id="body" class="page-loading home noisy" onload="prepareCheckout();">
+<body id="body" class="page-loading home noisy" onload="preparePricing();">
 
 <!-- =========================
      MAIN MENU
@@ -275,12 +78,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images/site-logo.png" alt="site-logo"> </a>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="images/site-logo.png" alt="site-logo"> </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <!--<li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
-            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>-->
             <li>
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
                 <ul class="dropdown-menu" id="account-dropdown">
@@ -290,8 +91,8 @@
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
                 </ul>
             </li>
-            <li class="active">
-                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/header-cart-static.png" class="cart-icon"/></a>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/header-cart-inactive.png" class="cart-icon"/></a>
                 <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
                     <div class="cart-header">
                         <span id="cart-total-pieces">0</span>
@@ -327,15 +128,94 @@
 <!-- =========================
      HEADER
 ============================== -->
-<section id="header" class="blurable" style="min-height:1450px !important;">
-    <div class="overlay interface-outer" style="background-color:#ededef;">
-      <div class="container" style="padding-left:0 !important;padding-right:0 !important;">
-        <div class="projects" id="main-page-content" style="width:100%;height:1450px;overflow:hidden;background-color:#ededef;">
-            <iframe style="width:100%;height:1450px;margin-top:50px;padding-top:50px;background-color:#ededef;" scrolling="no" id="content_frame_part" src=""></iframe>
+
+<section id="content-section" class="blurable">
+
+<div id="background-image"></div>
+<!--div class="scanlines"></div-->
+
+    <div class="overlay interface-outer" id="packages-page-outer">
+
+        <div class="container">
+            <div class="packages-outer"> 
+
+            <h1 class="packages-heading"><i class="rh-black-eagle"></i> <span>CHOOSE YOUR PACKAGE</span></h1>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 matchheight package-box-outer">
+                        <div class="package-box">
+                           <h2 class="package-name">FREE<br>ACCOUNT </h2>
+                           <div class="package-price"> FREE  <br><span class="packages-subtext">&nbsp;</span></div>
+                           <ul class="package-feature"> 
+                             <li>1 User</li>
+                             <li>3 Total Missions<strong class="position-relative"><i class="info-icon" data-label="One mission is equal to one website url"></i></strong></li>
+                             <li>100 Keywords</li>
+                             <li>5 Content Goal Reports</li>
+                             <li>Unlimited Mission Overview Reports</li>
+                             <li></li>
+                           </ul>
+                           <a href="#" class="package-select-btn">Select</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 matchheight package-box-outer">
+                        <div class="package-box">
+                           <h2 class="package-name">PROFESSIONAL<br>ACCOUNT</h2>
+                           <div class="package-price"> $149/Mo. <br><span class="packages-subtext"><b>FREE</b> with 10 Content Subscriptions</span></div>
+                           <ul class="package-feature"> 
+                             <li>3 Users</li>
+                             <li>3 Missions/Mo.<strong class="position-relative"><i class="info-icon" data-label="One mission is equal to one website url"></i></strong></li>
+                             <li>450 Keywords/Mo.</li>
+                             <li>20 Content Goal Reports/Mo.</li>
+                             <li>Unlimited Mission Overview Reports</li>
+                             <li></li>
+                           </ul>
+                           <a href="#" class="package-select-btn">Select</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 matchheight package-box-outer">
+                        <div class="package-box most-popular">
+                           <h2 class="package-name rh-shield-logo">AGENCY<br>ACCOUNT</h2>
+                           <div class="package-price"> $300/Mo. <br><span class="packages-subtext"><b>FREE</b> with 20 Content Subscriptions</span></div>
+                           <ul class="package-feature"> 
+                             <li>9 Users</li>
+                             <li>10 Missions/Mo.<strong class="position-relative"><i class="info-icon" data-label="One mission is equal to one website url"></i></strong></li>
+                             <li>1000 Keywords/Mo.</li>
+                             <li>50 Content Goal Reports/Mo.</li>
+                             <li>Unlimited Mission Overview Reports</li>
+                             <li>White Labeled Reports</li>
+                           </ul>
+                           <a href="#" class="package-select-btn">Select</a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 matchheight package-box-outer">
+                        <div class="package-box">
+                           <h2 class="package-name">ENTERPRISE<br>ACCOUNT</h2>
+                           <div class="package-price"> $995/Mo. <br><span class="packages-subtext"><b>FREE</b> with 60 Content Subscriptions</span></div>
+                           <ul class="package-feature"> 
+                             <li>Unlimited Users</li>
+                             <li>Unlimited Missions<strong class="position-relative"><i class="info-icon" data-label="One mission is equal to one website url"></i></strong></li>
+                             <li>3000 Keywords/Mo.</li>
+                             <li>150 Content Goal Reports/Mo.</li>
+                             <li>Unlimited Mission Overview Reports</li>
+                             <li>White Labeled Reports</li>
+                           </ul>
+                           <a href="#" class="package-select-btn">Select</a>
+                      </div>
+                    </div>
+
+                </div>
+
+<h3 class="contact-note">Need more? <a href="mailto:hq@rankhacker.com">Contact us</a> for a custom quote.</h3>
+
+            </div>
         </div>
-    </div>
+
     </div>
 </section>
+
 
 
 <!-- =========================

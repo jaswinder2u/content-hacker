@@ -6440,3 +6440,45 @@ function showAddMissionWizard()
     $("#wizard-logo").prop("src","images/rh-plus-logo.png");
     $('.side-wizard-outer').addClass('wizard-show');
 }
+
+function preparePricing()
+{
+    jQuery.noConflict();
+    var username = getCookie("username");
+    //var projectID = getURLParameter("pid");
+    if(username != '')
+    {
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && jQuery('#industry-link').length)
+        {
+            jQuery('#industry-link').remove();
+            jQuery('#users-link').remove();
+        }
+        
+        refreshCartDropdownForCalculator();
+        
+        jQuery.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var users = info.users;
+                    var userInfo = users[0];
+
+                    var firstName = userInfo.firstName;
+                    var lastName = userInfo.lastName;
+                    var username = userInfo.username;
+                    /*if(lastName == '')
+                    {
+                        lastName = "Anderson";
+                    }*/
+                    
+                    //jQuery("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
+                }
+            }
+        });
+    }
+    else
+    {
+        //window.location = "../login.html";
+    }
+}
