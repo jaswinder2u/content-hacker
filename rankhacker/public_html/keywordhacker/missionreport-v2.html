@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- =========================
+              BASIC PAGE INFORMATION
+        ============================== -->
+    <title>RankHacker - The Content Intelligence Agency</title>
+    <meta name="description" content="Rank Hacker is the worlds only keyword tool that gives you true ROI for top ranking phrases and hacks competitors content strategies to outpace them.">
+    <meta name="keywords" content="content strategy, content roadmap, content calendar">
+    <meta name="author" content="fairmarketing.com">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
+
+    <!-- =========================
+             FONTS
+        ============================== -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- =========================
+             STYLESHEETS
+        ============================== -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css?v=66" rel="stylesheet">-->
+    <link href="css/custom-style.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="css/rankhacker.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="css/bootstrap-slider.min.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="css/media-queries.css?v=66" rel="stylesheet" type="text/css">
+
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+    
+    <!--1520 files-->
+    <script src="js/1520.js?v=66"></script>
+    <link href="css/1520.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="css/spinner.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="css/magic-check-small.css?v=66" rel="stylesheet" id="theme-change">
+    <script src="js/bootstrap-slider.js?v=66"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/readmore.js"></script>
+    <!--<script src="js/jquery-sortable.js"></script>-->
+    <link href="css/shimmer.css?v=66" rel="stylesheet" id="theme-change">
+
+    <link href="css/media-queries.css?v=66" rel="stylesheet" type="text/css">
+    
+    <link href="fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
+    <link href="css_storefront/bootstrap.min.css?v=66" rel="stylesheet">
+    <link href="css_storefront/custom-style.css?v=66" rel="stylesheet" id="theme-change-storefront">
+    <link href="css_cart/keyword-networth.css" rel="stylesheet" id="theme-change-storefront">
+    
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="css/bootstrap.min.css?v=66" rel="stylesheet">
+    <link href="css/custom-style-material.css?v=66" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    
+    <script>
+        function run(){
+            refreshCartDropdown();
+            loadMissionData(true);
+            setInterval(checkProjectDone, 5000);
+        }
+    </script>
+</head>
+
+<body id="body" class="page-loading home noisy" onload="run();">
+<span id="added-message" class="added-message">Added to Cart</span>
+
+ <!-- =========================
+     MAIN MENU
+============================== -->
+
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="dashboard.html"><img src="images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <!--<li class="active"><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>-->
+            <li>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
+                <ul class="dropdown-menu" id="account-dropdown">
+                    <li><a href="salesgoalcalculator.html">Sales Goal Calculator</a></li>
+                    <li><a href="../content/">Content Strategy Center</a></li>
+                    <li><a style="cursor:pointer;" onclick="manageIndustries(event);" id="industry-link">Manage Industries</a></li>
+                    <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/header-cart-inactive.png" class="cart-icon"/></a>
+                <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
+                    <div class="cart-header">
+                        <span id="cart-total-pieces">0</span>
+                        <span id="cart-total-pieces-text">Pieces of Content<br/>PER MONTH</span>
+                    </div>
+                    <div class="cart-breakdown">
+                        <div class="cart-breakdown-cell"><span id="cart-total-missions">0</span><br/><span class="cart-breakdown-text">MISSIONS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-keywords">0</span><br/><span class="cart-breakdown-text">KEYWORDS</span></div>
+                        <div class="cart-breakdown-cell"><span id="cart-total-project-mgmt">0</span><br/><span class="cart-breakdown-text">PROJECT<br>MANAGEMENT</span></div>
+                    </div>
+                    <div class="cart-summary">
+                        <div style="width:55%;display:inline;float:left;"><span id="cart-total-cost">$0</span><br/><span id="cart-total-cost-text">BILLED MONTHLY</span></div>
+                        <div style="width:45%;display:inline;float:right;vertical-align:middle;"><span id="cart-pay"><input type="button" class="pay-button" value="VIEW CART" onclick="gotoCartDetail(event);"></span></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li><a style="cursor:pointer;" onclick="javascript:window.location='editprofile.html';">SETTINGS</a></li>-->
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><i class="fa fa-gear settings-gear"></i></a>
+                <ul class="dropdown-menu" id="settings-dropdown">
+                    <li><a href="editprofile.html">Edit Profile</a></li>
+                    <li><a style="cursor:pointer;" onclick="logout(event);">Log Out</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+      <div id="message-bar" class="message-bar hidden-md">
+          <span id="message-header"><img src="images/blank.png" class="message-icon"/></span>
+          <span id="message-content"></span>
+      </div>
+    </nav>
+</div>
+    
+
+<!-- =========================
+     HEADER
+============================== -->
+    <section id="content-section" class="">
+
+        <div id="background-image"></div>
+        <!--div class="scanlines"></div-->
+
+        <div class="overlay interface-outer">
+
+            <div class="container">
+
+                <div id="keyword-networth">
+                    <div id="message-bar" class="message-bar hidden-lg visible-md">
+                          <span id="message-header"><img src="images/blank.png" class="message-icon"/></span>
+                          <span id="message-content"></span>
+                      </div>
+
+                    <div class="head-info-box">
+                        <h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>
+                        <h2 class="page-info">the <strong>mission</strong> <strong>[</strong> Review <strong>Keyword Net-Worth<sup>TM</sup></strong> and select phrases that meet or exceed your sales goal <strong>]</strong></h2>
+                    </div>
+                    <div class="project-breadcomb-outer">
+                        <ul>
+                            <li><i class="black_eagle-rh"> </i><a href="dashboard.html">MISSION DASHBOARD</a></li>
+                            <li id="mission-title-1"></li>
+                        </ul>
+                        <span class="add-mission-small info-icon-4" title="CREATE A NEW MISSION" >
+                            <img src="images/rh-plus-logo.png" style="height:25px;width:auto;cursor:pointer;" onclick="showAddMissionWizard();"/>
+                        </span>
+                    </div>
+                    <div id="shadow"> </div>
+
+
+                    <div id="mission-heading" class="project-location-it">
+                        <ul>
+                            <li id="mission-title-2"></li>
+                            <li id="mission-location-1"></li>
+                            <li id="mission-search-engines-1"></li>
+                                
+                        </ul>
+                    </div>
+
+                    <div class="top-check-selection">
+              <input class="" type="checkbox">SEO 
+              <input class="" type="checkbox">PPC
+            </div>
+
+                    
+
+<div id="mission-data" class="white-box">
+   <div style="display:none;" class="top-check-selection"><input type="checkbox" class="">SEO <input type="checkbox" class="">PPC</div>
+   <div aria-multiselectable="true" role="tablist" id="accordion" class="panel-group keyword-networth-project-outer">
+      <input type="hidden" value="http://www.fairmarketing.com/" id="wizard-url-371"><input type="hidden" value="United States" id="wizard-geolocation-371"><input type="hidden" value="1" id="wizard-usegoogle-371"><input type="hidden" value="1" id="wizard-usebing-371"><input type="hidden" value="undefined" id="wizard-useyoutube-371"><input type="hidden" value="undefined" id="wizard-useappstore-371"><input type="hidden" value="0" id="wizard-uselocal-371"><input type="hidden" value="0" id="wizard-useregional-371"><input type="hidden" value="1" id="wizard-usenational-371"><input type="hidden" value="21" id="wizard-industryid-371"><input type="hidden" value="1" id="wizard-ecommerce-371"><input type="hidden" value="200" id="wizard-customervalue-371"><input type="hidden" value="0" id="wizard-monthlyvisitors-371"><input type="hidden" value="0" id="wizard-monthlycustomers-371"><input type="hidden" value="0" id="wizard-contentcost-371">
+      <table cellspacing="0" cellpadding="0" border="0" id="keyword-summary-table" class="keyword-networth-project">
+         <thead>
+            <tr onmouseout="setHeadingBG('#f1f1f3');" onmouseover="setHeadingBG('#faf8c7');" class="table-heading">
+               <td onclick="displayMissionInfo('keyword',true);" colspan="2" id="mission-heading-keyword" style="background-color: rgb(241, 241, 243);">
+                  <h2 id="keyword-count-1" class="table-title">15 active <span>KEYWORD PHRASES</span></h2>
+               </td>
+               <td onclick="displayMissionInfo('searchVolume',true);" class="price-widthbox" id="mission-heading-search-volume" style="background-color: rgb(241, 241, 243);">
+                  <h2 id="mission-search-volume" class="table-title">189,262 <span title="The monthly average searches for each keyword" class="info-icon-2">MO. SEARCH VOLUME</span></h2>
+               </td>
+               <td onclick="displayMissionInfo('monthlyVisitors',true);" class="price-widthbox" id="mission-heading-monthly-visitors" style="background-color: rgb(241, 241, 243);">
+                  <h2 id="mission-monthly-visitors" class="table-title">44,178<span title="Applying each keyword's average Click Through Rate to the Monthly Search Volume, based on selected competitors" class="info-icon-2">MONTHLY VISITORS</span><span class="blue-text">PROJECTED </span></h2>
+               </td>
+               <td onclick="displayMissionInfo('monthlyCustomers',true);" class="price-widthbox" id="mission-heading-monthly-customers" style="background-color: rgb(241, 241, 243);">
+                  <h2 id="mission-monthly-customers" class="table-title">6,185<span title="Applying your website's current Conversion Rate to Projected Monthly Visitors" class="info-icon-2">MONTHLY CUSTOMERS</span><span class="blue-text">PROJECTED </span></h2>
+               </td>
+               <td onclick="displayMissionInfo('monthlySales',true);" style="padding-right: 0px; background-color: rgb(241, 241, 243);" class="price-widthbox" id="mission-heading-monthly-sales">
+                  <h2 id="mission-monthly-sales" class="table-title negative-sign"><sup>$</sup>1,237,000<span title="Projected Customers multiplied by the monetary value of one paying customer" class="info-icon-2">MONTHLY SALES</span><span class="blue-text">PROJECTED </span></h2>
+               </td>
+               <td onclick="displayMissionInfo('costPerMonth',true);" style="padding-right: 0px; background-color: rgb(241, 241, 243);" class="price-widthbox" id="mission-heading-cost-per-month">
+                  <h2 class="table-title equal-sign" id="mission-content-goal"><span class="rh-cost-goal-ots"><sup>$</sup>0 <small>34</small><div id="mission-cart-div" onclick="event.cancelBubble; event.stopPropagation();" class="mission-cart-div"><img src="images/cart-static.png" id="project-add-to-cart" style="height:18px;" class="mission-cart-icon" onclick="addToCart(event,'-1');"></div></span><span class="info-icon-2" title="Target amount of monthly content and its cost" style="margin-top:1px;">CONTENT COST &amp; GOAL</span></h2>
+               </td>
+               <td onclick="displayMissionInfo('keywordNetWorth',true);" colspan="2" class="price-widthbox" id="mission-heading-keyword-networth" style="background-color: rgb(241, 241, 243);">
+                  <h2 id="mission-networth" class="table-title"><strong class="red-bg-total"><span style="font-size:15px;color:#fff;" class="loader__dot">calculating...</span></strong><span title="Projected return on your invested marketing dollars for this keyword" class="info-icon-2">KEYWORD NET WORTH<sup style="font-size:6px;">TM</sup></span></h2>
+               </td>
+            </tr>
+            <tr class="sorttable_nosort">
+               <td style="border-right: none;">
+                  <div class="margin10t"></div>
+               </td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-question-id="4876" id="kw-summary-row-4876" class="project-head panel sortable-row">
+               <td class="checkbox-ot"><input type="checkbox" onchange="toggleKeyword('4876',this.checked);" checked="" id="chk-content-all-kw4876" style="opacity: 1.0 !important; z-index:999;" class="magic-checkbox"><label td="" <="" for="chk-content-all-kw4876">
+                  </label>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="project-name-ot"><a class="">infograph</a></td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="MO. SEARCH VOLUME">0</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="MONTHLY VISITORS PROJECTED">0</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="MONTHLY CUSTOMERS PROJECTED ">0</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="MONTHLY SALES PROJECTED">
+                  <div class="negative-sign">$0</div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
+                  <div style="cursor:default;" class="equal-sign" id="kw-4876-content-goal">
+                     <span onclick="togglePanel('4876');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
+                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4876','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4876" src="images_cart/rh-cart-start.png"></div>
+                  </div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="KEYWORD NET WORTH">$0</td>
+               <td style="opacity:1.0;cursor:pointer;" class="delect-row"><a href="#"><i onclick="displayKeywordDeleteWindow('4876');" aria-hidden="true" class="fa fa-trash-o"></i></a></td>
+            </tr>
+            <tr style="display:none;" class="progress-row sorttable_nosort" id="progress-row-4876">
+               <td style="border-right: none !important" colspan="9">
+                  <div class="progress-loader">
+                     <div class="indeterminate"></div>
+                  </div>
+               </td>
+            </tr>
+            <tr data-answer-id="4876" class="project-info sorttable_nosort" style="opacity:1.0;cursor:pointer;" id="project-info-4876">
+               <td style="border-right: none !important;" colspan="9">
+                  <div class="panel-collapse collapse" id="kw-competitors-panel-4876">
+                     <div class="row">
+                        <div class="col-sm-7 content-goal-info">
+                           <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+                           <div class="table-outer">
+                              <span onclick="getKeywordCompetitorsAhrefs('1');" style="display:none;" class="reveal-mark"> REVEAL </span>
+                              <table cellspacing="0" cellpadding="0" border="0" class="content-goal-table sortable">
+                                 <thead>
+                                    <tr class="table-heading2">
+                                       <th class="col-sm-1"></th>
+                                       <th class="col-sm-1 text-center"><span>Rank<br>&nbsp;</span></th>
+                                       <th class="col-sm-7 text-left"><span>URL<br>&nbsp;</span></th>
+                                       <th class="col-sm-1 text-center"><span title="Click Through Rate for the ranking position and current keyword" class="info-icon-3">CTR<br>&nbsp;</span></th>
+                                       <th class="col-sm-1 text-center"><span title="The total number of backlinks this competitor has" class="info-icon-3">Total Backlinks</span></th>
+                                       <th class="col-sm-1 text-center"><span title="The amount of off-site content produced each month with this keyword phrase as the topic" class="info-icon-3">Monthly Content</span></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486853',this.checked,'1','4876');" id="chk-content-all-c486853" checked="" class="magic-checkbox"><label for="chk-content-all-c486853"></label></td>
+                                       <td class="text-center" data-label="Rank">1</td>
+                                       <td title="https://venngage.com/" class="text-left" data-label="URL">https://venngage.com/<a data-clipboard-text="https://venngage.com/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486853');" onmouseover="resetTitle('486853');" class="copy-button" id="copy-anchor-486853" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486853" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">47%</td>
+                                       <td id="kwid-4876-competitorid-486853-backlinks" class="text-center" data-label="Monthly Backlinks">13,835</td>
+                                       <td id="kwid-4876-competitorid-486853-content" class="text-center" data-label="Monthly Content">16</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486854',this.checked,'1','4876');" id="chk-content-all-c486854" checked="" class="magic-checkbox"><label for="chk-content-all-c486854"></label></td>
+                                       <td class="text-center" data-label="Rank">2</td>
+                                       <td title="https://piktochart.com/" class="text-left" data-label="URL">https://piktochart.com/<a data-clipboard-text="https://piktochart.com/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486854');" onmouseover="resetTitle('486854');" class="copy-button" id="copy-anchor-486854" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486854" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">13%</td>
+                                       <td id="kwid-4876-competitorid-486854-backlinks" class="text-center" data-label="Monthly Backlinks">324,511</td>
+                                       <td id="kwid-4876-competitorid-486854-content" class="text-center" data-label="Monthly Content">11</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486856',this.checked,'1','4876');" id="chk-content-all-c486856" checked="" class="magic-checkbox"><label for="chk-content-all-c486856"></label></td>
+                                       <td class="text-center" data-label="Rank">3</td>
+                                       <td title="https://www.canva.com/create/infographics/" class="text-left" data-label="URL">https://www.canva.com/create/infographics/<a data-clipboard-text="https://www.canva.com/create/infographics/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486856');" onmouseover="resetTitle('486856');" class="copy-button" id="copy-anchor-486856" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486856" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">9%</td>
+                                       <td id="kwid-4876-competitorid-486856-backlinks" class="text-center" data-label="Monthly Backlinks">110,275</td>
+                                       <td id="kwid-4876-competitorid-486856-content" class="text-center" data-label="Monthly Content">4</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486858',this.checked,'1','4876');" id="chk-content-all-c486858" class="magic-checkbox"><label for="chk-content-all-c486858"></label></td>
+                                       <td class="text-center" data-label="Rank">4</td>
+                                       <td title="https://www.easel.ly/create" class="text-left" data-label="URL">https://www.easel.ly/create<a data-clipboard-text="https://www.easel.ly/create" data-clipboard-action="copy" onclick="showCopiedConfirmation('486858');" onmouseover="resetTitle('486858');" class="copy-button" id="copy-anchor-486858" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486858" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">7%</td>
+                                       <td id="kwid-4876-competitorid-486858-backlinks" class="text-center" data-label="Monthly Backlinks">24,402</td>
+                                       <td id="kwid-4876-competitorid-486858-content" class="text-center" data-label="Monthly Content">8</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486860',this.checked,'1','4876');" id="chk-content-all-c486860" class="magic-checkbox"><label for="chk-content-all-c486860"></label></td>
+                                       <td class="text-center" data-label="Rank">5</td>
+                                       <td title="https://en.wikipedia.org/wiki/Infographic" class="text-left" data-label="URL">https://en.wikipedia.org/wiki/Infographic<a data-clipboard-text="https://en.wikipedia.org/wiki/Infographic" data-clipboard-action="copy" onclick="showCopiedConfirmation('486860');" onmouseover="resetTitle('486860');" class="copy-button" id="copy-anchor-486860" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486860" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">1%</td>
+                                       <td id="kwid-4876-competitorid-486860-backlinks" class="text-center" data-label="Monthly Backlinks">1,742,335,360</td>
+                                       <td id="kwid-4876-competitorid-486860-content" class="text-center" data-label="Monthly Content">0</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486862',this.checked,'1','4876');" id="chk-content-all-c486862" class="magic-checkbox"><label for="chk-content-all-c486862"></label></td>
+                                       <td class="text-center" data-label="Rank">6</td>
+                                       <td title="https://infogr.am/" class="text-left" data-label="URL">https://infogr.am/<a data-clipboard-text="https://infogr.am/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486862');" onmouseover="resetTitle('486862');" class="copy-button" id="copy-anchor-486862" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486862" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">5%</td>
+                                       <td id="kwid-4876-competitorid-486862-backlinks" class="text-center" data-label="Monthly Backlinks">326,296</td>
+                                       <td id="kwid-4876-competitorid-486862-content" class="text-center" data-label="Monthly Content">40</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486864',this.checked,'1','4876');" id="chk-content-all-c486864" class="magic-checkbox"><label for="chk-content-all-c486864"></label></td>
+                                       <td class="text-center" data-label="Rank">7</td>
+                                       <td title="http://www.creativebloq.com/graphic-design-tips/information-graphics-1232836" class="text-left" data-label="URL">http://www.creativebloq.com/graphic-design-tips/information-...<a data-clipboard-text="http://www.creativebloq.com/graphic-design-tips/information-graphics-1232836" data-clipboard-action="copy" onclick="showCopiedConfirmation('486864');" onmouseover="resetTitle('486864');" class="copy-button" id="copy-anchor-486864" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486864" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">4%</td>
+                                       <td id="kwid-4876-competitorid-486864-backlinks" class="text-center" data-label="Monthly Backlinks">147,024</td>
+                                       <td id="kwid-4876-competitorid-486864-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486866',this.checked,'1','4876');" id="chk-content-all-c486866" class="magic-checkbox"><label for="chk-content-all-c486866"></label></td>
+                                       <td class="text-center" data-label="Rank">8</td>
+                                       <td title="http://www.creativebloq.com/infographic/tools-2131971" class="text-left" data-label="URL">http://www.creativebloq.com/infographic/tools-2131971<a data-clipboard-text="http://www.creativebloq.com/infographic/tools-2131971" data-clipboard-action="copy" onclick="showCopiedConfirmation('486866');" onmouseover="resetTitle('486866');" class="copy-button" id="copy-anchor-486866" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486866" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4876-competitorid-486866-backlinks" class="text-center" data-label="Monthly Backlinks">147,024</td>
+                                       <td id="kwid-4876-competitorid-486866-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486868',this.checked,'1','4876');" id="chk-content-all-c486868" class="magic-checkbox"><label for="chk-content-all-c486868"></label></td>
+                                       <td class="text-center" data-label="Rank">9</td>
+                                       <td title="https://www.customermagnetism.com/infographics/what-is-an-infographic/" class="text-left" data-label="URL">https://www.customermagnetism.com/infographics/what-is-an-in...<a data-clipboard-text="https://www.customermagnetism.com/infographics/what-is-an-infographic/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486868');" onmouseover="resetTitle('486868');" class="copy-button" id="copy-anchor-486868" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486868" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4876-competitorid-486868-backlinks" class="text-center" data-label="Monthly Backlinks">43,535</td>
+                                       <td id="kwid-4876-competitorid-486868-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486870',this.checked,'1','4876');" id="chk-content-all-c486870" class="magic-checkbox"><label for="chk-content-all-c486870"></label></td>
+                                       <td class="text-center" data-label="Rank">10</td>
+                                       <td title="https://www.visme.co/make-infographics/" class="text-left" data-label="URL">https://www.visme.co/make-infographics/<a data-clipboard-text="https://www.visme.co/make-infographics/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486870');" onmouseover="resetTitle('486870');" class="copy-button" id="copy-anchor-486870" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486870" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4876-competitorid-486870-backlinks" class="text-center" data-label="Monthly Backlinks">11,620</td>
+                                       <td id="kwid-4876-competitorid-486870-content" class="text-center" data-label="Monthly Content">13</td>
+                                    </tr>
+                                    <input type="hidden" value="3" id="kwid-4876-competitorsCount">
+                                 </tbody>
+                                 <tfoot>
+                                    <tr class="project-head2 them-row">
+                                       <td class="checkbox-ot"><strong>THEM</strong></td>
+                                       <td id="kwid-4876-avg-rank" class="text-center" data-label="Rank">2</td>
+                                       <td class="text-left" data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                       <td id="kwid-4876-avg-ctr" class="text-center" data-label="CTR">23%</td>
+                                       <td id="kwid-4876-table-total-backlinks" class="text-center negative-sign-2" data-label="Monthly Backlinks">149,540</td>
+                                       <td id="kwid-4876-table-total-pl" style="font-size:20px;text-align:center;" data-label="Monthly Content">11<span style="font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;">avg</span></td>
+                                    </tr>
+                                    <tr class="project-head2 you-row">
+                                       <td class="checkbox-ot"><strong>YOU</strong></td>
+                                       <td class="text-center">0</td>
+                                       <td class="text-left" data-label="URL">http://www.fairmarketing.com/</td>
+                                       <td class="text-center" data-label="CTR">0%</td>
+                                       <td id="kwid-4876-user-monthly-backlinks-count" class="text-center equal-sign-2" data-label="Monthly Backlinks">15369</td>
+                                       <td id="kwid-4876-user-monthly-content-count" style="font-size:20px;text-align:center;" data-label="Monthly Content"><input type="number" value="0" id="kwid-4876-your-pl" onchange="changeUserMonthlyContent('4876','1');" class="transparent-text-input-2"><span style="font-size:12px;position:absolute !important;right:2px;margin-top:4px;"><i title="Click the number to change your monthly content count" class="info-icon"></i></span></td>
+                                    </tr>
+                                    <tr class="project-head2 result-row">
+                                       <td class="text-right" colspan="5">YOUR MONTHLY CONTENT GOAL</td>
+                                       <td style="text-align:center;" colspan="2">+11<span style="font-size:12px;position:absolute !important;right:2px;margin-top:2px;"><img onclick="addToCart(event,'4876');" style="display:none !important;" id="goal-cart-4876" class="keyword-cart" src="images/cart-dropshadow.png"></span></td>
+                                    </tr>
+                                 </tfoot>
+                              </table>
+                           </div>
+                           <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+                        </div>
+                        <div class="col-sm-5 right-side-goalinfo">
+                           <div style="margin-top:40px;" class="info-block">
+                              <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                              <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                           </div>
+                           <div class="info-block">
+                              <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                              <p>Reveal the monthly content strategies of your selected competitors</p>
+                           </div>
+                           <div class="info-block">
+                              <h3>
+                                 REVIEW AND TAKE ACTION <img style="height:18px;margin-top:-3px;margin-left:30px;" src="images/cart-static.png"><!--<i class="blueproject-eagle-icon"> </i>-->
+                              </h3>
+                              <p>View your monthly content goal&mdash;this is how much content you will need to create and publish each month to match your competition.</p>
+                           </div>
+                           <div class="info-block calculator-lt">
+                              <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                 <br>Start by defining your monthly sales goal using our <a target="_blank" href="salesgoalcalculator.html">calculator</a>.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr data-question-id="4871" id="kw-summary-row-4871" class="project-head panel sortable-row">
+               <td class="checkbox-ot"><input type="checkbox" onchange="toggleKeyword('4871',this.checked);" checked="" id="chk-content-all-kw4871" style="opacity: 1.0 !important; z-index:999;" class="magic-checkbox"><label td="" <="" for="chk-content-all-kw4871">
+                  </label>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="project-name-ot"><a class="">infographic</a></td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="MO. SEARCH VOLUME">138,578</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="MONTHLY VISITORS PROJECTED">31,711</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="MONTHLY CUSTOMERS PROJECTED ">4,440</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="MONTHLY SALES PROJECTED">
+                  <div class="negative-sign">$888,000</div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
+                  <div style="cursor:default;" class="equal-sign" id="kw-4871-content-goal">
+                     <span onclick="togglePanel('4871');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
+                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4871','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4871" src="images_cart/rh-cart-close.png"></div>
+                  </div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="KEYWORD NET WORTH">$888,000</td>
+               <td style="opacity:1.0;cursor:pointer;" class="delect-row"><a href="#"><i onclick="displayKeywordDeleteWindow('4871');" aria-hidden="true" class="fa fa-trash-o"></i></a></td>
+            </tr>
+            <tr style="display:none;" class="progress-row sorttable_nosort" id="progress-row-4871">
+               <td style="border-right: none !important" colspan="9">
+                  <div class="progress-loader">
+                     <div class="indeterminate"></div>
+                  </div>
+               </td>
+            </tr>
+            <tr data-answer-id="4871" class="project-info sorttable_nosort" style="opacity:1.0;cursor:pointer;" id="project-info-4871">
+               <td style="border-right: none !important;" colspan="9">
+                  <div class="panel-collapse collapse" id="kw-competitors-panel-4871">
+                     <div class="row">
+                        <div class="col-sm-7 content-goal-info">
+                           <h2 class="title">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>
+                           <div class="table-outer">
+                              <span onclick="getKeywordCompetitorsAhrefs('2');" style="display:none;" class="reveal-mark"> REVEAL </span>
+                              <table cellspacing="0" cellpadding="0" border="0" class="content-goal-table sortable">
+                                 <thead>
+                                    <tr class="table-heading2">
+                                       <th class="col-sm-1"></th>
+                                       <th class="col-sm-1 text-center"><span>Rank<br>&nbsp;</span></th>
+                                       <th class="col-sm-7 text-left"><span>URL<br>&nbsp;</span></th>
+                                       <th class="col-sm-1 text-center"><span title="Click Through Rate for the ranking position and current keyword" class="info-icon-3">CTR<br>&nbsp;</span></th>
+                                       <th class="col-sm-1 text-center"><span title="The total number of backlinks this competitor has" class="info-icon-3">Total Backlinks</span></th>
+                                       <th class="col-sm-1 text-center"><span title="The amount of off-site content produced each month with this keyword phrase as the topic" class="info-icon-3">Monthly Content</span></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486396',this.checked,'2','4871');" id="chk-content-all-c486396" checked="" class="magic-checkbox"><label for="chk-content-all-c486396"></label></td>
+                                       <td class="text-center" data-label="Rank">1</td>
+                                       <td title="https://venngage.com/" class="text-left" data-label="URL">https://venngage.com/<a data-clipboard-text="https://venngage.com/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486396');" onmouseover="resetTitle('486396');" class="copy-button" id="copy-anchor-486396" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486396" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">47%</td>
+                                       <td id="kwid-4871-competitorid-486396-backlinks" class="text-center" data-label="Monthly Backlinks">13,835</td>
+                                       <td id="kwid-4871-competitorid-486396-content" class="text-center" data-label="Monthly Content">16</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486397',this.checked,'2','4871');" id="chk-content-all-c486397" checked="" class="magic-checkbox"><label for="chk-content-all-c486397"></label></td>
+                                       <td class="text-center" data-label="Rank">2</td>
+                                       <td title="https://piktochart.com/" class="text-left" data-label="URL">https://piktochart.com/<a data-clipboard-text="https://piktochart.com/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486397');" onmouseover="resetTitle('486397');" class="copy-button" id="copy-anchor-486397" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486397" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">13%</td>
+                                       <td id="kwid-4871-competitorid-486397-backlinks" class="text-center" data-label="Monthly Backlinks">324,511</td>
+                                       <td id="kwid-4871-competitorid-486397-content" class="text-center" data-label="Monthly Content">11</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486398',this.checked,'2','4871');" id="chk-content-all-c486398" checked="" class="magic-checkbox"><label for="chk-content-all-c486398"></label></td>
+                                       <td class="text-center" data-label="Rank">3</td>
+                                       <td title="https://www.canva.com/create/infographics/" class="text-left" data-label="URL">https://www.canva.com/create/infographics/<a data-clipboard-text="https://www.canva.com/create/infographics/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486398');" onmouseover="resetTitle('486398');" class="copy-button" id="copy-anchor-486398" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486398" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">9%</td>
+                                       <td id="kwid-4871-competitorid-486398-backlinks" class="text-center" data-label="Monthly Backlinks">110,275</td>
+                                       <td id="kwid-4871-competitorid-486398-content" class="text-center" data-label="Monthly Content">4</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486399',this.checked,'2','4871');" id="chk-content-all-c486399" class="magic-checkbox"><label for="chk-content-all-c486399"></label></td>
+                                       <td class="text-center" data-label="Rank">4</td>
+                                       <td title="https://www.easel.ly/create" class="text-left" data-label="URL">https://www.easel.ly/create<a data-clipboard-text="https://www.easel.ly/create" data-clipboard-action="copy" onclick="showCopiedConfirmation('486399');" onmouseover="resetTitle('486399');" class="copy-button" id="copy-anchor-486399" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486399" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">5%</td>
+                                       <td id="kwid-4871-competitorid-486399-backlinks" class="text-center" data-label="Monthly Backlinks">24,402</td>
+                                       <td id="kwid-4871-competitorid-486399-content" class="text-center" data-label="Monthly Content">8</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486400',this.checked,'2','4871');" id="chk-content-all-c486400" class="magic-checkbox"><label for="chk-content-all-c486400"></label></td>
+                                       <td class="text-center" data-label="Rank">5</td>
+                                       <td title="https://en.wikipedia.org/wiki/Infographic" class="text-left" data-label="URL">https://en.wikipedia.org/wiki/Infographic<a data-clipboard-text="https://en.wikipedia.org/wiki/Infographic" data-clipboard-action="copy" onclick="showCopiedConfirmation('486400');" onmouseover="resetTitle('486400');" class="copy-button" id="copy-anchor-486400" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486400" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">0%</td>
+                                       <td id="kwid-4871-competitorid-486400-backlinks" class="text-center" data-label="Monthly Backlinks">0</td>
+                                       <td id="kwid-4871-competitorid-486400-content" class="text-center" data-label="Monthly Content">0</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486401',this.checked,'2','4871');" id="chk-content-all-c486401" class="magic-checkbox"><label for="chk-content-all-c486401"></label></td>
+                                       <td class="text-center" data-label="Rank">6</td>
+                                       <td title="https://infogr.am/" class="text-left" data-label="URL">https://infogr.am/<a data-clipboard-text="https://infogr.am/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486401');" onmouseover="resetTitle('486401');" class="copy-button" id="copy-anchor-486401" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486401" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">5%</td>
+                                       <td id="kwid-4871-competitorid-486401-backlinks" class="text-center" data-label="Monthly Backlinks">326,296</td>
+                                       <td id="kwid-4871-competitorid-486401-content" class="text-center" data-label="Monthly Content">40</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486402',this.checked,'2','4871');" id="chk-content-all-c486402" class="magic-checkbox"><label for="chk-content-all-c486402"></label></td>
+                                       <td class="text-center" data-label="Rank">7</td>
+                                       <td title="http://www.creativebloq.com/graphic-design-tips/information-graphics-1232836" class="text-left" data-label="URL">http://www.creativebloq.com/graphic-design-tips/information-...<a data-clipboard-text="http://www.creativebloq.com/graphic-design-tips/information-graphics-1232836" data-clipboard-action="copy" onclick="showCopiedConfirmation('486402');" onmouseover="resetTitle('486402');" class="copy-button" id="copy-anchor-486402" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486402" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">4%</td>
+                                       <td id="kwid-4871-competitorid-486402-backlinks" class="text-center" data-label="Monthly Backlinks">147,024</td>
+                                       <td id="kwid-4871-competitorid-486402-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486403',this.checked,'2','4871');" id="chk-content-all-c486403" class="magic-checkbox"><label for="chk-content-all-c486403"></label></td>
+                                       <td class="text-center" data-label="Rank">8</td>
+                                       <td title="http://www.creativebloq.com/infographic/tools-2131971" class="text-left" data-label="URL">http://www.creativebloq.com/infographic/tools-2131971<a data-clipboard-text="http://www.creativebloq.com/infographic/tools-2131971" data-clipboard-action="copy" onclick="showCopiedConfirmation('486403');" onmouseover="resetTitle('486403');" class="copy-button" id="copy-anchor-486403" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486403" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4871-competitorid-486403-backlinks" class="text-center" data-label="Monthly Backlinks">147,024</td>
+                                       <td id="kwid-4871-competitorid-486403-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486404',this.checked,'2','4871');" id="chk-content-all-c486404" class="magic-checkbox"><label for="chk-content-all-c486404"></label></td>
+                                       <td class="text-center" data-label="Rank">9</td>
+                                       <td title="https://www.customermagnetism.com/infographics/what-is-an-infographic/" class="text-left" data-label="URL">https://www.customermagnetism.com/infographics/what-is-an-in...<a data-clipboard-text="https://www.customermagnetism.com/infographics/what-is-an-infographic/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486404');" onmouseover="resetTitle('486404');" class="copy-button" id="copy-anchor-486404" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486404" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4871-competitorid-486404-backlinks" class="text-center" data-label="Monthly Backlinks">43,535</td>
+                                       <td id="kwid-4871-competitorid-486404-content" class="text-center" data-label="Monthly Content">1</td>
+                                    </tr>
+                                    <tr class="project-head2">
+                                       <td class="checkbox-ot"><input type="checkbox" onchange="toggleCompetitor('486405',this.checked,'2','4871');" id="chk-content-all-c486405" class="magic-checkbox"><label for="chk-content-all-c486405"></label></td>
+                                       <td class="text-center" data-label="Rank">10</td>
+                                       <td title="https://www.visme.co/make-infographics/" class="text-left" data-label="URL">https://www.visme.co/make-infographics/<a data-clipboard-text="https://www.visme.co/make-infographics/" data-clipboard-action="copy" onclick="showCopiedConfirmation('486405');" onmouseover="resetTitle('486405');" class="copy-button" id="copy-anchor-486405" title="Copy full URL to clipboard"><i style="padding-left:5px;cursor:pointer;" id="copy-icon-486405" class="fa fa-copy fa-blue"></i></a></td>
+                                       <td class="text-center" data-label="CTR">3%</td>
+                                       <td id="kwid-4871-competitorid-486405-backlinks" class="text-center" data-label="Monthly Backlinks">11,620</td>
+                                       <td id="kwid-4871-competitorid-486405-content" class="text-center" data-label="Monthly Content">13</td>
+                                    </tr>
+                                    <input type="hidden" value="3" id="kwid-4871-competitorsCount">
+                                 </tbody>
+                                 <tfoot>
+                                    <tr class="project-head2 them-row">
+                                       <td class="checkbox-ot"><strong>THEM</strong></td>
+                                       <td id="kwid-4871-avg-rank" class="text-center" data-label="Rank">2</td>
+                                       <td class="text-left" data-label="URL"><strong>SELECTED COMPETITORS</strong></td>
+                                       <td id="kwid-4871-avg-ctr" class="text-center" data-label="CTR">23%</td>
+                                       <td id="kwid-4871-table-total-backlinks" class="text-center negative-sign-2" data-label="Monthly Backlinks">149,540</td>
+                                       <td id="kwid-4871-table-total-pl" style="font-size:20px;text-align:center;" data-label="Monthly Content">11<span style="font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;">avg</span></td>
+                                    </tr>
+                                    <tr class="project-head2 you-row">
+                                       <td class="checkbox-ot"><strong>YOU</strong></td>
+                                       <td class="text-center">0</td>
+                                       <td class="text-left" data-label="URL">http://www.fairmarketing.com/</td>
+                                       <td class="text-center" data-label="CTR">0%</td>
+                                       <td id="kwid-4871-user-monthly-backlinks-count" class="text-center equal-sign-2" data-label="Monthly Backlinks">15369</td>
+                                       <td id="kwid-4871-user-monthly-content-count" style="font-size:20px;text-align:center;" data-label="Monthly Content"><input type="number" value="0" id="kwid-4871-your-pl" onchange="changeUserMonthlyContent('4871','2');" class="transparent-text-input-2"><span style="font-size:12px;position:absolute !important;right:2px;margin-top:4px;"><i title="Click the number to change your monthly content count" class="info-icon"></i></span></td>
+                                    </tr>
+                                    <tr class="project-head2 result-row">
+                                       <td class="text-right" colspan="5">YOUR MONTHLY CONTENT GOAL</td>
+                                       <td style="text-align:center;" colspan="2">+11<span style="font-size:12px;position:absolute !important;right:2px;margin-top:2px;"><img onclick="addToCart(event,'4871');" style="display:none !important;" id="goal-cart-4871" class="keyword-cart" src="images/cart-dropshadow.png"></span></td>
+                                    </tr>
+                                 </tfoot>
+                              </table>
+                           </div>
+                           <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+                        </div>
+                        <div class="col-sm-5 right-side-goalinfo">
+                           <div style="margin-top:40px;" class="info-block">
+                              <h3>DO THIS FIRST <i class="checked-icon"> </i></h3>
+                              <p>Select competitors with high rankings and high CTR (click through rate)</p>
+                           </div>
+                           <div class="info-block">
+                              <h3>NEXT DO THIS <i class="revealsmall-icon"> </i></h3>
+                              <p>Reveal the monthly content strategies of your selected competitors</p>
+                           </div>
+                           <div class="info-block">
+                              <h3>
+                                 REVIEW AND TAKE ACTION <img style="height:18px;margin-top:-3px;margin-left:30px;" src="images/cart-static.png"><!--<i class="blueproject-eagle-icon"> </i>-->
+                              </h3>
+                              <p>View your monthly content goal&mdash;this is how much content you will need to create and publish each month to match your competition.</p>
+                           </div>
+                           <div class="info-block calculator-lt">
+                              <p class="calculator-logo"><strong>WHAT’S A GOOD MONTHLY KEYWORD NETWORTH / ROI?</strong>
+                                 <br>Start by defining your monthly sales goal using our <a target="_blank" href="salesgoalcalculator.html">calculator</a>.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr data-question-id="4872" id="kw-summary-row-4872" class="project-head panel sortable-row">
+               <td class="checkbox-ot"><input type="checkbox" onchange="toggleKeyword('4872',this.checked);" checked="" id="chk-content-all-kw4872" style="opacity: 1.0 !important; z-index:999;" class="magic-checkbox"><label td="" <="" for="chk-content-all-kw4872">
+                  </label>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="project-name-ot"><a class="">infographic</a></td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="MO. SEARCH VOLUME">138,578</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="MONTHLY VISITORS PROJECTED">31,711</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="MONTHLY CUSTOMERS PROJECTED ">4,440</td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="MONTHLY SALES PROJECTED">
+                  <div class="negative-sign">$888,000</div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
+                  <div style="cursor:default;" class="equal-sign" id="kw-4872-content-goal">
+                     <span onclick="togglePanel('4872');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
+                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4872','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4872" src="images_cart/rh-cart-paid.png"></div>
+                  </div>
+               </td>
+               <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="KEYWORD NET WORTH">$888,000</td>
+               <td style="opacity:1.0;cursor:pointer;" class="delect-row"><a href="#"><i onclick="displayKeywordDeleteWindow('4872');" aria-hidden="true" class="fa fa-trash-o"></i></a></td>
+            </tr>
+            <tr style="display:none;" class="progress-row sorttable_nosort" id="progress-row-4872">
+               <td style="border-right: none !important" colspan="9">
+                  <div class="progress-loader">
+                     <div class="indeterminate"></div>
+                  </div>
+               </td>
+            </tr>
+            <tr data-answer-id="4872" class="project-info sorttable_nosort" style="opacity:1.0;cursor:pointer;" id="project-info-4872">
+            
+                                    <input type="hidden" value="3" id="kwid-4882-competitorsCount">
+                                 </tbody>
+                    
+                              </table>
+                           </div>
+                           <p class="tip-note"> The competitors you select will greatly affect your monthly content goal, budget and keyword networth.</p>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </td>
+            </tr>
+
+
+
+		</tbody>
+      </table>
+   </div>
+</div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+<div id="dimmer" class="dimmer"></div>
+        
+<div id="delete-project-window" class="delete-project-window">
+    <input id="delete-keyword-id" type="hidden" value="0"/>
+    
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading" style="color:#337ab7;">Confirmation</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section">
+                <p>Are you sure you want to delete this keyword?</p>
+            </div>
+
+            <div id="submit-button-block" style="text-align:center;">
+                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="cancelDeleteKeywordHackerProject();">CANCEL</a>
+                <a class="dark-blue-btn btn pull-right" style="margin-right:10px;" onclick="deleteKeyword();">Delete</a>
+            </div>
+        </form>
+        <div class="project-setup-input row"><span id="delete-project-response" class="col-lg-12" style="text-align:center;"></span></div>
+    </div>
+    
+</div>
+
+<div id="delete-content-window" class="delete-project-window">
+    <input id="delete-keyword-content-id" type="hidden" value="0"/>
+    <input id="delete-project-content-id" type="hidden" value="0"/>
+    <input id="delete-content-type" type="hidden" value="keyword"/>
+    
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading" style="color:#337ab7;">Confirmation</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section">
+                <p>Are you sure you want to remove this content from your cart?</p>
+            </div>
+
+            <div id="submit-button-block" style="text-align:center;">
+                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="cancelRemoveContent();">CANCEL</a>
+                <a class="dark-blue-btn btn pull-right" style="margin-right:10px;" onclick="removeContent();">Remove</a>
+            </div>
+        </form>
+        <div class="project-setup-input row"><span id="delete-project-response" class="col-lg-12" style="text-align:center;"></span></div>
+    </div>
+    
+</div>
+
+<!-- Alert modal -->
+<div id="alert-window" class="delete-project-window">
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading">ERROR</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+                <p id="alert-msg-body"> </p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="dark-blue-btn btn pull-right" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+            </div>
+        </form>
+    </div>
+</div>
+        
+    </section>
+
+<!-- =========================
+     FOOTER
+============================== -->
+          <!-- Footer start here -->
+          <footer id="main-footer">
+           <div class="container">
+            
+                <!--footer center socail icon section start here-->
+            <div class="footer-socail-icon">
+                    <ul class="text-center">
+                    <li> <a href="https://www.facebook.com/rankhacker/?fref=ts" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                    <li> <a href="https://twitter.com/rank_hacker?lang=en" target="_blank"> <i class="fa fa-twitter"></i> </a></li>
+                    </ul>
+             </div>
+        <!--footer center socail icon section close here-->
+        
+        <div class="row">
+         <!--Footer left section start here-->
+            <div class="footer-link col-sm-4">
+                  <ul class=""> 
+                <li> <a href="faq.html">FAQs</a>
+                <!--<li> <a href="#">What is this?</a></li>-->
+                <!--<li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>-->
+              </ul>
+                </div>
+        <!--footer left section close here-->
+
+        <!--copyright section start here-->     
+            <div class="copy-right-section col-sm-4 text-center"> &copy; 2017 All Rights Reserved </div>
+            <!--copyright section close here-->
+                        
+            <div class="account-section text-right col-sm-4">
+                <a href="mailto:hq@rankhacker.com">Contact the RankHacker Team</a>
+            </div>
+            
+          </div>
+            </div>
+      </footer>
+      <!--Footer close here-->
+
+<a style="cursor:pointer;" onclick="gotoCreateProject('');" id="side-wizard-rh-eagle-edit"></a>
+	  
+
+<div class="side-wizard-outer">
+    <div class="overflow-scroll">
+            <div class="block-css" style="position: relative;margin-bottom: 0;">
+                <div class="side-wizard-image matchheight" style="margin:0!important;background-color: #E4E5E6;height:40px !important;">.&nbsp;</div>
+                <ul class="nav nav-tabs side-wizard-tabs matchheight" style="margin-bottom: 0;">
+                    <li id="basic-tab" class="active"><a>NEW MISSION SETUP</a></li>
+                    <!--<li id="advanced-tab" onclick="toggleTab('advanced');" style="cursor:pointer;"><a>ADVANCED</a></li>-->
+                </ul>
+                <a href="javascript:void(0);" onclick="restoreWizardFields();" id="side-wizard-close-btn">X</a>
+            </div>
+        <div class="side-wizard-inner">
+            <div class="side-wizard-image">
+            <img id="wizard-logo" src="images/rh-edit-logo.png">
+            </div>
+
+            <div class="side-wizard-content">
+                <div class="tab-content">
+                    <div id="new-mission-setup" class="tab-pane fade in active">
+                        <form class="side-wizard-form">
+                            <input type="hidden" id="editing-project-id" value="0">
+                            <h2>We’ll start by gathering some intel on your goal.</h2>
+                            <h4 style="width:100%;">Customize your goal by clicking within the statement:<span style="margin-right:50px;float:right;text-align:right;color:#BE1E2D;font-weight:bold;">* required</span></h4>
+                            <label class="side-wizard-label">
+                                I’d like my
+                                <select class="side-wizard-select" id="e-commerce-selection" onchange="refreshIndustries();">
+                                    <option value="0">non-ecommerce</option>
+                                    <option value="1">e-commerce</option>
+                                </select>
+                                <div style="clear:both;display:inline-block;" id="website-url-input"><span class="required">*</span><input id="project-url" type="text" placeholder="Website URL" class="side-wizard-input" style="width:225px;"/></div>
+                                which is located in 
+                                <span id="scrollable-dropdown-menu" style="display:inline-block;">
+                                    <div style="clear:both;display:inline-block;"><span class="required">*</span><input type="text" placeholder="Business Location" onblur="validateSelection();" id="project-location" class="typeahead side-wizard-input"/></div>
+                                </span>
+                                 <br>to rank on 
+                                 
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox wizard" id="use-google" value="1" checked="checked" onclick="checkRequiredEngine('google','bing');">
+                                     <label for="use-google" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Google</label></span>
+                                 
+                                 and
+                                       
+                                 <span style="padding-left:5px;padding-right:5px;"><input type="checkbox" class="magic-checkbox wizard" id="use-bing" value="1" checked="checked" onclick="checkRequiredEngine('bing','google');">
+                                     <label for="use-bing" style="color:#005cb8;font-weight:300 !important;font-size:14px;">Bing+Yahoo</label></span>
+                                 
+                                 <span id="phrase-input">for <span class="required">*</span><span class="keyword-phrases-input">
+                                    <input type="hidden" id="keyword-count" value="0"/>
+                                    <input id="new-keyword" type="text" placeholder="Keyword Phrases" class="side-wizard-input"/>
+                                    <span class="import-keywords btn fileinput-button">
+                                        <span>Import</span>
+                                        <input type="file" name="File Upload" id="fileupload" accept=".csv"/>
+                                    </span>
+                                     </span></span>
+                                <span id="line-spacer"><br></span>targeting <select class="side-wizard-select" id="industry-selection">
+                                    <option value='0'>Select...</option>
+                                </select>in 
+                                <select class="side-wizard-select" id="local-national">
+                                    <option value="local">my city</option>
+                                    <option value="regional" id="metro-option">my metro area</option>
+                                    <option value="national">my country</option>
+                                </select>
+                                and I sell my product/service for<div style="clear:both;display:inline-block;"><span class="dollar-sign-prefix-required">$</span><span class="required">*</span><input type="text" placeholder="" id="customer-value" class="side-wizard-input dolar-input top-padded" style="padding-left:26px !important;"/></div>.
+                            </label>
+                            <span id="advanced-options">
+                            <h2>Then we'll collect <u>optional</u> advanced conversion data.</h2>
+                            <h4>On average:</h4>
+                            <label class="side-wizard-label">About<input type="text" id="monthly-visitors" placeholder="#" class="side-wizard-input dolar-input"/>visitors land on my website each month, of those
+                            <input type="text" id="monthly-customers" placeholder="#" class="side-wizard-input dolar-input"/>convert to actual leads or paying customers; it costs me approximately
+                            <div style="clear:both;display:inline-block;"><span class="dollar-sign-prefix">$</span><input type="text" id="content-cost" placeholder="" class="side-wizard-input dolar-input"/></div>to produce one piece of marketing content.
+                            <a onclick="createKeywordHackerProject(event);" id="reveal-button" class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </label>
+                            </span>
+                            
+                        </form>
+                        <div class="wz-reveal-signup">
+                            <!--<h2>Next we’ll reveal their secrets and identify your mission:</h2>
+                            <form class="wz-signup-form">
+                                <input type="text" placeholder="Enter Your Email to Reveal*" class="rh-storefornt-input" />   <button class="wz-reveal-btn">Reveal <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <span class="validation-msg">A verification email will sent to confirm email accuracy prior to dashboard access.</span>
+                            </form>
+                            <h3 class="already-registered">ALREADY REGISTERED?<a href="#">LOG IN</a></h3>-->
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- =========================
+     JS SCRIPTS
+============================== -->
+
+<script src="js/jquery.csv.js"></script>
+
+<!-- TypeAhead js files -->
+<script type="text/javascript" src="js/georankerregions-data.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+
+<!--Text typing effect js -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    
+</script>
+
+<script type='text/javascript'> 
+
+
+jQuery(".cart-menu-nav a.cart-icon").hover(
+    function() {
+        jQuery(".mini-cart-outer").addClass('show-mini-cart');
+        jQuery(".cart-menu-nav a.cart-icon").addClass('active');
+    }
+);
+
+jQuery("#close-mini-cart").click(function(){
+    jQuery(".mini-cart-outer").removeClass('show-mini-cart');
+    jQuery(".cart-menu-nav a.cart-icon").removeClass('active');
+});
+
+jQuery('.info-icon').on('click',function(){
+    jQuery(this).next('.custom_tooltip').toggleClass('active');
+});
+
+jQuery('.info-icon').on('mouseover',function(){
+    jQuery('.custom_tooltip').removeClass('active');
+    jQuery(this).next('.custom_tooltip').addClass('active');
+});
+
+
+jQuery('.no-thanks').on('click',function(e){
+    e.preventDefault();
+    var cls = jQuery(this).closest('.custom_tooltip').removeClass('active');
+});
+
+jQuery('.cd-faq-categories a').on('click', function(){
+    jQuery('.overlay.interface-outer').addClass('active');
+}); 
+
+jQuery('.cd-close-panel').on('click', function(){
+    jQuery('.overlay.interface-outer').removeClass('active');
+}); 
+
+
+</script>
+
+<!--<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
+
+<script type="text/javascript" src="js/faq-main.js"></script>-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("mySidenav").style.left = "0";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.left = "-300px";
+}
+
+/*function addRemoveClass(){
+
+      jQuery('#accordion').find('tr').each(function(){
+       if(jQuery(this).find('a').hasClass('collapsed')){
+            jQuery(this).addClass('open');
+       }
+       else{
+            jQuery(this).removeClass('open');
+            jQuery(this).next('tr').removeClass('open');
+       }
+   });
+}*/
+
+</script>
+
+<script>
+    
+    $(document).mousemove(function(e) {
+        window.x = e.pageX;
+        window.y = e.pageY;
+    });
+    
+    $(document).ready(function () {
+        
+        new Clipboard('.copy-button');
+       
+        jQuery('#side-wizard-rh-eagle-edit').on('click', function(){
+        jQuery('.side-wizard-outer').addClass('wizard-show');
+        });
+
+        jQuery('#side-wizard-close-btn').on('click', function(){
+        jQuery('.side-wizard-outer').removeClass('wizard-show');
+        });
+        
+        /*$('#side-wizard-rh-eagle-edit').on('click', function(){
+        //jQuery('.side-wizard-outer').addClass('wizard-show');
+        });
+
+        $('#side-wizard-close-btn').on('click', function(){
+        $('.side-wizard-outer').removeClass('wizard-show');
+        });*/
+        
+        $("#fileupload").on('click',function(){
+            setUploadTarget("new-keyword");
+        });
+        
+        $("#fileupload2").on('click',function(){
+            setUploadTarget("custom-url");
+        });
+        
+        // The event listener for the file uploads
+        document.getElementById('fileupload').addEventListener('change', upload, false);
+        
+        //enableSort();
+        
+        /*$(".suggest-keywords-list-1 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'1');
+            }
+            
+        });
+        
+        $(".suggest-keywords-list-2 ul ").on("click", "li", function () {
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+
+                //console.log(parent_get);
+                var parent_id = "#" + parent_get;
+
+                $(this).hide(400);
+                var text_of_li = $(this).html();
+                //alert(text_of_li);
+
+                var text_of_li_new_old = text_of_li.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var text_of_li_new = text_of_li_new_old.substring(0, 5);
+
+                //alert(text_of_li_new);
+
+                var id_of_ul = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id');
+                var id_of_ul_div = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id');
+                var id_of_ul_div_attr = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls');
+                var id_of_ul_aria_labelledby = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href');
+                var id_of_ul_aria_controls = $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls');
+                var id_phraser_accordion = $(parent_id + " .phraser-accordion-outer").attr('id');
+
+                //alert(id_of_ul);
+
+
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").attr('id', id_of_ul + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('id', id_of_ul_div + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul").next('div').attr('aria-labelledby', id_of_ul_div_attr + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('aria-controls', id_of_ul_aria_controls + text_of_li_new + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('href', id_of_ul_aria_labelledby + text_of_li_new + parent_get);
+
+                $(parent_id + " .phraser-accordion-outer").attr('id', id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.power-goal-info h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.keyword-phraser-tittle h2 a").attr('data-parent', '#' + id_phraser_accordion + parent_get);
+
+                var chkflag = 1;
+                $(parent_id + " .phraser-accordion-outer .keyword-phraser-row:last-child ul li.checkbox-outer").each(function () {
+                    chkflag++;
+                    $(this).find('input').attr('id', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                    $(this).find('label').attr('for', 'chk-content-' + text_of_li_new + parent_get + chkflag);
+                });
+
+                addKeywordInReport(text_of_li,'2');
+            }
+            
+        });
+
+
+        $("a#button-add-url").on("click", function (event) {
+            event.preventDefault();
+
+            $(this).hide();
+            var url_box = $("#url-box-template").html();
+            $(this).parent().before(url_box);
+            //toggle_add_more();
+            $('#custom-url').focus();
+        });
+
+        $('.add-custom-keyword-outer').on('keypress', '.url-input', function (e) {
+            if (e.which == 13) {
+                $(this).blur();
+            }
+        });
+
+        $('.add-custom-keyword-outer').on('blur', '.url-input', function () {
+            var parent_get = $(this).parents().find(".keyword-phraser-section.collapse.in").attr('id');
+            //console.log(parent_get);
+            var parent_id = "#" + parent_get;
+            var url_val = $(this).val();
+            if (url_val == "") {
+
+            } else {
+                
+            }
+            $(this).remove();
+            $("a#button-add-url").show();
+            
+            var returnData = $('#json').val();
+            var info = JSON.parse(returnData);
+
+            var deletedKeywords = info.deletedKeywords;
+            var projectInfo = info.projectSummary;
+                var activeKeywords = projectInfo.activeKeywords;
+            
+            var currentCount = parseInt($('#keyword-count').val());
+    
+            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            {
+                $("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");
+                showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
+            }
+            else
+            {
+                //Here's where we add the keyword to the list
+                addKeywordInReport(url_val,'0');
+            }
+                
+        });*/
+
+    });
+</script>
+
+<!--<script src="js/sorttable.js"></script>-->
+
+<input type="hidden" id="json" value=""/>
+<input type="hidden" id="orig-competitor-id" value=""/>
+<input type="hidden" id="orig-competitor-checked" value=""/>
+<input type="hidden" id="competitor-sort-method" value="google-rank"/>
+<input type="hidden" id="competitor-sort-reversed" value="false"/>
+
+<input type="hidden" id="keyword-sort-method" value=""/>
+<input type="hidden" id="keyword-sort-reversed" value="false"/>
+
+<input type="hidden" id="check-project-done-flag" value="0"/>
+
+<input type="hidden" id="upload-event-destination" value=""/>
+
+<script type="text/javascript">
+(function() {
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.async = true;
+s.src = '//api.usersnap.com/load/'+
+        'd9c73ec0-8c3b-4c19-918d-1ce7af0bab66.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+
+<style>
+
+.keyword-networth-project td.price-widthbox h2.table-title small {background-color: #26a7de;border-radius: 100%;color: #fff;float: right;font-size: 14px;font-weight: 600;height: 25px;line-height: 25px;min-width: 25px;text-align: center;}
+
+td#mission-heading-cost-per-month h2.table-title {position: relative;}
+
+td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: absolute;right: 0;top: 0;z-index:9;}
+
+.rh-cost-goal-ots {padding-right: 25px !important;position: relative;}
+
+.keyword-networth-project td.price-widthbox h2.table-title .rh-cost-goal-ots small {margin-bottom: 0;margin-top: -4px;}
+
+.keyword-networth-project th h2.table-title span, .keyword-networth-project td h2.table-title span {margin-top: 5px;}
+
+.keyword-networth-project th h2.table-title span.blue-text , .keyword-networth-project td h2.table-title span.blue-text ,.keyword-networth-project td .red-bg-total span{margin-top:0 !important;}
+
+.keyword-networth-project th h2.table-title, .keyword-networth-project td h2.table-title {margin-top: 5px;}
+
+.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {margin-top: 0 ;}
+
+.tip-note {display: none;}
+
+#accordion .tip-note {display: block;}
+
+</style>
+
+
+</body>
+
+</html>
