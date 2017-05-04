@@ -1103,13 +1103,15 @@ border: 1px solid #e2e5e5;
 }
 
 .message-icon {
-    height: 20px;
-    width: auto;
-    float: left;
-    margin-right: 5px;
+  float: left;
+  height: auto;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  width: 22px;
 }
 #message-header {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     vertical-align: top;
     width: 100%;
@@ -1117,10 +1119,10 @@ border: 1px solid #e2e5e5;
     clear: both;
 }
 #message-content {
-    font-size: 13px !important;
+    font-size: 11px !important;
     color: #3d3d3d !important;
     margin-top: 3px;
-    line-height: 17px;
+    line-height: normal;
     width: 100%;
     display: inline-block;
     clear: both;

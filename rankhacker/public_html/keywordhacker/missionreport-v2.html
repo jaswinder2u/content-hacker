@@ -246,7 +246,7 @@
                <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
                   <div style="cursor:default;" class="equal-sign" id="kw-4876-content-goal">
                      <span onclick="togglePanel('4876');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
-                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4876','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4876" src="images_cart/rh-cart-start.png"></div>
+                     <div class="mission-cart-div info-icon-2" title="Add content to your cart."><img onclick="javascript:displayContentDeleteWindow('0','4876','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4876" src="images_cart/rh-cart-start.png"></div>
                   </div>
                </td>
                <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4876');" class="price-widthbox" data-label="KEYWORD NET WORTH">$0</td>
@@ -426,7 +426,7 @@
                <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
                   <div style="cursor:default;" class="equal-sign" id="kw-4871-content-goal">
                      <span onclick="togglePanel('4871');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
-                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4871','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4871" src="images_cart/rh-cart-close.png"></div>
+                     <div class="mission-cart-div info-icon-2" title="Edit your content assignments and subscribe."><img onclick="javascript:displayContentDeleteWindow('0','4871','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4871" src="images_cart/rh-cart-close.png"></div>
                   </div>
                </td>
                <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4871');" class="price-widthbox" data-label="KEYWORD NET WORTH">$888,000</td>
@@ -606,7 +606,7 @@
                <td style="opacity:1.0;cursor:pointer;" class="price-widthbox" data-label="CONTENT GOAL &amp; COST">
                   <div style="cursor:default;" class="equal-sign" id="kw-4872-content-goal">
                      <span onclick="togglePanel('4872');" style="font-size:12px;color:#808080;cursor:pointer;">$0 <small>11 pcs</small></span>
-                     <div class="mission-cart-div"><img onclick="javascript:displayContentDeleteWindow('0','4872','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4872" src="images_cart/rh-cart-paid.png"></div>
+                     <div class="mission-cart-div info-icon-2" title="You are subscribed to content for this keyword."><img onclick="javascript:displayContentDeleteWindow('0','4872','keyword');" class="mission-cart-icon" style="display:block;" id="cart-icon-4872" src="images_cart/rh-cart-paid.png"></div>
                   </div>
                </td>
                <td style="opacity:1.0;cursor:pointer;" onclick="togglePanel('4872');" class="price-widthbox" data-label="KEYWORD NET WORTH">$888,000</td>
@@ -1194,11 +1194,25 @@ x.parentNode.insertBefore(s, x);
 
 <style>
 
+.tip-note {display: none;}
+
+#accordion .tip-note {display: block;}
+
+.mission-cart-div.info-icon:hover::before, .mission-cart-div.info-icon-2:hover::before {
+  bottom: 15px;
+}
+
+.mission-cart-div.info-icon-2 {
+  height: auto;
+  width: auto;
+}
+
+
 .keyword-networth-project td.price-widthbox h2.table-title small {background-color: #26a7de;border-radius: 100%;color: #fff;float: right;font-size: 14px;font-weight: 600;height: 25px;line-height: 25px;min-width: 25px;text-align: center;}
 
 td#mission-heading-cost-per-month h2.table-title {position: relative;}
 
-td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: absolute;right: 0;top: 0;z-index:9;}
+td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: absolute;right: 4px;top: 0;z-index:9;}
 
 .rh-cost-goal-ots {padding-right: 25px !important;position: relative;}
 
@@ -1210,11 +1224,27 @@ td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: ab
 
 .keyword-networth-project th h2.table-title, .keyword-networth-project td h2.table-title {margin-top: 5px;}
 
-.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {margin-top: 0 ;}
+/*.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {margin-top: 0 ;}*/
 
-.tip-note {display: none;}
+.keyword-networth-project tbody tr.project-head td.price-widthbox .negative-sign::after, .keyword-networth-project tbody tr.project-head td.price-widthbox .equal-sign::after {margin-left:3px;}
 
-#accordion .tip-note {display: block;}
+.mission-cart-div {margin-right: 2px;}
+
+.mission-ft-options {
+  float: left;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.mission-ft-options .project-location-it {
+  margin: 0;
+  width: calc(100% - 140px);
+}
+
+.keyword-networth-project tr.table-heading td:last-child h2 span.info-icon-2 {
+  margin-top: 3px;
+}
+
 
 </style>
 

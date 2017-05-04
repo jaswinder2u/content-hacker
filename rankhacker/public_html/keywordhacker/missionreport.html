@@ -179,6 +179,7 @@
                     </div>
                     <div id="shadow"> </div>
 
+                    <div class="mission-ft-options">
 
                     <div id="mission-heading" class="project-location-it">
                         <ul>
@@ -192,7 +193,9 @@
 					<div class="top-check-selection">
 							<input class="" type="checkbox">SEO 
 							<input class="" type="checkbox">PPC
-						</div>
+					</div>
+
+                    </div>
 						
                     <div class="white-box" id="mission-data">
 						
@@ -758,7 +761,7 @@ x.parentNode.insertBefore(s, x);
 
 td#mission-heading-cost-per-month h2.table-title {position: relative;}
 
-td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: absolute;right: 0;top: 0;z-index:9;}
+td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: absolute;right: 4px;top: 0;z-index:9;}
 
 .rh-cost-goal-ots {padding-right: 25px !important;position: relative;}
 
@@ -770,7 +773,26 @@ td#mission-heading-cost-per-month h2.table-title .mission-cart-div {position: ab
 
 .keyword-networth-project th h2.table-title, .keyword-networth-project td h2.table-title {margin-top: 5px;}
 
-.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {margin-top: 0 ;}
+/*.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {margin-top: 0 ;}*/
+
+.keyword-networth-project tbody tr.project-head td.price-widthbox .negative-sign::after, .keyword-networth-project tbody tr.project-head td.price-widthbox .equal-sign::after {margin-left:3px;}
+
+.mission-cart-div {margin-right: 2px;}
+
+.mission-ft-options {
+  float: left;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.mission-ft-options .project-location-it {
+  margin: 0;
+  width: calc(100% - 140px);
+}
+
+.keyword-networth-project tr.table-heading td:last-child h2 span.info-icon-2 {
+  margin-top: 3px;
+}
 
 </style>
 

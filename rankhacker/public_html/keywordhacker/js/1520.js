@@ -4006,7 +4006,7 @@ function refreshCartDetails()
                                     else
                                     {
                                         //Output the keyword-level elements
-                                        cartHTML += "<h3 class=\"keyword-phrase-number\" style=\"text-transform:uppercase;\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;color:#005CB8;\">content goal: "+keywordContentGoal+" pcs per month <img src=\"images_cart/rh-cart-paid.png\" style=\"max-width:25px;\"></span></h3>"+
+                                        cartHTML += "<h3 class=\"keyword-phrase-number\" style=\"text-transform:uppercase;\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;color:#005CB8;margin-top: -5px;\">monthly content goal <strong style=\"font-size: 24px; position: relative; top: 2px; margin-left: 10px;\">"+keywordContentGoal+"</strong> <img src=\"images_cart/rh-cart-paid.png\" style=\"max-width:25px;\"></span></h3>"+
                                                         "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
                                                                 "<tbody>"+
                                                                         "<tr class=\"table-heading\">"+
