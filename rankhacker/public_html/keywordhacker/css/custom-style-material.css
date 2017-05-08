@@ -934,38 +934,55 @@ background-color: #EA1B23;content: "";height: 4px;left: 100%;margin-left: 15px;m
 
 .agency-st2 .arrow-agency-st2 .rh-storefornt-subheading{padding-right: 100px;}
 
-.editprofile-outer {
-  float: left;
-  margin: 0;
-  padding: 0 0 0 125px;
-  width: 100%;
-}
+.editprofile-outer {float: left;margin: 0;padding: 0 0 0 125px;width: 100%;}
 
-.editprofile-outer .project-setup-input {
-  clear: left;
-  float: left;
-  margin-bottom: 15px;
-  max-width: 900px;
-  width: 100%;
-}
+.editprofile-outer .project-setup-input {clear: left;float: left;margin-bottom: 15px;max-width: 900px;width: 100%;}
 
-.mission-heading {
-  overflow-wrap: break-word;
-}
+.mission-heading {overflow-wrap: break-word;}
 
-.editprofile-outer .project-setup-input label {
-  float: left;
-  text-align: left;
-  width: 220px;
-}
+.editprofile-outer .project-setup-input label {float: left;text-align: left;width: 220px;}
 
-.editprofile-outer .project-setup-input input {
-  float: right;
-  width: calc(100% - 220px);
-}
-
+.editprofile-outer .project-setup-input input {float: right;width: calc(100% - 220px);}
 
 .mixed-use-paragraph li.checkbox-outer {padding: 0 10px;}
+
+.agency-st7 .try-beta-access::after {
+background-image: url("../images/agency-img4-arrow.png");background-position: 0 0;background-repeat: no-repeat;background-size: auto 100%;content: "";height: 263px;left: auto;padding: 0;position: absolute;right: 0;top: -92px;width: 105px;z-index: 2;}
+
+.agency-st6 .package-box-outer {min-width: 245px;padding-left: 10px;padding-right: 10px;}
+
+.agency-st6 .packages-outer {background-color: transparent;padding: 0;}
+
+.agency-st6 .rh-shield-logo::before {background-position: -22px -66px;}
+
+.agency-st6 .rh-shield-logo {padding-left: 92px !important;}
+
+.agency-st6 ul.package-feature li {font-size: 18px;}
+
+.agency-st6 .package-box.most-popular::after {font-weight: 600;letter-spacing: 3px;padding-bottom: 8px;padding-top: 8px;}
+
+.agency-st7 .rh-storefornt-heading {font-family:"Montserrat",sans-serif;font-size: 48px;}
+
+.agency-st7 .rh-storefornt-heading span{font-family: "American Typewriter";color: #EA1C24;font-size: 48px;font-weight: normal;}
+
+.agency-st7 .try-beta-access {padding: 60px 60px 40px;position: relative; margin-top: 25px;}
+
+.agency-st7 .agency-img4 {left: 0;position: absolute;right: 0;top: 0;margin:0;}
+
+
+.required {z-index: 997;color: #BE1E2D;font-size: 18px;/*font-weight: bold;*/position: relative;top: 3px;left: 24px;}
+
+.dollar-sign-prefix {z-index: 997;color: #231f20;font-size: 14px;/*font-weight: bold;*/position: relative;top: 0;left: 24px;}
+
+.dollar-sign-prefix-required {z-index: 997;color: #231f20;font-size: 14px;/*font-weight: bold;*/position: relative;top: 0;left: 40px;}
+
+.top-padded {margin-top:12px !important;}
+
+
+
+.rh-seo-insurance1 , .rh-seo-insurance2 , .rh-seo-insurance3 , .rh-seo-insurance4 , .rh-seo-insurance5 , .rh-seo-insurance6 {float:left;width:100%;margin:0;padding:40px 0;}
+
+
 
 
 
@@ -1190,6 +1207,14 @@ background-color: #EA1B23;content: "";height: 4px;left: 100%;margin-left: 15px;m
 
 .editprofile-outer {padding-left:0;}
 
+.agency-st7 .try-beta-access {margin-top: 20px;padding: 40px 30px 25px;}
+
+.agency-st7 .rh-storefornt-heading  , .agency-st7 .rh-storefornt-heading span{font-size: 34px;}
+
+.agency-st7 .try-beta-access::after {height: 220px;width: 95px;}
+
+.agency-st7 .agency-content-box {padding-left: 15px;padding-right: 55px;}
+
 }
 
 
@@ -1332,6 +1357,16 @@ ul.package-feature li {font-size: 18px;padding: 10px 0;}
 #agency-page .white-box {margin: 20px 0;padding: 20px;}
 
 #dashboard-header {margin-top: 50px;}
+
+.agency-st7 .try-beta-access {margin-top: 20px;padding: 15px 0 10px;}
+
+.agency-st7 .rh-storefornt-heading, .agency-st7 .rh-storefornt-heading span {font-size: 28px;}
+
+.agency-st7 .try-competitor-form {margin: 20px 0;}
+
+.agency-st7  .try-beta-access .container {min-height: 185px;background-size: auto 85%;}
+
+.agency-st7 .try-beta-access::after {height: 185px;width: 78px;}
 
 }
 
@@ -1619,38 +1654,7 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 
 .arrow-agency-st2::after , .keyword-networth-process li:last-child::after{display: none;}
 
+.agency-st7 .try-beta-access::after {height: 126px;width: 56px;}
+
 }
 
-.required {
-    z-index: 997;
-    color: #BE1E2D;
-    font-size: 18px;
-    /*font-weight: bold;*/
-    position: relative;
-    top: 3px;
-    left: 24px;
-}
-
-.dollar-sign-prefix {
-    z-index: 997;
-    color: #231f20;
-    font-size: 14px;
-    /*font-weight: bold;*/
-    position: relative;
-    top: 0;
-    left: 24px;
-}
-
-.dollar-sign-prefix-required {
-    z-index: 997;
-    color: #231f20;
-    font-size: 14px;
-    /*font-weight: bold;*/
-    position: relative;
-    top: 0;
-    left: 40px;
-}
-
-.top-padded {
-    margin-top:12px !important;
-}
