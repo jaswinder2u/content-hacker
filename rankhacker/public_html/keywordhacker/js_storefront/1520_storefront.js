@@ -1,7 +1,7 @@
-var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 function newTyped(){ /* A new typed object */ }
 
@@ -48,6 +48,16 @@ function clearCookies()
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
     //console.log(document.cookie);
+    //Check for local storage compatibility
+    if(typeof Storage !== "undefined")
+    {
+        
+    }
+    else
+    {
+        // Sorry! No Web Storage support...
+        showAlert("This application requires an HTML5-compliant browser such as the latest version of Google Chrome, Firefox, Safari or Microsoft Edge. Please upgrade your browser before attempting to log in.");
+    }
 }
 
 function getCookie(paramName)
@@ -60,6 +70,50 @@ function getCookie(paramName)
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
     return "";
+}
+
+function saveToLocalStorage(reference,value)
+{
+    if(typeof Storage !== "undefined")
+    {
+        localStorage.removeItem(reference);
+        localStorage.setItem(reference,value);
+    }
+    else
+    {
+        // Sorry! No Web Storage support...
+        showAlert("This application requires an HTML5-compliant browser such as the latest version of Google Chrome, Firefox, Safari or Microsoft Edge. Please upgrade your browser before attempting to log in.");
+    }
+}
+
+function retrieveLocalStorage(reference)
+{
+    var data = "";
+    if(typeof Storage !== "undefined")
+    {
+        data = localStorage.getItem(reference);
+    }
+    else
+    {
+        // Sorry! No Web Storage support..
+        showAlert("This application requires an HTML5-compliant browser such as the latest version of Google Chrome, Firefox, Safari or Microsoft Edge. Please upgrade your browser before attempting to log in.");
+    }
+    
+    return data;
+}
+
+function hideAlert()
+{
+    document.getElementById("dimmer").style.display = "none";
+    document.getElementById("alert-window").style.display = "none";
+}
+
+function showAlert(msgContent)
+{
+    /*$('#alert-msg-body').addClass("red-text");*/
+    $('#alert-msg-body').html(msgContent);
+    document.getElementById("alert-window").style.display = "block";
+    document.getElementById("dimmer").style.display = "block";
 }
 
 function loginAccount(e)
@@ -98,12 +152,25 @@ function loginAccount(e)
         
         $.ajax({url: restURL, data: {'command':'loginAccount','username':email,'password':password}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
-
+                
                 if(info.status == "success")
                 {
                     document.cookie = "username="+email;
                     document.cookie = "userFullName="+info.userfullname;
                     document.cookie = "cbCustomerID="+info.cbCustomerID;
+
+                    saveToLocalStorage("userInfo",returnData);
+                    /*document.cookie = "firstName="+info.firstName;
+                    document.cookie = "lastName="+info.lastName;
+                    document.cookie = "accessPlan="+info.accessPlan;
+                    document.cookie = "whiteLabelAccess="+info.whiteLabelAccess;
+                    document.cookie = "maxContentReveals="+info.maxContentReveals;
+                    document.cookie = "usedContentReveals="+info.usedContentReveals;
+                    document.cookie = "maxMissions="+info.maxMissions;
+                    document.cookie = "usedMissions="+info.usedMissions;
+                    document.cookie = "maxKeywords="+info.maxKeywords;
+                    document.cookie = "usedKeywords="+info.usedKeywords;
+                    document.cookie = "planUpdateTS="+info.planUpdateTS;*/
                     window.location = "keywordhacker/dashboard.html";
                 }
                 else if(info.status == "error")

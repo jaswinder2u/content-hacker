@@ -243,6 +243,8 @@ ul.package-feature li:last-child{border-bottom:none;}
 .package-select-btn , .package-select-btn:active , .package-select-btn:focus , .package-select-btn:link , .package-select-btn:visited
 {font-size: 22px;text-transform: uppercase;border: 1px solid #005CB8;color: #005CB8;position: absolute;left: 0;right: 0;bottom: 25px;max-width: 180px;padding: 8px 25px;line-height: normal;margin: 0 auto;background-color: transparent;}
 
+.active-plan, .active-plan:hover {font-size: 22px;text-transform: uppercase;position: absolute;left: 0;right: 0;bottom: 25px;max-width: 180px;padding: 8px 25px;line-height: normal;margin: 0 auto;color:#006838; background-color:#00a551; border:1px solid #006838;}
+
 .package-box.most-popular {top: -15px;box-shadow: 0px 0 20px rgba(0,0,0,.3);} 
 
 .package-box-outer:nth-child(1) .package-name{background-color: #7DCBEC;}
@@ -618,7 +620,8 @@ min-height: calc(100vh - 100px) !important;}
 
 .agency-info-box h3 {float: left;width: 100%;margin: 0 0 15px 0;padding: 0;font-size: 20px;color: #58595b;font-weight: 300;}
 
-.process-agency {float: left;width: 100%;margin: 0 0 10px 0;padding: 0;height: 45px;background-color: #26a9e0;}
+.process-agency {float: left;margin: 0;padding: 0;height: 45px;background-color: #26a9e0;}
+.process-agency-border {float: left;margin: 0 0 10px 0;width:100%;padding: 0;height: 2px;border-top: 1px solid #26a9e0;}
 
 .process-report {float: left;width: 100%;margin: 0;padding: 0;font-size: 14px;color: #58595b;font-weight: 300;text-align:left;}
 

@@ -151,7 +151,28 @@
 		  <a href="login.html" class="rh-other-link" style="float: right; color: rgb(0, 92, 184);">Login</a> 
 		</div>
 	</div>
-	
+
+        
+<!-- Edit project modal -->
+<div id="dimmer" class="dimmer"></div>
+
+<!-- Alert modal -->
+<div id="alert-window" class="delete-project-window">
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading">ERROR</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+                <p id="alert-msg-body"> </p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="dark-blue-btn btn pull-right" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+            </div>
+        </form>
+    </div>
+</div>
+
     </div>
 </section>
 

@@ -1,7 +1,7 @@
-var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
-/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";*/
+/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
+var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -436,6 +436,36 @@ function showLogin()
     document.getElementById("login-window").style.display = "block";
     document.getElementById("dimmer").style.display = "block";
 }*/
+
+function saveToLocalStorage(reference,value)
+{
+    if(typeof Storage !== "undefined")
+    {
+        localStorage.removeItem(reference);
+        localStorage.setItem(reference,value);
+    }
+    else
+    {
+        // Sorry! No Web Storage support...
+        showAlert("This application requires an HTML5-compliant browser such as the latest version of Google Chrome, Firefox, Safari or Microsoft Edge. Please upgrade your browser before attempting to log in.");
+    }
+}
+
+function retrieveLocalStorage(reference)
+{
+    var data = "";
+    if(typeof Storage !== "undefined")
+    {
+        data = localStorage.getItem(reference);
+    }
+    else
+    {
+        // Sorry! No Web Storage support..
+        showAlert("This application requires an HTML5-compliant browser such as the latest version of Google Chrome, Firefox, Safari or Microsoft Edge. Please upgrade your browser before attempting to log in.");
+    }
+    
+    return data;
+}
 
 function hideAlert()
 {
@@ -2783,7 +2813,7 @@ function generateContentReport(keywordCounter)
         });
 }
 
-function getKeywordCompetitorsAhrefs(keywordCounter)
+function getKeywordCompetitorsAhrefs(keywordID)
 {
     var returnData = $('#json').val();
     var info = JSON.parse(returnData);
@@ -2792,8 +2822,8 @@ function getKeywordCompetitorsAhrefs(keywordCounter)
         var projectID = projectInfo.projectID;
         var clientURL = projectInfo.clientURL;
     var keywordInfo = info.keywordData;
-    var thisEntry = keywordInfo[keywordCounter];
-    var keywordID = thisEntry.keywordID;
+    //var thisEntry = keywordInfo[keywordCounter];
+    //var keywordID = thisEntry.keywordID;
     
     //Send the user to the RH Storefront
     //gotoStorefrontPrefill(keywordCounter);
@@ -4309,7 +4339,8 @@ function handlePayNow(e)
     {
         if(username != "")
         {
-            $.ajax({url: restURL, data: {'command':'addSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
+            //$.ajax({url: restURL, data: {'command':'addSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
+            $.ajax({url: restURL, data: {'command':'updateSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
                     if(info.status == "success")
                     {
@@ -4991,7 +5022,7 @@ function displayMissionInfo(field,sort)
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 if(keywordActive == 1)
                 {
-                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+keywordID+"');\"> REVEAL </span>";
                     keywordCartDisplay = "none !important";
                 }
                 else
@@ -5090,7 +5121,7 @@ function displayMissionInfo(field,sort)
 "                                                    <div class=\"col-sm-7 content-goal-info\">\n" +
 "                                                        <h2 class=\"title\">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>\n" +
 "                                                       <div class=\"table-outer\">\n" +
-"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>\n" +
+"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+keywordID+"');\"> REVEAL </span>\n" +
 "                                                        <table class=\"content-goal-table sortable\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n" +
 "                                                            <thead>\n" +
 "                                                                <tr class=\"table-heading2\">\n" +
@@ -5715,7 +5746,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                 topKWNetworth = currencyHexCode+numberWithCommas(keywordNetWorth);
                 if(keywordActive == 1)
                 {
-                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>";
+                    topHackContentHTML = "<span class=\"reveal-mark-small\" onclick=\"getKeywordCompetitorsAhrefs('"+keywordID+"');\"> REVEAL </span>";
                     keywordCartDisplay = "none";
                 }
                 else
@@ -5811,7 +5842,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                    <div class=\"col-sm-7 content-goal-info\">\n" +
 "                                                        <h2 class=\"title\">SELECT BELOW TO MODIFY YOUR <span>KEYWORD NETWORTH</span> AND <span>CONTENT GOAL</span></h2>\n" +
 "                                                       <div class=\"table-outer\">\n" +
-"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+i+"');\"> REVEAL </span>\n" +
+"                                                       <span class=\"reveal-mark\" style=\"display:"+revealButtonDisplay+";\" onclick=\"getKeywordCompetitorsAhrefs('"+keywordID+"');\"> REVEAL </span>\n" +
 "                                                        <table class=\"content-goal-table sortable\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n" +
 "                                                            <thead>\n" +
 "                                                                <tr class=\"table-heading2\">\n" +
@@ -6249,7 +6280,6 @@ function prepareNewWizard()
     }
     else
     {
-console.log("got here");
         //Make sure the user can create a new mission
         $.ajax({url: restURL, data: {'command':'checkUserMissionsAvailable','username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
@@ -6456,29 +6486,518 @@ function preparePricing()
         
         refreshCartDropdownForCalculator();
         
-        jQuery.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+        //Get the plan IDs
+        $.ajax({url: restURL, data: {'command':'getSubscriptionPlans'}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
                 {
-                    var users = info.users;
-                    var userInfo = users[0];
-
-                    var firstName = userInfo.firstName;
-                    var lastName = userInfo.lastName;
-                    var username = userInfo.username;
-                    /*if(lastName == '')
+                    var plans = info.plans;
+                    for(var i=0; i<plans.length; i++)
                     {
-                        lastName = "Anderson";
-                    }*/
-                    
-                    //jQuery("#back-button").html("<a class=\"orange-btn btn\" onclick=\"javascript:history.back();\">BACK TO THE PREVIOUS PAGE</a>");
+                        var thisPlan = plans[i];
+                        var planName = thisPlan.name;
+                        var planID = thisPlan.cbPlanID;
+
+                        if(planName == "RankHacker Monthly")
+                        {
+                            $("#free-button").attr("data-plan",planID);
+                        }
+                        if(planName == "RankHacker Pro")
+                        {
+                            $("#pro-button").attr("data-plan",planID);
+                        }
+                        if(planName == "RankHacker Agency")
+                        {
+                            $("#agency-button").attr("data-plan",planID);
+                        }
+                        if(planName == "RankHacker Enterprise")
+                        {
+                            $("#enterprise-button").attr("data-plan",planID);
+                        }
+                    }
                 }
             }
         });
+        
+        var infoRaw = retrieveLocalStorage("userInfo");
+        var info = JSON.parse(infoRaw);
+        var users = info.users;
+        var userInfo = users[0];
+        
+        var planType = userInfo.accessPlan;
+        if(planType == "RankHacker Monthly")
+        {
+            $("#free-button").removeClass("package-select-btn").addClass("active-plan");
+            $("#free-button").css("cursor","default");
+            $("#free-button").html("ACTIVE");
+            $("#free-button").prop("onclick","javascript:void(0);");
+        }
+        else if(planType == "RankHacker Pro")
+        {
+            $("#pro-button").removeClass("package-select-btn").addClass("active-plan");
+            $("#pro-button").css("cursor","default");
+            $("#pro-button").html("ACTIVE");
+            $("#pro-button").prop("onclick","javascript:void(0);");
+        }
+        else if(planType == "RankHacker Agency")
+        {
+            $("#agency-button").removeClass("package-select-btn").addClass("active-plan");
+            $("#agency-button").css("cursor","default");
+            $("#agency-button").html("ACTIVE");
+            $("#agency-button").prop("onclick","javascript:void(0);");
+        }
+        else if(planType == "RankHacker Enterprise")
+        {
+            $("#enterprise-button").removeClass("package-select-btn").addClass("active-plan");
+            $("#enterprise-button").css("cursor","default");
+            $("#enterprise-button").html("ACTIVE");
+            $("#enterprise-button").prop("onclick","javascript:void(0);");
+        }
     }
     else
     {
         //window.location = "../login.html";
+    }
+}
+
+function changeSubscription(e,element)
+{
+    var e = e || window.event;
+    //this.event.preventDefault();
+    e.preventDefault();
+
+    var infoRaw = retrieveLocalStorage("userInfo");
+    var info = JSON.parse(infoRaw);
+    var users = info.users;
+    var userInfo = users[0];
+
+    var username = userInfo.username;
+    var cbCustomerID = userInfo.cbCustomerID;
+    
+    var plan = $("#"+element).attr("data-plan");
+    
+    if(cbCustomerID !== "")
+    {
+        //Existing customer; ask for confirmation, then silently upgrade via API
+        $("#confirm-msg-body").html("Changing your subscription plan will immediately lower or raise your access limits, and your credit card will be credited/charged the pro-rated difference between your current plan and the one you are selecting. Are you sure you want to proceed?");
+        
+        //Attach the handlers
+        $("#confirm_cancel_button").click(function(){
+            $("#confirm-window").hide();
+            //Do nothing; they canceled
+        });
+        $("#confirm_proceed_button").click(function(){
+            $("#confirm-window").hide();
+            
+            //Proceed to sign up the user
+            if(username != "")
+            {
+                $.ajax({url: restURL, data: {'command':'changeCustomerAccessPlan','username':username,'customerid':cbCustomerID,'plan':plan}, type: 'post', async: true, success: function postResponse(returnData){
+                        var info = JSON.parse(returnData);
+                        if(info.status == "success")
+                        {
+                            window.location = "../changeconfirmation.html";
+                        }
+                        else
+                        {
+                            window.location = '../keywordhacker/error.html';
+                        }
+                    }
+                });
+            }
+            else
+            {
+                window.location = '../keywordhacker/error.html';
+            }
+        });
+        
+        //Show the window
+        $("#confirm-window").show();
+    }
+    else
+    {
+        //New customer; take them to the securesubscribe page
+        window.location = '../keywordhacker/securesubscribe.html?plan='+plan;
+    }
+}
+
+function prepareSubscribe()
+{
+    var username = getCookie("username");
+    var path = "";
+    var plan = getURLParameter("plan");
+    
+    $.ajax({url: restURL, data: {'command':'getUserSubscribePage','username':username,'plan':plan}, type: 'post', async: true, success: function postResponse(returnData){
+            var info = JSON.parse(returnData);
+
+            if(info.status == "success")
+            {
+                path = info.message;
+                $("#content_frame_part").attr("src",path);
+            }
+            else
+            {
+                window.top.location.href = "error.html";
+            }
+        }
+    });    
+}
+
+function processChangeConfirmation()
+{
+    //Grab the subscription ID from the ChargeBee response and update the database with the appropriate info
+    var username = getCookie("username");
+    var hostedPageID = getURLParameter("id");
+    var state = getURLParameter("state")
+    if(username != "" && state == "succeeded")
+    {
+        //addToCart(keywordID);
+        $.ajax({url: restURL, data: {'command':'saveCustomerAccessPlan','username':username,'hostedpageid':hostedPageID}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+                if(info.status == "success")
+                {
+                    refreshCartDropdown();
+                    var subscriptionID = info.cbSubscriptionID;
+                    var customerID = info.cbCustomerID;
+                    document.cookie = "cbCustomerID="+info.customerID;
+                    //sendNewContentOrder(subscriptionID);
+                }
+            }
+        });
+    }
+    else if(username != "" && state == "updated")
+    {
+        //No need to save anything; they were already in the system; just need to update their access limits
+        $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+                if(info.status == "success")
+                {
+                    saveToLocalStorage("userInfo",returnData);
+                }
+            }
+        });
+    }
+}
+
+function prepareSubscriptionsPage()
+{
+    var username = getCookie("username");
+    var projectID = getURLParameter("pid");
+    if(username != '')
+    {
+        if(username !== 'admin@fairmarketing.com' && username !== 'hari.patel@1520holdings.com' && $('#industry-link').length)
+        {
+            $('#industry-link').remove();
+            $('#users-link').remove();
+        }
+        
+        getAddonItems(function(output){
+            $("#addons").val(output);
+            refreshSubscriptionsDetails();
+        });
+    }
+    else
+    {
+        window.location = "../login.html";
+    }
+}
+
+function refreshSubscriptionsDetails()
+{
+    var username = getCookie("username");
+    if(username != '')
+    {
+        $.ajax({url: restURL, data: {'command':'getCartDropdownData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+
+                    if(info.status == "success")
+                    {
+                        var totalContent = info.total_content;
+                        var totalCost = numberWithCommas(parseFloat(info.total_cost).toFixed(2));
+                        
+                        var missionCount = 0;
+                        var keywordCount = 0;
+                        var projectManagementCount = 0;
+                        
+                        var iconSrc = "../keywordhacker/images/header-cart-inactive.png";
+                        
+                        if(totalContent > 0)
+                        {
+                            iconSrc = "../keywordhacker/images/header-cart-static.png";
+                            missionCount = info.missions;
+                            keywordCount = info.keywords;
+                            projectManagementCount = info.project_management;
+                        }
+                        
+                        $("#cart-image").attr('src',iconSrc);
+                        $("#cart-total-pieces").html(totalContent);
+                        $("#cart-total-missions").html(missionCount);
+                        $("#cart-total-keywords").html(keywordCount);
+                        $("#cart-total-project-mgmt").html(projectManagementCount);
+                        $("#cart-total-cost").html("$"+totalCost);
+                        
+                        //Let's also update the header and footer info since we have all of the data that we need
+                        $("#content-count").html(totalContent);
+                        $("#mission-count").html(missionCount);
+                        $("#keyword-count").html(keywordCount);
+                        $("#management-count").html(projectManagementCount);
+                        $("#total-cost").html("<span class=\"amount-mn\"><sup>$</sup>"+totalCost+" </span><label style=\"float:right;\">MONTHLY TOTAL CHARGE</label>");
+                        
+                        $("#content-count-2").html(totalContent);
+                        $("#mission-count-2").html(missionCount);
+                        $("#keyword-count-2").html(keywordCount);
+                        $("#management-count-2").html(projectManagementCount);
+                        $("#total-cost-2").html("<span class=\"amount-mn\"><sup>$</sup>"+totalCost+" </span><label style=\"float:right;\">MONTHLY TOTAL CHARGE</label>");
+                    }
+                }
+            });
+
+        $.ajax({url: restURL, data: {'command':'getSubscriptionsDetailData','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    var pmBubbleText = "Project Management of the content creation process will include:\n\
+                        <ul>\n\
+                            <li><strong>Welcome Email:</strong> We'll send you an email to schedule our first call with you</li>\n\
+                            <li><strong>Kick-Off Call:</strong> During this call, we'll cover three main points\n\
+                                <ul style='list-style-type:square;'>\n\
+                                    <li><strong>Listening and Learning</strong> - We want to know about your business, what you do, your target market and what you want to accomplish with your content.</li>\n\
+                                    <li><strong>Walk-Through Demo</strong> - We’ll show you how to navigate our simple client portal to approve topics, titles and content.</li>\n\
+                                    <li><strong>Setting Expectations </strong> - We’ll describe our process, from start-to-finish. We’re very hands on and our first priority is driving your project.</li>\n\
+                                </ul>\n\
+                            </li>\n\
+                            <li><strong>Questionnaire:</strong> You'll get a questionnaire from us after our first call that will be used to\n\
+                                <ul style='list-style-type:square;'>\n\
+                                    <li>Help determine what topics to focus on.</li>\n\
+                                    <li>Create clear and concise writer instructions.</li>\n\
+                                    <li>Ensure that you'll be thrilled with your content.</li>\n\
+                                </ul>\n\
+                            </li>\n\
+                            <li><strong>Topic and Initial Title Creation:</strong> After we get your questionnaire back, we’ll go to work researching your website and developing a list of topics to focus on. We’ll also come up with a few initial titles for your content.</li>\n\
+                            <li><strong>Topic and Title Review Call:</strong> We’ll review your topics and titles together to determine the top 3-4 titles you’d like to start with. During this call, we’ll also ask if you want to provide bullet points or talking points for each title, or let the writer work on their own.</li>\n\
+                            <li><strong>Writer Sampling:</strong> Once you approve your initial batch of titles, we’ll use our powerful writer crowd-sourcing technology to create a sample pool of likely writer candidates for you to sample.</li>\n\
+                            <li><strong>Initial Content Review:</strong> You’ll be able to review the content we send to you and determine if it’s great, needs a few revisions, or isn’t suitable. If you don’t like the writers, no problem! We’ll go back to our pool to find ones you’ll love.</li>\n\
+                        </ul>\n\
+                        At this point, we will have identified which writers you love and we can get to work completing the rest of your project. Now that the initial foundation has been laid, you won’t need to spend as much hands-on time.";
+                    
+                    
+                    var subscriptionHTML = "";
+                    var subscription = info.subscriptionDetails;
+                    var pmPrice = info.projectManagementPrice;
+                    /*for(var p=0; p<subscription.length; p++)
+                    {
+                        var projectInfo = subscription[p];
+                        var missionSubtotal = 0;
+                        
+                        var missionTotalContentCount = 0;
+                        var missionPMHours = 0;
+                        
+                        if(projectInfo.project != "")
+                        {
+                            //Output the mission-level elements
+                            subscriptionHTML += "<div class=\"mission-heading\">"+
+                                                "<label>"+projectInfo.project+"</label> <a href=\"missionreport.html?pid="+projectInfo.projectID+"\" class=\"view-mission-link\">VIEW MISSION </a> </div>"+
+                                        "<div class=\"table-spacing\">";
+
+                            var keywords = projectInfo.keywords;
+                            var addPM = false;
+
+                            for(var k=0;k<keywords.length; k++)
+                            {
+                                var keywordInfo = keywords[k];
+
+                                if(keywordInfo.keyword != "")
+                                {
+                                    var firstAddonInfo = keywordInfo.addons[0];
+                                    
+                                    var keywordContentGoal = parseInt(keywordInfo.contentGoal);
+                                    var addMoreClass = "";
+                                    
+                                    if(firstAddonInfo.keywordID == 0)
+                                    {
+                                        addPM = true;
+                                    }
+                                    else
+                                    {
+                                        //Output the keyword-level elements
+                                        subscriptionHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;\">content goal: "+keywordContentGoal+" pcs per month</span></h3>"+
+                                                        "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
+                                                                "<tbody>"+
+                                                                        "<tr class=\"table-heading\">"+
+                                                                                "<th colspan=\"2\">ASSIGN MONTHLY CONTENT TYPE</th>"+
+                                                                                "<th>WRITING DIRECTION/INSTRUCTION</th>"+
+                                                                                "<th>COST</th>"+
+                                                                        "</tr>";
+
+                                        //Output the addon-level elements
+                                        var keywordTotalContentCount = 0;
+                                        var addons = keywordInfo.addons;
+                                        for(var a=0; a<addons.length; a++)
+                                        {
+                                            var addonInfo = addons[a];
+                                            var selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+
+                                            var addonPrice = parseFloat(addonInfo.price);
+                                            var addonQuantity = parseInt(addonInfo.quantity);
+
+                                            missionTotalContentCount += addonQuantity;
+                                            keywordTotalContentCount += addonQuantity;
+                                            missionSubtotal += (addonPrice*addonQuantity);
+
+                                            subscriptionHTML += "<tr>"+
+                                                                //"<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
+                                                                "<td class=\"number text-center\">"+(a+1)+"</td>"+
+                                                                "<td>"+selectHTML+"</td>"+
+                                                                "<td class=\"instruction_data\"><input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/></td>"+
+                                                                "<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>"+
+                                                                "<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteCartItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>"+
+                                                                "</td>"+
+                                                        "</tr>";
+                                        }
+                                        if(keywordTotalContentCount<keywordContentGoal)
+                                        {
+                                            addMoreClass = " red-plus";
+                                        }
+                                        //Add a row for the add new button
+                                        subscriptionHTML += "<tr class=\"add-new\">"+
+                                                            "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus"+addMoreClass+"\" aria-hidden=\"true\"></i></a></td>"+
+                                                    "</tr>";
+
+                                        //Close the keyword-level elements
+                                        subscriptionHTML += "</tbody>"+
+                                                "</table>";
+                                    }
+                                }
+                            }
+
+                            //Add a div for the project management
+                            missionPMHours = Math.ceil(missionTotalContentCount*0.5);
+
+                            subscriptionHTML += "<div class=\"project-management-checkbox\">"+
+                                            "<input type=\"checkbox\" id=\"mission-"+projectInfo.projectID+"-pmbox\"";
+
+                            if(addPM)
+                            {
+                                missionSubtotal += (missionPMHours*pmPrice);
+                                subscriptionHTML += " checked";
+                            }
+                            subscriptionHTML += " onchange=\"toggleMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
+                                                "<div class=\"custom_tooltip\">"+
+                                                    "<h2>PROJECT MANAGEMENT</h2>"+
+                                                    "<p>Based on your content selections for this keyword RankHacker recommends "+missionPMHours+" hours of project management to keep your marketing hands-free.</p>"+
+                                                    "<!--<div style=\"float: left;width: 100%;margin: 0;padding: 0;\"><input type=\"checkbox\" />ADD PROJECT MANAGEMENT<a href=\"javascript:void(0);\" class=\"no-thanks\">NO THANKS</a></div>-->"+
+                                                "</div>"+
+                                            "</span>"+
+                                        "</div>";
+
+                            //Close the mission-level elements
+                            subscriptionHTML += "</div>"+
+                                    "<div class=\"cart-subtotal-section\"><label>MONTHLY CONTENT: "+missionTotalContentCount+" PCS</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> </div>";
+                        }
+                    }*/
+                    
+                    $("#subscription-details").html(subscriptionHTML);
+                    
+                    //Update the usage headers
+                    
+                    var planName = info.planName;
+                    var planPrice = info.planPrice;
+                    var missionsUsed = info.monthlyMissionsUsed;
+                    var missionsLimit = info.monthlyMissionsLimit;
+                    var keywordsUsed = info.monthlyKeywordsUsed;
+                    var keywordsLimit = info.monthlyKeywordsLimit;
+                    var revealsUsed = info.monthlyRevealsUsed;
+                    var revealsLimit = info.monthlyRevealsLimit;
+                    var missionsRemaining = parseInt(missionsLimit)-parseInt(missionsUsed);
+                    var keywordsRemaining = parseInt(keywordsLimit)-parseInt(keywordsUsed);
+                    var revealsRemaining = parseInt(revealsLimit)-parseInt(revealsUsed);
+                    
+                    var missionsGraph = Math.round((parseFloat(missionsUsed) / parseFloat(missionsLimit))*10000)/100 + "%";
+                    var keywordsGraph = Math.round((parseFloat(keywordsUsed) / parseFloat(keywordsLimit))*10000)/100 + "%";
+                    var revealsGraph = Math.round((parseFloat(revealsUsed) / parseFloat(revealsLimit))*10000)/100 + "%";
+
+                    if(missionsLimit == -1)
+                    {
+                        missionsLimit = "UNLIMITED";
+                        missionsRemaining = "UNLIMITED";
+                        missionsGraph = "15%";
+                    }
+                    if(keywordsLimit == -1)
+                    {
+                        keywordsLimit = "UNLIMITED";
+                        keywordsRemaining = "UNLIMITED";
+                        keywordsGraph = "15%";
+                    }
+                    if(revealsLimit == -1)
+                    {
+                        revealsLimit = "UNLIMITED";
+                        revealsRemaining = "UNLIMITED";
+                        revealsGraph = "15%";
+                    }
+                    
+                    $("#plan-name").html(planName);
+                    $("#plan-price").html("$"+planPrice);
+                    
+                    $("#mission-usage").html(missionsUsed);
+                    $("#mission-limit").html(missionsLimit);
+                    $("#mission-remaining").html(missionsRemaining);
+                    
+                    $("#keyword-usage").html(keywordsUsed);
+                    $("#keyword-limit").html(keywordsLimit);
+                    $("#keyword-remaining").html(keywordsRemaining);
+                    
+                    $("#reveal-usage").html(revealsUsed);
+                    $("#reveal-limit").html(revealsLimit);
+                    $("#reveal-remaining").html(revealsRemaining);
+                    
+                    $("#missions-graph").css("width",missionsGraph);
+                    $("#keywords-graph").css("width",keywordsGraph);
+                    $("#reveals-graph").css("width",revealsGraph);
+                    
+                    //Also grab the ChargeBee info and update the pay now button target
+                    /*var planURL = info.chargeBeePage;
+                    var chargeBeeAddons = info.chargeBeeAddons;
+                    for(var c=0; c<chargeBeeAddons.length; c++)
+                    {
+                        var thisAddon = chargeBeeAddons[c];
+                        var thisID = thisAddon.chargeBeeID;
+                        var thisQty = thisAddon.quantity;
+                        
+                        if(c==0)
+                        {
+                            planURL += "?addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                        }
+                        else
+                        {
+                            planURL += "&addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                        }
+                    }*/
+                    
+                    /*setCookie("username","",-1);
+                    setCookie("username",username,1);
+                    var cookie = getCookie("cb_path");
+                    console.log(cookie);*/
+                    //$("#pay-now-button").prop("href",planURL);
+                    
+                }
+            }
+        });
+        
+        //Register the info-icon event handlers
+        $(document.body).on('click','.info-icon',function(){
+            $(this).next('.custom_tooltip').toggleClass('active');
+            });
+
+        $(document.body).on('mouseover','.info-icon',function(){
+                    $('.custom_tooltip').removeClass('active');
+                    $(this).next('.custom_tooltip').addClass('active');
+            });
+
+        $(document.body).on('mouseout','.info-icon',function(){
+                    $('.custom_tooltip').removeClass('active');
+                    $(this).next('.custom_tooltip').removeClass('active');
+            });
     }
 }

@@ -154,7 +154,7 @@
                              <li>Unlimited Mission Overview Reports</li>
                              <li></li>
                            </ul>
-                           <a href="#" class="package-select-btn">Select</a>
+                           <a id="free-button" style="cursor:pointer;" data-plan="" class="package-select-btn" onclick="changeSubscription(event,'free-button');">Select</a>
                       </div>
                     </div>
 
@@ -170,7 +170,7 @@
                              <li>Unlimited Mission Overview Reports</li>
                              <li></li>
                            </ul>
-                           <a href="#" class="package-select-btn">Select</a>
+                           <a id="pro-button" style="cursor:pointer;" data-plan="" class="package-select-btn" onclick="changeSubscription(event,'pro-button');">Select</a>
                       </div>
                     </div>
 
@@ -186,7 +186,7 @@
                              <li>Unlimited Mission Overview Reports</li>
                              <li>White Labeled Reports</li>
                            </ul>
-                           <a href="#" class="package-select-btn">Select</a>
+                           <a id="agency-button" style="cursor:pointer;" data-plan="" class="package-select-btn" onclick="changeSubscription(event,'agency-button');">Select</a>
                       </div>
                     </div>
 
@@ -202,7 +202,7 @@
                              <li>Unlimited Mission Overview Reports</li>
                              <li>White Labeled Reports</li>
                            </ul>
-                           <a href="#" class="package-select-btn">Select</a>
+                           <a id="enterprise-button" style="cursor:pointer;" data-plan="" class="package-select-btn" onclick="changeSubscription(event,'enterprise-button');">Select</a>
                       </div>
                     </div>
 
@@ -213,6 +213,44 @@
             </div>
         </div>
 
+<!-- Dimmer modal -->
+<div id="dimmer" class="dimmer"></div>
+
+<!-- Alert modal -->
+<div id="alert-window" class="delete-project-window">
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading">ERROR</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+                <p id="alert-msg-body"> </p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="dark-blue-btn btn pull-right" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Confirm modal -->
+<div id="confirm-window" class="delete-project-window">
+    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
+        <h2 class="setup-heading">CONFIRM</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+                <p id="confirm-msg-body"> </p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="dark-blue-btn btn pull-left" id="confirm_cancel_button">CANCEL</a>
+                <a class="orange-btn btn pull-right" id="confirm_proceed_button">PROCEED</a>
+            </div>
+        </form>
+    </div>
+</div>
+        
     </div>
 </section>
 
@@ -271,74 +309,6 @@
 <script type="text/javascript">
     jQuery(function ($) {
         $('.matchheight').matchHeight();
-    });
-</script>
-<script>
-    jQuery(document).ready(function () {
-
-        /*
-         var originalVal;
-
-         $('#ex6').slider().on('slideStart', function(slideEvt){
-         originalVal = $('#ex').data('slider').getValue();
-         });
-
-         $('#ex6').slider().on('slideStop', function(slideEvt){
-         var newVal = $('#ex6').data('slider').getValue();
-         if(originalVal != newVal) {
-         alert('Value Changed!');
-         alert('Value Changed!');
-         }
-         });
-         */
-
-
-        //range slider custom js
-        $("#ex6").slider();
-        $("#ex6").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex6 = numeral(slideEvt.value).format('0,0');
-            //var slider_num_ex6 = tooltip-inner;
-            $("#ex6SliderVal").val(slider_num_ex6);
-        });
-
-
-        $("#ex7").slider();
-        $("#ex7").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex7 = numeral(slideEvt.value).format('0,0');
-            $("#ex7SliderVal").val(slider_num_ex7);
-        });
-
-
-        $("#ex8").slider();
-        $("#ex8").on("slide, slideStop", function (slideEvt) {
-            var slider_num_ex8 = numeral(slideEvt.value).format('0,0');
-            $("#ex8SliderVal").val(slider_num_ex8);
-        });
-
-
-        $('.project-setup-input input.range-count').on("blur", function () {
-            var inputval = $(this).val();
-            //alert(inputval);
-            var inputval_new = numeral(inputval).format('0,0');
-            //	alert(inputval_new);
-            $(this).val(inputval_new);
-        });
-
-
-        // ADD Cumma after three numbers
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
-        }
-
-        $('.range-count').each(function () {
-            var v_pound = $(this).html();
-            v_pound = numberWithCommas(v_pound);
-
-            $(this).html(v_pound)
-
-        })
-
-
     });
 </script>
 

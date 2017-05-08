@@ -61,9 +61,15 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
+<script>
+    function run(){
+        prepareSubscriptionsPage();
+    }
+</script>
+    
 </head>
 
-<body id="body" class="page-loading home noisy" >
+<body id="body" class="page-loading home noisy" onload="run();">
 
 <!-- =========================
      MAIN MENU
@@ -83,8 +89,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
-            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>
+            <!--<li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>-->
             <li>
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
                 <ul class="dropdown-menu" id="account-dropdown">
@@ -138,43 +144,47 @@
 	<div class="overlay interface-outer">
 		<div class="container">
 		   <div class="rh_subscription-page">
-		        <div class="white-label-options">White Label OFF<i class="white-label-btn"> </i></div>
+		        <!--<div class="white-label-options">White Label OFF<i class="white-label-btn"> </i></div>-->
 				<h2 class="cart-heading rh_subscription-head2">SUBSCRIPTION MANAGEMENT</h2>				
 			<div class="black-box-head">
-				<h2 class="cart-heading pull-left">AGENCY ACCOUNT  <a href="" class="upgrade-link">UPGRADE</a></h2>
-				<h2 class="cart-heading pull-right">$295/month</h2>
+                            <h2 class="cart-heading pull-left"><span id="plan-name" class="subscription-heading-span"></span>  <a href="pricing.html" class="upgrade-link">UPGRADE</a></h2>
+                            <h2 class="cart-heading pull-right"><span id="plan-price" class="subscription-heading-span">$</span>/month</h2>
 			</div>
 		   
 			<div class="block-css margin30b">
 				<div class="col-sm-4 agency-info-outer">
 					<div class="agency-info-box">
-						<h3>Mission/mo.</h3>
-						<div class="process-agency"> </div>	
-						<div class="process-report">3 OF <strong>10</strong>	<span class="full-value">7 REMAINING</span></div>
+						<h3>Missions/Mo.</h3>
+						<div class="process-agency" id="missions-graph"> </div>
+                                                <div class="process-agency-border"> </div>
+						<div class="process-report"><span id="mission-usage"></span> OF <strong><span id="mission-limit"></span></strong><span class="full-value"><span id="mission-remaining"></span> REMAINING</span></div>
 					</div>
 				</div>	
 				<div class="col-sm-4 agency-info-outer">
 					<div class="agency-info-box">
-						<h3>Keywords</h3>
-						<div class="process-agency"> </div>
-						<div class="process-report">180 OF <strong>300</strong><span class="full-value">120 REMAINING</span></div>
+						<h3>Keywords/Mo.</h3>
+						<div class="process-agency" id="keywords-graph"> </div>
+                                                <div class="process-agency-border"> </div>
+                                                <div class="process-report"><span id="keyword-usage"></span> OF <strong><span id="keyword-limit"></span></strong><span class="full-value"><span id="keyword-remaining"></span> REMAINING</span></div>
 					</div>
 				</div>
 				<div class="col-sm-4 agency-info-outer">
 					<div class="agency-info-box">
-						<h3>Reports</h3>
-						<div class="process-agency"> </div>
-						<div class="process-report text-center"><strong>UNLIMITED</strong></div>	
+						<h3>Reveal Reports/Mo.</h3>
+						<div class="process-agency" id="reveals-graph"> </div>
+                                                <div class="process-agency-border"> </div>
+                                                <div class="process-report"><span id="reveal-usage"></span> OF <strong><span id="reveal-limit"></span></strong><span class="full-value"><span id="reveal-remaining"></span> REMAINING</span></div>
 					</div>
 				</div>
 			</div>	
 		   
 		   <div class="black-box-head margin30t">
 				<h2 class="cart-heading pull-left">MONTHLY CONTENT PIECES</h2>
-				<h2 class="cart-heading pull-right">$3,800/month</h2>
+				<h2 class="cart-heading pull-right"><span id="mission-cost-total" class="subscription-heading-span">$</span>/month</h2>
 			</div>
 		  <div class="cart-mission-spacing">
-		   <div class="cart-mission-inner">
+		   <div class="cart-mission-inner" id="subscription-details">
+                                                <!--
 						<div class="mission-heading">
 							<label><a href="#">MISSION1.COM</a></label> <a href="VIEW MISSION" class="view-mission-link"><i class="fa fa-trash-o" aria-hidden="true"></i></a> </div>
 						<div class="table-spacing">
@@ -383,7 +393,7 @@
 							<span class="price"><sup>$</sup>1,400</span> 
 							<span class="rh-updated">Updated</span>
 						</div>
-
+                                                -->
 					</div>
 		   </div>
 		</div>

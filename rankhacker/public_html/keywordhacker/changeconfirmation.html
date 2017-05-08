@@ -35,12 +35,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     
-    <!--<script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
-    <script type="text/javascript" src="https://js.chargebee.com/v1/chargebee.js"></script>
-    
     <!--1520 files-->
     <script src="js/1520.js?v=66"></script>
     <link href="css/1520.css?v=66" rel="stylesheet" id="theme-change">
@@ -65,201 +59,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     
-    <style>
-        #content_frame_part {
-            margin-bottom:0 !important;
-            margin-top:0 !important;
-        }
-        
-        #content_frame_part {
-            margin-left:0 !important;
-        }
-    </style>
-    
-    <script type="text/javascript">
-            // This parameter will decide to show the checkout page 
-            // as pop up or as embeded in document
-            var popup = false;
-            
-            jQuery.validator.setDefaults({
-                errorClass: "text-danger",
-                errorElement: "small"
-            });
-            
-            $(document).ready(function() {
-                $("#subscribe-form").validate({
-                    rules: {
-                        zip_code: {number: true},
-                        phone: {number: true}
-                    }
-                });
-               
-               function showProcessing() {
-                   $(".alert-danger").hide();
-                   $('.subscribe-process').show();
-               }
-               
-               function subscribeResponseHandler(response){
-                   if(popup) {
-                       subscribeResponsePopupHandler(response);
-                   } else {
-                       subscribeResponseEmbedHandler(response);
-                   }
-               }
-               
-               
-              function subscribeResponsePopupHandler(response) {
-                   var hostedPageId = response.hosted_page_id;
-                   $('.subscribe-process').show();
-                   
-                   ChargeBee.bootStrapModal(response.url, 
-                                    response.site_name, "paymentModal").load({
-                  
-                   /**
-                    * This function is called once the checkout form is loaded in the popup.
-                    */
-                   onLoad: function() {
-                       hideProcessing();
-                       $('.submit-btn').attr("disabled", "disabled");
-                    },
-                    
-                    /* This function will be called after subscribe button is clicked 
-                     * and checkout is completed in the iframe checkout page.
-                     */
-                    onSuccess: function() {
-                        redirectCall(hostedPageId);
-                    },
-                    
-                    /* This function will be called after cancel button is clicked in 
-                     * the iframe checkout page.
-                     */
-                    onCancel: function() {
-                        $(".alert-danger").show().text("Payment Aborted !!");
-                        $('.submit-btn').removeAttr("disabled");
-                    }
-                  });
-               }
-               
-               
-               
-               function subscribeResponseEmbedHandler(response) {
-                    var hostedPageId = response.hosted_page_id;
-                    var customerContainer = $('#customer-info');
-                    var iframeContainer = $('#checkout-info');
-                    ChargeBee.embed(response.url, response.site_name).load({
-                       /*
-                        * This function will be called when iframe is created.
-                        * addIframe callback will recieve iframe as parameter.
-                        * you can use this iframe to add iframe to your page.
-                        * Loading image in container can also be showed in this callback.
-                        * Note: visiblity will be none for the iframe at this moment
-                        */
-                        addIframe: function(iframe) {
-                            iframeContainer.append(iframe);
-                        },
-                                
-                       /*
-                        * This function will be called once when iframe is loaded.
-                        * Since checkout pages are responsive you need to handle only height.
-                        */        
-                        onLoad: function(iframe, width, height) {
-                            hideProcessing();
-                            $(customerContainer).slideUp(1000);
-                            var style= 'border:none;overflow:hidden;width:100%;';                            
-                            style = style + 'height:' + height + 'px;';
-                            style = style + 'display:none;';//This is for slide down effect
-                            iframe.setAttribute('style', style);
-                            $(iframe).slideDown(1000);
-                        },
-                                
-                        /*
-                         * This will be triggered when any content of iframe is resized.
-                         */        
-                        onResize: function(iframe, width, height) {
-                            var style = 'border:none;overflow:hidden;width:100%;';
-                            style = style + 'height:' + height + 'px;';
-                            iframe.setAttribute('style',style);
-                        },
-                                
-                        /*
-                         * This will be triggered when checkout is complete.
-                         */        
-                        onSuccess: function(iframe) {
-                            redirectCall(hostedPageId);
-                        },
-                                
-                        /*
-                         * This will be triggered when user clicks on cancel button. 
-                         */
-                        onCancel: function(iframe) {
-                            $(iframe).slideDown(100,function (){
-                                $(iframeContainer).empty();
-                                $(customerContainer).slideDown(200);
-                            });
-                            $(".alert-danger").show().text("Payment Aborted !!");
-                        }
-                    });
-               }
-               
-                
-               
-               function redirectCall(hostedPageId){
-                  window.location.href = "/checkout_iframe/redirect_handler?id=" 
-                      + encodeURIComponent(hostedPageId);
-                
-               }
-                
-               function hideProcessing(){
-                    $('.subscribe-process').hide();
-               }
-               
-               /* This method is called if error is returned from the server.                
-                */
-              function subscribeErrorHandler(jqXHR, textStatus, errorThrown) {
-                try{
-                     hideProcessing();
-                     var resp = JSON.parse(jqXHR.responseText);
-                     if ('error_param' in resp) {
-                       var errorMap = {};
-                        var errParam = resp.error_param;
-                        var errMsg = resp.error_msg;
-                        errorMap[errParam] = errMsg;
-                        $("#subscribe-form").validate().showErrors(errorMap);
-                     } else {
-                        var errMsg = resp.error_msg;
-                        $(".alert-danger").show().text(errMsg);
-                     }
-                    } catch(err) {
-                       $(".alert-danger").show().text("Error while processing your request");
-                    }
-                }  
-               
-               
-               /* Doing ajax form submit of the form data.
-                */
-               $("#subscribe-form").on("submit", function(e) {
-                  if (!$(this).valid()) {
-                        return false;
-                  }
-                  var options = {
-                        beforeSend: showProcessing,
-                        error: subscribeErrorHandler, 
-                        success: subscribeResponseHandler, 
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                        dataType: 'json'
-                  };
-                  $(this).ajaxSubmit(options);
-                  return false;
-               })
-               
-               
-            })
-        </script>
 </head>
 
-<body id="body" class="page-loading home noisy" onload="prepareCheckout();">
+<body id="body" class="page-loading home noisy" onload="processChangeConfirmation();">
 
 <!-- =========================
      MAIN MENU
@@ -279,7 +82,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
-            <!--<li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <!--<li class="active"><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
             <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>-->
             <li>
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">TOOLS</a>
@@ -290,8 +93,8 @@
                     <li><a style="cursor:pointer;" onclick="registeredUsers(event);" id="users-link">Registered Users</a></li>
                 </ul>
             </li>
-            <li class="active">
-                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/header-cart-static.png" class="cart-icon"/></a>
+            <li>
+                <a data-toggle="dropdown" class="dropdown-toggle" style="cursor:pointer;padding:7px 15px !important;"><img id="cart-image" src="images/header-cart-inactive.png" class="cart-icon"/></a>
                 <div class="dropdown-menu cart-dropdown" id="cart-dropdown">
                     <div class="cart-header">
                         <span id="cart-total-pieces">0</span>
@@ -327,11 +130,77 @@
 <!-- =========================
      HEADER
 ============================== -->
-<section id="header" class="blurable" style="min-height:1450px !important;">
-    <div class="overlay interface-outer" style="background-color:#ededef;">
-      <div class="container" style="padding-left:0 !important;padding-right:0 !important;">
-        <div class="projects" id="main-page-content" style="width:100%;height:1450px;overflow:hidden;background-color:#ededef;">
-            <iframe style="width:100%;height:1450px;margin-top:50px;padding-top:50px;background-color:#ededef;" scrolling="no" id="content_frame_part" src=""></iframe>
+<section id="header" class="blurable">
+    <!--<div id="report-bg" class="piece "></div>-->
+    <div class="overlay interface-outer">
+      <div class="container">
+        <div class="projects" id="main-page-content">
+            <div class="row row-v-spacing"></div>
+            <div id="dashboard-header" class="block-css">
+                        <div class="head-info-box">
+                            <!--<h4 class="welcome-text">WELCOME TO THE KEYWORD HACKER MODULE</h4>-->
+                            <h2 class="page-info" id="welcome-message"></h2>
+                </div>
+                <div class="col-lg-12 padding-box">
+                    <div class="col-lg-6 view-option-outer pull-left">
+                        <ul>
+                            <li class="black_eagle-rh"></li>
+                            <li><a href="dashboard.html">Missions</a> &nbsp; <i class="fa fa-angle-right"></i> &nbsp; <a style="cursor:default;">PURCHASE COMPLETE</a></li>
+                            <!--li class="active"><a href="#">Project View </a> </li>
+                            <li><a href="#"> Research View</a> </li-->
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 rh-actions-menu pull-right">
+                        <ul>
+                            <!--<li><a href="" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Download selected projects" data-original-title="" title="">Download</a></li>
+                            <li>
+                                <button id="create-new-project" class="btn btn-orange btn-round" onclick="gotoCreateProject();"><i class="fa fa-plus"></i><span>Create New</span></button>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div id="shadow"></div>
+            </div>
+                <div class="padding-box clear-both">
+                    <div class="row">
+                        <div class="bread-comb-outer col-lg-6">
+                            <!--<ul>
+                                <li><a href="dashboard.html">Projects</a></li>
+                                >
+                                <li><a href="keywordhacker.html">Keyword hacker</a></li>
+                                >
+                                <li><a>New Project Setup</a></li>
+                            </ul>-->
+                        </div>
+                    </div>
+
+                    <div class="block-css" id="setup-box-outer">
+                        <form>
+                            <h4 class="setup-heading" style="color:#005cb9;">YOUR SUBSCRIPTION PLAN HAS BEEN UPDATED!</h4>
+                            <div class="row project-setup-input">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <label class="mixed-use-paragraph text-left" style="line-height:28px;">
+                                        Your subscription change request has been processed. Please contact RankHacker if this has been done in error, or if you require further assistance.
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="row">&nbsp;</div>
+                            
+                            <div class="project-setup-input block-css" style="border-bottom:2px solid #595959;margin:25px 0;"></div>
+                            
+                            <div class="row project-setup-input text-center col-md-12" id="back-button">
+                                <a class="orange-btn btn" onclick="gotoKHDashboard();">BACK TO THE MISSIONS</a>
+                            </div>
+
+                        </form>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
         </div>
     </div>
     </div>
@@ -391,6 +260,74 @@
 <script type="text/javascript">
     jQuery(function ($) {
         $('.matchheight').matchHeight();
+    });
+</script>
+<script>
+    jQuery(document).ready(function () {
+
+        /*
+         var originalVal;
+
+         $('#ex6').slider().on('slideStart', function(slideEvt){
+         originalVal = $('#ex').data('slider').getValue();
+         });
+
+         $('#ex6').slider().on('slideStop', function(slideEvt){
+         var newVal = $('#ex6').data('slider').getValue();
+         if(originalVal != newVal) {
+         alert('Value Changed!');
+         alert('Value Changed!');
+         }
+         });
+         */
+
+
+        //range slider custom js
+        $("#ex6").slider();
+        $("#ex6").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex6 = numeral(slideEvt.value).format('0,0');
+            //var slider_num_ex6 = tooltip-inner;
+            $("#ex6SliderVal").val(slider_num_ex6);
+        });
+
+
+        $("#ex7").slider();
+        $("#ex7").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex7 = numeral(slideEvt.value).format('0,0');
+            $("#ex7SliderVal").val(slider_num_ex7);
+        });
+
+
+        $("#ex8").slider();
+        $("#ex8").on("slide, slideStop", function (slideEvt) {
+            var slider_num_ex8 = numeral(slideEvt.value).format('0,0');
+            $("#ex8SliderVal").val(slider_num_ex8);
+        });
+
+
+        $('.project-setup-input input.range-count').on("blur", function () {
+            var inputval = $(this).val();
+            //alert(inputval);
+            var inputval_new = numeral(inputval).format('0,0');
+            //	alert(inputval_new);
+            $(this).val(inputval_new);
+        });
+
+
+        // ADD Cumma after three numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+        }
+
+        $('.range-count').each(function () {
+            var v_pound = $(this).html();
+            v_pound = numberWithCommas(v_pound);
+
+            $(this).html(v_pound)
+
+        })
+
+
     });
 </script>
 

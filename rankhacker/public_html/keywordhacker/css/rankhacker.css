@@ -109,7 +109,7 @@ h2 {
 
 h2 span {
     //color: #37afd7;
-    font-weight: 300 !important;
+    font-weight: 300;
     text-transform: none !important;
     font-size: .625em;
 }
