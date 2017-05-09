@@ -178,6 +178,8 @@ table.mission-info-table tr td a {color:#005CB8;text-decoration:underline;}
 
 table.mission-info-table tr td a:hover , .mission-heading a.view-mission-link:hover , .view-mission-link:hover , .add-new-selection:hover i{color:#62A6DD;}
 
+table.mission-info-table tr.table-heading:hover , table.mission-info-table tr.table-heading th:hover {background-color:#fff;cursor:default;}
+
 .project-management-checkbox {color: #58595b;float: left;font-family: "Roboto",sans-serif;font-size: 11px;font-weight: normal;margin: 15px 0;padding: 0 10px;text-transform: uppercase;width: 100%;}
 
 .project-management-checkbox input[type="checkbox"] {float: left;margin-right: 8px; clear:left;}
@@ -365,6 +367,53 @@ table.mission-info-table tr td.cost-ot {width:90px;}
 .sidenav-logo {float: left;width: 100%;margin: 0;padding: 10px;background-color: #3D3D3D;text-align: center;}
 
 .sidenav-logo img{max-width:100%;width: 230px;vertical-align: middle;display: inline-block;}
+
+.mission-report-note {
+  color: #ec1c24;
+  float: left;
+  font-size: 18px;
+  margin: 15px 0 10px;
+  padding: 0;
+  width: 100%;font-family: 'Myriad Pro';
+}
+
+.rh-terms-section {
+  color: #929497;
+  float: left;
+  font-size: 14px;
+  font-weight: normal;
+  margin:30px 0;
+  padding: 0;
+  width: 100%;font-family: 'Myriad Pro';
+}
+
+.rh-terms-section .subscribe-btn {
+  align-items: center;
+  background-color: #00a551;
+  bottom: 0;
+  color: #006838;
+  display: flex;
+  font-family: "Montserrat";
+  font-size: 18px;
+  font-weight: bold;
+  justify-content: center;
+  line-height: normal;
+  margin: 0;
+  padding: 10px 15px 13px;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;float:right;
+}
+
+.rh-terms-section .subscribe-btn:hover {background-color: #333; color: #fff;}
+
+.rh-terms-section p {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 180px);max-width:700px;
+}
+
 
 /* keyword-networth page css */ 
 

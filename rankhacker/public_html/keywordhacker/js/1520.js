@@ -4012,7 +4012,7 @@ function refreshCartDetails()
                         {
                             //Output the mission-level elements
                             cartHTML += "<div class=\"mission-heading\">"+
-                                                "<label>"+projectInfo.project+"</label> <a href=\"missionreport.html?pid="+projectInfo.projectID+"\" class=\"view-mission-link\">VIEW MISSION </a> </div>"+
+                                                "<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a href=\"\" class=\"view-mission-link\">REMOVE MISSION </a> </div>"+
                                         "<div class=\"table-spacing\">";
 
                             var keywords = projectInfo.keywords;
@@ -4036,7 +4036,7 @@ function refreshCartDetails()
                                     else
                                     {
                                         //Output the keyword-level elements
-                                        cartHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;\">content goal: "+keywordContentGoal+" pcs per month</span></h3>"+
+                                        cartHTML += "<h3 class=\"keyword-phrase-number\" style=\"text-transform:uppercase;\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;color:#005CB8;margin-top: -5px;\">monthly content goal <strong style=\"font-size: 24px; position: relative; top: 2px; margin-left: 10px;\">"+keywordContentGoal+"</strong> <img src=\"images_cart/rh-cart-paid.png\" style=\"max-width:25px;\"></span></h3>"+
                                                         "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
                                                                 "<tbody>"+
                                                                         "<tr class=\"table-heading\">"+
@@ -4667,7 +4667,7 @@ function displayMissionInfo(field,sort)
                                             "<h2 class=\"table-title negative-sign\" id=\"mission-monthly-sales\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(monthlySales)+"<span class=\"info-icon-2\" title=\"Projected Customers multiplied by the monetary value of one paying customer\">"+monthlySalesText+"</span><span class=\"blue-text\">PROJECTED </span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-cost-per-month\" class=\"price-widthbox\" style=\"padding-right: 0;\" onclick=\"displayMissionInfo('costPerMonth',true);\">"+
-                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" <small>("+projectTotalContentDiff+" pcs)</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\">CONTENT COST & GOAL</span></h2>"+
+                                            "<h2 class=\"table-title equal-sign\" id=\"mission-content-goal\"><span class=\"rh-cost-goal-ots\"><sup>"+currencyHexCode+"</sup>"+numberWithCommas(costPerMonth)+" <small>"+projectTotalContentDiff+"</small><div id=\"mission-cart-div\" onclick=\"event.cancelBubble; event.stopPropagation();\" class=\"mission-cart-div\"><img src=\""+cartSrc+"\" id=\"project-add-to-cart\" style=\"height:18px;\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></span><span class=\"info-icon-2\" title=\"Target amount of monthly content and its cost\" style=\margin-top:1px\; >CONTENT COST & GOAL</span></h2>"+
                                         "</td>"+
                                         "<td id=\"mission-heading-keyword-networth\" class=\"price-widthbox\" colspan=\"2\" onclick=\"displayMissionInfo('keywordNetWorth',true);\">"+
                                             "<h2 class=\"table-title\" id=\"mission-networth\"><strong class=\""+netWorthClass+"\">"+keywordNetWorthString+"</strong><span class=\"info-icon-2\" title=\"Projected return on your invested marketing dollars for this keyword\">KEYWORD NET WORTH<sup style=\"font-size:6px;\">TM</sup></span></h2>"+
@@ -5127,7 +5127,8 @@ function displayMissionInfo(field,sort)
 "                                                                <tr class=\"table-heading2\">\n" +
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
-"                                                                    <th class=\"col-sm-7 text-left\"><span>URL<br/>&nbsp;</span></th>\n" +
+"                                                                    <th class=\"col-sm-6 text-left break-all-text\"><span>URL<br/>&nbsp;</span></th>\n" +
+"																	<th class=\"col-sm-1 text-center\" style=\"vertical-align: top;\"><span class=\"info-icon-3\">DA</th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +
@@ -5227,7 +5228,8 @@ function displayMissionInfo(field,sort)
 "                                                                <tr class=\"project-head2\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
-"                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center\">78</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
@@ -5257,6 +5259,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">78</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
@@ -5265,6 +5268,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
 "                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">78</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
@@ -5848,7 +5852,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                <tr class=\"table-heading2\">\n" +
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
-"                                                                    <th class=\"col-sm-7 text-left\"><span>URL<br/>&nbsp;</th>\n" +
+"                                                                    <th class=\"col-sm-6 text-left break-all-text\"><span>URL<br/>&nbsp;</th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +"                                                                </tr>\n"+
@@ -5947,7 +5951,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                <tr class=\"project-head2\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" id=\"chk-content-all-c"+competitorID+"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
-"                                                                    <td data-label=\"URL\" class=\"text-left\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
@@ -5976,7 +5980,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                <tr class=\"project-head2 them-row\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
-"                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\"><strong>SELECTED COMPETITORS</strong></td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
@@ -5984,7 +5988,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                <tr class=\"project-head2 you-row\">\n" +
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
 "                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
-"                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
+"                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\">"+clientURL+"</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +

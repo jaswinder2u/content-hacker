@@ -56,7 +56,7 @@
 
 .project-breadcomb-outer ul li a{color: #231F20;}
 
-.white-box {float: left;width: 100%;margin:3px 0 25px;padding: 10px 15px 15px;background-color: #fff;color:#333;}
+.white-box {float: left;width: 100%;margin:3px 0 25px;padding: 10px 15px 15px;background-color: #fff;color:#333;box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);}
 
 .keyword-networth-project {float:left;width:100%;margin:0;padding:0;}
 
@@ -66,7 +66,7 @@
 
 .keyword-networth-project .table-heading td{padding:5px 10px;border-right: 0;}
 
-.keyword-networth-project td{padding:5px 10px;border-right: 1px solid #D0D2D3;}
+.keyword-networth-project td{padding:7px 10px;border-right: 1px solid #D0D2D3;}
 
 .keyword-networth-project-outer .panel {border: none;box-shadow: 0 0 0 transparent;}
 
@@ -94,7 +94,9 @@
 
 .keyword-networth-project td.project-name-ot::before {content: "\f0da";font-family: FontAwesome;position: absolute;font-size: 20px;left: 10px;top: 50%;margin-top:-15px;color: #58595B;} 
 
-.keyword-networth-project th h2.table-title,.keyword-networth-project td h2.table-title {font-size: 20px;font-weight: 600;color: #58595B;margin: 0;padding: 0;float: left;width: 100%;text-align: left;}
+.keyword-networth-project th h2.table-title,.keyword-networth-project td h2.table-title , .keyword-networth-project td h2.table-title .rh-cost-goal-ots{font-size: 20px;font-weight: 600;color: #58595B;margin: 0;padding: 0;float: left;width: 100%;text-align: left;}
+
+.keyword-networth-project td h2.table-title .rh-cost-goal-ots {font-weight:600 !important;}
 
 .keyword-networth-project th,.keyword-networth-project td {/*vertical-align:bottom;*/}
 
@@ -185,14 +187,14 @@
 
 .keyword-networth-project th h2.table-title sup,.keyword-networth-project td h2.table-title sup {top: -4px;font-size: 14px;}
 
-.green-bg-total {background-color: #37B34A;color: #fff;padding: 5px 10px;float: left;width: calc(100% - 10px);margin-top: -5px;}
-.red-bg-total {background-color: #BE1E2D;color: #fff;padding: 5px 10px;float: left;width: calc(100% - 10px);margin-top: -5px;}
+.green-bg-total {background-color: #37B34A;color: #fff;padding: 4px 10px;float: left;width: calc(100% - 10px);margin-top: -6px;}
+.red-bg-total {background-color: #be1e2d;color: #fff;float: left;margin-top: -3px;padding: 2px 10px 3px;width: calc(100% - 10px);} 
 
 .negative-sign , .equal-sign{border-right:1px solid #E6E7E8 !important;position:relative !important;}
 .negative-sign-2 , .equal-sign-2{position:relative !important;}
 
 .negative-sign::after, .equal-sign::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 100%;top: 50%;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
-.negative-sign-2::after, .equal-sign-2::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 100%;top: 155%;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.negative-sign-2::after, .equal-sign-2::after {z-index: 2;color: #005CB8;content: "-";font-size: 14px;width: 16px;height: 16px;border: 1px solid #E6E7E8 !important;border-radius: 100%;position: absolute;background-color: #fff;left: 100%;top: 20px;text-align: center;line-height: 14px;margin: -8px 0 0 -8px;font-weight: normal;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 
 .equal-sign::after,.equal-sign-2::after {content: "=";}
 
@@ -222,9 +224,18 @@
 
 .content-goal-table .negative-sign,.content-goal-table .equal-sign {border-color: #D0D2D3 !important;}
 
-.top-check-selection {float: right;width: auto;margin: 0;padding: 0;font-size: 14px;color: #333;}
+.top-check-selection {
+  color: #333;
+  float: right;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 135px;
+}
 
-.top-check-selection input[type="checkbox"] {margin-right: 6px !important;margin-left: 25px !important;}
+.top-check-selection input[type="checkbox"] {margin-right: 6px !important;margin-left: 18px  !important;}
+
+.top-check-selection input[type="checkbox"]:first-child {margin-left: 0 !important;}
 
 .keyword-networth-project th.price-widthbox.equal-sign, .keyword-networth-project th.price-widthbox:last-child,.keyword-networth-project td.price-widthbox.equal-sign, .keyword-networth-project td.price-widthbox:last-child {padding-left: 12px;}
 
@@ -274,9 +285,9 @@ position: absolute;right: 10px;top: 0;}
 
 .project-info .panel-collapse {padding-top: 5px; padding-left: 10px; padding-right: 10px; padding-bottom:25px; position: relative;z-index: 1;margin-left: -10px;margin-right: 0;margin-bottom: 0;float: left;width: calc(100% + 20px);margin-top: -5px;}
 
-.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {border-right: none !important;padding: 5px 10px;margin: -5px -10px;}
+.keyword-networth-project td.price-widthbox .negative-sign, .keyword-networth-project td.price-widthbox .equal-sign {border-right: none !important;/*padding: 5px 10px;margin: -5px -10px;*/}
 
-.keyword-networth-project th h2.table-title.negative-sign, .keyword-networth-project th h2.table-title.equal-sign, .keyword-networth-project .table-heading td h2.table-title.negative-sign, .keyword-networth-project .table-heading td h2.table-title.equal-sign {padding-right: 15px;border: none !important;position:static !important;}
+.keyword-networth-project th h2.table-title.negative-sign, .keyword-networth-project th h2.table-title.equal-sign, .keyword-networth-project .table-heading td h2.table-title.negative-sign, .keyword-networth-project .table-heading td h2.table-title.equal-sign {padding-right: 12px;border: none !important;position:static !important;}
 
 .keyword-networth-project th h2.table-title.negative-sign:after, .keyword-networth-project th h2.table-title.equal-sign:after, .keyword-networth-project .table-heading td h2.table-title.negative-sign:after, .keyword-networth-project .table-heading td h2.table-title.equal-sign:after{margin-left:-13px !important;}
 
@@ -284,7 +295,7 @@ position: absolute;right: 10px;top: 0;}
 
 .price-widthbox {width: 155px;}
 
-.keyword-networth-project th h2.table-title, .keyword-networth-project td h2.table-title {font-size: 16px;}
+.keyword-networth-project th h2.table-title, .keyword-networth-project td h2.table-title ,.keyword-networth-project td h2.table-title .rh-cost-goal-ots {font-size: 16px;}
 
 .keyword-networth-project th h2.table-title sup, .keyword-networth-project td h2.table-title sup {font-size: 12px;}
 
@@ -397,7 +408,6 @@ position: absolute;right: 10px;top: 0;}
 
 .content-goal-table td, .content-goal-table th , .keyword-networth-project td{border:none;}
 
-.keyword-networth-project th, .keyword-networth-project .table-heading td {padding: 10px 15px !important;}
 
 .keyword-networth-project th:first-child h2.table-title, .keyword-networth-project td:first-child h2.table-title {padding-left: 0;}
 
@@ -411,6 +421,15 @@ position: absolute;right: 10px;top: 0;}
 .keyword-networth-project .content-goal-table tr.project-head2 td.checkbox-ot {border: none;padding-left: 15px;}
 
 .keyword-networth-project td.project-name-ot::before {margin-top: 0;top:0;}
+
+.info-icon:hover::after, .info-icon-2:hover::after , .info-icon:hover::before, .info-icon-2:hover::before {display:none;visibility:hidden;opacity:0;}
+	
+.keyword-networth-project .table-heading td h2.table-title.negative-sign::after, .keyword-networth-project .table-heading td h2.table-title.equal-sign::after {
+left: -6px;margin: -8px 0 0 !important;}
+
+.keyword-networth-project th, .keyword-networth-project .table-heading td {padding: 10px 20px !important;}
+
+.mission-cart-div {display: inline-block;float: none;}
 
 }
 
