@@ -180,7 +180,7 @@
 		   
 		   <div class="black-box-head margin30t">
 				<h2 class="cart-heading pull-left">MONTHLY CONTENT PIECES</h2>
-				<h2 class="cart-heading pull-right"><span id="mission-cost-total" class="subscription-heading-span">$</span>/month</h2>
+				<h2 class="cart-heading pull-right"><span id="subscription-cost-total" class="subscription-heading-span"></span>/month</h2>
 			</div>
 		  <div class="cart-mission-spacing">
 		   <div class="cart-mission-inner" id="subscription-details">
@@ -398,6 +398,31 @@
 		   </div>
 		</div>
 		</div>
+            
+<!-- Edit project modal -->
+<div id="dimmer" class="dimmer"></div>
+
+<div id="delete-subscription-window" class="delete-project-window">
+    <input id="delete-subscription-id" type="hidden" value="0"/>
+    
+    <div class="alert-text" id="setup-box-outer">
+        <h2 class="alert-heading">CONFIRMATION</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left alert-text">
+                <p>Are you sure you want to archive this project?</p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="cancelDeleteKeywordHackerProject();">CANCEL</a>
+                <a class="dark-blue-btn btn pull-right" style="margin-right:10px;" onclick="deleteKeywordHackerProject();">ARCHIVE</a>
+            </div>
+        </form>
+    </div>
+    
+</div>
+            
+            
 	</div>
 </section>
 
@@ -562,9 +587,9 @@ x.parentNode.insertBefore(s, x);
 </script>
 
 <script>
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
-});
+});*/
 </script>
 
 

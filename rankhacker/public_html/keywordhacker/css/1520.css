@@ -400,7 +400,7 @@ cursor:pointer;
 .loader__dot:nth-child(2) { animation-delay: 250ms; color:red;}
 .loader__dot:nth-child(3) { animation-delay: 500ms; color:red;}
 
-.gray-btn {background-color: rgba(61,61,61,.8);border-radius: 0 !important;color: #fff;font-size: 18px;font-weight: bold;margin: 0 0 15px;min-width: 160px;padding: 8px 25px !important;cursor:pointer;}
+.gray-btn {background-color: #1a1a1a;border-radius: 0 !important;color: #fff;font-size: 18px;font-weight: bold;margin: 0 0 15px;min-width: 120px;padding: 8px 15px !important;cursor:pointer;}
 .gray-btn:hover {background:#000 !important; color:#fff !important;}
 
 .read-more-state {
@@ -1355,4 +1355,9 @@ input::-webkit-inner-spin-button {
 .subscription-heading-span {
     font-weight:600;
     font-size:24px;
+}
+
+.alert-text {
+    color:#6d6e70;
+    font-size:16px;
 }

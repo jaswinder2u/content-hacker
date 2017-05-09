@@ -6782,11 +6782,11 @@ function refreshSubscriptionsDetails()
                         </ul>\n\
                         At this point, we will have identified which writers you love and we can get to work completing the rest of your project. Now that the initial foundation has been laid, you won’t need to spend as much hands-on time.";
                     
-                    
                     var subscriptionHTML = "";
+                    var totalContentOrdered = 0;
                     var subscription = info.subscriptionDetails;
                     var pmPrice = info.projectManagementPrice;
-                    /*for(var p=0; p<subscription.length; p++)
+                    for(var p=0; p<subscription.length; p++)
                     {
                         var projectInfo = subscription[p];
                         var missionSubtotal = 0;
@@ -6797,9 +6797,9 @@ function refreshSubscriptionsDetails()
                         if(projectInfo.project != "")
                         {
                             //Output the mission-level elements
-                            subscriptionHTML += "<div class=\"mission-heading\">"+
-                                                "<label>"+projectInfo.project+"</label> <a href=\"missionreport.html?pid="+projectInfo.projectID+"\" class=\"view-mission-link\">VIEW MISSION </a> </div>"+
-                                        "<div class=\"table-spacing\">";
+                            subscriptionHTML += "<div class=\"mission-heading\">\n" +
+"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a href=\"VIEW MISSION\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
+"						<div class=\"table-spacing\">\n";
 
                             var keywords = projectInfo.keywords;
                             var addPM = false;
@@ -6821,49 +6821,94 @@ function refreshSubscriptionsDetails()
                                     }
                                     else
                                     {
-                                        //Output the keyword-level elements
-                                        subscriptionHTML += "<h3 class=\"keyword-phrase-number\">"+keywordInfo.keyword+"<span style=\"float:right;text-align:right;\">content goal: "+keywordContentGoal+" pcs per month</span></h3>"+
-                                                        "<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"+
-                                                                "<tbody>"+
-                                                                        "<tr class=\"table-heading\">"+
-                                                                                "<th colspan=\"2\">ASSIGN MONTHLY CONTENT TYPE</th>"+
-                                                                                "<th>WRITING DIRECTION/INSTRUCTION</th>"+
-                                                                                "<th>COST</th>"+
-                                                                        "</tr>";
-
-                                        //Output the addon-level elements
                                         var keywordTotalContentCount = 0;
                                         var addons = keywordInfo.addons;
+                                        var numPieces = addons.length;
+                                        var contentGoalClass = "";
+                                        var addContentClass = "";
+                                        var addContentText = "";
+                                        if(numPieces < keywordContentGoal)
+                                        {
+                                            contentGoalClass = "deficient-goal";
+                                            addContentClass = "";
+                                            addContentText = "ADD DEFICIENT CONTENT";
+                                        }
+                                        else if(numPieces == keywordContentGoal)
+                                        {
+                                            contentGoalClass = "meeting-goal";
+                                            addContentClass = "extra-content";
+                                            addContentText = "ADD EXTRA CONTENT";
+                                        }
+                                        else
+                                        {
+                                            contentGoalClass = "exceeding-goal";
+                                            addContentClass = "extra-content";
+                                            addContentText = "ADD EXTRA CONTENT";
+                                        }
+                                        
+                                        //Output the keyword-level elements
+                                        subscriptionHTML += "<div class=\"monthly-goal-rh\">\n" +
+"								<div class=\"keyword-phrase-number\">"+keywordInfo.keyword+"</div>\n" +
+"								<div class=\"monthly-goal-update-rh\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-html=\"true\" data-content=\"<div class='content-goal-tooltip'><h3>MONTHLY CONTENT GOAL</h3><p>It’s you against your competitors; meet this goal to match the efforts of your competitors or exceede it to out pace them. Be consistent and avoid falling deficient.</p><ul><li><i class='rh-goal-type meeting-goal'></i>Meeting Goal</li><li><i class='rh-goal-type exceeding-goal'> </i>Exceeding Goal</li><li><i class='rh-goal-type deficient-goal'> </i>Deficient</li></ul></div>\">MONTHLY CONTENT GOAL <span class=\"value-cg-rh\">"+keywordContentGoal+"</span><i class=\"rh-goal-type "+contentGoalClass+"\"> </i></div>\n" +
+"							</div>\n" +
+"							<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+"								<tbody>\n" +
+"									<tr class=\"table-heading\">\n" +
+"										<th colspan=\"2\">ASSIGN MONTHLY CONTENT TYPE</th>\n" +
+"										<th>WRITING DIRECTION/INSTRUCTION</th>\n" +
+"										<th>COST</th>\n" +
+"									</tr>\n";
+                                        
+                                        //Output the addon-level elements
                                         for(var a=0; a<addons.length; a++)
                                         {
                                             var addonInfo = addons[a];
-                                            var selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+                                            var selectHTML = "";
+                                            if(addonInfo.addonID == 16)
+                                            {
+                                                selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+                                            }
+                                            else
+                                            {
+                                                selectHTML = addonInfo.addonName;
+                                            }
 
                                             var addonPrice = parseFloat(addonInfo.price);
                                             var addonQuantity = parseInt(addonInfo.quantity);
+                                            var addonPendingDelete = parseInt(addonInfo.pendingDelete);
 
                                             missionTotalContentCount += addonQuantity;
                                             keywordTotalContentCount += addonQuantity;
                                             missionSubtotal += (addonPrice*addonQuantity);
 
-                                            subscriptionHTML += "<tr>"+
-                                                                //"<td class=\"number text-center\"><input type=\"text\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" id=\"addon-quantity-"+addonInfo.itemID+"\" class=\"cart-text-input text-center\" value=\""+addonInfo.quantity+"\"/></td>"+
-                                                                "<td class=\"number text-center\">"+(a+1)+"</td>"+
-                                                                "<td>"+selectHTML+"</td>"+
-                                                                "<td class=\"instruction_data\"><input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateCartItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/></td>"+
-                                                                "<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>"+
-                                                                "<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteCartItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>"+
-                                                                "</td>"+
-                                                        "</tr>";
+                                            if(addonPendingDelete == 1)
+                                            {
+                                                subscriptionHTML += "<tr class=\"deleted-row\">\n" +
+"										<td class=\"number\">"+(a+1)+"</td>\n" +
+"										<td colspan=\"3\" class=\"text-center deleted-text\">DELETED</td>\n" +
+"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"restoreSubscriptionItem('"+addonInfo.itemID+"');\" ><i class=\"fa fa-reply\" aria-hidden=\"true\"></i></a>\n" +
+"									</tr>";
+                                            }
+                                            else
+                                            {
+                                                subscriptionHTML += "<tr>\n" +
+"										<td class=\"number\">"+(a+1)+"</td>\n" +
+"										<td>"+selectHTML+"</td>\n" +
+"										<td class=\"instruction_data\">"+addonInfo.contentInstructions+"</td>\n" +
+"										<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>\n" +
+"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
+"										</td>\n" +
+"									</tr>\n";
+                                            }
                                         }
-                                        if(keywordTotalContentCount<keywordContentGoal)
+                                        /*if(keywordTotalContentCount<keywordContentGoal)
                                         {
                                             addMoreClass = " red-plus";
-                                        }
+                                        }*/
                                         //Add a row for the add new button
-                                        subscriptionHTML += "<tr class=\"add-new\">"+
-                                                            "<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewCartItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus"+addMoreClass+"\" aria-hidden=\"true\"></i></a></td>"+
-                                                    "</tr>";
+                                        subscriptionHTML += "<tr class=\"add-new add-content "+addContentClass+"\">\n" +
+"										<td colspan=\"5\" class=\"text-center\"><a style=\"cursor:pointer;\" onclick=\"addNewSubscriptionItem('"+projectInfo.projectID+"','"+addonInfo.keywordID+"');\" class=\"add-new-selection\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i>"+addContentText+"</a></td>\n" +
+"									</tr>";
 
                                         //Close the keyword-level elements
                                         subscriptionHTML += "</tbody>"+
@@ -6871,7 +6916,7 @@ function refreshSubscriptionsDetails()
                                     }
                                 }
                             }
-
+                            
                             //Add a div for the project management
                             missionPMHours = Math.ceil(missionTotalContentCount*0.5);
 
@@ -6883,7 +6928,7 @@ function refreshSubscriptionsDetails()
                                 missionSubtotal += (missionPMHours*pmPrice);
                                 subscriptionHTML += " checked";
                             }
-                            subscriptionHTML += " onchange=\"toggleMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
+                            subscriptionHTML += " onchange=\"toggleSubscriptionMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
                                                 "<div class=\"custom_tooltip\">"+
                                                     "<h2>PROJECT MANAGEMENT</h2>"+
                                                     "<p>Based on your content selections for this keyword RankHacker recommends "+missionPMHours+" hours of project management to keep your marketing hands-free.</p>"+
@@ -6894,14 +6939,21 @@ function refreshSubscriptionsDetails()
 
                             //Close the mission-level elements
                             subscriptionHTML += "</div>"+
-                                    "<div class=\"cart-subtotal-section\"><label>MONTHLY CONTENT: "+missionTotalContentCount+" PCS</label> <span class=\"price\"><small>$</small>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> </div>";
+                                    "<div class=\"monthly-content-goal\">\n" +
+"							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
+"							<span class=\"price\"><sup>$</sup>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
+"							<a href=\"\" class=\"rh-update-btn\">Update </a>\n" +
+"						</div>";
                         }
-                    }*/
+                        
+                        totalContentOrdered += missionSubtotal;
+                    }
                     
                     $("#subscription-details").html(subscriptionHTML);
+                    $('[data-toggle="popover"]').popover();
+                    $("#subscription-cost-total").html("$"+numberWithCommas(totalContentOrdered.toFixed(2)));
                     
                     //Update the usage headers
-                    
                     var planName = info.planName;
                     var planPrice = info.planPrice;
                     var missionsUsed = info.monthlyMissionsUsed;
@@ -6999,5 +7051,113 @@ function refreshSubscriptionsDetails()
                     $('.custom_tooltip').removeClass('active');
                     $(this).next('.custom_tooltip').removeClass('active');
             });
+    }
+}
+
+function buildSubscriptionAddonDropdown(projectID,keywordID,itemID,addonID)
+{
+    var addonOptions = $("#addons").val();
+
+    var selectHTML = "<select class=\"cart-item-select\" onchange=\"updateSubscriptionItem('"+itemID+"')\" id=\"addon-type-"+itemID+"\">";
+    
+    if(addonOptions != "")
+    {
+        var info = JSON.parse(addonOptions);
+        if(info.status == "success")
+        {
+            var addons = info.addons;
+            for(var i=0; i<addons.length; i++)
+            {
+                var addonInfo = addons[i];
+
+                var id = addonInfo.id;
+                var desc = addonInfo.name;
+                //var price = addonInfo.price;
+
+                selectHTML += "<option class=\"cart-item-select-option\" value=\""+id+"\"";
+                if(id == addonID)
+                {
+                    selectHTML += " selected";
+                }
+                selectHTML += ">"+desc+"</option>";
+            }
+        }
+    }
+    selectHTML += "</select>";
+    return selectHTML;
+}
+
+function addNewSubscriptionItem(projectID,keywordID)
+{
+    var username = getCookie("username");
+    if(username != "" && projectID != "")
+    {
+        //addToCart(keywordID);
+        $.ajax({url: restURL, data: {'command':'addNewSubscriptionItem','username':username,'projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshSubscriptionDetails();
+            }
+        });
+    }
+}
+
+function deleteSubscriptionItem(itemID)
+{
+    $.ajax({url: restURL, data: {'command':'deleteSubscriptionItem','addonid':itemID}, type: 'post', async: true, success: function postResponse(returnData){
+            //var info = JSON.parse(returnData);
+            refreshSubscriptionDetails();
+        }
+    });
+}
+
+function updateSubscriptionItem(itemID)
+{
+    var addonType = $("#addon-type-"+itemID).val();
+    var contentInstructions = $("#addon-instructions-"+itemID).val();
+    var quantity = $("#addon-quantity-"+itemID).val();
+    
+    $.ajax({url: restURL, data: {'command':'updateSubscriptionItem','addonid':itemID,'addontype':addonType,'instructions':contentInstructions,'quantity':quantity}, type: 'post', async: true, success: function postResponse(returnData){
+            //var info = JSON.parse(returnData);
+            refreshSubscriptionDetails();
+        }
+    });
+}
+
+function addSubscriptionMissionProjectManagement(projectID,quantity)
+{
+    var username = getCookie("username");
+    if(username != "" && projectID != "")
+    {
+        $.ajax({url: restURL, data: {'command':'addMissionProjectManagement','projectid':projectID,'quantity':quantity,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshSubscriptionDetails();
+            }
+        });
+    }
+}
+
+function removeSubscriptionMissionProjectManagement(projectID)
+{
+    var username = getCookie("username");
+    if(username != "" && projectID != "")
+    {
+        $.ajax({url: restURL, data: {'command':'removeMissionProjectManagement','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshSubscriptionDetails();
+            }
+        });
+    }
+}
+
+function toggleSubscriptionMissionProjectManagement(projectID,quantity)
+{
+    var checked = $("#mission-"+projectID+"-pmbox").prop("checked");
+    if(checked)
+    {
+        addSubscriptionMissionProjectManagement(projectID,quantity);
+    }
+    else
+    {
+        removeSubscriptionMissionProjectManagement(projectID);
     }
 }

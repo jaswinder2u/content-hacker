@@ -73,7 +73,7 @@
         function run(){
             prepareNewWizard();
             loadProjectDashboard(true);
-            setInterval(loadProjectDashboard.bind(false), 30000);
+            //setInterval(loadProjectDashboard.bind(false), 30000);
         }
     </script>
     
@@ -269,11 +269,11 @@
 <div id="delete-project-window" class="delete-project-window">
     <input id="delete-project-id" type="hidden" value="0"/>
     
-    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
-        <h2 class="setup-heading">CONFIRMATION</h2>
+    <div class="alert-text" id="setup-box-outer">
+        <h2 class="alert-heading">CONFIRMATION</h2>
         <form class="project-setup-form">
             
-            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+            <div class="range-slider-section text-left alert-text">
                 <p>Are you sure you want to archive this project?</p>
             </div>
 
@@ -286,7 +286,7 @@
     
 </div>
     
-
+<!--
 <div id="activate-new-window" class="activate-new-window">
  <div class="activate-new-window-inner">
     <div class="activate-heading">
@@ -301,7 +301,7 @@
         <h3 class="shield-label">KEYWORD<br/> HACKER</h3>
         <p class="shield-description margin30t">Discover phrases with high networth</p>
         </div>
-    <!--<div class="col-lg-6"><img src="images/content_logo_gray.png" id="ch_logo" class="large-shield-right" onclick="gotoRHCreateProject('','','','','','','');"></div>-->
+    <!--<div class="col-lg-6"><img src="images/content_logo_gray.png" id="ch_logo" class="large-shield-right" onclick="gotoRHCreateProject('','','','','','','');"></div>--
         <div class="col-sm-6 col-xs-6 select-project-type"><span id="coming_soon_overlay" class="coming-soon-overlay" onclick="gotoCHPreview();">Coming Soon</span><img src="images/content_logo_gray.png" id="ch_logo" class="large-shield-right" onclick="gotoCHPreview();">
         <h3 class="shield-label">CONTENT<br/> HACKER</h3>
         <p class="shield-description margin30t">Declassify and compare competitor strategy</p>
@@ -310,15 +310,15 @@
     </div>
 </div>
 </div>
-
+-->
 
 <!-- Alert modal -->
 <div id="alert-window" class="delete-project-window">
-    <div class="" id="setup-box-outer" style="color:#6d6e70;font-size:16px">
-        <h2 class="setup-heading">ERROR</h2>
+    <div class="alert-text" id="setup-box-outer">
+        <h2 class="alert-heading">ERROR</h2>
         <form class="project-setup-form">
             
-            <div class="range-slider-section text-left" style="color:#6d6e70;font-size:16px">
+            <div class="range-slider-section text-left alert-text">
                 <p id="alert-msg-body"> </p>
             </div>
 
