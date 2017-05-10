@@ -404,18 +404,19 @@
 
 <div id="delete-subscription-window" class="delete-project-window">
     <input id="delete-subscription-id" type="hidden" value="0"/>
+    <input id="delete-subscription-type" type="hidden" value=""/>
     
     <div class="alert-text" id="setup-box-outer">
         <h2 class="alert-heading">CONFIRMATION</h2>
         <form class="project-setup-form">
             
             <div class="range-slider-section text-left alert-text">
-                <p>Are you sure you want to archive this project?</p>
+                <p id="delete-confirm-message">Are you sure you want to archive this project?</p>
             </div>
 
             <div id="submit-button-block">
-                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="cancelDeleteKeywordHackerProject();">CANCEL</a>
-                <a class="dark-blue-btn btn pull-right" style="margin-right:10px;" onclick="deleteKeywordHackerProject();">ARCHIVE</a>
+                <a class="gray-btn btn pull-right" style="margin-left:10px;" onclick="hideDeleteWindow();">CANCEL</a>
+                <a class="dark-blue-btn btn pull-right" style="margin-right:10px;" onclick="deleteContentSubscriptionItem();">DELETE</a>
             </div>
         </form>
     </div>
@@ -592,6 +593,6 @@ x.parentNode.insertBefore(s, x);
 });*/
 </script>
 
-
+<input type="hidden" id="addons" value=""/>
 </body>
 </html>

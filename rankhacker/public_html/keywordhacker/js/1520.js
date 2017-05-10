@@ -4237,7 +4237,8 @@ function updateCartItem(itemID)
 {
     var addonType = $("#addon-type-"+itemID).val();
     var contentInstructions = $("#addon-instructions-"+itemID).val();
-    var quantity = $("#addon-quantity-"+itemID).val();
+    //var quantity = $("#addon-quantity-"+itemID).val();
+    var quantity = 1;
     
     $.ajax({url: restURL, data: {'command':'updateCartItem','addonid':itemID,'addontype':addonType,'instructions':contentInstructions,'quantity':quantity}, type: 'post', async: true, success: function postResponse(returnData){
             //var info = JSON.parse(returnData);
@@ -6802,7 +6803,7 @@ function refreshSubscriptionsDetails()
                         {
                             //Output the mission-level elements
                             subscriptionHTML += "<div class=\"mission-heading\">\n" +
-"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a href=\"VIEW MISSION\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
+"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a style=\"cursor:pointer;\" onclick=\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"','mission');\"\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
 "						<div class=\"table-spacing\">\n";
 
                             var keywords = projectInfo.keywords;
@@ -6867,14 +6868,18 @@ function refreshSubscriptionsDetails()
                                         for(var a=0; a<addons.length; a++)
                                         {
                                             var addonInfo = addons[a];
+                                            var addonPendingAdd= parseInt(addonInfo.pendingAdd);
                                             var selectHTML = "";
-                                            if(addonInfo.addonID == 16)
+                                            var instructionsHTML = "";
+                                            if(addonInfo.addonID == 16 || addonPendingAdd == 1)
                                             {
                                                 selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+                                                instructionsHTML = "<input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateSubscriptionItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/>";
                                             }
                                             else
                                             {
                                                 selectHTML = addonInfo.addonName;
+                                                instructionsHTML = addonInfo.contentInstructions;
                                             }
 
                                             var addonPrice = parseFloat(addonInfo.price);
@@ -6898,9 +6903,9 @@ function refreshSubscriptionsDetails()
                                                 subscriptionHTML += "<tr>\n" +
 "										<td class=\"number\">"+(a+1)+"</td>\n" +
 "										<td>"+selectHTML+"</td>\n" +
-"										<td class=\"instruction_data\">"+addonInfo.contentInstructions+"</td>\n" +
+"										<td class=\"instruction_data\">"+instructionsHTML+"</td>\n" +
 "										<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>\n" +
-"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
+"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"','addon');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
 "										</td>\n" +
 "									</tr>\n";
                                             }
@@ -6945,7 +6950,7 @@ function refreshSubscriptionsDetails()
                             subscriptionHTML += "</div>"+
                                     "<div class=\"monthly-content-goal\">\n" +
 "							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
-"							<span class=\"price\"><sup>$</sup>"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
+"							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
 "							<a href=\"\" class=\"rh-update-btn\">Update </a>\n" +
 "						</div>";
                         }
@@ -7105,22 +7110,14 @@ function addNewSubscriptionItem(projectID,keywordID)
     }
 }
 
-function deleteSubscriptionItem(itemID)
-{
-    $.ajax({url: restURL, data: {'command':'deleteSubscriptionItem','addonid':itemID}, type: 'post', async: true, success: function postResponse(returnData){
-            //var info = JSON.parse(returnData);
-            refreshSubscriptionDetails();
-        }
-    });
-}
-
 function updateSubscriptionItem(itemID)
 {
     var addonType = $("#addon-type-"+itemID).val();
     var contentInstructions = $("#addon-instructions-"+itemID).val();
-    var quantity = $("#addon-quantity-"+itemID).val();
+    //var quantity = $("#addon-quantity-"+itemID).val();
+    var quantity = 1;
     
-    $.ajax({url: restURL, data: {'command':'updateSubscriptionItem','addonid':itemID,'addontype':addonType,'instructions':contentInstructions,'quantity':quantity}, type: 'post', async: true, success: function postResponse(returnData){
+    $.ajax({url: restURL, data: {'command':'updateCartItem','addonid':itemID,'addontype':addonType,'instructions':contentInstructions,'quantity':quantity}, type: 'post', async: true, success: function postResponse(returnData){
             //var info = JSON.parse(returnData);
             refreshSubscriptionDetails();
         }
@@ -7163,5 +7160,51 @@ function toggleSubscriptionMissionProjectManagement(projectID,quantity)
     else
     {
         removeSubscriptionMissionProjectManagement(projectID);
+    }
+}
+
+function cancelDeleteSubscriptionItem()
+{
+    $("#delete-subscription-window").hide();
+    $("#dimmer").hide();
+}
+
+function confirmDeleteSubscriptionItem(itemID,type)
+{
+    $("#delete-confirm-message").html("Are you sure you want to remove this content order from your subscription?");
+    $("#delete-subscription-id").val(itemID);
+    $("#delete-subscription-type").val(type);
+    $("#delete-subscription-window").show();
+    $("#dimmer").show();
+}
+
+function deleteContentSubscriptionItem()
+{
+    var itemID = $("#delete-subscription-id").val();
+    var type = $("#delete-subscription-type").val();
+    
+    var username = getCookie("username");
+    if(username != "" && itemID != "" && type != "")
+    {
+        $.ajax({url: restURL, data: {'command':'deleteContentSubscriptionItem','itemid':itemID,'type':type,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                $("#delete-subscription-window").hide();
+                $("#dimmer").hide();
+                refreshSubscriptionDetails();
+            }
+        });
+    }
+}
+
+function restoreSubscriptionItem(itemID)
+{
+    var username = getCookie("username");
+    if(username != "" && itemID != "")
+    {
+        $.ajax({url: restURL, data: {'command':'restoreContentSubscriptionItem','itemid':itemID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                refreshSubscriptionDetails();
+            }
+        });
     }
 }
