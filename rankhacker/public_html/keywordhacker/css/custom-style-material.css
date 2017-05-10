@@ -1021,11 +1021,17 @@ border-left: 1px solid #CED0D1;border-top: 1px solid #CED0D1;border-bottom: 1px 
 
 .rh-policy-table ul:hover.heading-row {border-color:#CED0D1;box-shadow: 0 0 0 rgba(0, 0, 0, 0);border-right: none;}
 
-.rh-policy-table ul.heading-row li {justify-content:left;}
+.rh-policy-table ul.heading-row li {justify-content:flex-start;}
 
 .rh-policy-table ul li i.fa-check {color: #009f4b;font-size: 26px;}
 
 .rh-policy-table ul li.title-ot, .rh-policy-table ul.heading-row li.title-ot {background-color:#00458B;color:#fff;}
+
+.rh-seo-insurance4 ul, .rh-seo-insurance4 ul li {float: left;list-style: outside none none;margin: 0;padding: 0;width: 100%;position: relative;}
+
+.rh-seo-insurance4 ul li::before {background-color: #fff;border-radius: 100%;content: "";height: 8px;left: 0;position: absolute;top: 8px;width: 8px;}
+
+.rh-seo-insurance4 ul li {padding-left: 20px;}
 
 .rh-policy-table ul.heading-row li.title-ot {background-color:#005CB8;}
 
