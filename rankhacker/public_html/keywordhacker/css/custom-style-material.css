@@ -993,7 +993,9 @@ background-image: url("../images/agency-img4-arrow.png");background-position: 0 
 
 .seo-insurance-outer , .seo-insurance-outer h2 {text-align:left;}
 
-.seo-insurance-outer h2 {float: left;font-family: "Montserrat",sans-serif;font-size: 30px;line-height: normal;margin: 0 0 10px 0;padding: 0;width: 100%;}
+.seo-insurance-outer .seo-insurance-heading {float: left;font-family: "Montserrat",sans-serif;font-size: 30px;line-height: normal;margin: 0 0 10px 0;padding: 0;width: 100%;}
+
+.seo-insurance-outer .seo-insurance-title  {float: left;font-family: 'American Typewriter';font-size: 48px;line-height: normal;margin: 0 0 10px 0;padding: 0;width: 100%;color:#6D6E70;}
 
 .seo-insurance-outer p {float: left;font-family: 'PT Sans';font-size: 18px;line-height: 24px;margin: 0 0 15px 0;padding: 0;width: 100%;}
 
@@ -1002,26 +1004,34 @@ text-align: center;}
 
 .rh-policy-table {float: left;margin: -68px 0 50px;padding: 0;width: 100%;}
 
-.rh-policy-table ul {float: left;margin: 0;padding: 0;width: 210px;border: 1px solid #CED0D1;text-align:center;border-right:1px solid transparent;}
+.rh-policy-table ul {float: left;margin: 0;padding: 0;width: 210px;text-align:center;position: relative;
+border-left: 1px solid #CED0D1;border-top: 1px solid #CED0D1;border-bottom: 1px solid #CED0D1;border-right:1px solid #fff;}
+
+.rh-policy-table ul.heading-row {border-right:0 solid transparent;border-right:none; }
+
+.rh-policy-table ul.full-coverage {border-right:1px solid #CED0D1;}
 
 .rh-policy-table ul.heading-row {width: calc(100% - 630px);text-align:left;}
-
 
 .rh-policy-table ul li {align-items: center;border-bottom: 1px solid #CED0D1;color: #231f20;display: flex;font-size: 18px;height: 68px;padding: 5px 20px;justify-content:center;font-family:"PT Sans";background-color: #fff;}
 
 .rh-policy-table ul li:last-child {border-bottom:none;}
 
-.rh-policy-table ul:last-child {border-right:1px solid #CED0D1;}
-
 .rh-policy-table ul:hover , .rh-policy-table ul:hover:last-child{border-color:#26A7DE;}
 
-.rh-policy-table ul:hover.heading-row {border-color:#CED0D1;}
+.rh-policy-table ul:hover.heading-row {border-color:#CED0D1;box-shadow: 0 0 0 rgba(0, 0, 0, 0);border-right: none;}
 
-.rh-policy-table ul.heading-row li {justify-content:left;}
+.rh-policy-table ul.heading-row li {justify-content:flex-start;}
 
 .rh-policy-table ul li i.fa-check {color: #009f4b;font-size: 26px;}
 
 .rh-policy-table ul li.title-ot, .rh-policy-table ul.heading-row li.title-ot {background-color:#00458B;color:#fff;}
+
+.rh-seo-insurance4 ul, .rh-seo-insurance4 ul li {float: left;list-style: outside none none;margin: 0;padding: 0;width: 100%;position: relative;}
+
+.rh-seo-insurance4 ul li::before {background-color: #fff;border-radius: 100%;content: "";height: 8px;left: 0;position: absolute;top: 8px;width: 8px;}
+
+.rh-seo-insurance4 ul li {padding-left: 20px;}
 
 .rh-policy-table ul.heading-row li.title-ot {background-color:#005CB8;}
 
@@ -1041,7 +1051,7 @@ text-align: center;}
 
 .rh-policy-table ul:hover li.title-ot {color:#fff;}
 
-.rh-policy-table ul li.rh-subscribe-ot {background-color: #e4e5e6;}
+.rh-policy-table ul li.rh-subscribe-ot {background-color: #e4e5e6;position: relative;}
 
 .rh-policy-table ul li.rh-subscribe-ot a {background-color: #005cb8;color: #fff;font-size: 17px;font-weight: 600;padding: 5px 15px;}
 
@@ -1049,15 +1059,14 @@ text-align: center;}
 
 .rh-policy-table ul:hover li.rh-subscribe-ot {background-color: #fff;}
 
-.rh-policy-table ul.heading-row li.rh-s-note {align-items: left;background-color: transparent;height: auto;position: relative;}
+.rh-s-note {align-items: left !important;background-color: transparent !important;height: auto !important;position: relative;}
 
-.rh-policy-table ul.heading-row li.rh-s-note p {color: #404040;font-size: 11px;line-height: normal;margin: 0;}
+.rh-s-note p {color: #404040;font-size: 11px;line-height: normal;margin: 0;}
 
 .rh-policy-table ul.heading-row li.rh-s-note::before, .rh-policy-table ul.heading-row li.rh-s-note::after {
 background-color: #e4e5e6;bottom: 0;content: "";height: 100%;margin-right: -1px;position: absolute;right: 100%;top: 0;width: 2px;}
 
 .rh-policy-table ul.heading-row li.rh-s-note::after {height: 2px;left: 0;margin-top: -1px;right: 0;top: 100%;width: 100%;}
-
 
 .rh-seo-insurance1 , .rh-seo-insurance3{background-color:#E4E5E6;color:#3D3D3D;}
 
@@ -1065,34 +1074,13 @@ background-color: #e4e5e6;bottom: 0;content: "";height: 100%;margin-right: -1px;
 
 .rh-seo-insurance5 {background-color:#005CB8;}
 
-.rh-seo-insurance-logo {
-  float: left;
-  margin: 40px 0;
-  position: relative;
-  width: 100%;
-  z-index: 9;
-}
+.rh-seo-insurance-logo {float: left;margin: 40px 0;position: relative;width: 100%;z-index: 9;}
 
-.rh-seo-insurance-logo::before {
-  background-color: #005cb8;
-  content: "";
-  height: 1000px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 50%;
-}
+.rh-seo-insurance-logo::before {background-color: #005cb8;content: "";height: 1000px;left: 0;position: absolute;right: 0;top: 50%;}
 
-.rh-seo-insurance-logo img {
-  max-width: 500px;
-  position: relative;
-  z-index: 1;
-}
+.rh-seo-insurance-logo img {max-width: 500px;position: relative;z-index: 1;}
 
-.rh-seo-insurance1 {
-  overflow: hidden;
-}
-
+.rh-seo-insurance1 {overflow: hidden;}
 
 .rh-policy-table ul li.title-ot, .rh-policy-table ul.heading-row li.title-ot {position: relative;}
 
@@ -1100,8 +1088,35 @@ background-color: #e4e5e6;bottom: 0;content: "";height: 100%;margin-right: -1px;
 
 .rh-seo-insurance5-right{float: right; width: calc(100% - 340px); margin: 10px 0 0 0; padding: 0px;}
 
+.rh-s-note.mobile-visible {display: none;}
 
+.rh-policy-table ul li.title-ot::after, .rh-policy-table ul li.title-ot::before , 
+.rh-policy-table ul li.rh-subscribe-ot::after, .rh-policy-table ul li.rh-subscribe-ot::before{
+background-color: #00458b !important;content: "";height: 100%;position: absolute;right: -1px;top: 0;width: 1px;}
 
+.rh-policy-table ul::before , .rh-policy-table ul.seo-liability::after , .rh-policy-table ul.seo-comprehensive::after , .rh-policy-table ul.full-coverage::after{
+background-color: #00458b !important;content: "";height: 1px;position: absolute;right: 0;left: 0;top: -1px;width: 100%;}
+
+.rh-policy-table ul li.title-ot::before , .rh-policy-table ul li.rh-subscribe-ot::before{left: -1px;right: auto;}
+
+.rh-policy-table ul li.rh-subscribe-ot::after, .rh-policy-table ul li.rh-subscribe-ot::before , 
+.rh-policy-table ul.seo-liability::after , .rh-policy-table ul.seo-comprehensive::after , 
+.rh-policy-table ul.full-coverage::after{background-color: #E4E5E6 !important;}
+
+.rh-policy-table ul:hover li.title-ot::after, .rh-policy-table ul:hover li.title-ot::before , 
+.rh-policy-table ul:hover li.rh-subscribe-ot::after, .rh-policy-table ul:hover li.rh-subscribe-ot::before ,
+.rh-policy-table ul.seo-comprehensive:hover::after , .rh-policy-table ul.full-coverage:hover::after ,
+.rh-policy-table ul.seo-liability:hover::after , .rh-policy-table ul:hover::before
+{display: none;}
+
+.rh-policy-table ul.seo-liability::after , .rh-policy-table ul.seo-comprehensive::after , .rh-policy-table ul.full-coverage::after{top: auto;bottom: -1px;}
+
+.rh-policy-table ul::before {left: -1px;right: -1px;width: auto;}
+
+.rh-policy-table ul.heading-row:hover::before , .rh-policy-table ul.heading-row:hover li.title-ot::before, 
+.rh-policy-table ul.heading-row:hover li.title-ot::after  {display: block;}
+
+.rh-policy-table ul:hover {box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);position: relative;z-index: 1;}	
 
 
 
@@ -1340,7 +1355,7 @@ background-color: #e4e5e6;bottom: 0;content: "";height: 100%;margin-right: -1px;
 
 .agency-st7 .agency-content-box {padding-left: 15px;padding-right: 55px;}
 
-.seo-insurance-outer h2 {font-size: 26px;}
+.seo-insurance-outer .seo-insurance-heading {font-size: 26px;}
 
 .rh-seo-insurance5-left {width: 230px;}
 
@@ -1357,6 +1372,8 @@ background-color: #e4e5e6;bottom: 0;content: "";height: 100%;margin-right: -1px;
 .rh-seo-insurance-logo img {max-width: 380px;}
 
 .seo-insurance-outer .rh-content {padding: 0 10px;}
+
+.seo-insurance-outer .seo-insurance-title {font-size: 44px;}
 
 }
 
@@ -1519,7 +1536,7 @@ ul.package-feature li {font-size: 18px;padding: 10px 0;}
 
 .seo-insurance-outer, .seo-insurance-outer h2 {text-align: center;}
 
-.seo-insurance-outer h2 {font-size: 22px;margin-bottom: 5px;}
+.seo-insurance-outer .seo-insurance-heading {font-size: 22px;margin-bottom: 5px;}
 
 .seo-insurance-outer p {font-size: 16px;line-height: 22px;margin-bottom: 10px;}
 
@@ -1528,6 +1545,28 @@ ul.package-feature li {font-size: 18px;padding: 10px 0;}
 .rh-policy-table ul {margin-bottom: 40px;width: 100%;}
 
 .rh-policy-table ul.heading-row {display: none;}
+
+.rh-policy-table ul li::before {content: attr(data-th);justify-content: flex-start;left: 15px;position: absolute;text-align: left;top: 16px;width: 300px;}
+
+.rh-policy-table ul li {justify-content: flex-end;padding-left: 300px;position: relative;}
+
+.rh-policy-table ul li.rh-subscribe-ot , .rh-policy-table ul li.title-ot {justify-content: center;padding-left: 15px;}
+
+.rh-policy-table {float: none;margin: 25px auto;max-width: 460px;}
+
+.rh-policy-table ul li {height: 56px;}
+
+.rh-seo-insurance1, .rh-seo-insurance2, .rh-seo-insurance3, .rh-seo-insurance4, .rh-seo-insurance5, .rh-seo-insurance6 {padding: 40px 0;}
+
+.rh-policy-table ul li.rh-subscribe-ot {background-color: #fff;}
+
+.rh-policy-table ul li.rh-subscribe-ot a {font-size: 15px;}
+
+.rh-s-note.mobile-visible {display: block;float: left;margin: 0 0 25px;width: 100%;}
+
+.rh-s-note.mobile-visible p {font-size: 11px !important;line-height: normal !important;}
+
+.seo-insurance-outer .seo-insurance-title {font-size: 36px;}
 
 }
 
@@ -1743,11 +1782,13 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 
 .project-pay-content {text-align: left;}
 
-.seo-insurance-outer h2 {font-size: 20px;}
+.seo-insurance-outer .seo-insurance-heading {font-size: 20px;}
 
 .rh-seo-insurance-logo img {max-width: 180px;}
 
 .rh-seo-insurance5-left {width: 130px;}
+
+.seo-insurance-outer .seo-insurance-title {font-size: 30px;}
 
 }
 
@@ -1822,6 +1863,16 @@ table.mission-info-table tr.deleted-row td:first-child {border: none !important;
 .arrow-agency-st2::after , .keyword-networth-process li:last-child::after{display: none;}
 
 .agency-st7 .try-beta-access::after {height: 126px;width: 56px;}
+
+.rh-policy-table ul li::before {width: 225px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+.rh-policy-table ul li {padding-left: 225px;}
+
+.rh-policy-table ul li {font-size: 14px;}
+
+.rh-policy-table ul li i.fa-check {font-size: 20px;}
+
+.seo-insurance-outer .seo-insurance-title {font-size: 28px;}
 
 }
 
