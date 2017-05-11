@@ -6699,7 +6699,7 @@ function prepareSubscriptionsPage()
         
         getAddonItems(function(output){
             $("#addons").val(output);
-            refreshSubscriptionsDetails();
+            refreshSubscriptionDetails();
         });
     }
     else
@@ -6708,7 +6708,7 @@ function prepareSubscriptionsPage()
     }
 }
 
-function refreshSubscriptionsDetails()
+function refreshSubscriptionDetails()
 {
     var username = getCookie("username");
     if(username != '')
@@ -6803,7 +6803,7 @@ function refreshSubscriptionsDetails()
                         {
                             //Output the mission-level elements
                             subscriptionHTML += "<div class=\"mission-heading\">\n" +
-"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a style=\"cursor:pointer;\" onclick=\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"','mission');\"\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
+"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a style=\"cursor:pointer;\" onclick=\" onclick=\"confirmDeleteSubscriptionItem('"+projectInfo.projectID+"','mission');\"\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
 "						<div class=\"table-spacing\">\n";
 
                             var keywords = projectInfo.keywords;
@@ -6820,9 +6820,13 @@ function refreshSubscriptionsDetails()
                                     var keywordContentGoal = parseInt(keywordInfo.contentGoal);
                                     var addMoreClass = "";
                                     
-                                    if(firstAddonInfo.keywordID == 0)
+                                    if(firstAddonInfo.keywordID == 0 && (firstAddonInfo.pendingAdd == 1 || firstAddonInfo.purchased == 1))
                                     {
                                         addPM = true;
+                                    }
+                                    else if(firstAddonInfo.keywordID == 0 && (firstAddonInfo.pendingAdd != 1 || firstAddonInfo.pendingDelete == 1))
+                                    {
+                                        addPM = false;
                                     }
                                     else
                                     {
@@ -6873,7 +6877,7 @@ function refreshSubscriptionsDetails()
                                             var instructionsHTML = "";
                                             if(addonInfo.addonID == 16 || addonPendingAdd == 1)
                                             {
-                                                selectHTML = buildAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
+                                                selectHTML = buildSubscriptionAddonDropdown(projectInfo.projectID,keywordInfo.keywordID,addonInfo.itemID,addonInfo.addonID);
                                                 instructionsHTML = "<input type=\"text\" class=\"cart-text-input text-left\" id=\"addon-instructions-"+addonInfo.itemID+"\" onchange=\"updateSubscriptionItem('"+addonInfo.itemID+"')\" value=\""+addonInfo.contentInstructions+"\"/>";
                                             }
                                             else
@@ -6888,7 +6892,15 @@ function refreshSubscriptionsDetails()
 
                                             missionTotalContentCount += addonQuantity;
                                             keywordTotalContentCount += addonQuantity;
-                                            missionSubtotal += (addonPrice*addonQuantity);
+                                            if(addonInfo.addonID == 15 && !addPM)
+                                            {
+                                                //Don't add
+                                            }
+                                            else
+                                            {
+                                                missionSubtotal += (addonPrice*addonQuantity);
+                                            }
+                                            
 
                                             if(addonPendingDelete == 1)
                                             {
@@ -6931,12 +6943,13 @@ function refreshSubscriptionsDetails()
 
                             subscriptionHTML += "<div class=\"project-management-checkbox\">"+
                                             "<input type=\"checkbox\" id=\"mission-"+projectInfo.projectID+"-pmbox\"";
-
+//console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal = "+missionSubtotal);
                             if(addPM)
                             {
                                 missionSubtotal += (missionPMHours*pmPrice);
                                 subscriptionHTML += " checked";
                             }
+console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal = "+missionSubtotal);
                             subscriptionHTML += " onchange=\"toggleSubscriptionMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
                                                 "<div class=\"custom_tooltip\">"+
                                                     "<h2>PROJECT MANAGEMENT</h2>"+
@@ -6951,7 +6964,7 @@ function refreshSubscriptionsDetails()
                                     "<div class=\"monthly-content-goal\">\n" +
 "							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
 "							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
-"							<a href=\"\" class=\"rh-update-btn\">Update </a>\n" +
+"							<span id=\"update-container-"+projectInfo.projectID+"\"><a style=\"cursor:pointer;\" onclick=\"handleUpdateSubscription(event,'"+projectInfo.projectID+"');\" class=\"rh-update-btn\">Update </a></span>\n" +
 "						</div>";
                         }
                         
@@ -7129,7 +7142,7 @@ function addSubscriptionMissionProjectManagement(projectID,quantity)
     var username = getCookie("username");
     if(username != "" && projectID != "")
     {
-        $.ajax({url: restURL, data: {'command':'addMissionProjectManagement','projectid':projectID,'quantity':quantity,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+        $.ajax({url: restURL, data: {'command':'addSubscriptionMissionProjectManagement','projectid':projectID,'quantity':quantity,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
                 refreshSubscriptionDetails();
             }
@@ -7142,7 +7155,7 @@ function removeSubscriptionMissionProjectManagement(projectID)
     var username = getCookie("username");
     if(username != "" && projectID != "")
     {
-        $.ajax({url: restURL, data: {'command':'removeMissionProjectManagement','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+        $.ajax({url: restURL, data: {'command':'removeSubscriptionMissionProjectManagement','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
                 refreshSubscriptionDetails();
             }
@@ -7206,5 +7219,45 @@ function restoreSubscriptionItem(itemID)
                 refreshSubscriptionDetails();
             }
         });
+    }
+}
+
+function handleUpdateSubscription(e,projectID)
+{
+    var e = e || window.event;
+    e.preventDefault();
+    
+    var cbCustomerID = getCookie("cbCustomerID");
+    var username = getCookie("username");
+    
+    if(cbCustomerID == "")
+    {
+        window.location = '../keywordhacker/error.html';
+    }
+    else
+    {
+        if(username != "")
+        {
+            //$.ajax({url: restURL, data: {'command':'addSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
+            $.ajax({url: restURL, data: {'command':'updateSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
+                    var info = JSON.parse(returnData);
+                    if(info.status == "success")
+                    {
+                        refreshSubscriptionDetails();
+                        //Change the "Update" button to "Updated" text
+                        $("#update-container-"+projectID).html("<span class=\"rh-updated\">Updated</span>");
+                        
+                    }
+                    else
+                    {
+                        window.location = '../keywordhacker/error.html';
+                    }
+                }
+            });
+        }
+        else
+        {
+            window.location = '../keywordhacker/error.html';
+        }
     }
 }
