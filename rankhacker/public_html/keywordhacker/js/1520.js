@@ -1,7 +1,7 @@
-/*var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
-var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";*/
-var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
-var rhURL = "http://localhost:8383/rankhacker/";
+var restURL = "https://www.rankhacker.com/rest2.0/kh_endpoint.jsp?"
+var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
+/*var restURL = "http://localhost:8084/rest2.0/kh_endpoint.jsp?"
+var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
 var maxKeywordsPerProject = 25;
@@ -955,7 +955,7 @@ function loadProjectDashboard(flip)
         if(completed != 1)
         {
             //keywordNetWorthString = "<span style=\"color:red;display:block;\" class=\"loader__dot\">"+completionPercent+"%&nbsp;data collected</span>";
-            keywordNetWorthString = "<span style=\"color:red;display:block;font-size:20px;line-height:20px;vertical-align:middle;text-align:center;padding:5px 0;padding-right:-2px;\" class=\"loader__dot\">gathering intel</span>";
+            keywordNetWorthString = "<span style=\"color:red;display:block;font-size:18px;line-height:20px;vertical-align:middle;text-align:center;padding:5px 0;padding-right:-2px;\" class=\"loader__dot\">gathering intel</span>";
             anchorAhref = "style=\"cursor:pointer;\" onclick=\"window.location='missionreport.html?pid="+projectID+"';\" onmouseover=\"highlightKWHCard('"+projectID+"');\" onmouseout=\"restoreKWHCard('"+projectID+"');\"";
             plSum = "--";
         }
@@ -6789,6 +6789,7 @@ function refreshSubscriptionDetails()
                     
                     var subscriptionHTML = "";
                     var totalContentOrdered = 0;
+                    var totalNumPieces = 0;
                     var subscription = info.subscriptionDetails;
                     var pmPrice = info.projectManagementPrice;
                     for(var p=0; p<subscription.length; p++)
@@ -6833,6 +6834,10 @@ function refreshSubscriptionDetails()
                                         var keywordTotalContentCount = 0;
                                         var addons = keywordInfo.addons;
                                         var numPieces = addons.length;
+                                            if(addPM)
+                                            {
+                                                numPieces = numPieces - 1;
+                                            }
                                         var contentGoalClass = "";
                                         var addContentClass = "";
                                         var addContentText = "";
@@ -6872,7 +6877,7 @@ function refreshSubscriptionDetails()
                                         for(var a=0; a<addons.length; a++)
                                         {
                                             var addonInfo = addons[a];
-                                            var addonPendingAdd= parseInt(addonInfo.pendingAdd);
+                                            var addonPendingAdd = parseInt(addonInfo.pendingAdd);
                                             var selectHTML = "";
                                             var instructionsHTML = "";
                                             if(addonInfo.addonID == 16 || addonPendingAdd == 1)
@@ -6889,6 +6894,11 @@ function refreshSubscriptionDetails()
                                             var addonPrice = parseFloat(addonInfo.price);
                                             var addonQuantity = parseInt(addonInfo.quantity);
                                             var addonPendingDelete = parseInt(addonInfo.pendingDelete);
+                                            
+                                            if(addonInfo.addonID != 15 && addonInfo.addonID != 16 && addonPendingDelete != 1)
+                                            {
+                                                totalNumPieces += addonQuantity;
+                                            }
 
                                             missionTotalContentCount += addonQuantity;
                                             keywordTotalContentCount += addonQuantity;
@@ -6943,13 +6953,13 @@ function refreshSubscriptionDetails()
 
                             subscriptionHTML += "<div class=\"project-management-checkbox\">"+
                                             "<input type=\"checkbox\" id=\"mission-"+projectInfo.projectID+"-pmbox\"";
-//console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal = "+missionSubtotal);
+
                             if(addPM)
                             {
                                 missionSubtotal += (missionPMHours*pmPrice);
                                 subscriptionHTML += " checked";
                             }
-console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal = "+missionSubtotal);
+
                             subscriptionHTML += " onchange=\"toggleSubscriptionMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
                                                 "<div class=\"custom_tooltip\">"+
                                                     "<h2>PROJECT MANAGEMENT</h2>"+
@@ -6987,32 +6997,66 @@ console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal =
                     var missionsRemaining = parseInt(missionsLimit)-parseInt(missionsUsed);
                     var keywordsRemaining = parseInt(keywordsLimit)-parseInt(keywordsUsed);
                     var revealsRemaining = parseInt(revealsLimit)-parseInt(revealsUsed);
+                    var hasFreeAccess = info.hasFreeAccess;
+                    var contentOrderThreshold = info.contentOrderThreshold;
                     
-                    var missionsGraph = Math.round((parseFloat(missionsUsed) / parseFloat(missionsLimit))*10000)/100 + "%";
-                    var keywordsGraph = Math.round((parseFloat(keywordsUsed) / parseFloat(keywordsLimit))*10000)/100 + "%";
-                    var revealsGraph = Math.round((parseFloat(revealsUsed) / parseFloat(revealsLimit))*10000)/100 + "%";
+                    var missionsGraph = Math.round((parseFloat(missionsUsed) / parseFloat(missionsLimit))*10000)/100;
+                        if(missionsGraph > 100)
+                        {
+                            missionsGraph = 100;
+                        }
+                        else if(missionsGraph == 0)
+                        {
+                            missionsGraph = 1;
+                        }
+                    var keywordsGraph = Math.round((parseFloat(keywordsUsed) / parseFloat(keywordsLimit))*10000)/100;
+                        if(keywordsGraph > 100)
+                        {
+                            keywordsGraph = 100;
+                        }
+                        else if(keywordsGraph == 0)
+                        {
+                            keywordsGraph = 1;
+                        }
+                    var revealsGraph = Math.round((parseFloat(revealsUsed) / parseFloat(revealsLimit))*10000)/100;
+                        if(revealsGraph > 100)
+                        {
+                            revealsGraph = 100;
+                        }
+                        else if(revealsGraph == 0)
+                        {
+                            revealsGraph = 1;
+                        }
 
                     if(missionsLimit == -1)
                     {
                         missionsLimit = "UNLIMITED";
                         missionsRemaining = "UNLIMITED";
-                        missionsGraph = "15%";
+                        missionsGraph = 15;
                     }
                     if(keywordsLimit == -1)
                     {
                         keywordsLimit = "UNLIMITED";
                         keywordsRemaining = "UNLIMITED";
-                        keywordsGraph = "15%";
+                        keywordsGraph = 15;
                     }
                     if(revealsLimit == -1)
                     {
                         revealsLimit = "UNLIMITED";
                         revealsRemaining = "UNLIMITED";
-                        revealsGraph = "15%";
+                        revealsGraph = 15;
                     }
                     
                     $("#plan-name").html(planName);
-                    $("#plan-price").html("$"+planPrice);
+                    if(hasFreeAccess == 1)
+                    {
+                        $("#plan-price").html("FREE!");
+                    }
+                    else
+                    {
+                        $("#plan-price").html("$"+planPrice+"/month");
+                    }
+                    
                     
                     $("#mission-usage").html(missionsUsed);
                     $("#mission-limit").html(missionsLimit);
@@ -7026,35 +7070,45 @@ console.log("addPM = "+addPM+" for mission "+projectInfo.projectID+"; subtotal =
                     $("#reveal-limit").html(revealsLimit);
                     $("#reveal-remaining").html(revealsRemaining);
                     
-                    $("#missions-graph").css("width",missionsGraph);
-                    $("#keywords-graph").css("width",keywordsGraph);
-                    $("#reveals-graph").css("width",revealsGraph);
+                    $("#missions-graph").css("width",missionsGraph+"%");
+                    $("#keywords-graph").css("width",keywordsGraph+"%");
+                    $("#reveals-graph").css("width",revealsGraph+"%");
                     
-                    //Also grab the ChargeBee info and update the pay now button target
-                    /*var planURL = info.chargeBeePage;
-                    var chargeBeeAddons = info.chargeBeeAddons;
-                    for(var c=0; c<chargeBeeAddons.length; c++)
+                    //Compare the current number of content pieces and the user's subscription status to see if they're getting upgraded/downgraded
+                    if(hasFreeAccess == 1)
                     {
-                        var thisAddon = chargeBeeAddons[c];
-                        var thisID = thisAddon.chargeBeeID;
-                        var thisQty = thisAddon.quantity;
-                        
-                        if(c==0)
+                        //If num pieces < threshold, show warning alert
+                        if(totalNumPieces < contentOrderThreshold && contentOrderThreshold > 0)
                         {
-                            planURL += "?addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                            $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("success-message").addClass("error-message");
+                            $("#message-header").html("<img src=\"images/red-close.png\" class=\"message-icon\"/>IMPORTANT!");
+                            $("#message-content").html("By deleting this content subscription you will fall below the minimum requirement to gain free access and will be charged a monthly software lease fee of $"+planPrice);;
                         }
-                        else
+                    }
+                    else
+                    {
+                        //If num pieces > threshold, show success alert
+                        if(totalNumPieces >= contentOrderThreshold && contentOrderThreshold >= 0)
                         {
-                            planURL += "&addons[id]["+c+"]="+thisID+"&addons[quantity]["+c+"]="+thisQty;
+                            var packageName = "";
+                            if(totalNumPieces >= 60)
+                            {
+                                packageName = "RankHacker Enterprise";
+                            }
+                            else if(totalNumPieces >= 20)
+                            {
+                                packageName = "RankHacker Agency";
+                            }
+                            else if(totalNumPieces >= 10)
+                            {
+                                packageName = "RankHacker Professional";
+                            }
+                            
+                            $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("error-message").addClass("success-message");
+                            $("#message-header").html("<img src=\"images/green-check.png\" class=\"message-icon\"/>CONGRATULATIONS!");
+                            $("#message-content").html("You're account will be automatically upgraded to the <b>"+packageName+"</b> package for free. Thank you for your continued commitment to RankHacker!");
                         }
-                    }*/
-                    
-                    /*setCookie("username","",-1);
-                    setCookie("username",username,1);
-                    var cookie = getCookie("cb_path");
-                    console.log(cookie);*/
-                    //$("#pay-now-button").prop("href",planURL);
-                    
+                    }
                 }
             }
         });
@@ -7238,7 +7292,6 @@ function handleUpdateSubscription(e,projectID)
     {
         if(username != "")
         {
-            //$.ajax({url: restURL, data: {'command':'addSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
             $.ajax({url: restURL, data: {'command':'updateSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
                     if(info.status == "success")
