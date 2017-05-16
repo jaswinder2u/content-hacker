@@ -801,7 +801,7 @@ table.mission-info-table tr.table-heading:hover {background-color: transparent;}
 
 .cart-mission-spacing {float: left;margin: 0;padding: 0 15px;position: relative;width: 100%;z-index: 1;}
 
-.rh_subscription-page .cart-heading.rh_subscription-head2 {padding-right: 190px;}
+.rh_subscription-page .cart-heading.rh_subscription-head2 {/*padding-right: 190px;*/}
 
 .action-links-outer .close-btn {float: right;}
 

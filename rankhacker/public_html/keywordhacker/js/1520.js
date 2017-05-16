@@ -6894,15 +6894,21 @@ function refreshSubscriptionDetails()
                                             var addonPrice = parseFloat(addonInfo.price);
                                             var addonQuantity = parseInt(addonInfo.quantity);
                                             var addonPendingDelete = parseInt(addonInfo.pendingDelete);
-                                            
+
                                             if(addonInfo.addonID != 15 && addonInfo.addonID != 16 && addonPendingDelete != 1)
                                             {
                                                 totalNumPieces += addonQuantity;
+                                                missionTotalContentCount += addonQuantity;
+                                                keywordTotalContentCount += addonQuantity;
                                             }
 
-                                            missionTotalContentCount += addonQuantity;
-                                            keywordTotalContentCount += addonQuantity;
+                                            
+                                            
                                             if(addonInfo.addonID == 15 && !addPM)
+                                            {
+                                                //Don't add
+                                            }
+                                            else if(addonPendingDelete == 1)
                                             {
                                                 //Don't add
                                             }
@@ -7009,6 +7015,7 @@ function refreshSubscriptionDetails()
                         {
                             missionsGraph = 1;
                         }
+                        
                     var keywordsGraph = Math.round((parseFloat(keywordsUsed) / parseFloat(keywordsLimit))*10000)/100;
                         if(keywordsGraph > 100)
                         {
@@ -7028,19 +7035,19 @@ function refreshSubscriptionDetails()
                             revealsGraph = 1;
                         }
 
-                    if(missionsLimit == -1)
+                    if(missionsLimit == -1 || missionsLimit == 0)
                     {
                         missionsLimit = "UNLIMITED";
                         missionsRemaining = "UNLIMITED";
                         missionsGraph = 15;
                     }
-                    if(keywordsLimit == -1)
+                    if(keywordsLimit == -1 || keywordsLimit == 0)
                     {
                         keywordsLimit = "UNLIMITED";
                         keywordsRemaining = "UNLIMITED";
                         keywordsGraph = 15;
                     }
-                    if(revealsLimit == -1)
+                    if(revealsLimit == -1 || revealsLimit == 0)
                     {
                         revealsLimit = "UNLIMITED";
                         revealsRemaining = "UNLIMITED";

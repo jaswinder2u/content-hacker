@@ -1024,6 +1024,8 @@ border: 1px solid #e2e5e5;
 .close-icon {
     float:right;
     cursor:pointer;
+    /*width:19px;
+    height:auto;*/
 }
 
 .added-message {
