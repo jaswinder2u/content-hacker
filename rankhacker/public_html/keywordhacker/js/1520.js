@@ -7017,7 +7017,7 @@ function refreshSubscriptionDetails()
                                     "<div class=\"monthly-content-goal\">\n" +
 "							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
 "							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
-"							<span id=\"update-container-"+projectInfo.projectID+"\"><a style=\"cursor:pointer;\" onclick=\"handleUpdateSubscription(event,'"+projectInfo.projectID+"');\" class=\"rh-update-btn\">Update </a></span>\n" +
+"							<span id=\"update-container-"+projectInfo.projectID+"\"><a style=\"cursor:pointer;\" onclick=\"handleUpdateSubscription(event,'"+projectInfo.projectID+"');\" class=\"rh-update-btn\">Apply </a></span>\n" +
 "						</div>";
                         }
                         
@@ -7117,7 +7117,7 @@ function refreshSubscriptionDetails()
                     $("#missions-graph").css("width",missionsGraph+"%");
                     $("#keywords-graph").css("width",keywordsGraph+"%");
                     $("#reveals-graph").css("width",revealsGraph+"%");
-                    
+
                     //Compare the current number of content pieces and the user's subscription status to see if they're getting upgraded/downgraded
                     if(hasFreeAccess == 1)
                     {
@@ -7132,7 +7132,7 @@ function refreshSubscriptionDetails()
                     else
                     {
                         //If num pieces > threshold, show success alert
-                        if(totalNumPieces >= contentOrderThreshold && contentOrderThreshold >= 0)
+                        if(totalNumPieces >= contentOrderThreshold && contentOrderThreshold > 0)
                         {
                             var packageName = "";
                             if(totalNumPieces >= 60)
