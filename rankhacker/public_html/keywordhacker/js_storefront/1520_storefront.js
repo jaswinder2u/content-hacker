@@ -280,38 +280,28 @@ function authenticateToken()
     
     var email = getURLParameter("email");
     var token = getURLParameter("token");
-    setTimeout(function(){
-        $.ajax({url: restURL, data: {'command':'authenticateToken','email':email,'token':token}, type: 'post', async: true, success: function postResponse(returnData){
-                    var info = JSON.parse(returnData);
+    
+    $("#user-email").html(email);
+    
+    $.ajax({url: restURL, data: {'command':'authenticateToken','email':email,'token':token}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
 
-                    if(info.status == "success")
-                    {
-                        document.cookie = "username="+email;
-                        $("#rank-heading-response-message").removeClass("rank-heading-red");
-                        $("#rank-heading-response-message").addClass("rank-heading");
-                        $("#typed1").hide();
-                        $("#typed2").show();
-                        $("#typed3").hide();
-                        $("#checking-message").hide();
-                        $("#validated-message").show();
-                        /*setTimeout(function(){
-                            window.location = "login.html";
-                        },3500);*/
-                    }
-                    else if(info.status == "error")
-                    {
-                        $("#rank-heading-response-message").removeClass("rank-heading");
-                        $("#rank-heading-response-message").removeClass("rank-heading");
-                        $("#rank-heading-response-message").addClass("rank-heading");
-                        $("#rank-heading-response-message").addClass("rank-heading-red");
-                        $("#typed1").hide();
-                        $("#typed2").hide();
-                        $("#typed3").show();
-                        $("#typed-strings").html("");
-                    }
+                if(info.status == "success")
+                {
+                    document.cookie = "username="+email;
+                    $("#leader-text").html("CREATE PASSWORD FOR");
+                    $("#login-response").hide();
+                    $("#rh-form-box2").show();
                 }
-            });
-    },2500);
+                else if(info.status == "error")
+                {
+                    $("#leader-text").html("UNABLE TO VALIDATE");
+                    $("#login-response").show();
+                    $("#rh-form-box2").hide();
+                }
+            }
+        });
+    
 }
 
 function resendVerification(e)
@@ -319,7 +309,8 @@ function resendVerification(e)
     var e = e || window.event;
     //this.event.preventDefault();
     e.preventDefault();
-    var email = getURLParameter("email");
+    //var email = getURLParameter("email");
+    var email = getCookie("username");
     
     if(email != '')
     {    
@@ -328,18 +319,42 @@ function resendVerification(e)
 
                 if(info.status == "success")
                 {
-                    //showAlert("A new verification email has been sent. Please check your email.");
-                    $("#login-response").addClass("error-text");
-                    $("#login-response").html("A new verification email has been sent. Please check your email.");
+                    window.location = "verify.html";
+                    /*$("#login-response").addClass("error-text");
+                    $("#login-response").html("A new verification email has been sent. Please check your email.");*/
                 }
             }
         });
     }
     else
     {
-        //showAlert("Error: We were unable to re-send your verification email.")
-        $("#login-response").addClass("error-text");
-        $("#login-response").html("Error: We were unable to re-send your verification email.");
+        showAlert("We were unable to re-send your verification email. Please contact hq@rankhacker.com for further assistance.");
+    }
+}
+
+function retryAuthenticate(e)
+{
+    var e = e || window.event;
+    //this.event.preventDefault();
+    e.preventDefault();
+    var email = getURLParameter("email");
+    if(email != '' && email != 'null' && email != null)
+    {    
+        $.ajax({url: restURL, data: {'command':'resendUserVerification','email':email}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+
+                if(info.status == "success")
+                {
+                    window.location = "keywordhacker/verify.html";
+                    /*$("#login-response").addClass("error-text");
+                    $("#login-response").html("A new verification email has been sent. Please check your email.");*/
+                }
+            }
+        });
+    }
+    else
+    {
+        showAlert("We were unable to re-send your verification email. Please contact hq@rankhacker.com for further assistance.");
     }
 }
 
@@ -357,8 +372,7 @@ function loginAuthenticatedAccount(e)
     if(firstName != '' && lastName != '' && password != '')
     {    
         //Show the spinner
-        $("#login-response").removeClass("error-text");
-        $("#login-response").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
+        $("#login-button").html("<div><img src='keywordhacker/images/apple_spinner.gif' class='apple-spinner-small'/></div>");
         
         $.ajax({url: restURL, data: {'command':'loginAuthenticatedAccount','email':email,'firstname':firstName,'lastname':lastName,'password':password}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
@@ -383,7 +397,7 @@ function loginAuthenticatedAccount(e)
     {
         //showAlert("Error: We were unable to re-send your verification email.")
         $("#login-response").addClass("error-text");
-        $("#login-response").html("Please provide a your name and a password to continue.");
+        $("#login-response").html("Please provide your name and a password to continue.");
     }
 }
 
@@ -479,4 +493,10 @@ function showRemindPassword()
 {
     $("#login-form").hide();
     $("#password-recovery").show();
+}
+
+function setVerifyFields()
+{
+    var username = getCookie("username");
+    $("#user-email").html(username);
 }

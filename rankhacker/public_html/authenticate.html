@@ -1,131 +1,153 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- =========================
-          BASIC PAGE INFORMATION
-    ============================== -->
+              BASIC PAGE INFORMATION
+        ============================== --> 
     <title>RankHacker - The Content Intelligence Agency</title>
     <meta name="description" content="Rank Hacker is the worlds only keyword tool that gives you true ROI for top ranking phrases and hacks competitors content strategies to outpace them.">
     <meta name="keywords" content="content strategy, content roadmap, content calendar">
     <meta name="author" content="fairmarketing.com">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="shortcut icon" type="image/png" href="images_storefront/favicon2.ico"/>
-
+    <link rel="shortcut icon" type="image/png" href="keywordhacker/images_storefront/favicon2.ico"/>
 
     <!-- =========================
-         FONTS
-    ============================== -->
+             FONTS
+        ============================== -->
+    <link href="keywordhacker/fonts/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link href="keywordhacker/fonts_storefront/font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-	<link href="keywordhacker/fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <!-- =========================
-         STYLESHEETS
-    ============================== -->
+             STYLESHEETS
+        ============================== -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/keywordhacker/css/bootstrap.min.css?v=68" rel="stylesheet">-->
+    <link href="keywordhacker/css/custom-style.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css/rankhacker.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css/bootstrap-slider.min.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css/media-queries.css?v=68" rel="stylesheet" type="text/css">
+
+    <!--google js file-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+    
+    <!--1520 files-->
+    <link href="keywordhacker/css/1520.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css/spinner.css?v=68" rel="stylesheet" id="theme-change">
+
+    <link href="keywordhacker/css/media-queries.css?v=68" rel="stylesheet" type="text/css">
+    
+    <link href="keywordhacker/fonts_storefront/font-awesome/keywordhacker/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="keywordhacker/fonts_storefront/font-family.css" rel='stylesheet' type='text/css'>
     <link href="keywordhacker/css_storefront/bootstrap.min.css?v=68" rel="stylesheet">
-    <link href="keywordhacker/css_storefront/custom-style.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="keywordhacker/css_storefront/custom-style.css?v=68" rel="stylesheet" id="theme-change-storefront">
 
-   
+    <!-- material design lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link href="keywordhacker/css/bootstrap.min.css?v=68" rel="stylesheet">
+    <link href="keywordhacker/css/custom-style-material.css?v=68" rel="stylesheet" id="theme-change">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-<!--google js file-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
+    <!--jquery dropdown-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 </head>
 
-<body id="body" class="home " onload="authenticateToken();">
-
+<body id="body" class="page-loading home noisy" onload="authenticateToken();">
 
 <!-- =========================
      MAIN MENU
 ============================== -->
-<div id="rank-header-outer">
 
-<div class="container text-center">
-<a class="logo" data-text="RANKHACKER" href="index.html"><img src="keywordhacker/images_storefront/site-logo.png" alt="site-logo"> </a>
-
+<div id="site-header">
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" data-text="RANKHACKER" href="http://www.rankhacker.com"><img src="keywordhacker/images/site-logo.png" alt="site-logo"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <!--<li><a style="cursor:pointer;" onclick="gotoKHDashboard(event);">KEYWORD HACKER</a></li>
+            <li><a style="cursor:pointer;" onclick="gotoCHPreview(event);">CONTENT HACKER</a></li>-->
+            <li class="active"><a style="cursor:pointer;" onclick="javascript:window.location='login.html';">LOGIN</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 </div>
-
-</div>
+    
 
 <!-- =========================
      HEADER
 ============================== -->
-<section id="content-section">
 
-    <div id="background-image"></div>
-    <div class="scanlines"></div>
+<section id="content-section" class="blurable">
 
-    <div class="overlay interface-outer">
-		  
-		 <div class="text-center vertical-middle">
-		   <div class="rank-heading rank-heading" id="rank-heading-response-message">
-            <div id="typed-strings-checking">
-                <p>VALIDATING ACCESS...</p>
-            </div>
-            <div id="typed-strings-validated">
-                <p>ACCESS GRANTED</p>
-            </div>
-            <div id="typed-strings-error">
-                <p>ERROR: INVALID ACCESS TOKEN</p>
-            </div>
-            <span id="typed1" style="white-space:pre;"></span>
-            <span id="typed2" style="white-space:pre;display:none;"></span>
-            <span id="typed3" style="white-space:pre;display:none;"></span>
-        </div>
-			
-		<div class="verify-bottom-section">
-			<div class="container">
-                            <div class="row" id="checking-message">
-				<h3 class="col-sm-12 text-center verify-note">CHECK YOUR SPAM FOLDER - BE SURE TO ADD RANK HACKER TO YOUR ADDRESS BOOK</h3>
-				<div class="col-sm-12 text-center verify-link"><a onclick="resendVerification(event);" class="resend-verification-link">RESEND VERIFICATION</a></div>
-                            </div>
-                            
-                            <div class="row" id="validated-message">
-				<h3 class="col-sm-12 text-center verify-note">PROVIDE YOUR NAME AND CREATE A PASSWORD TO GET STARTED</h3>
-                                <div class="block-css">
-                                    <div class="col-sm-12 text-center rh-create-account">
-                                        <span class="input-outer text-center"> <label><i class="fa fa-user" aria-hidden="true"></i></label><input class="" placeholder="First Name" type="text" id="user-first-name"> </span>
-                                    </div>
+<!--div class="scanlines"></div-->
 
-                                    <div class="col-sm-12 text-center rh-create-account">
-                                        <span class="input-outer text-center"> <label><i class="fa fa-user" aria-hidden="true"></i></label><input class="" placeholder="Last Name" type="text" id="user-last-name"> </span>
-                                    </div>
-
-                                    <div class="col-sm-12 text-center rh-create-account">
-                                        <span class="input-outer text-center"> <label><i class="fa fa-lock" aria-hidden="true"></i></label><input class="" placeholder="Password" type="password" id="user-password" onkeypress="registerAuthenticatedAction(event);"> </span>
-                                    </div>
-                                
-                                <div class="col-sm-12 text-center">
-                                    <span style="margin-top:25px;"><a class="login-btn" onclick="loginAuthenticatedAccount(event);" >LOG IN <!--<span>SHOW ME THE NET-WORTH</span>--></a></span>
-				</div>
-                            </div>
-                                <div class="block-css">
-                                    <br/>
-                                    <span id="login-response">
-                                        
-                                    </span>
-                                </div>
-			</div>
+    <div class="overlay account-pages padding0b" id="">
+	
+	<div class="block-center" id="login-form">
+		<h1 class="account-heading">INTELLIGENCE AWAITS</h1>		
+		<div class="rh-form-outer">
+		  <h3 class="account-title">
+                      <span style="display:inline-block;float:left;"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                      <span style="display:inline-block;float:left;"><span id="leader-text"></span>:
+                      <br><span class="rh-blue-text" id="user-email"></span>
+                      </span>
+                  </h3>
+                    <p id="login-response" class="rh-error-text" style="display:none;">
+                        There was an error validating your access token.
+                        <br/><br/><a onclick="retryAuthenticate(event);" id="resend-link" class="resend-verification-link">Resend Verification Email</a>
                         
-		</div>
-					  
-		  </div>
-
-	</div>  
+                    </p>
+		  <form id="rh-form-box2" style="display:none;">
+		  <input class="rh-input" type="text" placeholder="FIRST NAME" id="user-first-name" style="width:48%;display:inline;float:left;">
+                  <input class="rh-input" type="text" placeholder="LAST NAME" id="user-last-name" style="width:48%;display:inline;float:left;margin-left:4%;">
+		  <input class="rh-input" type="password" placeholder="PASSWORD" id="user-password" onkeypress="registerAction(event);">
+		  <button class="form-submit-btn" type="button" onclick="loginAuthenticatedAccount(event);" id="login-button">LOGIN</button>
+                  </form>
+		</div>	
+	</div>
 	
-	
+<!-- Edit project modal -->
+<div id="dimmer" class="dimmer"></div>
 
+<!-- Alert modal -->
+<div id="alert-window" class="delete-project-window">
+    <div class="alert-text" id="setup-box-outer">
+        <h2 class="alert-heading">ERROR</h2>
+        <form class="project-setup-form">
+            
+            <div class="range-slider-section text-left alert-text">
+                <p id="alert-msg-body"> </p>
+            </div>
+
+            <div id="submit-button-block">
+                <a class="dark-blue-btn btn pull-right" id="alert_close_button" onclick="hideAlert();">CLOSE</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+    </div>
 </section>
+
+
 
 <!-- =========================
      FOOTER
@@ -147,9 +169,9 @@
 		 <!--Footer left section start here-->
             <div class="footer-link col-sm-4">
                   <ul class=""> 
-                <li> <a href="#">FAQs</a>
+                <li> <a href="faq.html">FAQs</a></li>
                 <!--<li> <a href="#">What is this?</a></li>-->
-                <!--<li> <a href="blog.html" target="_blank"> Check out our blog</a></li>-->
+                <!--<li> <a href="../blog.html" target="_blank"> Check out our blog</a></li>-->
               </ul>
                 </div>
 		<!--footer left section close here-->
@@ -166,80 +188,36 @@
             </div>
       </footer>
 	  <!--Footer close here-->
-
+	
 <!-- =========================
      JS SCRIPTS
 ============================== -->
 <!-- JQUERY -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!--Text typing effect js -->
-<script type="text/javascript" src="keywordhacker/js_storefront/typed.min.js"></script>
 
+    <!-- Fancy box files -->
+    <link href="keywordhacker/css/jquery.fancybox.css" rel="stylesheet">
+    <script src="keywordhacker/js/jquery.fancybox.pack.js"></script>
+    
 <!--1520 js file-->
 <script type="text/javascript" src="keywordhacker/js_storefront/1520_storefront.js?v=68"></script>
 
+<!-- BOOTSTRAP SCRIPTS -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="keywordhacker/js/jquery.matchHeight-min.js"></script>
+<script src="keywordhacker/js/bootstrap-slider.js?v=68"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.matchheight').matchHeight();
+    });
+
+</script>
 <script>
-    $(function(){
-
-        $("#typed1").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings-checking'),
-            typeSpeed: 80,
-            backDelay: 500,
-            loop: false,
-            showCursor: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-        
-        $("#typed2").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings-validated'),
-            typeSpeed: 80,
-            backDelay: 500,
-            loop: false,
-            showCursor: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-        
-        $("#typed3").typed({
-            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
-            stringsElement: $('#typed-strings-error'),
-            typeSpeed: 80,
-            backDelay: 500,
-            loop: false,
-            showCursor: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-
-        $(".reset").click(function(){
-            $("#typed1").typed('reset');
-            $("#typed2").typed('reset');
-            $("#typed3").typed('reset');
-        });
-    });	
-		 $(document).ready(function () {
-			
-			 var headerheight = $('#rank-header-outer').height();
-			  $("body").css("padding-top", headerheight);
-			  //$("body.home").css("padding-top", "0px");	   
-		});
-
-
-
-    </script>
+    jQuery(document).ready(function () {
+        $('.fancybox').fancybox();
+    });
+</script>
 
 <script type="text/javascript">
 (function() {

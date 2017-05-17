@@ -90,11 +90,11 @@ color: #808184;font-family: "Montserrat",sans-serif;font-size: 14px;font-weight:
 
 .verify-bottom-section {clear: both;display: block;float: left;margin: 20px 0 0;padding: 0;width: 100%;}
 
-.verify-note , .resend-verification-link{font-size: 20px;font-weight: normal;margin: 0;text-transform: uppercase;color: #231f20;line-height: normal;font-family:"Montserrat",sans-serif !important;}
+.verify-note , .resend-verification-link{font-size: 14px;font-weight: normal;margin: 0;line-height: normal;font-family:"Montserrat",sans-serif !important;}
 
 .verify-note {margin-bottom: 15px;}
 
-.resend-verification-link {color:#005CB8;}
+.resend-verification-link {color: #6d6e70;text-decoration:underline !important;}
 
 /*login page css */
 
