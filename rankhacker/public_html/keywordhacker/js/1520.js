@@ -4,7 +4,7 @@ var rhURL = "https://www.rankhacker.com/rhstorefront_v2/";
 var rhURL = "http://localhost:8383/rankhacker/";*/
 
 //var maxProjects = 3;
-var maxKeywordsPerProject = 25;
+/*var maxKeywordsPerProject = 25;
 var currUser = getCookie("username");
 if(currUser != "")
 {
@@ -12,7 +12,7 @@ if(currUser != "")
     {
         maxKeywordsPerProject = 10000;
     }
-}
+}*/
 //var maxDeletedKeywords = 50;
 
 $(".show-more a").each(function() {
@@ -57,10 +57,11 @@ function registerMissionReportListeners()
             
             var currentCount = parseInt($('#keyword-count').val());
     
-            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            //if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            if(false)
             {
-                $("#alert-window").removeClass("alert-window");
-                $("#alert-window").addClass("alert-window-large");
+                /*$("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");*/
                 showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
             }
             else
@@ -127,10 +128,11 @@ $(".suggest-keywords-list-2 ul ").on("click", "li", function () {
             
             var currentCount = parseInt($('#keyword-count').val());
     
-            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            //if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            if(false)
             {
-                $("#alert-window").removeClass("alert-window");
-                $("#alert-window").addClass("alert-window-large");
+                /*$("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");*/
                 showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
             }
             else
@@ -228,10 +230,11 @@ $("a#button-add-url").on("click", function (event) {
             
             var currentCount = parseInt($('#keyword-count').val());
     
-            if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            //if((activeKeywords+currentCount+1) > maxKeywordsPerProject)
+            if(false)
             {
-                $("#alert-window").removeClass("alert-window");
-                $("#alert-window").addClass("alert-window-large");
+                /*$("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");*/
                 showAlert("The number of keywords allowed is currently limited. Only 25 active phrases per mission are allowed.");
             }
             else
@@ -693,9 +696,17 @@ function createKeywordHackerProject(e)
                     else
                     {
                         $("#reveal-button").html("Reveal <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>");
-                        $("#alert-window").removeClass("alert-window");
-                        $("#alert-window").addClass("alert-window-large");
-                        showAlert(info.message);
+                        /*$("#alert-window").removeClass("alert-window");
+                        $("#alert-window").addClass("alert-window-large");*/
+                        if(info.message == "Mission/keyword limit reached.")
+                        {
+                            var message = "Oops, it looks like you have run out of available missions and/or keywords under your current subscription plan.<br><br>You can <a href=\"subscriptions.html\">upgrade your access level by clicking here</a>.";
+                            showAlert(message);
+                        }
+                        else
+                        {
+                            showAlert(info.message);
+                        }
                     }
                 }
             });
@@ -856,12 +867,13 @@ function loadProjectDashboard(flip)
     
     //var totalProjects = info.totalProjects;
     //if(totalProjects >= maxProjects)
-    if(canCreate == "false")
+    //if(canCreate == "false")
+    if(false)
     {
         $("#kh_logo").click(function(){
             $("#activate-new-window").hide();
-            $("#alert-window").removeClass("alert-window");
-            $("#alert-window").addClass("alert-window-large");
+            /*$("#alert-window").removeClass("alert-window");
+            $("#alert-window").addClass("alert-window-large");*/
             showAlert("It looks like you've already created the maximum of 3 missions. Please contact RankHacker about subscription options.");});
     }
     else
@@ -1352,10 +1364,11 @@ function addKeyword(e)
                 $('#keyword-count').val(newKeywordCount);
             }
             
-            if((newKWLength+currentCount) > maxKeywordsPerProject)
+            //if((newKWLength+currentCount) > maxKeywordsPerProject)
+            if(false)
             {
-                $("#alert-window").removeClass("alert-window");
-                $("#alert-window").addClass("alert-window-large");
+                /*$("#alert-window").removeClass("alert-window");
+                $("#alert-window").addClass("alert-window-large");*/
                 showAlert("The number of keywords allowed per mission is currently limited. Only the first "+maxKeywordsPerProject+" phrases have been included.");
             }
             $('#new-keyword').val(newKeywords);
@@ -2153,6 +2166,7 @@ function recalculateProject()
 {
     $('body').addClass('wait');
 
+    var username = getCookie("username");
     var projectID = getURLParameter("pid");
     if(projectID != '')
     {
@@ -2174,7 +2188,7 @@ function recalculateProject()
                 keywordsList += ";"+keyword;
             }
         }
-        $.ajax({url: restURL, data: {'command':'addKeywordsToExistingProject','projectid':projectID,'keywords':keywordsList}, type: 'post', async: true, success: function postResponse(returnData){
+        $.ajax({url: restURL, data: {'command':'addKeywordsToExistingProject','username':username,'projectid':projectID,'keywords':keywordsList}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
@@ -2184,6 +2198,11 @@ function recalculateProject()
                     //$("#warning-message").show(400);
                     //$("#check-project-done-flag").val(1);
                     window.location = "missionreport.html?pid="+projectID;
+                }
+                else
+                {
+                    var message = "Oops, it looks like you have reached the limit on available keywords under your current subscription plan.<br><br>You can <a href=\"subscriptions.html\">upgrade your access level by clicking here</a>.";
+                    showAlert(message);
                 }
             }
         });
@@ -2223,7 +2242,8 @@ function displayKeywordDeleteWindow(keywordID)
     var deletedKeywords = info.deletedKeywords;
     //var maxKeywords = info.maxKeywords;
     
-    if(deletedKeywords < 50)
+    //if(deletedKeywords < 50)
+    if(true)
     {
         if(keywordID != '')
         {
@@ -2232,12 +2252,12 @@ function displayKeywordDeleteWindow(keywordID)
             showDeleteProject();
         }
     }
-    else
+    /*else
     {
         $("#alert-window").removeClass("alert-window");
         $("#alert-window").addClass("alert-window-large");
         showAlert("The number of keywords you can delete is currently limited. Only 50 phrases across all of your missions can be deleted.");
-    }
+    }*/
 }
 
 function deleteKeyword()
@@ -2420,6 +2440,7 @@ function getProjectCSVData()
             var competitorURL = thisCompetitor.url;
                 var competitorURLShort = competitorURL.substring(0,45)+"...";
             var competitorCTR = Math.round(thisCompetitor.traffic);
+            var competitorDA = Math.round(parseFloat(thisCompetitor.DA));
             //var competitorPowerLevel = Math.round((thisCompetitor.DA+thisCompetitor.PA)/2/10);
             var competitorPowerLevel = thisCompetitor.powerLevel;
             
@@ -2536,6 +2557,7 @@ function saveTextAsFileFromDashboard(projectID)
                         var competitorURL = thisCompetitor.url;
                             var competitorURLShort = competitorURL.substring(0,45)+"...";
                         var competitorCTR = Math.round(thisCompetitor.traffic);
+                        var competitorDA = Math.round(parseFloat(thisCompetitor.DA));
                         //var competitorPowerLevel = Math.round((thisCompetitor.DA+thisCompetitor.PA)/2/10);
                         var competitorPowerLevel = thisCompetitor.powerLevel;
 
@@ -2818,6 +2840,7 @@ function getKeywordCompetitorsAhrefs(keywordID)
     var returnData = $('#json').val();
     var info = JSON.parse(returnData);
     
+    var username = getCookie("username");
     var projectInfo = info.projectSummary;
         var projectID = projectInfo.projectID;
         var clientURL = projectInfo.clientURL;
@@ -2828,13 +2851,18 @@ function getKeywordCompetitorsAhrefs(keywordID)
     //Send the user to the RH Storefront
     //gotoStorefrontPrefill(keywordCounter);
     
-    $.ajax({url: restURL, data: {'command':'getKeywordCompetitorsAhrefs','projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
+    $.ajax({url: restURL, data: {'command':'getKeywordCompetitorsAhrefs','username':username,'projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
                 var info = JSON.parse(returnData);
 
                 if(info.status == "success")
                 {
                     //loadProjectData();
                     window.location.reload();
+                }
+                else
+                {
+                    var message = "Oops, it looks like you have reached the limit on available content reveals under your current subscription plan.<br><br>You can <a href=\"subscriptions.html\">upgrade your access level by clicking here</a>.";
+                    showAlert(message);
                 }
             }
         });
@@ -2843,6 +2871,10 @@ function getKeywordCompetitorsAhrefs(keywordID)
 function changeUserMonthlyContent(keywordID,keywordCounter)
 {
     $('body').addClass('wait');
+
+    /*if (e.which == 13) {
+        $(this).blur();
+    }*/
 
     var projectID = getURLParameter("pid");
     var newValue = $("#kwid-"+keywordID+"-your-pl").val();
@@ -5129,7 +5161,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-6 text-left break-all-text\"><span>URL<br/>&nbsp;</span></th>\n" +
-"																	<th class=\"col-sm-1 text-center\" style=\"vertical-align: top;\"><span class=\"info-icon-3\">DA</th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\" style=\"vertical-align: top;\"><span class=\"info-icon-3\" title=\"Domain authority for this competitor\">DA</th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +
@@ -5176,6 +5208,7 @@ function displayMissionInfo(field,sort)
                                 var competitorCTR = Math.round(thisCompetitor.traffic);
                                 var competitorCTRExact = Math.round(thisCompetitor.trafficExact);
 
+                                var competitorDA = Math.round(parseFloat(thisCompetitor.DA));
                                 var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
                                 var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
                                 var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
@@ -5230,7 +5263,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" type=\"checkbox\" "+competitorCheckboxStatus+" id=\"chk-content-all-c"+competitorID+"\" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
-"                                                                    <td data-label=\"DA\" class=\"text-center\">78</td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center\">"+competitorDA+"</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
@@ -5260,7 +5293,7 @@ function displayMissionInfo(field,sort)
 "                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\"><strong>SELECTED COMPETITORS</strong></td>\n" +
-"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">78</td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">&nbsp;</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
@@ -5269,10 +5302,10 @@ function displayMissionInfo(field,sort)
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
 "                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left\">"+clientURL+"</td>\n" +
-"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">78</td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\" id=\"\">&nbsp;</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onblur=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
@@ -5817,7 +5850,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
         //Update the summary info based on ids
         $("#kw-"+keywordID+"-content-goal").html(topHackContentHTML+"<div class=\"mission-cart-div\"><img src=\""+cartSrc+"\" style=\"display:"+keywordCartDisplay+";\" id=\"cart-icon-"+keywordID+"\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div>");
         
-        /*var summaryRowHTML = "<td class=\"checkbox-ot\"><input class=\"\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
+        var summaryRowHTML = "<td class=\"checkbox-ot\"><input class=\"\" id=\"chk-content-all-kw"+keywordID+"\" type=\"checkbox\" "+keywordCheckboxStatus+"  onchange=\"toggleKeyword('"+keywordID+"',this.checked);\"></td>\n" +
 "                                        <td class=\"project-name-ot\" "+keywordToggle+"><a class=\"\">"+keyword+"</a>"+errorTriangleHTML+"</td>\n" +
 "                                        <td data-label=\"MO. SEARCH VOLUME\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(searchVolume)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
@@ -5827,7 +5860,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
 "                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n";
         $("#kw-summary-row-"+keywordID).html(summaryRowHTML);
-        $("#progress-row-"+keywordID).css("display",progressBarDisplay);*/
+        /*$("#progress-row-"+keywordID).css("display",progressBarDisplay);*/
         
         var revealButtonDisplay = "block";
         if(keywordStatus == "hacked")
@@ -5854,6 +5887,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                    <th class=\"col-sm-1\"></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span>Rank<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-6 text-left break-all-text\"><span>URL<br/>&nbsp;</th>\n" +
+"                                                                    <th class=\"col-sm-1 text-center\" style=\"vertical-align: top;\"><span class=\"info-icon-3\" title=\"Domain authority for this competitor\">DA</th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"Click Through Rate for the ranking position and current keyword\">CTR<br/>&nbsp;</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The total number of backlinks this competitor has\">Total Backlinks</span></th>\n" +
 "                                                                    <th class=\"col-sm-1 text-center\"><span class=\"info-icon-3\" title=\"The amount of off-site content produced each month with this keyword phrase as the topic\">Monthly Content</span></th>\n" +"                                                                </tr>\n"+
@@ -5899,6 +5933,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
                                 var competitorCTR = Math.round(thisCompetitor.traffic);
                                 var competitorCTRExact = Math.round(thisCompetitor.trafficExact);
 
+                                var competitorDA = Math.round(parseFloat(thisCompetitor.DA));
                                 var competitorPowerLevel = thisCompetitor.competitorMonthlyContent;
                                 var competitorMonthlyBacklinks = thisCompetitor.competitorMonthlyBacklinks;
                                 var competitorTotalBacklinks = thisCompetitor.competitorTotalBacklinks;
@@ -5953,6 +5988,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                    <td class=\"checkbox-ot\"><input class=\"magic-checkbox\" id=\"chk-content-all-c"+competitorID+"\" type=\"checkbox\" "+competitorCheckboxStatus+" onchange=\"toggleCompetitor('"+competitorID+"',this.checked,'"+i+"','"+keywordID+"');\"><label for=\"chk-content-all-c"+competitorID+"\"></label>"+seoInsuranceHTML+"</td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\">"+competitorPositionRank+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\" title=\""+competitorURL+"\">"+competitorURLShort+"<a title=\"Copy full URL to clipboard\" id=\"copy-anchor-"+competitorID+"\" class=\"copy-button\" onmouseover=\"resetTitle('"+competitorID+"');\" onclick=\"showCopiedConfirmation('"+competitorID+"');\" data-clipboard-action=\"copy\" data-clipboard-text=\""+competitorURL+"\"><i class=\"fa fa-copy fa-blue\" id=\"copy-icon-"+competitorID+"\" style=\"padding-left:5px;cursor:pointer;\"></i></a></td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center\">"+competitorDA+"</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+competitorCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-backlinks\">"+competitorMonthlyBacklinksHTML+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" class=\"text-center"+shadedString+"\" id=\"kwid-"+keywordID+"-competitorid-"+competitorID+"-content\">"+competitorContentCountHTML+"</td>\n" +
@@ -5982,6 +6018,7 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                    <td class=\"checkbox-ot\"><strong>THEM</strong></td>\n" +
 "                                                                    <td data-label=\"Rank\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-rank\">"+Math.round(totalRank/competitorsCount)+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\"><strong>SELECTED COMPETITORS</strong></td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\">&nbsp;</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\" id=\"kwid-"+keywordID+"-avg-ctr\">"+Math.round(totalCTR/competitorsCount)+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center negative-sign-2\" id=\"kwid-"+keywordID+"-table-total-backlinks\">"+numberWithCommas(competitorAvgBacklinks)+"</td>\n" +
 "                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-table-total-pl\">"+competitorAvgCount+"<span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:10px;color:#8a8b8f;\">avg</span></td>\n" +
@@ -5990,9 +6027,10 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                                                    <td class=\"checkbox-ot\"><strong>YOU</strong></td>\n" +
 "                                                                    <td class=\"text-center\">"+clientRanking+"</td>\n" +
 "                                                                    <td data-label=\"URL\" class=\"text-left break-all-text\">"+clientURL+"</td>\n" +
+"                                                                    <td data-label=\"DA\" class=\"text-center break-all-text\">&nbsp;</td>\n" +
 "                                                                    <td data-label=\"CTR\" class=\"text-center\">"+clientCTR+"%</td>\n" +
 "                                                                    <td data-label=\"Monthly Backlinks\" class=\"text-center equal-sign-2\" id=\"kwid-"+keywordID+"-user-monthly-backlinks-count\">"+userMonthlyBacklinks+"</td>\n" +
-"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
+"                                                                    <td data-label=\"Monthly Content\" style=\"font-size:20px;text-align:center;\" id=\"kwid-"+keywordID+"-user-monthly-content-count\"><input type=\"number\" class=\"transparent-text-input-2\" onblur=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" onchange=\"changeUserMonthlyContent('"+keywordID+"','"+i+"');\" id=\"kwid-"+keywordID+"-your-pl\" value=\""+userMonthlyContent+"\"><span style=\"font-size:12px;position:absolute !important;right:2px;margin-top:4px;\"><i class=\"info-icon\" title=\"Click the number to change your monthly content count\"></i></span></td>\n" +
 "                                                                </tr>\n" +
 "                                                                <tr class=\"project-head2 result-row\">\n" +
 "                                                                    <td colspan=\"5\" class=\"text-right\">YOUR MONTHLY CONTENT GOAL</td>\n" +
@@ -6581,7 +6619,6 @@ function changeSubscription(e,element)
     var cbCustomerID = userInfo.cbCustomerID;
     
     var plan = $("#"+element).attr("data-plan");
-    
     if(cbCustomerID !== "")
     {
         //Existing customer; ask for confirmation, then silently upgrade via API
@@ -6594,7 +6631,7 @@ function changeSubscription(e,element)
         });
         $("#confirm_proceed_button").click(function(){
             $("#confirm-window").hide();
-            
+
             //Proceed to sign up the user
             if(username != "")
             {
@@ -6602,7 +6639,7 @@ function changeSubscription(e,element)
                         var info = JSON.parse(returnData);
                         if(info.status == "success")
                         {
-                            window.location = "../changeconfirmation.html";
+                            window.location = "changeconfirmation.html";
                         }
                         else
                         {
