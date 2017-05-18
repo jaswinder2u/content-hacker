@@ -6610,58 +6610,67 @@ function changeSubscription(e,element)
     //this.event.preventDefault();
     e.preventDefault();
 
-    var infoRaw = retrieveLocalStorage("userInfo");
-    var info = JSON.parse(infoRaw);
-    var users = info.users;
-    var userInfo = users[0];
-
-    var username = userInfo.username;
-    var cbCustomerID = userInfo.cbCustomerID;
+    var username = getCookie("username");
     
-    var plan = $("#"+element).attr("data-plan");
-    if(cbCustomerID !== "")
-    {
-        //Existing customer; ask for confirmation, then silently upgrade via API
-        $("#confirm-msg-body").html("Changing your subscription plan will immediately lower or raise your access limits, and your credit card will be credited/charged the pro-rated difference between your current plan and the one you are selecting. Are you sure you want to proceed?");
-        
-        //Attach the handlers
-        $("#confirm_cancel_button").click(function(){
-            $("#confirm-window").hide();
-            //Do nothing; they canceled
-        });
-        $("#confirm_proceed_button").click(function(){
-            $("#confirm-window").hide();
+    $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                var info = JSON.parse(returnData);
+                if(info.status == "success")
+                {
+                    var users = info.users;
+                    var userInfo = users[0];
+                    var cbCustomerID = userInfo.cbCustomerID;
 
-            //Proceed to sign up the user
-            if(username != "")
-            {
-                $.ajax({url: restURL, data: {'command':'changeCustomerAccessPlan','username':username,'customerid':cbCustomerID,'plan':plan}, type: 'post', async: true, success: function postResponse(returnData){
-                        var info = JSON.parse(returnData);
-                        if(info.status == "success")
-                        {
-                            window.location = "changeconfirmation.html";
-                        }
-                        else
-                        {
-                            window.location = '../keywordhacker/error.html';
-                        }
+                    var plan = $("#"+element).attr("data-plan");
+                    var planFullName = $("#"+element).attr("data-plan-full-name");
+                    if(cbCustomerID !== "")
+                    {
+                        //Existing customer; ask for confirmation, then silently upgrade via API
+                        $("#confirm-msg-body").html("Are you sure you would like to switch to the "+planFullName+" Account?");
+
+                        //Attach the handlers
+                        $("#confirm_cancel_button").click(function(){
+                            $("#dimmer").hide();
+                            $("#confirm-window").hide();
+                            //Do nothing; they canceled
+                        });
+                        $("#confirm_proceed_button").click(function(){
+                            $("#dimmer").hide();
+                            $("#confirm-window").hide();
+
+                            //Proceed to sign up the user
+                            if(username != "")
+                            {
+                                $.ajax({url: restURL, data: {'command':'changeCustomerAccessPlan','username':username,'customerid':cbCustomerID,'plan':plan}, type: 'post', async: true, success: function postResponse(returnData){
+                                        var info = JSON.parse(returnData);
+                                        if(info.status == "success")
+                                        {
+                                            window.location = "changeconfirmation.html";
+                                        }
+                                        else
+                                        {
+                                            window.location = '../keywordhacker/error.html';
+                                        }
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                window.location = '../keywordhacker/error.html';
+                            }
+                        });
+
+                        //Show the window
+                        $("#dimmer").show();
+                        $("#confirm-window").show();
                     }
-                });
-            }
-            else
-            {
-                window.location = '../keywordhacker/error.html';
+                    else
+                    {
+                        //New customer; take them to the securesubscribe page
+                        window.location = '../keywordhacker/securesubscribe.html?plan='+plan;
+                    }
+                }
             }
         });
-        
-        //Show the window
-        $("#confirm-window").show();
-    }
-    else
-    {
-        //New customer; take them to the securesubscribe page
-        window.location = '../keywordhacker/securesubscribe.html?plan='+plan;
-    }
 }
 
 function prepareSubscribe()
@@ -6736,7 +6745,7 @@ function prepareSubscriptionsPage()
         
         getAddonItems(function(output){
             $("#addons").val(output);
-            refreshSubscriptionDetails();
+            refreshSubscriptionDetails('0');
         });
     }
     else
@@ -6745,7 +6754,7 @@ function prepareSubscriptionsPage()
     }
 }
 
-function refreshSubscriptionDetails()
+function refreshSubscriptionDetails(updatedProjectID)
 {
     var username = getCookie("username");
     if(username != '')
@@ -6841,7 +6850,7 @@ function refreshSubscriptionDetails()
                         {
                             //Output the mission-level elements
                             subscriptionHTML += "<div class=\"mission-heading\">\n" +
-"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a style=\"cursor:pointer;\" onclick=\" onclick=\"confirmDeleteSubscriptionItem('"+projectInfo.projectID+"','mission');\"\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
+"							<label><a href=\"missionreport.html?pid="+projectInfo.projectID+"\">"+projectInfo.project+"</a></label> <a style=\"cursor:pointer;\" onclick=\"confirmDeleteSubscriptionItem('"+projectInfo.projectID+"','mission');\" class=\"view-mission-link\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a> </div>\n" +
 "						<div class=\"table-spacing\">\n";
 
                             var keywords = projectInfo.keywords;
@@ -6970,7 +6979,7 @@ function refreshSubscriptionDetails()
 "										<td>"+selectHTML+"</td>\n" +
 "										<td class=\"instruction_data\">"+instructionsHTML+"</td>\n" +
 "										<td class=\"cost-ot\">@ $"+addonInfo.price+"</td>\n" +
-"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"confirmDeleteSubscriptionItem('"+addonInfo.itemID+"','addon');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
+"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteContentSubscriptionItem('"+addonInfo.itemID+"','addon');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
 "										</td>\n" +
 "									</tr>\n";
                                             }
@@ -7012,12 +7021,18 @@ function refreshSubscriptionDetails()
                                             "</span>"+
                                         "</div>";
 
+
+                            var anchorText = "<a style=\"cursor:pointer;\" onclick=\"confirmUpdateSubscriptions('"+projectInfo.projectID+"');\" class=\"rh-update-btn\">Confirm </a>";
+                            if(updatedProjectID == projectInfo.projectID)
+                            {
+                                anchorText = "<a style=\"cursor:default;\" onclick=\"javascript:void(0);\" class=\"rh-updated\">Updated </a>";
+                            }
                             //Close the mission-level elements
                             subscriptionHTML += "</div>"+
                                     "<div class=\"monthly-content-goal\">\n" +
 "							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
 "							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
-"							<span id=\"update-container-"+projectInfo.projectID+"\"><a style=\"cursor:pointer;\" onclick=\"handleUpdateSubscription(event,'"+projectInfo.projectID+"');\" class=\"rh-update-btn\">Apply </a></span>\n" +
+"							<span>"+anchorText+"</span>\n" +
 "						</div>";
                         }
                         
@@ -7215,7 +7230,7 @@ function addNewSubscriptionItem(projectID,keywordID)
         //addToCart(keywordID);
         $.ajax({url: restURL, data: {'command':'addNewSubscriptionItem','username':username,'projectid':projectID,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
-                refreshSubscriptionDetails();
+                refreshSubscriptionDetails('0');
             }
         });
     }
@@ -7230,7 +7245,7 @@ function updateSubscriptionItem(itemID)
     
     $.ajax({url: restURL, data: {'command':'updateCartItem','addonid':itemID,'addontype':addonType,'instructions':contentInstructions,'quantity':quantity}, type: 'post', async: true, success: function postResponse(returnData){
             //var info = JSON.parse(returnData);
-            refreshSubscriptionDetails();
+            refreshSubscriptionDetails('0');
         }
     });
 }
@@ -7242,7 +7257,7 @@ function addSubscriptionMissionProjectManagement(projectID,quantity)
     {
         $.ajax({url: restURL, data: {'command':'addSubscriptionMissionProjectManagement','projectid':projectID,'quantity':quantity,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
-                refreshSubscriptionDetails();
+                refreshSubscriptionDetails('0');
             }
         });
     }
@@ -7255,7 +7270,7 @@ function removeSubscriptionMissionProjectManagement(projectID)
     {
         $.ajax({url: restURL, data: {'command':'removeSubscriptionMissionProjectManagement','projectid':projectID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
-                refreshSubscriptionDetails();
+                refreshSubscriptionDetails('0');
             }
         });
     }
@@ -7289,7 +7304,34 @@ function confirmDeleteSubscriptionItem(itemID,type)
     $("#dimmer").show();
 }
 
-function deleteContentSubscriptionItem()
+function confirmUpdateSubscriptions(projectID)
+{
+    //$("#update-confirm-message").html("Are you sure you want to modify this content subscription?");
+    $("#update-subscription-id").val(projectID);
+    //$("#update-subscription-type").val("addon");
+    $("#update-subscription-window").show();
+    $("#dimmer").show();
+}
+
+function deleteContentSubscriptionItem(itemID,type)
+{
+    /*var itemID = $("#delete-subscription-id").val();
+    var type = $("#delete-subscription-type").val();*/
+    
+    var username = getCookie("username");
+    if(username != "" && itemID != "" && type != "")
+    {
+        $.ajax({url: restURL, data: {'command':'deleteContentSubscriptionItem','itemid':itemID,'type':type,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                //var info = JSON.parse(returnData);
+                $("#delete-subscription-window").hide();
+                $("#dimmer").hide();
+                refreshSubscriptionDetails('0');
+            }
+        });
+    }
+}
+
+function deleteContentSubscriptionMission()
 {
     var itemID = $("#delete-subscription-id").val();
     var type = $("#delete-subscription-type").val();
@@ -7301,7 +7343,7 @@ function deleteContentSubscriptionItem()
                 //var info = JSON.parse(returnData);
                 $("#delete-subscription-window").hide();
                 $("#dimmer").hide();
-                refreshSubscriptionDetails();
+                refreshSubscriptionDetails('0');
             }
         });
     }
@@ -7314,17 +7356,18 @@ function restoreSubscriptionItem(itemID)
     {
         $.ajax({url: restURL, data: {'command':'restoreContentSubscriptionItem','itemid':itemID,'username':username}, type: 'post', async: true, success: function postResponse(returnData){
                 //var info = JSON.parse(returnData);
-                refreshSubscriptionDetails();
+                refreshSubscriptionDetails('0');
             }
         });
     }
 }
 
-function handleUpdateSubscription(e,projectID)
+function handleUpdateSubscription(e)
 {
     var e = e || window.event;
     e.preventDefault();
     
+    var projectID = $("#update-subscription-id").val();
     var cbCustomerID = getCookie("cbCustomerID");
     var username = getCookie("username");
     
@@ -7336,14 +7379,13 @@ function handleUpdateSubscription(e,projectID)
     {
         if(username != "")
         {
+            hideUpdateWindow();
+            
             $.ajax({url: restURL, data: {'command':'updateSubscriptionForCustomer','username':username,'customerid':cbCustomerID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
                     if(info.status == "success")
                     {
-                        refreshSubscriptionDetails();
-                        //Change the "Update" button to "Updated" text
-                        $("#update-container-"+projectID).html("<span class=\"rh-updated\">Updated</span>");
-                        
+                        refreshSubscriptionDetails(projectID);
                     }
                     else
                     {
@@ -7357,4 +7399,16 @@ function handleUpdateSubscription(e,projectID)
             window.location = '../keywordhacker/error.html';
         }
     }
+}
+
+function hideDeleteWindow()
+{
+    document.getElementById("dimmer").style.display = "none";
+    document.getElementById("delete-subscription-window").style.display = "none";
+}
+
+function hideUpdateWindow()
+{
+    document.getElementById("dimmer").style.display = "none";
+    document.getElementById("update-subscription-window").style.display = "none";
 }

@@ -500,3 +500,17 @@ function setVerifyFields()
     var username = getCookie("username");
     $("#user-email").html(username);
 }
+
+function hidePlaceholder(elementID)
+{
+    $("#"+elementID).prop("placeholder","");
+}
+
+function showPlaceholder(elementID,text)
+{
+    var currVal = $("#"+elementID).val();
+    if(currVal.trim() == "")
+    {
+        $("#"+elementID).prop("placeholder",text);
+    }
+}
