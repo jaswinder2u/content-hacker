@@ -155,9 +155,12 @@ function loginAccount(e)
                 
                 if(info.status == "success")
                 {
+                    var users = info.users;
+                    var userInfo = users[0];
+                    
                     document.cookie = "username="+email;
-                    document.cookie = "userFullName="+info.userfullname;
-                    document.cookie = "cbCustomerID="+info.cbCustomerID;
+                    document.cookie = "userFullName="+userInfo.userfullname;
+                    document.cookie = "cbCustomerID="+userInfo.cbCustomerID;
 
                     saveToLocalStorage("userInfo",returnData);
                     /*document.cookie = "firstName="+info.firstName;
@@ -380,8 +383,12 @@ function loginAuthenticatedAccount(e)
                 if(info.status == "success")
                 {
                     clearCookies();
+                    
+                    var users = info.users;
+                    var userInfo = users[0];
+                    
                     document.cookie = "username="+email;
-                    document.cookie = "userFullName="+info.userfullname;
+                    document.cookie = "userFullName="+userInfo.userfullname;
                     window.location = "keywordhacker/dashboard.html?new=y";
                 }
                 else

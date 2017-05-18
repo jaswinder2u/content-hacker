@@ -1307,7 +1307,7 @@ input::-webkit-inner-spin-button {
 }
 
 .mission-cart-div {
-    clear: both;
+    /*clear: both;*/
     display: inline-block;
     float: right;
     z-index: 999;
