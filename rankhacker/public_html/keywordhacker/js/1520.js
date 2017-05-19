@@ -3512,6 +3512,7 @@ function addToCart(e,keywordID)
                             //$("#cart-icon-"+thisKeywordID).css("opacity","0.25");
                             $("#cart-icon-"+thisKeywordID).attr("src","images_cart/rh-cart-close.png");
                             $("#cart-icon-"+thisKeywordID).attr("onclick","javascript:window.location='cartdetail.html';");
+                            $("#cart-icon-"+thisKeywordID).parent().attr("title","Edit your content assignments and subscribe");
                             //$("#cart-icon-"+thisKeywordID).attr("onclick","").click(new Function("javascript:void(0);"));
                         }
                     }
@@ -3560,6 +3561,7 @@ function addToCart(e,keywordID)
             //$("#cart-icon-"+keywordID).css("opacity","0.25");
             $("#cart-icon-"+keywordID).attr("src","images_cart/rh-cart-close.png");
             $("#cart-icon-"+keywordID).attr("onclick","javascript:window.location='cartdetail.html';");
+            $("#cart-icon-"+keywordID).parent().attr("title","Edit your content assignments and subscribe");
             //$("#cart-icon-"+keywordID).attr("onclick","").click(new Function("javascript:void(0);"));
             $("#goal-cart-"+keywordID).hide();
             /*$("#goal-cart-"+keywordID).attr("src","images/cart-inactive.png");
@@ -3572,7 +3574,7 @@ function addToCart(e,keywordID)
             
             
             //Go through the rest of the mission; if no other keywords are available to add, disable the project-level one too
-            var disable = true;
+            /*var disable = true;
             var gotoCart = false;
             var jsonData = $("#json").val();
             var info = JSON.parse(jsonData);
@@ -3602,7 +3604,7 @@ function addToCart(e,keywordID)
                     if(thisOpacity == 1)
                     {
                         disable = false;
-                    }*/
+                    }*
                 }
             }
             if(disable)
@@ -3618,7 +3620,7 @@ function addToCart(e,keywordID)
                     $("#project-add-to-cart").attr("onclick","javascript:window.location='subscriptions.html';");
                 }
                 //$("#project-add-to-cart").attr("onclick","").click(new Function("javascript:void(0);"));
-            }
+            }*/
             
             $.ajax({url: restURL, data: {'command':'addKeywordContentToCart','username':username,'keywordid':keywordID}, type: 'post', async: true, success: function postResponse(returnData){
                     var info = JSON.parse(returnData);
@@ -5019,29 +5021,45 @@ function displayMissionInfo(field,sort)
             var numCartPending = thisEntry.numCartPending;
             
             var keywordCartDisplay = "block";
-            var cartSrc = "images_cart/rh-cart-start.png";
+            var cartHTML = "<img src=\"images_cart/rh-cart-start.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\"javascript:addToCart(event,'"+keywordID+"');\">";
             var cartOnclick = "addToCart(event,'"+keywordID+"');";
             var cartHoverText = "Add content to your cart";
             if(numCartPurchased == 0 && numCartPending == 0)
             {
                 //No content
-                cartSrc = "images_cart/rh-cart-start.png";
+                //cartSrc = "images_cart/rh-cart-start.png";
                 cartOnclick = "javascript:addToCart(event,'"+keywordID+"');";
+                cartHTML = "<img src=\"images_cart/rh-cart-start.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\">";
                 cartHoverText = "Add content to your cart";
                 //keywordCartDisplay = "none";
             }
             else if(numCartPending > 0)
             {
                 //Content is in cart
-                cartSrc = "images_cart/rh-cart-close.png";
+                //cartSrc = "images_cart/rh-cart-close.png";
                 cartOnclick = "javascript:window.location='cartdetail.html';";
+                cartHTML = "<img src=\"images_cart/rh-cart-close.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\">";
                 cartHoverText = "Edit your content assignments and subscribe";
             }
-            else if(numCartPurchased > 0)
+            else if(numCartPurchased > keywordTotalContentDiff)
+            {
+                //More than enough content has been ordered
+                cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<i class=\"rh-goal-type exceeding-goal\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" onclick=\""+cartOnclick+"\"></i>";
+                cartHoverText = "You are subscribed to content for this keyword";
+            }
+            else if(numCartPurchased == keywordTotalContentDiff)
+            {
+                cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<i class=\"rh-goal-type meeting-goal\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" onclick=\""+cartOnclick+"\"></i>";
+                cartHoverText = "You are subscribed to content for this keyword";
+            }
+            else if(numCartPurchased < keywordTotalContentDiff)
             {
                 //Content has been orderd
-                cartSrc = "images_cart/rh-cart-paid.png";
+                //cartSrc = "images_cart/rh-cart-paid.png";
                 cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<span class=\"deficient-goal-circle\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";float:right;\" onclick=\""+cartOnclick+"\">"+(keywordTotalContentDiff - numCartPurchased)+"</span>";
                 cartHoverText = "You are subscribed to content for this keyword";
             }
             
@@ -5172,7 +5190,8 @@ function displayMissionInfo(field,sort)
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
-"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\"><img src=\""+cartSrc+"\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></div></td>\n" +
+//"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\"><img src=\""+cartSrc+"\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\">"+cartHTML+"</div></div></td>\n" +
 "                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+" "+rowBGText+">"+topKWNetworth+"</td>\n" +
 "                                        <td class=\"delect-row\" "+rowBGText+"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n" +
 "                                    </tr>\n" +
@@ -5773,29 +5792,45 @@ function refreshMissionKeyword(returnData,field,keywordID)
             var numCartPending = thisEntry.numCartPending;
             
             var keywordCartDisplay = "block";
-            var cartSrc = "images_cart/rh-cart-start.png";
+            var cartHTML = "<img src=\"images_cart/rh-cart-start.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\"javascript:addToCart(event,'"+keywordID+"');\">";
             var cartOnclick = "addToCart(event,'"+keywordID+"');";
             var cartHoverText = "Add content to your cart";
             if(numCartPurchased == 0 && numCartPending == 0)
             {
                 //No content
-                cartSrc = "images_cart/rh-cart-start.png";
+                //cartSrc = "images_cart/rh-cart-start.png";
                 cartOnclick = "javascript:addToCart(event,'"+keywordID+"');";
+                cartHTML = "<img src=\"images_cart/rh-cart-start.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\">";
                 cartHoverText = "Add content to your cart";
                 //keywordCartDisplay = "none";
             }
             else if(numCartPending > 0)
             {
                 //Content is in cart
-                cartSrc = "images_cart/rh-cart-close.png";
+                //cartSrc = "images_cart/rh-cart-close.png";
                 cartOnclick = "javascript:window.location='cartdetail.html';";
+                cartHTML = "<img src=\"images_cart/rh-cart-close.png\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\">";
                 cartHoverText = "Edit your content assignments and subscribe";
             }
-            else if(numCartPurchased > 0)
+            else if(numCartPurchased > keywordTotalContentDiff)
+            {
+                //More than enough content has been ordered
+                cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<i class=\"rh-goal-type exceeding-goal\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" onclick=\""+cartOnclick+"\"></i>";
+                cartHoverText = "You are subscribed to content for this keyword";
+            }
+            else if(numCartPurchased == keywordTotalContentDiff)
+            {
+                cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<i class=\"rh-goal-type meeting-goal\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" onclick=\""+cartOnclick+"\"></i>";
+                cartHoverText = "You are subscribed to content for this keyword";
+            }
+            else if(numCartPurchased < keywordTotalContentDiff)
             {
                 //Content has been orderd
-                cartSrc = "images_cart/rh-cart-paid.png";
+                //cartSrc = "images_cart/rh-cart-paid.png";
                 cartOnclick = "javascript:window.location='subscriptions.html';";
+                cartHTML = "<span class=\"deficient-goal-circle\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";float:right;\" onclick=\""+cartOnclick+"\">"+(keywordTotalContentDiff - numCartPurchased)+"</span>";
                 cartHoverText = "You are subscribed to content for this keyword";
             }
             
@@ -5921,8 +5956,8 @@ function refreshMissionKeyword(returnData,field,keywordID)
 "                                        <td data-label=\"MONTHLY VISITORS PROJECTED\" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyVisitors)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY CUSTOMERS PROJECTED \" class=\"price-widthbox\" "+keywordToggle+">"+numberWithCommas(monthlyCustomers)+"</td>\n" +
 "                                        <td data-label=\"MONTHLY SALES PROJECTED\" class=\"price-widthbox\" "+keywordToggle+"><div class=\"negative-sign\">"+currencyHexCode+numberWithCommas(monthlySales)+"</div></td>\n" +
-//"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\"><div class=\"equal-sign\" style=\"cursor:default;\">"+topHackContentHTML+"</div></td>\n" +
-"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\"><img src=\""+cartSrc+"\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></div></td>\n" +
+//"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\"><img src=\""+cartSrc+"\" id=\"cart-icon-"+keywordID+"\" style=\"display:"+keywordCartDisplay+";\" class=\"mission-cart-icon\" onclick=\""+cartOnclick+"\"></div></div></td>\n" +
+"                                        <td data-label=\"CONTENT GOAL & COST\" class=\"price-widthbox\" "+rowBGText+"><div id=\"kw-"+keywordID+"-content-goal\" class=\""+equalSignClass+"\" style=\"cursor:default;\">"+topHackContentHTML+"<div class=\"mission-cart-div info-icon-2\" title=\""+cartHoverText+"\">"+cartHTML+"</div></div></td>\n" +
 "                                        <td data-label=\"KEYWORD NET WORTH\" class=\"price-widthbox\" "+keywordToggle+">"+topKWNetworth+"</td>\n" +
 "                                        <td class=\"delect-row\"><a href=\"#\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\" onclick=\"displayKeywordDeleteWindow('"+keywordID+"');\"></i></a></td> \n";
         $("#kw-summary-row-"+keywordID).html(summaryRowHTML);
@@ -6921,14 +6956,18 @@ function refreshSubscriptionDetails(updatedProjectID)
 
                             var keywords = projectInfo.keywords;
                             var addPM = false;
+                            var existingPMHours = 0;
+                            var firstAddonInfo = null;
+                            var firstAddonName = "";
+                            var firstAddonPrice = 0;
+                            var firstAddonID = 0;
 
                             for(var k=0;k<keywords.length; k++)
                             {
                                 var keywordInfo = keywords[k];
-
                                 if(keywordInfo.keyword != "")
                                 {
-                                    var firstAddonInfo = keywordInfo.addons[0];
+                                    firstAddonInfo = keywordInfo.addons[0];
                                     
                                     var keywordContentGoal = parseInt(keywordInfo.contentGoal);
                                     var addMoreClass = "";
@@ -6936,6 +6975,11 @@ function refreshSubscriptionDetails(updatedProjectID)
                                     if(firstAddonInfo.keywordID == 0 && (firstAddonInfo.pendingAdd == 1 || firstAddonInfo.purchased == 1))
                                     {
                                         addPM = true;
+                                        existingPMHours = firstAddonInfo.quantity;
+                                        firstAddonName = firstAddonInfo.addonName;
+                                        firstAddonPrice = firstAddonInfo.price;
+                                        firstAddonID = firstAddonInfo.itemID;
+                                        firstAddonPendingDelete = firstAddonInfo.pendingDelete;
                                     }
                                     else if(firstAddonInfo.keywordID == 0 && (firstAddonInfo.pendingAdd != 1 || firstAddonInfo.pendingDelete == 1))
                                     {
@@ -6950,24 +6994,36 @@ function refreshSubscriptionDetails(updatedProjectID)
                                             {
                                                 numPieces = numPieces - 1;
                                             }
+                                            
+                                            //Cycle through the addons to see how many are being deleted; remove those from the numPieces calc
+                                            for(var z=0; z<addons.length; z++)
+                                            {
+                                                var tempAddon = addons[z];
+                                                if(tempAddon.pendingDelete == 1)
+                                                {
+                                                    numPieces = numPieces - 1;
+                                                }
+                                            }
                                         var contentGoalClass = "";
+                                        var contentGoalClassText = "";
                                         var addContentClass = "";
                                         var addContentText = "";
                                         if(numPieces < keywordContentGoal)
                                         {
-                                            contentGoalClass = "deficient-goal";
+                                            contentGoalClassText = Math.min(keywordContentGoal,(keywordContentGoal - numPieces));
+                                            contentGoalClass = "<span class=\"deficient-goal-circle\">"+contentGoalClassText+"</span>";
                                             addContentClass = "";
                                             addContentText = "ADD DEFICIENT CONTENT";
                                         }
                                         else if(numPieces == keywordContentGoal)
                                         {
-                                            contentGoalClass = "meeting-goal";
+                                            contentGoalClass = "<i class=\"rh-goal-type meeting-goal\"></i>";
                                             addContentClass = "extra-content";
                                             addContentText = "ADD EXTRA CONTENT";
                                         }
                                         else
                                         {
-                                            contentGoalClass = "exceeding-goal";
+                                            contentGoalClass = "<i class=\"rh-goal-type exceeding-goal\"></i>";
                                             addContentClass = "extra-content";
                                             addContentText = "ADD EXTRA CONTENT";
                                         }
@@ -6975,7 +7031,7 @@ function refreshSubscriptionDetails(updatedProjectID)
                                         //Output the keyword-level elements
                                         subscriptionHTML += "<div class=\"monthly-goal-rh\">\n" +
 "								<div class=\"keyword-phrase-number\">"+keywordInfo.keyword+"</div>\n" +
-"								<div class=\"monthly-goal-update-rh\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-html=\"true\" data-content=\"<div class='content-goal-tooltip'><h3>MONTHLY CONTENT GOAL</h3><p>It’s you against your competitors; meet this goal to match the efforts of your competitors or exceede it to out pace them. Be consistent and avoid falling deficient.</p><ul><li><i class='rh-goal-type meeting-goal'></i>Meeting Goal</li><li><i class='rh-goal-type exceeding-goal'> </i>Exceeding Goal</li><li><i class='rh-goal-type deficient-goal'> </i>Deficient</li></ul></div>\">MONTHLY CONTENT GOAL <span class=\"value-cg-rh\">"+keywordContentGoal+"</span><i class=\"rh-goal-type "+contentGoalClass+"\"> </i></div>\n" +
+"								<div class=\"monthly-goal-update-rh\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-html=\"true\" data-content=\"<div class='content-goal-tooltip'><h3>MONTHLY CONTENT GOAL</h3><p>It’s you against your competitors; meet this goal to match the efforts of your competitors or exceede it to out pace them. Be consistent and avoid falling deficient.</p><ul><li><i class='rh-goal-type meeting-goal'></i>Meeting Goal</li><li><i class='rh-goal-type exceeding-goal'> </i>Exceeding Goal</li><li><i class='rh-goal-type deficient-goal'> </i>Deficient</li></ul></div>\">MONTHLY CONTENT GOAL <span class=\"value-cg-rh\">"+keywordContentGoal+"</span>"+contentGoalClass+"</div>\n" +
 "							</div>\n" +
 "							<table class=\"mission-info-table\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
 "								<tbody>\n" +
@@ -6986,6 +7042,7 @@ function refreshSubscriptionDetails(updatedProjectID)
 "									</tr>\n";
                                         
                                         //Output the addon-level elements
+                                        var lastNum = 0;
                                         for(var a=0; a<addons.length; a++)
                                         {
                                             var addonInfo = addons[a];
@@ -7014,8 +7071,6 @@ function refreshSubscriptionDetails(updatedProjectID)
                                                 keywordTotalContentCount += addonQuantity;
                                             }
 
-                                            
-                                            
                                             if(addonInfo.addonID == 15 && !addPM)
                                             {
                                                 //Don't add
@@ -7049,7 +7104,34 @@ function refreshSubscriptionDetails(updatedProjectID)
 "										</td>\n" +
 "									</tr>\n";
                                             }
+                                            
+                                            lastNum++;
                                         }
+                                        
+                                        if(addPM)
+                                        {
+                                            if(firstAddonPendingDelete == 1)
+                                            {
+                                                subscriptionHTML += "<tr class=\"deleted-row\">\n" +
+"										<td class=\"number\">"+(a+1)+"</td>\n" +
+"										<td colspan=\"3\" class=\"text-center deleted-text\">DELETED</td>\n" +
+"										<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"restoreSubscriptionItem('"+firstAddonID+"');\" ><i class=\"fa fa-reply\" aria-hidden=\"true\"></i></a>\n" +
+"									</tr>";
+                                                existingPMHours = 0;
+                                            }
+                                            else
+                                            {
+                                                subscriptionHTML += "<tr>\n" +
+"									<td class=\"number\">"+(lastNum+1)+"</td>\n" +
+"									<td>"+firstAddonName+"</td>\n" +
+"									<td class=\"instruction_data\"></td>\n" +
+"									<td class=\"cost-ot\">@ $"+numberWithCommas((existingPMHours*firstAddonPrice).toFixed(2))+"</td>\n" +
+"									<td class=\"delect-row\"><a style=\"cursor:pointer;\" onclick=\"deleteContentSubscriptionItem('"+firstAddonID+"','addon');\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n" +
+"									</td>\n" +
+"								</tr>\n";
+                                            }
+                                        }
+                                        
                                         /*if(keywordTotalContentCount<keywordContentGoal)
                                         {
                                             addMoreClass = " red-plus";
@@ -7067,15 +7149,18 @@ function refreshSubscriptionDetails(updatedProjectID)
                             }
                             
                             //Add a div for the project management
-                            missionPMHours = Math.ceil(missionTotalContentCount*0.5);
-
+                            missionPMHours = Math.ceil(missionTotalContentCount*0.5) - existingPMHours;
+                                
                             subscriptionHTML += "<div class=\"project-management-checkbox\">"+
                                             "<input type=\"checkbox\" id=\"mission-"+projectInfo.projectID+"-pmbox\"";
 
                             if(addPM)
                             {
                                 missionSubtotal += (missionPMHours*pmPrice);
-                                subscriptionHTML += " checked";
+                                if(missionPMHours == 0)
+                                {
+                                    subscriptionHTML += " disabled";
+                                }
                             }
 
                             subscriptionHTML += " onchange=\"toggleSubscriptionMissionProjectManagement('"+projectInfo.projectID+"','"+missionPMHours+"');\" /><label>ADD <strong>[<span> "+missionPMHours+" HOURS </span>]</strong> PROJECT MANAGEMENT <strong>[<span> @ $"+numberWithCommas(pmPrice.toFixed(2))+"/HOUR </span>]</strong><span class=\"position-relative\"><i class=\"info-icon\"> </i></label>"+
@@ -7097,7 +7182,7 @@ function refreshSubscriptionDetails(updatedProjectID)
                             subscriptionHTML += "</div>"+
                                     "<div class=\"monthly-content-goal\">\n" +
 "							<div class=\"content-goal-pcs\">MONTHLY CONTENT: <span class=\"content-pcs\">"+missionTotalContentCount+" PCS</span></div>\n" +
-"							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"</span> \n" +
+"							<span class=\"price\">$"+numberWithCommas(missionSubtotal.toFixed(2))+"/Mo.</span> \n" +
 "							<span>"+anchorText+"</span>\n" +
 "						</div>";
                         }
@@ -7176,10 +7261,13 @@ function refreshSubscriptionDetails(updatedProjectID)
                     if(hasFreeAccess == 1)
                     {
                         $("#plan-price").html("FREE!");
+                        $("#message-bar").removeClass("warning-mesage").removeClass("progress-message").removeClass("error-message").addClass("success-message");
+                        $("#message-header").html("<img src=\"images/green-check.png\" class=\"message-icon\"/>CONGRATULATIONS!");
+                        $("#message-content").html("You have been automatically upgraded to the <b>"+planName+"</b> for free due to the amount of content to which you have subscribed. Thank you for your continued commitment to RankHacker!");
                     }
                     else
                     {
-                        $("#plan-price").html("$"+planPrice+"/month");
+                        $("#plan-price").html("$"+planPrice+"/Mo.");
                     }
                     
                     
