@@ -6660,44 +6660,51 @@ function preparePricing()
                             $("#enterprise-button").attr("data-plan",planID);
                         }
                     }
+                    
+                    
+                    $.ajax({url: restURL, data: {'command':'getUserInfo','username':username}, type: 'post', async: true, success: function postResponse(returnData){
+                        var info = JSON.parse(returnData);
+                        if(info.status == "success")
+                        {
+                            var users = info.users;
+                            var userInfo = users[0];
+                            var planType = userInfo.accessPlan;
+
+                            if(planType == "RankHacker Monthly")
+                            {
+                                $("#free-button").removeClass("package-select-btn").addClass("active-plan");
+                                $("#free-button").css("cursor","default");
+                                $("#free-button").html("ACTIVE");
+                                $("#free-button").prop("onclick","javascript:void(0);");
+                            }
+                            else if(planType == "RankHacker Pro")
+                            {
+                                $("#pro-button").removeClass("package-select-btn").addClass("active-plan");
+                                $("#pro-button").css("cursor","default");
+                                $("#pro-button").html("ACTIVE");
+                                $("#pro-button").prop("onclick","javascript:void(0);");
+                            }
+                            else if(planType == "RankHacker Agency")
+                            {
+                                $("#agency-button").removeClass("package-select-btn").addClass("active-plan");
+                                $("#agency-button").css("cursor","default");
+                                $("#agency-button").html("ACTIVE");
+                                $("#agency-button").prop("onclick","javascript:void(0);");
+                            }
+                            else if(planType == "RankHacker Enterprise")
+                            {
+                                $("#enterprise-button").removeClass("package-select-btn").addClass("active-plan");
+                                $("#enterprise-button").css("cursor","default");
+                                $("#enterprise-button").html("ACTIVE");
+                                $("#enterprise-button").prop("onclick","javascript:void(0);");
+                            }
+                        }
+                    }
+                });
+                    
                 }
             }
         });
-        
-        var infoRaw = retrieveLocalStorage("userInfo");
-        var info = JSON.parse(infoRaw);
-        var users = info.users;
-        var userInfo = users[0];
-        
-        var planType = userInfo.accessPlan;
-        if(planType == "RankHacker Monthly")
-        {
-            $("#free-button").removeClass("package-select-btn").addClass("active-plan");
-            $("#free-button").css("cursor","default");
-            $("#free-button").html("ACTIVE");
-            $("#free-button").prop("onclick","javascript:void(0);");
-        }
-        else if(planType == "RankHacker Pro")
-        {
-            $("#pro-button").removeClass("package-select-btn").addClass("active-plan");
-            $("#pro-button").css("cursor","default");
-            $("#pro-button").html("ACTIVE");
-            $("#pro-button").prop("onclick","javascript:void(0);");
-        }
-        else if(planType == "RankHacker Agency")
-        {
-            $("#agency-button").removeClass("package-select-btn").addClass("active-plan");
-            $("#agency-button").css("cursor","default");
-            $("#agency-button").html("ACTIVE");
-            $("#agency-button").prop("onclick","javascript:void(0);");
-        }
-        else if(planType == "RankHacker Enterprise")
-        {
-            $("#enterprise-button").removeClass("package-select-btn").addClass("active-plan");
-            $("#enterprise-button").css("cursor","default");
-            $("#enterprise-button").html("ACTIVE");
-            $("#enterprise-button").prop("onclick","javascript:void(0);");
-        }
     }
     else
     {
