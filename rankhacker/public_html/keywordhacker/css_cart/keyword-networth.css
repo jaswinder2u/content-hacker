@@ -226,14 +226,7 @@
 
 .content-goal-table .negative-sign,.content-goal-table .equal-sign {border-color: #D0D2D3 !important;}
 
-.top-check-selection {
-  color: #333;
-  float: right;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  width: 135px;
-}
+.top-check-selection {color: #333;float: right;font-size: 14px;margin: 0;padding: 0;width: 135px;}
 
 .top-check-selection input[type="checkbox"] {margin-right: 6px !important;margin-left: 18px  !important;}
 
@@ -305,12 +298,14 @@ position: absolute;right: 10px;top: 0;}
 
 .content-goal-table tr.project-head2.them-row td:last-child , .content-goal-table tr.project-head2.you-row td:last-child ,
 .content-goal-table tr.project-head2.result-row td:last-child {padding-right: 25px;position: relative;}
- 
+
+.content-goal-info .table-outer {overflow: visible;}
+
 /*media quries css */
 
 @media (max-width: 1320px) {
 
-.price-widthbox {width: 130px;}
+.price-widthbox {width: 145px;}
 
 }
 
@@ -506,6 +501,8 @@ body , #site-header{min-width: 300px;overflow-x: visible;}
 .keyword-networth-project tr.table-heading th {width: 100%;}
 
 .keyword-networth-project td::before , .keyword-networth-project .content-goal-table td::before{position: static;width: 100%;}
+
+.project-head .price-widthbox .negative-sign::after, .project-head .price-widthbox .equal-sign::after {left: -22px !important;}
 
 .keyword-networth-project tr.project-head td.project-name-ot, .keyword-networth-project tr.project-head td , .keyword-networth-project .project-info .project-head2 td{
 padding:5px 10px;}
